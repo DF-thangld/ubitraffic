@@ -5,9 +5,30 @@
     <meta charset="utf-8">
     <title>Simple markers</title>
 	
-    <style>
+    
+	
+	<!-- jQuery -->
+	<script src="javascript/jquery.js" type="text/javascript"></script>
+	
+	<!-- jQuery UI -->
+    <link href="javascript/jquery-ui-1.11.3/jquery-ui.css" rel="stylesheet" />
+	<script src="javascript/jquery-ui-1.11.3/jquery-ui.min.js" type="text/javascript"></script>
+	
+	<!-- Facebox -->
+	<link href="javascript/facebox/src/facebox.css" media="screen" rel="stylesheet" type="text/css" />
+	<script src="javascript/facebox/facebox.js" type="text/javascript"></script>
+	
+	<!-- Virtual keyboard -->
+	<link href="javascript/Keyboard-master/css/keyboard.css" rel="stylesheet" />
+	<script src="javascript/Keyboard-master/js/jquery.keyboard.js" type="text/javascript"></script>
+	
+	<!-- Google Map -->
+	<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+	<script src="javascript/gmap3/gmap3.js" type="text/javascript"></script>
+	
+	<style>
 		.gmap3{
-			margin: 20px auto;
+			
 			
 			width: 500px;
 			height: 250px;
@@ -19,14 +40,9 @@
 		}
 		
     </style>
-    
-	<link href="javascript/facebox/src/facebox.css" media="screen" rel="stylesheet" type="text/css" />
-	<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-	<script src="javascript/jquery.js" type="text/javascript"></script>
-	<script src="javascript/facebox/facebox.js" type="text/javascript"></script>
-	<script type="text/javascript" src="javascript/gmap3/gmap3.js"></script>
 	
 	<script type="text/javascript">
+	
 	var showMenu = null, fullMenu = null;
 	function ShowMenuButton(map) 
 	{
@@ -69,8 +85,19 @@
 		$navigationButton.attr("class", "button");
 		$navigationButton.html("<center><img src='images/navigation_button.png' /><div>Navigation</div></center>");
 		google.maps.event.addDomListener($navigationButton.get(0), 'click', function() {
+			$('#fullMenu').css('height', '100px');
 			$('#navigationForm').fadeIn();
+			$('#start_place').keyboard();
+			$('#destination').keyboard();
 		});
+		var $navigationForm = $(document.createElement('DIV'));
+		$navigationForm.attr("id", "navigationForm");
+		$navigationForm.attr("style", "display:none");
+		$navigationForm.html("From: <input id='start_place' /> To: <input id='destination' /> <button id='find_route'  >Find</button>");
+		google.maps.event.addDomListener($navigationForm.get(0), 'load', function() {
+			
+		});
+		
 		
 		var $busTimetableButton = $(document.createElement('DIV'));
 		$busTimetableButton.attr("class", "button");
@@ -101,21 +128,15 @@
 		$container.append($busTimetableButton);
 		$container.append($placeButton);
 		$container.append($trafficCongestionButton);
-		
 		$container.append($resetCSS);
+		$container.append($navigationForm);
+		
 		map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push($container.get(0));
-	}
-	
-	function Navigation(map)
-	{
-		var $container = $(document.createElement('DIV'));
-		$container.attr("id", "navigationForm");
-		$container.attr("style", "display:none;margin-left:-77px;margin-bottom:150px;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:800px;height:200px;");
-		map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push($container.get(0));
+		
 	}
 	
     $(function(){
-        $("#test").gmap3({
+        $("#map_panel").gmap3({
 			marker:{
 				values:[
 					{latLng:[65.013130, 25.476192], data:"Paris !"},
@@ -137,19 +158,28 @@
 				callback: function(map){
 					showMenu = new ShowMenuButton(map);
 					fullMenu = new Menu(map);
-					new Navigation(map);
+					$("#keyboard_div").find("button").click(function() {
+						if ($( this ).attr("id")=='backspace_key')
+							deleteAtCaret("virtual_keyboard");
+						else
+							insertAtCaret("virtual_keyboard",$( this ).attr("data-value") );
+					});
+					
 				}
 			}
         });
-        
+
     });
     </script>
 
   </head>
 	
     
-	<div style="border:10px solid;border-color: #2a3333;border-radius: 25px;width:960px;height:486px" id="test"></div>
+	
   <body>
-
+		<div style="border:10px solid;border-color: #2a3333;border-radius: 25px;width:960px;height:486px" id="map_panel"></div>
+		
+	
+	
   </body>
 </html>
