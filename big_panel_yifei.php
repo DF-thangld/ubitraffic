@@ -103,21 +103,22 @@
 		$busTimetableButton.attr("class", "button");
 		$busTimetableButton.html("<center><img src='images/bus_timetable_button.png' /><div>Timetable</div></center>");
 		google.maps.event.addDomListener($busTimetableButton.get(0), 'click', function() {
-			//TODO
+			//TODO Yifei
 		});
 		
 		var $placeButton = $(document.createElement('DIV'));
 		$placeButton.attr("class", "button");
 		$placeButton.html("<center><img src='images/place_button.png' /><div>Place</div></center>");
 		google.maps.event.addDomListener($placeButton.get(0), 'click', function() {
-			//TODO
+			//TODO Yifei
 		});
 		
+
 		var $trafficCongestionButton = $(document.createElement('DIV'));
 		$trafficCongestionButton.attr("class", "button");
 		$trafficCongestionButton.html("<center><img src='images/traffic_congestion_button.png' /><div>Traffic Congestion</div></center>");
 		google.maps.event.addDomListener($trafficCongestionButton.get(0), 'click', function() {
-			//TODO
+			//TODO Yifei
 		});
 		
 		var $resetCSS = $(document.createElement('DIV'));
