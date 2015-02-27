@@ -38,12 +38,33 @@
 			width:100px;
 			float:left;
 		}
-		
+		.text_box
+		{
+			width:200px;
+			height:30px;
+		}
+		.travel_mode
+		{
+			height:30px;
+			float:left;
+			margin-top:17px;
+			margin-left:3px;
+		}
+		.chosen_mode
+		{
+			border:2px solid;
+			border-color: #2a3333;
+			border-radius: 1px
+		}
     </style>
 	
 	<script type="text/javascript">
 	
 	var showMenu = null, fullMenu = null;
+	var travel_mode_map = google.maps.TravelMode.WALKING;
+	var travel_mode_link = 'walking';
+	var i = 1;
+	
 	function ShowMenuButton(map) 
 	{
 		var $container = $(document.createElement('DIV')),
@@ -85,11 +106,13 @@
 		$navigationButton.attr("class", "button");
 		$navigationButton.html("<center><img src='images/navigation_button.png' /><div>Navigation</div></center>");
 		google.maps.event.addDomListener($navigationButton.get(0), 'click', function() {
-			$('#fullMenu').css('height', '100px');
 			$('#navigationForm').fadeIn();
 			$('#start_place').keyboard();
 			$('#destination').keyboard();
 		});
+		
+		
+		
 		var $navigationForm = $(document.createElement('DIV'));
 		$navigationForm.attr("id", "navigationForm");
 		$navigationForm.attr("style", "display:none");
@@ -129,10 +152,125 @@
 		$container.append($placeButton);
 		$container.append($trafficCongestionButton);
 		$container.append($resetCSS);
-		$container.append($navigationForm);
+		//$container.append($navigationForm);
 		
 		map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push($container.get(0));
 		
+	}
+	
+	function NavigationMenu(map)
+	{
+		var $container = $(document.createElement('DIV'));
+		$container.attr("id", "navigationMenu");
+		$container.attr("style", "margin-left:-77px;margin-bottom:140px;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:800px;height:68px;");
+		
+		$inner = $(document.createElement('div'));
+		$inner.attr("style", "margin:17px;margin-left:30px;margin-right:0;font-size:17px;float:left;");
+		$inner.html("From:&nbsp;&nbsp;&nbsp;<input id='start_place' class='text_box' value='kandintie 3' />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To:&nbsp;&nbsp;&nbsp;<input id='destination' class='text_box' value='isokatu 8' />");
+		$container.append($inner);
+		
+		$walking_icon = $(document.createElement('img'));
+		$walking_icon.attr("id", "walking_icon");
+		$walking_icon.attr("src", "images/pedestrial.png");
+		$walking_icon.attr("class", "travel_mode chosen_mode");
+		google.maps.event.addDomListener($walking_icon.get(0), 'click', function() {
+			travel_mode_map = google.maps.TravelMode.WALKING;
+			travel_mode_link = 'walking';
+			$("#walking_icon").attr('class', 'travel_mode chosen_mode');
+			$("#bicycle_icon").attr('class', 'travel_mode');
+			$("#bus_icon").attr('class', 'travel_mode');
+		});
+		$container.append($walking_icon);
+		
+		$bicycle_icon = $(document.createElement('img'));
+		$bicycle_icon.attr("id", "bicycle_icon");
+		$bicycle_icon.attr("src", "images/bike.png");
+		$bicycle_icon.attr("class", "travel_mode");
+		google.maps.event.addDomListener($bicycle_icon.get(0), 'click', function() {
+			travel_mode_map = google.maps.TravelMode.BICYCLING;
+			travel_mode_link = 'bicycling';
+			$("#walking_icon").attr('class', 'travel_mode');
+			$("#bicycle_icon").attr('class', 'travel_mode chosen_mode');
+			$("#bus_icon").attr('class', 'travel_mode');
+		});
+		$container.append($bicycle_icon);
+		
+		$bus_icon = $(document.createElement('img'));
+		$bus_icon.attr("id", "bus_icon");
+		$bus_icon.attr("src", "images/bus.png");
+		$bus_icon.attr("class", "travel_mode");
+		google.maps.event.addDomListener($bus_icon.get(0), 'click', function() {
+			travel_mode_map = google.maps.TravelMode.TRANSIT;
+			travel_mode_link = 'transit';
+			$("#walking_icon").attr('class', 'travel_mode');
+			$("#bicycle_icon").attr('class', 'travel_mode');
+			$("#bus_icon").attr('class', 'travel_mode chosen_mode');
+		});
+		$container.append($bus_icon);
+		
+		$button = $(document.createElement('button'));
+		$button.attr("style", "width:100px;height:37px;font-size:17px;margin-top:17px;margin-left:5px;");
+		$button.html("Navigate");
+		google.maps.event.addDomListener($button.get(0), 'click', function() {
+			
+			
+			
+
+			  
+
+			
+			
+
+			
+			//$('#map_panel').gmap3('destroy').remove();
+			$("#map_panel").gmap3({
+				clear: 'abc'
+				
+			});
+			
+			$("#map_panel").gmap3({ 
+			  getroute:{
+				id:'abc',
+				options:{
+					origin:$('#start_place').val() + ',Oulu,Finland',
+					destination:$('#destination').val() + ',Oulu,Finland',
+					travelMode: travel_mode_map
+				},
+				callback: function(results){
+					/*var map = $(this).gmap3("get");
+					var directionDisplay = new google.maps.DirectionsRenderer();
+					directionDisplay.suppressMarkers = true;
+					directionDisplay.setMap(map);*/
+					//console.log(map.controls);
+				  if (!results) return;
+				  $(this).gmap3({
+					map:{
+					  options:{
+						zoom: 13,  
+						center: [-33.879, 151.235]
+					  }
+					},
+					directionsrenderer:{
+						//container: $('#info_panel'),
+					  options:{
+						directions:results
+					  } 
+					}
+				  });
+				  $('#info_panel').html('');
+				  $.each(results.routes[0].legs[0].steps, function(index, value){
+						//console.log("INDEX: " + index + " VALUE: " + value.instructions);
+						$('#info_panel').html($('#info_panel').html()+'<div>'+value.instructions+'</div>');
+					});
+				}
+			  }
+			});
+			
+			
+		});
+		
+		$container.append($button);
+		map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push($container.get(0));
 	}
 	
     $(function(){
@@ -140,10 +278,10 @@
 			marker:{
 				values:[
 					{latLng:[65.013130, 25.476192], data:"Paris !"},
-					{latLng:[65.013130, 25.476292], data:"Paris !"},
-					{latLng:[65.013130, 25.476392], data:"Paris !"},
-					{address:"Isokatu 8, Oulu, Finland", data:"Poitiers : great city !"},
-					{address:"Isokatu 15, Oulu, Finland", data:"Perpignan ! GO USAP !",options:{icon: "http://maps.google.com/mapfiles/marker_green.png"}}
+					//{latLng:[65.013130, 25.476292], data:"Paris !"},
+					//{latLng:[65.013130, 25.476392], data:"Paris !"},
+					//{address:"Isokatu 8, Oulu, Finland", data:"Poitiers : great city !"},
+					//{address:"Isokatu 15, Oulu, Finland", data:"Perpignan ! GO USAP !",options:{icon: "http://maps.google.com/mapfiles/marker_green.png"}}
 				],
 				options:{
 					draggable: false
@@ -158,7 +296,7 @@
 				callback: function(map){
 					showMenu = new ShowMenuButton(map);
 					fullMenu = new Menu(map);
-					
+					new NavigationMenu(map);
 				}
 			}
         });
@@ -172,7 +310,7 @@
 	
   <body>
 		<div style="border:10px solid;border-color: #2a3333;border-radius: 25px;width:960px;height:486px" id="map_panel"></div>
-		
+		<div id="info_panel"></div>
 	
 	
   </body>
