@@ -23,6 +23,15 @@
 			padding: 5px;
 			border: 1px solid #999;
 		}
+		
+		#download {
+			position: absolute;
+			top: 5px;
+			left: 5px;
+			width: 80px;
+			height: 40px;
+			background-color: #fff;
+		}
 	</style>
     <script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places">
@@ -37,6 +46,8 @@
 	var orig = new google.maps.LatLng(65.059248, 25.466337);
 	var dest = new google.maps.LatLng(65.010786, 25.469942);
 	
+	var m_zoom = 13;
+	
 	//set origin/destination as draggable
 	var rendererOptions = {
 	  draggable: true
@@ -49,7 +60,7 @@
 		var mapOptions = {
 			//these mapoptions are the same than in oulunliikenne.fi service
 			center: oulu,
-			zoom: 13
+			zoom: m_zoom
 		};
 		map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 		directionsDisplay.setMap(map);
@@ -146,6 +157,31 @@
 	  });
 	}	
 	
+	//just a test function to get map and hopefully save it as pdf
+	//TODO::: Path (as well as all path information), Markers (and the data that is currently chosen)
+	function createPDF()
+	{
+		var image = "https://maps.googleapis.com/maps/api/staticmap?center="+oulu+"&zoom="+m_zoom+"&size=400x600";
+		
+		var div = document.createElement("div");
+		div.style.position = "absolute";
+		div.style.left = "5px";
+		div.style.top = "80px";
+		div.style.width = "100px";
+		div.style.height = "100px";
+		div.style.background = "white";
+		div.style.color = "black";
+		div.innerHTML = "Hello<br>";
+		var aa = document.createElement("a");
+		aa.href = image;
+		aa.innerHTML = "Image of map";
+		div.appendChild(aa);
+		
+
+		document.getElementById('map-canvas').appendChild(div);
+	}
+	
+	
 	google.maps.event.addDomListener(window, 'load', initialize);
     </script>
   </head>
@@ -161,5 +197,6 @@
 	</select>
 	</div>
 	<div id="map-canvas"></div>
+	<button id="download" onclick="createPDF()">Create PDF</button>
   </body>
 </html>
