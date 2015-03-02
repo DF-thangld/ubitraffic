@@ -151,11 +151,43 @@
 		  travelMode: google.maps.TravelMode[selectedMode]
 	  };
 	  directionsService.route(request, function(response, status) {
-		if (status == google.maps.DirectionsStatus.OK) {
+		if (status == google.maps.DirectionsStatus.OK) {			 
 		  directionsDisplay.setDirections(response);
+		  showSteps(response);
 		}
 	  });
 	}	
+	
+	function showSteps(directionResult)
+	{
+		var myRoute = directionResult.routes[0].legs[0];
+		var totDuration =  Math.round(myRoute.duration.value/60);
+		var totDistance =  (myRoute.distance.value/1000).toFixed(2);
+		var steps = document.getElementById("panel");
+		if(!document.getElementById("steps"))
+		{
+			var paragraph = document.createElement("p");
+			paragraph.id = "steps";
+			steps.appendChild(paragraph);
+			paragraph.innerHTML="total duration: "+totDuration+"min - total distance: "+totDistance+"km";
+		}
+		else
+		{
+			document.getElementById("steps").innerHTML = "total duration: "+totDuration+"min - total distance: "+totDistance+"km";
+		}
+		
+		for (var i = 0; i < myRoute.steps.length; i++) {
+			var distance = myRoute.steps[i].distance;
+			var instruct = myRoute.steps[i].instructions;
+			
+			document.getElementById("steps").innerHTML += "<br>"+(i+1)+": " + instruct + " - "+distance.value+"m";
+			
+		}
+		
+		
+			
+		
+	}
 	
 	//just a test function to get map and hopefully save it as pdf
 	//TODO::: Path (as well as all path information), Markers (and the data that is currently chosen)
