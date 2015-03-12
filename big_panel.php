@@ -28,8 +28,6 @@
 	
 	<style>
 		.gmap3{
-			
-			
 			width: 500px;
 			height: 250px;
 		}
@@ -60,10 +58,83 @@
 	
 	<script type="text/javascript">
 	
+	//menu parameters
 	var showMenu = null, fullMenu = null;
+	var fullMenu_show = false;
+	var navigationMenu_show = false;
+	
 	var travel_mode_map = google.maps.TravelMode.WALKING;
 	var travel_mode_link = 'walking';
-	var i = 1;
+	var screen_address = 'yliopistokatu 12';
+	var origin_place = screen_address;
+	var destination_place = 'torikatu 9';
+	var markers = [];
+	markers.push({id:'ubi_sreen', latLng:[65.013130, 25.476192], data:"UBI Screen"});
+	
+	// Remove a marker from markers array
+	function removeMarker(markers, marker_id)
+	{
+		return markers.filter(function (el) 
+			{
+				return el.id !== marker_id;
+            });
+	}
+	
+	function initMap()
+	{
+		$("#map_panel").gmap3({
+			marker:{
+				values:markers,
+				options:{
+					draggable: false
+				}
+			},
+			map:{
+				options:{
+					zoom: 16,
+					disableDefaultUI: true
+				},
+					
+				callback: function(map){
+					showMenu = new ShowMenuButton(map);
+					
+					new NavigationMenu(map);
+					fullMenu = new Menu(map);
+					
+					google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
+						//this part runs when the mapobject is created and rendered
+						google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
+							// check if full menu is shown, if yes display it, if no hide it
+							if (fullMenu_show)
+							{
+								$('#showMenu').css('display', 'none');
+								$('#fullMenu').css('display', 'inline');
+							}
+							else
+							{
+								$('#showMenu').css('display', 'inline');
+								$('#fullMenu').css('display', 'none');
+							}
+							
+							//check if map navigation is shown, if yes display it, if no hide it
+							if (navigationMenu_show) // display
+								$('#navigationMenu').css('display', 'inline');
+							else //hide
+								$('#navigationMenu').css('display', 'none');
+						});
+					});
+					
+				}
+			}
+		});
+		
+		
+	}
+	
+	
+	markers.push({id:'ubi_sreen11', latLng:[65.014130, 25.476192], data:"UBI Screen"});
+	markers.push({id:'ubi_sreen3', latLng:[65.015130, 25.476192], data:"UBI Screen"});
+	markers = removeMarker(markers, 'ubi_sreen');
 	
 	function ShowMenuButton(map) 
 	{
@@ -71,13 +142,14 @@
 			$outer = $(document.createElement('DIV')),
 			$inner = $(document.createElement('DIV'));
         
-		$inner.addClass("inner").html("<div style='margin-bottom:50px;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:73px;height:68px;'><img style='' src='images/open_button.png' alt='Smiley face'/></div>");
+		$inner.addClass("inner").html("<div style='margin-bottom:50px;float:left;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:73px;height:68px;'><img style='' src='images/open_button.png' alt='Smiley face'/></div>");
 		$container.addClass("outer").attr('title', "Click to set the map to Home");
 		$container.attr("id", "showMenu");
       
 		$container.append( $outer.append( $inner ) );
       
 		google.maps.event.addDomListener($outer.get(0), 'click', function() {
+			fullMenu_show = true;
 			$('#showMenu').fadeOut();
 			$('#fullMenu').fadeIn();
 		});
@@ -90,7 +162,7 @@
 	{
 		var $container = $(document.createElement('DIV'));
 		$container.attr("id", "fullMenu");
-		$container.attr("style", "display:none;margin-left:-77px;margin-bottom:50px;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:800px;height:68px;");
+		$container.attr("style", "display:none;float:left;margin-left:-77px;margin-bottom:50px;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:800px;height:68px;");
 		
 		
 		var $closeButton = $(document.createElement('DIV'));
@@ -98,6 +170,7 @@
 		$closeButton.attr("style", "margin-left:3px");
 		$closeButton.html("<img src='images/close_button.png' />");
 		google.maps.event.addDomListener($closeButton.get(0), 'click', function() {
+			fullMenu_show = false;
 			$('#fullMenu').fadeOut();
 			$('#showMenu').fadeIn();
 		});
@@ -106,21 +179,20 @@
 		$navigationButton.attr("class", "button");
 		$navigationButton.html("<center><img src='images/navigation_button.png' /><div>Navigation</div></center>");
 		google.maps.event.addDomListener($navigationButton.get(0), 'click', function() {
-			$('#navigationForm').fadeIn();
-			$('#start_place').keyboard();
-			$('#destination').keyboard();
+
+			if (navigationMenu_show === false)
+			{
+				$('#start_place').keyboard();
+				$('#destination').keyboard();
+				$('#navigationMenu').fadeIn();
+				navigationMenu_show = true;
+			}
+			else 
+			{
+				$('#navigationMenu').fadeOut();
+				navigationMenu_show = false;
+			}
 		});
-		
-		
-		
-		var $navigationForm = $(document.createElement('DIV'));
-		$navigationForm.attr("id", "navigationForm");
-		$navigationForm.attr("style", "display:none");
-		$navigationForm.html("From: <input id='start_place' /> To: <input id='destination' /> <button id='find_route'  >Find</button>");
-		google.maps.event.addDomListener($navigationForm.get(0), 'load', function() {
-			
-		});
-		
 		
 		var $busTimetableButton = $(document.createElement('DIV'));
 		$busTimetableButton.attr("class", "button");
@@ -131,7 +203,7 @@
 		
 		var $placeButton = $(document.createElement('DIV'));
 		$placeButton.attr("class", "button");
-		$placeButton.html("<center><img src='images/place_button.png' /><div>Place</div></center>");
+		$placeButton.html("<center><img src='images/point_of_interest.png' style='width:45px;margin-top:3px;' /><div>Points of interest</div></center>");
 		google.maps.event.addDomListener($placeButton.get(0), 'click', function() {
 			//TODO
 		});
@@ -158,15 +230,17 @@
 		
 	}
 	
+	//
 	function NavigationMenu(map)
 	{
 		var $container = $(document.createElement('DIV'));
+		//$container.attr("id", "navigationMenu");
 		$container.attr("id", "navigationMenu");
-		$container.attr("style", "margin-left:-77px;margin-bottom:140px;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:800px;height:68px;");
+		$container.attr("style", "display:none;margin-left:-77px;margin-bottom:140px;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:800px;height:68px;");
 		
 		$inner = $(document.createElement('div'));
 		$inner.attr("style", "margin:17px;margin-left:30px;margin-right:0;font-size:17px;float:left;");
-		$inner.html("From:&nbsp;&nbsp;&nbsp;<input id='start_place' class='text_box' value='kandintie 3' />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To:&nbsp;&nbsp;&nbsp;<input id='destination' class='text_box' value='isokatu 8' />");
+		$inner.html("From:&nbsp;&nbsp;&nbsp;<input id='start_place' class='text_box' value='" + origin_place + "' />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To:&nbsp;&nbsp;&nbsp;<input id='destination' class='text_box' value='" + destination_place + "' />");
 		$container.append($inner);
 		
 		$walking_icon = $(document.createElement('img'));
@@ -212,28 +286,22 @@
 		$button.attr("style", "width:100px;height:37px;font-size:17px;margin-top:17px;margin-left:5px;");
 		$button.html("Navigate");
 		google.maps.event.addDomListener($button.get(0), 'click', function() {
-			
-			
-			
 
-			  
-
+			origin_place = $('#start_place').val();
+			destination_place = $('#destination').val();
 			
+			//refresh map
+			$('#map_panel').gmap3('destroy').remove();
+			$("#map_container").append('<div style="border:10px solid;border-color: #2a3333;border-radius: 25px;width:960px;height:486px" id="map_panel"></div>');
+			initMap();
 			
-
-			
-			//$('#map_panel').gmap3('destroy').remove();
+			//find route
 			$("#map_panel").gmap3({
-				clear: 'abc'
-				
-			});
-			
-			$("#map_panel").gmap3({ 
 			  getroute:{
 				id:'abc',
 				options:{
-					origin:$('#start_place').val() + ',Oulu,Finland',
-					destination:$('#destination').val() + ',Oulu,Finland',
+					origin: origin_place + ', oulu, finland',
+					destination: destination_place + ', oulu, finland',
 					travelMode: travel_mode_map
 				},
 				callback: function(results){
@@ -274,33 +342,8 @@
 	}
 	
     $(function(){
-        $("#map_panel").gmap3({
-			marker:{
-				values:[
-					{latLng:[65.013130, 25.476192], data:"Paris !"},
-					//{latLng:[65.013130, 25.476292], data:"Paris !"},
-					//{latLng:[65.013130, 25.476392], data:"Paris !"},
-					//{address:"Isokatu 8, Oulu, Finland", data:"Poitiers : great city !"},
-					//{address:"Isokatu 15, Oulu, Finland", data:"Perpignan ! GO USAP !",options:{icon: "http://maps.google.com/mapfiles/marker_green.png"}}
-				],
-				options:{
-					draggable: false
-				}
-			},
-			map:{
-				options:{
-					zoom: 16,
-					disableDefaultUI: true
-				},
-				
-				callback: function(map){
-					showMenu = new ShowMenuButton(map);
-					fullMenu = new Menu(map);
-					new NavigationMenu(map);
-				}
-			}
-        });
-
+        initMap();
+		
     });
     </script>
 
@@ -308,10 +351,14 @@
 	
     
 	
-  <body>
-		<div style="border:10px solid;border-color: #2a3333;border-radius: 25px;width:960px;height:486px" id="map_panel"></div>
+	<body>
+		<div id='map_container'>
+			<div style="border:10px solid;border-color: #2a3333;border-radius: 25px;width:960px;height:486px" id="map_panel"></div>
+		</div>
+		
+		
 		<div id="info_panel"></div>
 	
 	
-  </body>
+	</body>
 </html>
