@@ -26,6 +26,8 @@
 	<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 	<script src="javascript/gmap3/gmap3.js" type="text/javascript"></script>
 	
+    <link rel="stylesheet" type="text/css" href="table_style.css">
+    
 	<style>
 		.gmap3{
 			
@@ -85,27 +87,46 @@
 		$navigationButton.attr("class", "button");
 		$navigationButton.html("<center><img src='images/navigation_button.png' /><div>Navigation</div></center>");
 		google.maps.event.addDomListener($navigationButton.get(0), 'click', function() {
-			$('#fullMenu').css('height', '100px');
-			$('#navigationForm').fadeIn();
-			$('#start_place').keyboard();
+			console.log($('#fullMenu').height())
+            //Define a logic to dynamically expand the fullMenu element and make it collapsed if click twice
+            if ($('#fullMenu').height() == 68) {
+                $('#fullMenu').css('height', '100px');
+            }else {
+                $('#fullMenu').css('height', '68px')
+            };
+			$('#navigationForm').fadeToggle(); //Use fadeToggle instead of fadeIn, then even clicks can make it fadeOut
+            $('#start_place').keyboard();
 			$('#destination').keyboard();
 		});
 		var $navigationForm = $(document.createElement('DIV'));
 		$navigationForm.attr("id", "navigationForm");
-		$navigationForm.attr("style", "display:none");
+		$navigationForm.attr("style", "display:none; position: relative; top:-100px; left:-8px;,");
 		$navigationForm.html("From: <input id='start_place' /> To: <input id='destination' /> <button id='find_route'  >Find</button>");
 		google.maps.event.addDomListener($navigationForm.get(0), 'load', function() {
 			
 		});
+
+		<!-- (document.createElement('DIV'))that's just an element that isn't in the DOM yet, unless you append it to something -->
+        var $busTimeTable = $('<table></table>');
+        $busTimeTable.attr('id', 'busTimeTable');
+        //The main difference is that appendChild is a DOM method and append is a jQuery method
+        //Use $busTimeTable.remove() to delete an element
+        
+        $busTimeTable.append("<tr><th colspan='3'>Bus time table</th></tr>");
+        $busTimeTable.append("<tr><td>Time</td><td>Arrive</td><td>Leave</td></tr>"); 
 		
-		
+        $busTimeTable.hide();
+        
 		var $busTimetableButton = $(document.createElement('DIV'));
 		$busTimetableButton.attr("class", "button");
 		$busTimetableButton.html("<center><img src='images/bus_timetable_button.png' /><div>Timetable</div></center>");
 		google.maps.event.addDomListener($busTimetableButton.get(0), 'click', function() {
 			//TODO Yifei
+            $busTimeTable.toggle();            
 		});
 		
+        $busTimetableButton.append($busTimeTable);
+        
 		var $placeButton = $(document.createElement('DIV'));
 		$placeButton.attr("class", "button");
 		$placeButton.html("<center><img src='images/place_button.png' /><div>Place</div></center>");
