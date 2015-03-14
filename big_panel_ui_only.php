@@ -71,7 +71,7 @@
 	var travel_mode_link = 'walking';
 	var screen_address = 'yliopistokatu 12';
 	var origin_place = screen_address;
-	var destination_place = 'torikatu 9';
+	var destination_place = 'torikatu 9';   
 
     $(function(){
         //initMap();
@@ -133,7 +133,7 @@
 	
 	<body>
 		<div id='map_container'>
-			<div style1="border:10px solid;border-color: #2a3333;border-radius: 25px;width:960px;height:486px" id="map_panel1"></div>
+			<div style="border:10px solid;border-color: #2a3333;border-radius: 25px;width:960px;height:486px" id="map_panel"></div>
 		</div>
 		<hr/>
 		
