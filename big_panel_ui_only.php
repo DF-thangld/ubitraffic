@@ -239,7 +239,7 @@
 						</div>
 						
 						<div id="traffic_congestion_button" class="button">
-							<center><img src='images/traffic_congestion_button.png' /><div>Traffic Congestion</div></center>
+							<center><img src='images/traffic_congestion_button.png' /><div>Traffic Block</div></center>
 						</div>
 					</div>
 					

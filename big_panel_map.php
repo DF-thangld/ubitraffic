@@ -29,10 +29,14 @@
 	<script src="javascript/ubitraffic_menu.js" type="text/javascript"></script>
 	
 	<style>
-
+		document
+		{
+			font-size:10.5px;
+		}
 		.button
 		{
-			width:130px;
+			width:80px;
+			font-size:10.5px;
 			float:left;
 		}
 		.button img
@@ -42,15 +46,14 @@
 		}
 		.text_box
 		{
-			width:200px;
-			height:30px;
+			width:100px;
+			height:20px;
 		}
 		.travel_mode
 		{
 			height:30px;
-			float:left;
 			margin-top:17px;
-			margin-left:3px;
+			margin-left:10px;
 		}
 		.chosen_mode
 		{
@@ -78,6 +81,7 @@
 	var oulu = new google.maps.LatLng(65.0123600, 25.4681600);
 	var orig = new google.maps.LatLng(65.059248, 25.466337);
 	var dest = new google.maps.LatLng(65.010786, 25.469942);
+	var txtInfo = '';
 	
 	function reset()
 	{
@@ -92,7 +96,8 @@
 		travel_mode_map = google.maps.TravelMode.WALKING;
 		travel_mode_link = 'walking';
 		origin_place = screen_address;
-		destination_place = 'torikatu 9'; 
+		destination_place = 'torikatu 9';
+		txtInfo = '';		
 		
 		//reset navigation form value
 		$("#walking_icon").attr('class', 'travel_mode chosen_mode');
@@ -200,18 +205,32 @@
 		destination_place = $("#destination").val();
 		
 		var request = {
-		  origin: origin_place + ",oulu, finland",
-		  destination: destination_place + ",oulu, finland",
-		  travelMode: travel_mode_map
-	  };
+			origin: origin_place + ",oulu, finland",
+			destination: destination_place + ",oulu, finland",
+			travelMode: travel_mode_map
+		};
 	  
-	  directionsService.route(request, function(response, status) {
-		if (status == google.maps.DirectionsStatus.OK) {
-			directionsDisplay.setDirections(response);
-			window.alert(response.routes[0].legs[0].steps[0].instructions);
-		}
-	  });
-	  
+		directionsService.route(request, function(response, status) {
+			if (status == google.maps.DirectionsStatus.OK) 
+			{
+				directionsDisplay.setDirections(response);
+				console.log(response);
+				txtInfo = '';
+				if (travel_mode_map===google.maps.TravelMode.WALKING)
+				{
+					txtInfo += "";
+					txtInfo += "<div><center><h2>Walking Route</h2></center></div>";
+					txtInfo += "<div><b>From:</b> " + response.routes[0].legs[0].start_address + "</div>";
+					txtInfo += "<div><b>To:</b> " + response.routes[0].legs[0].end_address + "</div>";
+					txtInfo += "<div><b>Steps:</b></div>";
+					$.each(response.routes[0].legs[0].steps, function( index, step )
+					{
+						txtInfo += "	<div>- " + step.instructions + " (" + step.distance.text + " - " + step.duration.text + ")</div>";
+					});
+				}
+				$("#info_panel").html(txtInfo);
+			}
+		});
 	}
 	
     </script>
@@ -223,13 +242,34 @@
 
 	<body>
 		<div style="">
-			<div style="float:right;border:10px solid;border-color: #2a3333;width:480px;height:270px;" >
-				<div style="margin:5px;width:950px;height:530px;" id="map_panel">
-				
-				</div>
 			
+			<div style="float:left;border:10px solid;border-color: #2a3333;border-radius:25px; width:480px;height:270px;padding:20px;overflow:scroll;" id="info_panel">
+				<div style="font-size:15px;"><center><h2>Walking Route</h2></center></div>
+				<div><b>From:</b> Torikatu 9, 90100 Oulu, Finland</div>
+				<div><b>To:</b> Yliopistokatu 12, 90570 Oulu, Finland</div>
+				<div style=""><b>Steps:</b></div>
+					<div>- Head <b>south</b> on <b>Yliopistokatu</b> (0.1 km - 2 mins)</div>
+					<div>- Slight <b>left</b> to stay on <b>Yliopistokatu</b> (48 m - 1 min)</div>
+					<div>- Turn <b>left</b> onto <b>Linnanmaantie</b> (0.2 km - 2 mins)</div>
+					<div>- Turn <b>right</b> onto <b>Alakyläntie</b> (0.5 km - 6 mins)</div>
+					<div>- Slight <b>right</b> to stay on <b>Alakyläntie</b> (0.7 km - 12 mins)</div>
+					<div>- Head <b>south</b> on <b>Yliopistokatutghjnhtrefghfdsefdgvbnfdfgvbhgfrwfghbngfrdn</b> (0.1 km - 2 mins)</div>
+					<div>- Head <b>south</b> on <b>Yliopistokatu</b> (0.1 km - 2 mins)</div>
+					<div>- Head <b>south</b> on <b>Yliopistokatu</b> (0.1 km - 2 mins)</div>
+					<div>- Head <b>south</b> on <b>Yliopistokatu</b> (0.1 km - 2 mins)</div>
+					<div>- Head <b>south</b> on <b>Yliopistokatu</b> (0.1 km - 2 mins)</div>
+					<div>- Head <b>south</b> on <b>Yliopistokatu</b> (0.1 km - 2 mins)</div>
+					<div>- Head <b>south</b> on <b>Yliopistokatu</b> (0.1 km - 2 mins)</div>
+					<div>- Head <b>south</b> on <b>Yliopistokatu</b> (0.1 km - 2 mins)</div>
+					<div>- Head <b>south</b> on <b>Yliopistokatu</b> (0.1 km - 2 mins)</div>
+					<div>- Head <b>south</b> on <b>Yliopistokatu</b> (0.1 km - 2 mins)</div>
+					<div>- Head <b>south</b> on <b>Yliopistokatu</b> (0.1 km - 2 mins)</div>
 			</div>
-			<div style="float:left;left:0;border:10px solid;border-color: #2a3333;border-right-radius:0; width:480px;height:135px;">
+			
+			<div style="float:left;border:10px solid;border-color: #2a3333;border-radius:25px;width:480px;height:540px;" >
+				<div style="margin:5px;width:470px;height:530px;" id="map_panel">
+					
+				</div>
 			
 			</div>
 		</div>
