@@ -57,8 +57,80 @@
 		{
 			border:2px solid;
 			border-color: #2a3333;
-			border-radius: 1px
+			border-radius: 1px;
 		}
+        
+        table, td{
+            color: #000;
+        }
+        
+        div.busTimetable {
+            clear: both;
+            border: 1px solid #963;
+            overflow: auto;
+            display:none;
+            position:absolute;
+            bottom:150px;
+            margin-left:220px;
+            height: 200px; 
+            width: 300px;
+        }
+        
+        <!--Reset overflow value to hidden for all non-IE browsers. -->
+        html>body div.busTimetable {
+            overflow: hidden;
+        }
+        
+        thead.fixedHeader tr {
+            position: relative;
+        }
+        html>body div.busTimetable table {
+            
+        }
+        <!-- set THEAD element to have block level attributes. All other non-IE browsers
+        this enables overflow to work on TBODY element. All other non-IE, non-Mozilla browsers
+        make the TH elements pretty */-->
+        
+        <!-- make TD elements pretty. Provide alternating classes for striping the table -->
+        thead.fixedHeader th {
+            background: #C96;
+            border-left: 1px solid #EB8;
+            border-right: 1px solid #B74;
+            border-top: 1px solid #EB8;
+            font-weight: normal;
+            padding: 4px 3px;
+            text-align: left;
+        }
+        
+        html>body tbody.scrollContent {
+            display: block;
+            overflow: auto;
+            width: 100%;
+        }
+        
+        html>body thead.fixedHeader {
+            display: table;
+            overflow: auto;
+            width: 100%;
+        }
+        
+        tbody.scrollContent td, tbody.scrollContent tr.normalRow td {
+            background: #FFF;
+            border-bottom: none;
+            border-left: none;
+            border-right: 1px solid #CCC;
+            border-top: 1px solid #DDD;
+            padding: 2px 3px 3px 4px;
+        }
+        tbody.scrollContent tr.alternateRow td {
+            background: #EEE;
+            border-bottom: none;
+            border-left: none;
+            border-right: 1px solid #CCC;
+            border-top: 1px solid #DDD;
+            padding: 2px 3px 3px 4px;
+        }
+        <!---->
     </style>
 	
 	<script type="text/javascript">
@@ -125,8 +197,8 @@
 	
 	}
 	
+	
     </script>
-
   </head>
 	
     
@@ -158,7 +230,7 @@
 							<center><img src='images/navigation_button.png' /><div>Navigation</div></center>
 						</div>
 						
-						<div id="bus_timetable_button" class="button">
+						<div id="bus_timetable_button" class="button" onclick="change_sub_menu('busTimetable');">
 							<center><img src='images/bus_timetable_button.png' /><div>Timetable</div></center>
 						</div>
 						
@@ -179,10 +251,89 @@
 						<img id="walking_icon" src="images/pedestrial.png" class="travel_mode chosen_mode" onclick="change_travel_mode('walking_icon', google.maps.TravelMode.WALKING);" />
 						<img id="bicycle_icon" src="images/bike.png" class="travel_mode" onclick="change_travel_mode('bicycle_icon', google.maps.TravelMode.BICYCLING);" />
 						<img id="bus_icon" src="images/bus.png" class="travel_mode" onclick="change_travel_mode('bus_icon', google.maps.TravelMode.TRANSIT);" />
-						<button style="width:100px;height:37px;font-size:17px;margin-top:17px;margin-left:5px;" onclick="navigate_route();">Navigate</div>
-
+						<button style="width:100px;height:37px;font-size:17px;margin-top:17px;margin-left:5px;" onclick="navigate_route();">Navigate
 					</div>
 
+					
+					
+					<!--busTimeTable Table, use absolute positioning-->
+					<div id="busTimetable" class="busTimetable">
+						<!-- Use margin-left:auto;margin-right:auto to centre the table inside the div -->
+                        <table margin-left="auto" margin-right="auto" class=scrollTable" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <thead class="fixedHeader" style='overflow:auto;background: #C96;border-left:1px solid #EB8; border-right:1px solid #B74; border-top:1px solid #EB8; font-weight:normal; padding:4px 3px; text-align:left; display:table; width:100%'>
+                                <tr>
+                                    <th width="33%">Station</th>
+                                    <th width="33%">Arrive</th>
+                                    <th width="33%">Leave</th>
+                                </tr>
+                            </thead>
+                            <tbody class="scrollContent">
+                                <tr>
+                                    <td width="30%"> Content 1</td>
+                                    <td width="30%"> Content 2</td>
+                                    <td width="30%"> Content 3</td>
+                                </tr>
+                                <tr>
+                                    <td> Content 1</td>
+                                    <td> Content 2</td>
+                                    <td> Content 3</td>
+                                </tr>
+                                <tr>
+                                    <td> Content 1</td>
+                                    <td> Content 2</td>
+                                    <td> Content 3</td>
+                                </tr>
+                                <tr>
+                                    <td> Content 1</td>
+                                    <td> Content 2</td>
+                                    <td> Content 3</td>
+                                </tr>
+                                <tr>
+                                    <td> Content 1</td>
+                                    <td> Content 2</td>
+                                    <td> Content 3</td>
+                                </tr>
+                                <tr>
+                                    <td> Content 1</td>
+                                    <td> Content 2</td>
+                                    <td> Content 3</td>
+                                </tr>
+                                <tr>
+                                    <td> Content 1</td>
+                                    <td> Content 2</td>
+                                    <td> Content 3</td>
+                                </tr>
+                                <tr>
+                                    <td> Content 1</td>
+                                    <td> Content 2</td>
+                                    <td> Content 3</td>
+                                </tr>
+                                <tr>
+                                    <td> Content 1</td>
+                                    <td> Content 2</td>
+                                    <td> Content 3</td>
+                                </tr>
+                                <tr>
+                                    <td> Content 1</td>
+                                    <td> Content 2</td>
+                                    <td> Content 3</td>
+                                </tr>
+                                <tr>
+                                    <td> Content 1</td>
+                                    <td> Content 2</td>
+                                    <td> Content 3</td>
+                                </tr>
+                                <tr>
+                                    <td> Content 1</td>
+                                    <td> Content 2</td>
+                                    <td> Content 3</td>
+                                </tr>
+                            </tbody>
+						</table>
+					</div>
+
+					
+					
 				</div>
 			</div>
 		</div>
