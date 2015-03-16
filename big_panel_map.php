@@ -3,7 +3,7 @@
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <title>Simple markers</title>
+    <title>Oulu Map</title>
 	
     
 	
@@ -26,6 +26,7 @@
 	<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 	<script src="javascript/gmap3/gmap3.js" type="text/javascript"></script>
 	
+	<script src="javascript/ubitraffic_traffic_places.js" type="text/javascript"></script>
 	<script src="javascript/ubitraffic_menu.js" type="text/javascript"></script>
 	
 	<style>
@@ -73,7 +74,11 @@
 	var travel_mode_link = 'walking';
 	var screen_address = 'yliopistokatu 12';
 	var origin_place = screen_address;
-	var destination_place = 'torikatu 9';   
+	var destination_place = 'torikatu 9'; 
+	var markers_list = [];
+	var weather_markers = [];
+	var camera_markers = [];
+	var parking_markers = [];
 	
 	var directionsDisplay;
 	var directionsService = new google.maps.DirectionsService();
@@ -120,7 +125,7 @@
 		};
 		map = new google.maps.Map(document.getElementById('map_panel'), mapOptions);
 		directionsDisplay.setMap(map);
-	
+		
 		var contentString = '<div id="content">'+
 		  '<div id="siteNotice">'+
 		  '</div>'+
@@ -198,6 +203,64 @@
 		
 	}
 	
+	function find_route(start_point, end_point, travel_mode)
+	{
+		var request = {
+			origin: start_point,
+			destination: end_point,
+			travelMode: travel_mode
+		};
+		directionsService.route(request, function(response, status) {
+			if (status == google.maps.DirectionsStatus.OK) 
+			{
+				directionsDisplay.setDirections(response);
+				console.log(response);
+				txtInfo = '';
+				if (travel_mode_map===google.maps.TravelMode.WALKING)
+				{
+					txtInfo += "";
+					txtInfo += "<div><center><h2>Walking Route</h2></center></div>";
+					txtInfo += "<div><b>From:</b> " + response.routes[0].legs[0].start_address + "</div>";
+					txtInfo += "<div><b>To:</b> " + response.routes[0].legs[0].end_address + "</div>";
+					txtInfo += "<div><b>Steps:</b></div>";
+					$.each(response.routes[0].legs[0].steps, function( index, step )
+					{
+						txtInfo += "	<div>- " + step.instructions + " (" + step.distance.text + " - " + step.duration.text + ")</div>";
+					});
+				}
+				else if (travel_mode_map===google.maps.TravelMode.BICYCLING)
+				{
+					txtInfo += "";
+					txtInfo += "<div><center><h2>Bicycle Route</h2></center></div>";
+					txtInfo += "<div><b>From:</b> " + response.routes[0].legs[0].start_address + "</div>";
+					txtInfo += "<div><b>To:</b> " + response.routes[0].legs[0].end_address + "</div>";
+					txtInfo += "<div><b>Steps:</b></div>";
+					$.each(response.routes[0].legs[0].steps, function( index, step )
+					{
+						txtInfo += "	<div>- " + step.instructions + " (" + step.distance.text + " - " + step.duration.text + ")</div>";
+					});
+				}
+				else if (travel_mode_map===google.maps.TravelMode.TRANSIT)
+				{
+					txtInfo += "";
+					txtInfo += "<div><center><h2>Bus Route</h2></center></div>";
+					txtInfo += "<div><b>From:</b> " + response.routes[0].legs[0].start_address + "</div>";
+					txtInfo += "<div><b>To:</b> " + response.routes[0].legs[0].end_address + "</div>";
+					txtInfo += "<div><b>Steps:</b></div>";
+					$.each(response.routes[0].legs[0].steps, function( index, step )
+					{
+						if (step.travel_mode === 'TRANSIT')
+							txtInfo += "	<div>- Take bus number <b>" + step.transit.line.short_name + " (" + step.transit.line.name + ")</b> at <b>" + step.transit.arrival_stop.name +"</b>, pass " + step.transit.num_stops + " stops to <b>" + step.transit.arrival_stop.name + "</b></div>";
+						else
+							txtInfo += "	<div>- " + step.instructions + " (" + step.distance.text + " - " + step.duration.text + ")</div>";
+					});
+				}
+				$("#info_panel").html(txtInfo);
+			}
+		});
+		
+	}
+	
 	function navigate_route()
 	{
 		
@@ -228,10 +291,38 @@
 						txtInfo += "	<div>- " + step.instructions + " (" + step.distance.text + " - " + step.duration.text + ")</div>";
 					});
 				}
+				else if (travel_mode_map===google.maps.TravelMode.BICYCLING)
+				{
+					txtInfo += "";
+					txtInfo += "<div><center><h2>Bicycle Route</h2></center></div>";
+					txtInfo += "<div><b>From:</b> " + response.routes[0].legs[0].start_address + "</div>";
+					txtInfo += "<div><b>To:</b> " + response.routes[0].legs[0].end_address + "</div>";
+					txtInfo += "<div><b>Steps:</b></div>";
+					$.each(response.routes[0].legs[0].steps, function( index, step )
+					{
+						txtInfo += "	<div>- " + step.instructions + " (" + step.distance.text + " - " + step.duration.text + ")</div>";
+					});
+				}
+				else if (travel_mode_map===google.maps.TravelMode.TRANSIT)
+				{
+					txtInfo += "";
+					txtInfo += "<div><center><h2>Bus Route</h2></center></div>";
+					txtInfo += "<div><b>From:</b> " + response.routes[0].legs[0].start_address + "</div>";
+					txtInfo += "<div><b>To:</b> " + response.routes[0].legs[0].end_address + "</div>";
+					txtInfo += "<div><b>Steps:</b></div>";
+					$.each(response.routes[0].legs[0].steps, function( index, step )
+					{
+						if (step.travel_mode === 'TRANSIT')
+							txtInfo += "	<div>- Take bus number <b>" + step.transit.line.short_name + " (" + step.transit.line.name + ")</b> at <b>" + step.transit.arrival_stop.name +"</b>, pass " + step.transit.num_stops + " stops to <b>" + step.transit.arrival_stop.name + "</b></div>";
+						else
+							txtInfo += "	<div>- " + step.instructions + " (" + step.distance.text + " - " + step.duration.text + ")</div>";
+					});
+				}
 				$("#info_panel").html(txtInfo);
 			}
 		});
 	}
+	
 	
     </script>
 
@@ -244,30 +335,11 @@
 		<div style="">
 			
 			<div style="float:left;border:10px solid;border-color: #2a3333;border-radius:25px; width:480px;height:270px;padding:20px;overflow:scroll;" id="info_panel">
-				<div style="font-size:15px;"><center><h2>Walking Route</h2></center></div>
-				<div><b>From:</b> Torikatu 9, 90100 Oulu, Finland</div>
-				<div><b>To:</b> Yliopistokatu 12, 90570 Oulu, Finland</div>
-				<div style=""><b>Steps:</b></div>
-					<div>- Head <b>south</b> on <b>Yliopistokatu</b> (0.1 km - 2 mins)</div>
-					<div>- Slight <b>left</b> to stay on <b>Yliopistokatu</b> (48 m - 1 min)</div>
-					<div>- Turn <b>left</b> onto <b>Linnanmaantie</b> (0.2 km - 2 mins)</div>
-					<div>- Turn <b>right</b> onto <b>Alakyläntie</b> (0.5 km - 6 mins)</div>
-					<div>- Slight <b>right</b> to stay on <b>Alakyläntie</b> (0.7 km - 12 mins)</div>
-					<div>- Head <b>south</b> on <b>Yliopistokatutghjnhtrefghfdsefdgvbnfdfgvbhgfrwfghbngfrdn</b> (0.1 km - 2 mins)</div>
-					<div>- Head <b>south</b> on <b>Yliopistokatu</b> (0.1 km - 2 mins)</div>
-					<div>- Head <b>south</b> on <b>Yliopistokatu</b> (0.1 km - 2 mins)</div>
-					<div>- Head <b>south</b> on <b>Yliopistokatu</b> (0.1 km - 2 mins)</div>
-					<div>- Head <b>south</b> on <b>Yliopistokatu</b> (0.1 km - 2 mins)</div>
-					<div>- Head <b>south</b> on <b>Yliopistokatu</b> (0.1 km - 2 mins)</div>
-					<div>- Head <b>south</b> on <b>Yliopistokatu</b> (0.1 km - 2 mins)</div>
-					<div>- Head <b>south</b> on <b>Yliopistokatu</b> (0.1 km - 2 mins)</div>
-					<div>- Head <b>south</b> on <b>Yliopistokatu</b> (0.1 km - 2 mins)</div>
-					<div>- Head <b>south</b> on <b>Yliopistokatu</b> (0.1 km - 2 mins)</div>
-					<div>- Head <b>south</b> on <b>Yliopistokatu</b> (0.1 km - 2 mins)</div>
+				
 			</div>
 			
 			<div style="float:left;border:10px solid;border-color: #2a3333;border-radius:25px;width:480px;height:540px;" >
-				<div style="margin:5px;width:470px;height:530px;" id="map_panel">
+				<div style="width:470px;height:530px;margin:5px;" id="map_panel">
 					
 				</div>
 			

@@ -1,0 +1,15 @@
+response:
+	response.routes[0].legs[0].start_address: start address
+	response.routes[0].legs[0].end_address: end address
+	response.routes[0].legs[0].distance.text: distance in kilometer
+	response.routes[0].legs[0].duration.text: estimated duration
+	response.routes[0].legs[0].steps[0].distance.text: distance in kilometer of this step
+	response.routes[0].legs[0].steps[0].duration.text: duration of this step
+	response.routes[0].legs[0].steps[0].instructions: html instruction of this step
+	
+	response.routes[0].legs[0].steps[0].transit.line.name: name of the bus (Jylkynkangas - Metelinkangas)
+	response.routes[0].legs[0].steps[0].transit.line.short_name: bus number
+	response.routes[0].legs[0].steps[0].transit.arrival_stop.name: name of the start bus stop
+	response.routes[0].legs[0].steps[0].transit.arrival_time.text: estimation time for bus arrival
+	response.routes[0].legs[0].steps[0].transit.departure_stop.name: name of the destination bus stop
+	response.routes[0].legs[0].steps[0].transit.departure_time.text: estimation time for bus come

@@ -1,8 +1,20 @@
+function findMarkerByName(markers_array, marker_name)
+{
+	for (var i = 0; i < markers_array.length; i++) 
+	{
+		if (markers_array[i].name === marker_name) 
+		{
+			return markers_array[i];
+		}
+	}
+	return null;
+}
+
 function menu(map)
 {
 	// menu container definition
 	var $container = $(document.createElement('DIV'));
-	$container.attr("style", "width:95%;height:95%;position:absolute;");
+	$container.attr("style", "position:absolute;");
 	var $innerContainer = $(document.createElement('DIV'));
 	$innerContainer.attr("style", "");
 	
@@ -76,12 +88,243 @@ function menu(map)
 	$traffic_congestion_button.attr("style", "margin-left:3px;");
 	$traffic_congestion_button.html("<center><img src='images/traffic_congestion_button.png' /><div>Traffic Block</div></center>");
 	google.maps.event.addDomListener($traffic_congestion_button.get(0), 'click', function() {
-		// TODO
+		change_sub_menu('traffic_congestion');
+		
 	});
 	$main_menu.append($traffic_congestion_button);
 	
 	// insert main menu to map
 	$innerContainer.append($main_menu);
+	
+	// traffic congestion menu
+	var $traffic_congestion_menu = $(document.createElement("DIV"));
+	$traffic_congestion_menu.attr("id", "traffic_congestion");
+	$traffic_congestion_menu.attr("style", "display:none;position:absolute;margin-left:-50px;bottom:110px;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:420px;height:68px;");
+	var $weather_information_button = $(document.createElement("DIV"));
+	$weather_information_button.attr("id", "weather_information_button");
+	$weather_information_button.attr("class", "button");
+	$weather_information_button.attr("style", "margin-left:60px;width:100px;margin-top:5px;");
+	$weather_information_button.html("<center><img src='images/weather_sign.png' style='height:40px;' width='40px' /><div>Weather Information</div></center>");
+	google.maps.event.addDomListener($weather_information_button.get(0), 'click', function() {
+		
+		// change class to chosen_mode
+		$("#weather_information_button").attr('class', 'button chosen_mode');
+		$("#camera_information_button").attr('class', 'button');
+		$("#parking_information_button").attr('class', 'button');
+		// remove other markers
+		for (var i = 0; i < camera_markers.length; i++) {
+			camera_markers[i].setMap(null);
+		}
+		for (var i = 0; i < parking_markers.length; i++) {
+			parking_markers[i].setMap(null);
+		}
+		// get weather info if uninitiazation
+		if (weather_markers.length === 0)
+		{
+			$.ajax({
+				type: "GET",
+				url: "oulunliikenne_service.php?service=weather",
+				cache: false,
+				dataType: "xml",
+				success: function(xml) {
+					
+					$(xml).find('item').each(function(){
+						var name = $(this).find("title").text();
+						//$("#info_panel").html($("#info_panel").html() + "<br>" + name);
+						var id = "weather_" + name;
+						var description = $(this).find("description").text();
+						
+						var weather_place = null;
+						weather_place = findMarkerByName(weather_places, name);
+						
+						if (weather_place!==null)
+						{
+							var weather_marker = new google.maps.Marker({
+								id: id,
+								position: new google.maps.LatLng(weather_place.latitude,weather_place.longitude),
+								map: map,
+								title: name,
+								icon: 'images/weather_map_icon.png'
+							});
+							
+							var contentString = '<div style="width:170px;height:100px;">'+
+							  '<b>' + name + '</b>'+
+							  '<p>' + description + '</p>'+
+							  '</div>';
+
+							  var infowindow = new google.maps.InfoWindow({
+								  content: contentString
+							  });
+							google.maps.event.addListener(weather_marker, 'click', function() {
+								infowindow.open(map,weather_marker);
+							});
+							weather_markers.push(weather_marker);
+						}
+						
+					});
+				}
+			});
+		}
+		// add weather info markers
+		for (var i = 0; i < weather_markers.length; i++) {
+			weather_markers[i].setMap(map);
+		}
+		
+	});
+	$traffic_congestion_menu.append($weather_information_button);
+	
+	var $camera_information_button = $(document.createElement("DIV"));
+	$camera_information_button.attr("id", "camera_information_button");
+	$camera_information_button.attr("class", "button");
+	$camera_information_button.attr("style", "margin-left:10px;width:100px;margin-top:5px;");
+	$camera_information_button.html("<center><img src='images/camera_sign.png' style='height:40px;' width='40px' /><div>Live Camera</div></center>");
+	google.maps.event.addDomListener($camera_information_button.get(0), 'click', function() {
+		
+		// TODO: 
+		// change class to chosen_mode
+		$("#weather_information_button").attr('class', 'button');
+		$("#camera_information_button").attr('class', 'button chosen_mode');
+		$("#parking_information_button").attr('class', 'button');
+		// remove other markers
+		for (var i = 0; i < parking_markers.length; i++) {
+			parking_markers[i].setMap(null);
+		}
+		for (var i = 0; i < weather_markers.length; i++) {
+			weather_markers[i].setMap(null);
+		}
+		
+		// get camera info if uninitiazation
+		if (camera_markers.length === 0)
+		{
+			$.ajax({
+				type: "GET",
+				url: "oulunliikenne_service.php?service=camera",
+				cache: false,
+				dataType: "xml",
+				success: function(xml) {
+					
+					$(xml).find('item').each(function(){
+						var name = $(this).find("title").text();
+
+						var id = "camera_" + name;
+						var description = $(this).find("description").text();
+						var img_src= $(this).find("link").text();
+						
+						var camera_place = null;
+						camera_place = findMarkerByName(camera_places, name);
+						
+						if (camera_place!==null)
+						{
+							var camera_marker = new google.maps.Marker({
+								id: id,
+								position: new google.maps.LatLng(camera_place.latitude,camera_place.longitude),
+								map: map,
+								title: name,
+								icon: 'images/camera_map_icon.png'
+							});
+							
+							var contentString = '<div style="width:170px;height:100px;">'+
+							  '<b>' + name + '</b>'+
+							  '<p><img src="' + img_src + '" style="width:70px;height:50px;" /></p>'+
+							  '</div>';
+
+							  var infowindow = new google.maps.InfoWindow({
+								  content: contentString
+							  });
+							google.maps.event.addListener(camera_marker, 'click', function() {
+								infowindow.open(map,camera_marker);
+							});
+							camera_markers.push(camera_marker);
+						}
+						
+					});
+				}
+			});
+		}
+		// add camera info markers
+		for (var i = 0; i < camera_markers.length; i++) {
+			camera_markers[i].setMap(map);
+		}
+		
+	});
+	$traffic_congestion_menu.append($camera_information_button);
+	
+	var $parking_information_button = $(document.createElement("DIV"));
+	$parking_information_button.attr("id", "parking_information_button");
+	$parking_information_button.attr("class", "button");
+	$parking_information_button.attr("style", "margin-left:10px;width:100px;margin-top:5px;");
+	$parking_information_button.html("<center><img src='images/parking_sign.png' style='height:40px;' width='40px' /><div>Parking Slots</div></center>");
+	google.maps.event.addDomListener($parking_information_button.get(0), 'click', function() {
+		
+		// TODO: 
+		// change class to chosen_mode
+		$("#weather_information_button").attr('class', 'button');
+		$("#camera_information_button").attr('class', 'button');
+		$("#parking_information_button").attr('class', 'button chosen_mode');
+		// remove other markers
+		for (var i = 0; i < camera_markers.length; i++) {
+			camera_markers[i].setMap(null);
+		}
+		for (var i = 0; i < weather_markers.length; i++) {
+			weather_markers[i].setMap(null);
+		}
+		
+		// get parking info if uninitiazation
+		if (parking_markers.length === 0)
+		{
+			$.ajax({
+				type: "GET",
+				url: "oulunliikenne_service.php?service=parking",
+				cache: false,
+				dataType: "xml",
+				success: function(xml) 
+				{
+					
+					$(xml).find('item').each(function(){
+						var name = $(this).find("title").text();
+						var id = "parking_" + name;
+						var description = $(this).find("description").text();
+						//console.log ($(this).find('georss:point').context.children);
+						
+						var geo_point = $(this).find('georss:point').context.children[6].innerHTML.split(" ");
+						
+						//var parking_place = null;
+						//window.alert(geo_point);
+						console.log (geo_point);
+						var parking_marker = new google.maps.Marker({
+							id: id,
+							position: new google.maps.LatLng(geo_point[1],geo_point[0]),
+							map: map,
+							title: name,
+							icon: 'images/parking_map_icon.png'
+						});
+						var contentString = '<div style="width:170px;height:120px;">'+
+						  '<b>' + name + '</b>'+
+						  '<p>' + description + '</p>'+
+						  '<p><a href="javascript:find_route(\'' + screen_address + ',oulu,finland\', new google.maps.LatLng(' + geo_point[1] + ',' + geo_point[0] + '),google.maps.TravelMode.WALKING );">Walk there</a></p>'+
+						  '</div>';
+
+						  var infowindow = new google.maps.InfoWindow({
+							  content: contentString
+						  });
+						google.maps.event.addListener(parking_marker, 'click', function() {
+							infowindow.open(map,parking_marker);
+						});
+						parking_markers.push(parking_marker);
+						
+					});
+				}
+			});
+		}
+		// add parking info markers
+		for (var i = 0; i < parking_markers.length; i++) {
+			parking_markers[i].setMap(map);
+		}
+		
+	});
+	$traffic_congestion_menu.append($parking_information_button);
+	
+	$innerContainer.append($traffic_congestion_menu);
 	
 	// navigate menu
 	var $navigation_menu = $(document.createElement("DIV"));
