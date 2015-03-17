@@ -41,6 +41,9 @@
 	var directionsService = new google.maps.DirectionsService();
 	var map;
 	
+	var service;
+
+	
 	//set coordinates
 	var oulu = new google.maps.LatLng(65.0123600, 25.4681600);
 	var orig = new google.maps.LatLng(65.059248, 25.466337);
@@ -65,49 +68,42 @@
 		map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 		directionsDisplay.setMap(map);
 	
-		//google places search, there are different types like stores, restaurants etc.
-		//creates markers for each places found inside radius
-		/*there is an example of a google places search box in 
-		https://developers.google.com/maps/documentation/javascript/examples/places-searchbox
-		which could be useful
+			
+		
+		/*
+		
+		---------------------------------------------------
+		Google Places search starts
+		---------------------------------------------------
+		Different types for places: (maybe give 3-5 options and the user can choose from those)
+			-restaurant
+			-cafe
+			-gym
+			-movie_theater
+			-hospital
+			-art_gallery
+			-travel_agency
+			-grocery_or_supermarket
+			-shoe_store
+			-pharmacy
+			-home_goods_store
+			-hair_care
+			-electronics_store
 		*/
+		
 		 var request = {
+			//the location from which the search is done (this could be changed to ubihotspot's location later)
 			location: oulu,
+			
+			//radius for the places to show up
 			radius: 500,
-			types: ['store']
+			
+			//set the type of places to search
+			types: ['restaurant']
 		  };
 		  infowindow = new google.maps.InfoWindow();
-		  var service = new google.maps.places.PlacesService(map);
-		  service.nearbySearch(request, callback);
-
-		
-	//Commented section is to create a marker
-	/*	var contentString = '<div id="content">'+
-		  '<div id="siteNotice">'+
-		  '</div>'+
-		  '<h1 id="firstHeading" class="firstHeading">Hospital</h1>'+
-		  '<div id="bodyContent">'+
-		  '<p>Hello, this is Oulu Hospital</p>'+
-			'<p>Visit <a href="http://www.ppshp.fi/oulun_yliopistollinen_sairaala"></a></p>'+
-		  '</div>'+
-		  '</div>';
-
-		var infowindow = new google.maps.InfoWindow({
-			content: contentString
-		});
-
-			
-			
-		var myLatlng = new google.maps.LatLng(65.0075,25.518611);
-
-		var marker = new google.maps.Marker({
-			position: myLatlng,
-			map: map,
-			title:"Hello World!"
-		});
-		google.maps.event.addListener(marker, 'click', function() {
-			infowindow.open(map,marker);
-		});		*/
+		  service = new google.maps.places.PlacesService(map);
+		  service.nearbySearch(request, callback);	
 	}
 	
 	//callback function used for google places
@@ -122,17 +118,90 @@
 	//create marker for google places
 	function createMarker(place) {
 	  var placeLoc = place.geometry.location;
+	  
+	  //create marker image
+	  var image = {
+        url: place.icon,
+        scaledSize: new google.maps.Size(25, 25)
+		};
+	  
+	  //create actual marker
 	  var marker = new google.maps.Marker({
 		map: map,
-		position: place.geometry.location
+		position: place.geometry.location,
+		icon: image,
+		title: place.name
 	  });
 
-	  google.maps.event.addListener(marker, 'click', function() {
-		infowindow.setContent(place.name);
-		infowindow.open(map, this);
-	  });
+	
+	   var request = { reference: place.reference };
+
+		//get details for place
+		service.getDetails(request, function(details, status) {
+		
+		//check if there is details for a place
+		if(status == 'OK')
+		{
+		  google.maps.event.addListener(marker, 'click', function() {
+		  
+			//get the opening data for the place
+			if(details.opening_hours != null)
+			{
+				//create a list containing opening and closing hours for the week
+				var openingHours = '<ul id="openingHours">' +
+					'<li class="listitem">Monday: '+(details.opening_hours.periods[1].open.time/100).toFixed(2)+' - '+(details.opening_hours.periods[1].close.time/100).toFixed(2)+'</li>' +
+					'<li class="listitem">Tuesday: '+(details.opening_hours.periods[2].open.time/100).toFixed(2)+' - '+(details.opening_hours.periods[2].close.time/100).toFixed(2)+'</li>' +
+					'<li class="listitem">Wednesday: '+(details.opening_hours.periods[3].open.time/100).toFixed(2)+' - '+(details.opening_hours.periods[3].close.time/100).toFixed(2)+'</li>' +
+					'<li class="listitem">Thursday: '+(details.opening_hours.periods[4].open.time/100).toFixed(2)+' - '+(details.opening_hours.periods[4].close.time/100).toFixed(2)+'</li>' +
+					'<li class="listitem">Friday: '+(details.opening_hours.periods[5].open.time/100).toFixed(2)+' - '+(details.opening_hours.periods[5].close.time/100).toFixed(2)+'</li>' +
+					'<li class="listitem">Saturday: '+(details.opening_hours.periods[6].open.time/100).toFixed(2)+' - '+(details.opening_hours.periods[6].close.time/100).toFixed(2)+'</li>' +
+					'<li class="listitem">Sunday: '+(details.opening_hours.periods[0].open.time/100).toFixed(2)+' - '+(details.opening_hours.periods[0].close.time/100).toFixed(2)+'</li>' +
+					'</ul>';
+			}
+			else
+			{
+			 var openingHours = "Unavailable";
+			}				
+			
+			//create the text info for place
+			var contentString = '<div id="content">'+
+			  '<div id="siteNotice">'+
+			  '</div>'+
+			  '<h2 id="markerHeading" class="markerHeading">'+details.name+'</h2>'+
+			  '<div id="bodyContent">'+		  
+			  '<p>Address: '+details.formatted_address+
+			  '<br>Phone: '+details.formatted_phone_number+
+			  '<br>Website: '+details.website+
+			  '</p>' +
+			  '<p>Opening hours: <br>'+openingHours+'</p>' +
+			  '<p>Average rating: '+details.rating+'</p>' +
+			  '</div>'+
+			  '</div>';
+			  
+			//set the information to the marker
+			infowindow.setContent(contentString);
+			infowindow.open(map, this);
+			});
+		}
+		
+		//else just show place's name
+		else
+		{
+			google.maps.event.addListener(marker, 'click', function() {
+			infowindow.setContent(place.name);
+			infowindow.open(map, this);
+			});
+		}
+	  });	  
 	}
 
+	/*
+	---------------------------------------------------
+	Google Places search ends
+	---------------------------------------------------	
+	*/
+	
+	
 	
 	
 	//calculates route from origin to destination
@@ -158,6 +227,7 @@
 	  });
 	}	
 	
+	//show the steps for route
 	function showSteps(directionResult)
 	{
 		var myRoute = directionResult.routes[0].legs[0];
