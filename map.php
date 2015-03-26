@@ -91,7 +91,7 @@
 			-electronics_store
 		*/
 		
-		 var request = {
+		var request = {
 			//the location from which the search is done (this could be changed to ubihotspot's location later)
 			location: oulu,
 			

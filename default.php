@@ -24,7 +24,7 @@
 	
 	<!-- Google Map -->
 	<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
+	<script src="javascript/gmap3/gmap3.js" type="text/javascript"></script>
 	
 	<script src="javascript/ubitraffic_traffic_places.js" type="text/javascript"></script>
 	<script src="javascript/ubitraffic_menu.js" type="text/javascript"></script>
@@ -60,7 +60,7 @@
 		{
 			border:2px solid;
 			border-color: #2a3333;
-			border-radius: 1px;
+			border-radius: 1px
 		}
     </style>
 	
@@ -73,7 +73,6 @@
 	var travel_mode_map = google.maps.TravelMode.WALKING;
 	var travel_mode_link = 'walking';
 	var screen_address = 'yliopistokatu 12';
-	var screen_point = new google.maps.LatLng(65.057333, 25.472555);
 	var origin_place = screen_address;
 	var destination_place = 'torikatu 9'; 
 	var markers_list = [];
@@ -83,7 +82,6 @@
 	
 	var directionsDisplay;
 	var directionsService = new google.maps.DirectionsService();
-	var point_of_interest_service;
 	var map;
 	var oulu = new google.maps.LatLng(65.0123600, 25.4681600);
 	var orig = new google.maps.LatLng(65.059248, 25.466337);
@@ -121,13 +119,12 @@
 		
 		directionsDisplay = new google.maps.DirectionsRenderer();
 		var mapOptions = {
-		  center: screen_point,
-		  zoom: 14,
+		  center: oulu,
+		  zoom: 16,
 		  disableDefaultUI: true
 		};
 		map = new google.maps.Map(document.getElementById('map_panel'), mapOptions);
 		directionsDisplay.setMap(map);
-		point_of_interest_service = new google.maps.places.PlacesService(map);
 		
 		var contentString = '<div id="content">'+
 		  '<div id="siteNotice">'+
@@ -143,11 +140,11 @@
 		});
 			
 			
-		//var myLatlng = new google.maps.LatLng(65.0075,25.518611);
+		var myLatlng = new google.maps.LatLng(65.0075,25.518611);
 		var marker = new google.maps.Marker({
-			position: screen_point,
+			position: myLatlng,
 			map: map,
-			title:"UBI-Screen"
+			title:"Hello World!"
 		});
 		google.maps.event.addListener(marker, 'click', function() {
 			infowindow.open(map,marker);

@@ -1,3 +1,19 @@
+var point_of_interest_types = [	"restaurant", "cafe", "movie_theater", "art_gallery", 
+								"gym", "hair_care", "travel_agency", "pharmacy", 
+								"hospital", "grocery_or_supermarket", "shoe_store", "home_goods_store"];
+
+var points_of_interest = [];
+points_of_interest["restaurant"] = [];
+points_of_interest["cafe"] = [];
+points_of_interest["movie_theater"] = [];
+points_of_interest["gym"] = [];
+points_of_interest["travel_agency"] = [];
+points_of_interest["pharmacy"] = [];
+points_of_interest["hospital"] = [];
+points_of_interest["grocery_or_supermarket"] = [];
+points_of_interest["shoe_store"] = [];
+points_of_interest["home_goods_store"] = [];
+
 function findMarkerByName(markers_array, marker_name)
 {
 	for (var i = 0; i < markers_array.length; i++) 
@@ -8,6 +24,125 @@ function findMarkerByName(markers_array, marker_name)
 		}
 	}
 	return null;
+}
+
+//create marker for google places
+function createPointOfInterestMarker(place, point_of_interest_type)
+{
+	var contentString = "";
+	var request = { reference: place.reference };
+	//get details for place
+	point_of_interest_service.getDetails(request, function(details, status) 
+	{
+		if(status == 'OK') // got information for the place
+		{
+			var openingHours = "";
+			if(details.opening_hours != null)
+			{
+				//create a list containing opening and closing hours for the week
+				openingHours = '<ul id="openingHours">' +
+					'<li class="listitem">Monday: '+(details.opening_hours.periods[1].open.time/100).toFixed(2)+' - '+(details.opening_hours.periods[1].close.time/100).toFixed(2)+'</li>' +
+					'<li class="listitem">Tuesday: '+(details.opening_hours.periods[2].open.time/100).toFixed(2)+' - '+(details.opening_hours.periods[2].close.time/100).toFixed(2)+'</li>' +
+					'<li class="listitem">Wednesday: '+(details.opening_hours.periods[3].open.time/100).toFixed(2)+' - '+(details.opening_hours.periods[3].close.time/100).toFixed(2)+'</li>' +
+					'<li class="listitem">Thursday: '+(details.opening_hours.periods[4].open.time/100).toFixed(2)+' - '+(details.opening_hours.periods[4].close.time/100).toFixed(2)+'</li>' +
+					'<li class="listitem">Friday: '+(details.opening_hours.periods[5].open.time/100).toFixed(2)+' - '+(details.opening_hours.periods[5].close.time/100).toFixed(2)+'</li>' +
+					'<li class="listitem">Saturday: '+(details.opening_hours.periods[6].open.time/100).toFixed(2)+' - '+(details.opening_hours.periods[6].close.time/100).toFixed(2)+'</li>' +
+					'<li class="listitem">Sunday: '+(details.opening_hours.periods[0].open.time/100).toFixed(2)+' - '+(details.opening_hours.periods[0].close.time/100).toFixed(2)+'</li>' +
+					'</ul>';
+			}
+			else
+			{
+				openingHours = "Unavailable";
+			}
+			contentString = '<div id="content">'+
+			  '<div id="siteNotice">'+
+			  '</div>'+
+			  '<h2 id="markerHeading" class="markerHeading">'+details.name+'</h2>'+
+			  '<div id="bodyContent">'+		  
+			  '<p>Address: '+details.formatted_address+
+			  '<br>Phone: '+details.formatted_phone_number+
+			  '<br>Website: '+details.website+
+			  '</p>' +
+			  '<p>Opening hours: <br>'+openingHours+'</p>' +
+			  '<p>Average rating: '+details.rating+'</p>' +
+			  '</div>'+
+			  '</div>';
+		}
+		else // cannot get information for the place
+		{
+			contentString = place.name;
+		}
+	});
+	  
+	//create marker image
+	var image = {
+		url: "images/point_of_interest/" + point_of_interest_type + "_icon.png",
+		scaledSize: new google.maps.Size(25, 25)
+	};
+	  
+	//create actual marker
+	var marker = new google.maps.Marker({
+		map: map,
+		position: place.geometry.location,
+		icon: image,
+		title: place.name
+	});
+
+	var infowindow = new google.maps.InfoWindow({
+		content: contentString
+	});
+	google.maps.event.addListener(marker, 'click', function() {
+		infowindow.open(map,marker);
+	});
+	points_of_interest[point_of_interest_type].push(marker);
+}
+
+function changePointOfInterestType(point_of_interest_type, map)
+{
+	if (points_of_interest[point_of_interest_type].length === 0)
+	{
+	
+		var request = {
+			//the location from which the search is done (this could be changed to ubihotspot's location later)
+			location: screen_point,
+				
+			//radius for the places to show up
+			radius: 30000,
+				
+			//set the type of places to search
+			types: [point_of_interest_type]
+		};
+		
+		point_of_interest_service.nearbySearch(request, function(results, status)
+		{
+			if (status == google.maps.places.PlacesServiceStatus.OK)
+			{
+			
+				for (var i = 0; i < results.length; i++) 
+				{
+					createPointOfInterestMarker(results[i], point_of_interest_type);
+				}
+			}
+		});
+	}
+	else
+	{
+			
+	}
+	
+	for(var key in points_of_interest){
+		var value = points_of_interest[key];    
+		for (j=0; j<value.length; j++)
+			value[j].setMap(null);
+	}
+	for (j=0; j<points_of_interest[point_of_interest_type].length; j++)
+		points_of_interest[point_of_interest_type][j].setMap(map);
+	
+	for (i = 0, len = point_of_interest_types.length; i < len; i++)
+	{
+		$("#"+point_of_interest_types[i]+"_information_button").attr("class", "button");
+	}
+	$("#"+point_of_interest_type+"_information_button").attr("class", "button chosen_mode");
 }
 
 function menu(map)
@@ -77,7 +212,7 @@ function menu(map)
 	$place_button.attr("style", "margin-left:3px;");
 	$place_button.html("<center><img src='images/point_of_interest.png' style='' /><div>Points of interest</div></center>");
 	google.maps.event.addDomListener($place_button.get(0), 'click', function() {
-		// TODO
+		change_sub_menu('point_of_interest');
 	});
 	$main_menu.append($place_button);
 	
@@ -89,12 +224,157 @@ function menu(map)
 	$traffic_congestion_button.html("<center><img src='images/traffic_congestion_button.png' /><div>Traffic Block</div></center>");
 	google.maps.event.addDomListener($traffic_congestion_button.get(0), 'click', function() {
 		change_sub_menu('traffic_congestion');
-		
 	});
 	$main_menu.append($traffic_congestion_button);
 	
 	// insert main menu to map
 	$innerContainer.append($main_menu);
+	
+	// point of interest menu
+	var $point_of_interest_menu = $(document.createElement("DIV"));
+	$point_of_interest_menu.attr("id", "point_of_interest");
+	$point_of_interest_menu.attr("style", "display:none;position:absolute;margin-left:-50px;bottom:110px;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:420px;height:220px;");
+	// point of interest menu - restaurant button
+	var $restaurant_information_button = $(document.createElement("DIV"));
+	$restaurant_information_button.attr("id", "restaurant_information_button");
+	$restaurant_information_button.attr("class", "button");
+	$restaurant_information_button.attr("style", "margin-left:10px;width:90px;margin-top:7px;");
+	$restaurant_information_button.html("<center><img src='images/point_of_interest/restaurant_button.png' style='height:40px;' width='40px' /><div>Restaurant</div></center>");
+	google.maps.event.addDomListener($restaurant_information_button.get(0), 'click', function()
+	{
+
+
+		
+		
+		
+		//changePointOfInterestType("restaurant", map);
+	});
+	$point_of_interest_menu.append($restaurant_information_button);
+	// point of interest menu - cafe button
+	var $cafe_information_button = $(document.createElement("DIV"));
+	$cafe_information_button.attr("id", "cafe_information_button");
+	$cafe_information_button.attr("class", "button");
+	$cafe_information_button.attr("style", "margin-left:10px;width:90px;margin-top:7px;");
+	$cafe_information_button.html("<center><img src='images/point_of_interest/cafe_button.png' style='height:40px;' width='40px' /><div>Cafe</div></center>");
+	google.maps.event.addDomListener($cafe_information_button.get(0), 'click', function()
+	{
+		changePointOfInterestType("cafe", map);
+	});
+	$point_of_interest_menu.append($cafe_information_button);
+	// point of interest menu - movie_theater button
+	var $movie_theater_information_button = $(document.createElement("DIV"));
+	$movie_theater_information_button.attr("id", "movie_theater_information_button");
+	$movie_theater_information_button.attr("class", "button");
+	$movie_theater_information_button.attr("style", "margin-left:10px;width:90px;margin-top:7px;");
+	$movie_theater_information_button.html("<center><img src='images/point_of_interest/movie_theater_button.png' style='height:40px;' width='40px' /><div>Theater</div></center>");
+	google.maps.event.addDomListener($movie_theater_information_button.get(0), 'click', function()
+	{
+		changePointOfInterestType("movie_theater", map);
+	});
+	$point_of_interest_menu.append($movie_theater_information_button);
+	// point of interest menu - art_gallery button
+	var $art_gallery_information_button = $(document.createElement("DIV"));
+	$art_gallery_information_button.attr("id", "art_gallery_information_button");
+	$art_gallery_information_button.attr("class", "button");
+	$art_gallery_information_button.attr("style", "margin-left:10px;width:90px;margin-top:7px;");
+	$art_gallery_information_button.html("<center><img src='images/point_of_interest/art_gallery_button.png' style='height:40px;' width='40px' /><div>Art Gallery</div></center>");
+	google.maps.event.addDomListener($art_gallery_information_button.get(0), 'click', function()
+	{
+		changePointOfInterestType("art_gallery", map);
+	});
+	$point_of_interest_menu.append($art_gallery_information_button);
+	// point of interest menu - gym button
+	var $gym_information_button = $(document.createElement("DIV"));
+	$gym_information_button.attr("id", "gym_information_button");
+	$gym_information_button.attr("class", "button");
+	$gym_information_button.attr("style", "margin-left:10px;width:90px;margin-top:7px;");
+	$gym_information_button.html("<center><img src='images/point_of_interest/gym_button.png' style='height:40px;' width='40px' /><div>Gym</div></center>");
+	google.maps.event.addDomListener($gym_information_button.get(0), 'click', function()
+	{
+		changePointOfInterestType("gym", map);
+	});
+	$point_of_interest_menu.append($gym_information_button);
+	// point of interest menu - hair_care button
+	var $hair_care_information_button = $(document.createElement("DIV"));
+	$hair_care_information_button.attr("id", "hair_care_information_button");
+	$hair_care_information_button.attr("class", "button");
+	$hair_care_information_button.attr("style", "margin-left:10px;width:90px;margin-top:10px;");
+	$hair_care_information_button.html("<center><img src='images/point_of_interest/hair_care_button.png' style='height:40px;' width='40px' /><div>Gym</div></center>");
+	google.maps.event.addDomListener($hair_care_information_button.get(0), 'click', function()
+	{
+		changePointOfInterestType("hair_care", map);
+	});
+	$point_of_interest_menu.append($hair_care_information_button);
+	// point of interest menu - pharmacy button
+	var $pharmacy_information_button = $(document.createElement("DIV"));
+	$pharmacy_information_button.attr("id", "pharmacy_information_button");
+	$pharmacy_information_button.attr("class", "button");
+	$pharmacy_information_button.attr("style", "margin-left:10px;width:90px;margin-top:10px;");
+	$pharmacy_information_button.html("<center><img src='images/point_of_interest/pharmacy_button.png' style='height:40px;' width='40px' /><div>Hair Care</div></center>");
+	google.maps.event.addDomListener($pharmacy_information_button.get(0), 'click', function()
+	{
+		changePointOfInterestType("pharmacy", map);
+	});
+	$point_of_interest_menu.append($pharmacy_information_button);
+	// point of interest menu - travel_agency button
+	var $travel_agency_information_button = $(document.createElement("DIV"));
+	$travel_agency_information_button.attr("id", "travel_agency_information_button");
+	$travel_agency_information_button.attr("class", "button");
+	$travel_agency_information_button.attr("style", "margin-left:10px;width:90px;margin-top:10px;");
+	$travel_agency_information_button.html("<center><img src='images/point_of_interest/travel_agency_button.png' style='height:40px;' width='40px' /><div>Travel Agency</div></center>");
+	google.maps.event.addDomListener($travel_agency_information_button.get(0), 'click', function()
+	{
+		changePointOfInterestType("travel_agency", map);
+	});
+	$point_of_interest_menu.append($travel_agency_information_button);
+	// point of interest menu - home_goods_store button
+	var $home_goods_store_information_button = $(document.createElement("DIV"));
+	$home_goods_store_information_button.attr("id", "home_goods_store_information_button");
+	$home_goods_store_information_button.attr("class", "button");
+	$home_goods_store_information_button.attr("style", "margin-left:10px;width:90px;margin-top:10px;");
+	$home_goods_store_information_button.html("<center><img src='images/point_of_interest/home_goods_store_button.png' style='height:40px;' width='40px' /><div>Travel Agency</div></center>");
+	google.maps.event.addDomListener($home_goods_store_information_button.get(0), 'click', function()
+	{
+		changePointOfInterestType("home_goods_store", map);
+	});
+	$point_of_interest_menu.append($home_goods_store_information_button);
+	// point of interest menu - home_goods button
+	var $grocery_or_supermarket_information_button = $(document.createElement("DIV"));
+	$grocery_or_supermarket_information_button.attr("id", "grocery_or_supermarket_information_button");
+	$grocery_or_supermarket_information_button.attr("class", "button");
+	$grocery_or_supermarket_information_button.attr("style", "margin-left:10px;width:90px;margin-top:7px;");
+	$grocery_or_supermarket_information_button.html("<center><img src='images/point_of_interest/grocery_or_supermarket_button.png' style='height:40px;' width='40px' /><div>Travel Agency</div></center>");
+	google.maps.event.addDomListener($grocery_or_supermarket_information_button.get(0), 'click', function()
+	{
+		changePointOfInterestType("grocery_or_supermarket", map);
+	});
+	$point_of_interest_menu.append($grocery_or_supermarket_information_button);
+	// point of interest menu - shoe_store button
+	var $shoe_store_information_button = $(document.createElement("DIV"));
+	$shoe_store_information_button.attr("id", "shoe_store_information_button");
+	$shoe_store_information_button.attr("class", "button");
+	$shoe_store_information_button.attr("style", "margin-left:10px;width:90px;margin-top:7px;");
+	$shoe_store_information_button.html("<center><img src='images/point_of_interest/shoe_store_button.png' style='height:40px;' width='40px' /><div>Travel Agency</div></center>");
+	google.maps.event.addDomListener($shoe_store_information_button.get(0), 'click', function()
+	{
+		changePointOfInterestType("shoe_store", map);
+	});
+	$point_of_interest_menu.append($shoe_store_information_button);
+	// point of interest menu - hospital button
+	var $hospital_information_button = $(document.createElement("DIV"));
+	$hospital_information_button.attr("id", "hospital_information_button");
+	$hospital_information_button.attr("class", "button");
+	$hospital_information_button.attr("style", "margin-left:10px;width:90px;margin-top:7px;height:70px;");
+	$hospital_information_button.html("<center><img src='images/point_of_interest/hospital_button.png' style='height:40px;' width='40px' /><div>Travel Agency</div></center>");
+	google.maps.event.addDomListener($hospital_information_button.get(0), 'click', function()
+	{
+		changePointOfInterestType("hospital", map);
+	});
+	$point_of_interest_menu.append($hospital_information_button);
+
+	
+	$innerContainer.append($point_of_interest_menu);
+	
 	
 	// traffic congestion menu
 	var $traffic_congestion_menu = $(document.createElement("DIV"));
@@ -284,13 +564,10 @@ function menu(map)
 						var name = $(this).find("title").text();
 						var id = "parking_" + name;
 						var description = $(this).find("description").text();
-						//console.log ($(this).find('georss:point').context.children);
 						
 						var geo_point = $(this).find('georss:point').context.children[6].innerHTML.split(" ");
 						
-						//var parking_place = null;
-						//window.alert(geo_point);
-						console.log (geo_point);
+						
 						var parking_marker = new google.maps.Marker({
 							id: id,
 							position: new google.maps.LatLng(geo_point[1],geo_point[0]),
