@@ -1,3 +1,14 @@
+<!-- 
+LOG 2015.03.26
+Our application layout is A, which has two kind of resolution: 1920*1080 and 1920*1200 
+LayoutA: A1 50% (W) x 45% (H), A2 50% (W) x 45% (H).
+So I change the div's width and heighth to dynamic value.
+
+I hind the left side bar. Because we need two URLs , the map is one, the left panen is another
+indenpendent URLs, I will implement this changes soon.
+
+-->
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -63,6 +74,8 @@
 			border-radius: 1px
 		}
     </style>
+
+
 	
 	<script type="text/javascript">
 	
@@ -88,8 +101,7 @@
 	var dest = new google.maps.LatLng(65.010786, 25.469942);
 	var txtInfo = '';
 	
-	function reset()
-	{
+	function reset(){
 		//reset menu
 		$('#'+sub_menu_opening).css('display', 'none');
 		$('#main_menu').css('display', 'none');
@@ -159,11 +171,9 @@
 				
 			});
 		});
-		
     });
 	
-	function change_sub_menu(new_menu)
-	{
+	function change_sub_menu(new_menu){
 		if (sub_menu_opening===new_menu)
 		{
 			$('#'+new_menu).css('display', 'none');
@@ -177,8 +187,7 @@
 		}
 	}
 	
-	function change_travel_mode(travel_mode_icon, travel_mode)
-	{
+	function change_travel_mode(travel_mode_icon, travel_mode){
 		
 		travel_mode_map = travel_mode;
 		
@@ -203,8 +212,7 @@
 		
 	}
 	
-	function find_route(start_point, end_point, travel_mode)
-	{
+	function find_route(start_point, end_point, travel_mode){
 		var request = {
 			origin: start_point,
 			destination: end_point,
@@ -261,8 +269,7 @@
 		
 	}
 	
-	function navigate_route()
-	{
+	function navigate_route(){
 		
 		origin_place = $("#start_place").val();
 		destination_place = $("#destination").val();
@@ -327,23 +334,23 @@
     </script>
 
   </head>
-	
-    
-		
-
 	<body>
+
+
 		<div style="">
-			
-			<div style="float:left;border:10px solid;border-color: #2a3333;border-radius:25px; width:480px;height:270px;padding:20px;overflow:scroll;" id="info_panel">
-				
-			</div>
-			
-			<div style="float:left;border:10px solid;border-color: #2a3333;border-radius:25px;width:480px;height:540px;" >
-				<div style="width:470px;height:530px;margin:5px;" id="map_panel">
-					
-				</div>
-			
+			<!-- <div style="float:left;border:10px solid;border-color: #2a3333;border-radius:25px; width:480px;height:270px;padding:20px;overflow:scroll;" id="info_panel"></div> -->
+			<!-- <div style="float:left;border:10px solid;border-color: #2a3333;border-radius:25px;width:480px;height:540px;" id="background" > -->
+			<div id="background" > 
+				<div id="map_panel"></div>
 			</div>
 		</div>
+
+		<!-- set the width and heighth -->
+	    <script language=javascript>
+			var map=document.getElementById("map_panel");
+			map.style.height=screen.height*0.45 + "px";
+			map.style.width=screen.width*0.50+ "px";
+
+		</script>
 	</body>
 </html>
