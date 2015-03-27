@@ -6,13 +6,18 @@ var points_of_interest = [];
 points_of_interest["restaurant"] = [];
 points_of_interest["cafe"] = [];
 points_of_interest["movie_theater"] = [];
+points_of_interest["art_gallery"] = [];
 points_of_interest["gym"] = [];
+points_of_interest["hair_care"] = [];
 points_of_interest["travel_agency"] = [];
 points_of_interest["pharmacy"] = [];
 points_of_interest["hospital"] = [];
 points_of_interest["grocery_or_supermarket"] = [];
 points_of_interest["shoe_store"] = [];
 points_of_interest["home_goods_store"] = [];
+
+var inforWindowList = [];
+var markerList = [];
 
 function findMarkerByName(markers_array, marker_name)
 {
@@ -29,72 +34,147 @@ function findMarkerByName(markers_array, marker_name)
 //create marker for google places
 function createPointOfInterestMarker(place, point_of_interest_type)
 {
-	var contentString = "";
+	
+	var placeContentString = "";
 	var request = { reference: place.reference };
+	
 	//get details for place
 	point_of_interest_service.getDetails(request, function(details, status) 
 	{
-		if(status == 'OK') // got information for the place
+		
+		if(status == google.maps.places.PlacesServiceStatus.OK) // got information for the place
 		{
+			//window.alert(2);
 			var openingHours = "";
-			if(details.opening_hours != null)
+			if(typeof details.opening_hours !== 'undefined')
 			{
 				//create a list containing opening and closing hours for the week
-				openingHours = '<ul id="openingHours">' +
-					'<li class="listitem">Monday: '+(details.opening_hours.periods[1].open.time/100).toFixed(2)+' - '+(details.opening_hours.periods[1].close.time/100).toFixed(2)+'</li>' +
-					'<li class="listitem">Tuesday: '+(details.opening_hours.periods[2].open.time/100).toFixed(2)+' - '+(details.opening_hours.periods[2].close.time/100).toFixed(2)+'</li>' +
-					'<li class="listitem">Wednesday: '+(details.opening_hours.periods[3].open.time/100).toFixed(2)+' - '+(details.opening_hours.periods[3].close.time/100).toFixed(2)+'</li>' +
-					'<li class="listitem">Thursday: '+(details.opening_hours.periods[4].open.time/100).toFixed(2)+' - '+(details.opening_hours.periods[4].close.time/100).toFixed(2)+'</li>' +
-					'<li class="listitem">Friday: '+(details.opening_hours.periods[5].open.time/100).toFixed(2)+' - '+(details.opening_hours.periods[5].close.time/100).toFixed(2)+'</li>' +
-					'<li class="listitem">Saturday: '+(details.opening_hours.periods[6].open.time/100).toFixed(2)+' - '+(details.opening_hours.periods[6].close.time/100).toFixed(2)+'</li>' +
-					'<li class="listitem">Sunday: '+(details.opening_hours.periods[0].open.time/100).toFixed(2)+' - '+(details.opening_hours.periods[0].close.time/100).toFixed(2)+'</li>' +
-					'</ul>';
+				if (typeof details.opening_hours.open_now!=='undefined')
+				{
+					if (details.opening_hours.open_now === true) 
+						openingHours = "<p>Status: Opening</p>";
+					else if (details.opening_hours.open_now === false) 
+						openingHours = "<p>Status: Closing</p>";
+				}
+				if (typeof details.opening_hours.weekday_text !== 'undefined')
+					openingHours = '<p>Opening hours:<br/><ul id="openingHours">' +
+						'<li class="listitem">' + details.opening_hours.weekday_text[0] + '</li>' +
+						'<li class="listitem">' + details.opening_hours.weekday_text[1] + '</li>' +
+						'<li class="listitem">' + details.opening_hours.weekday_text[2] + '</li>' +
+						'<li class="listitem">' + details.opening_hours.weekday_text[3] + '</li>' +
+						'<li class="listitem">' + details.opening_hours.weekday_text[4] + '</li>' +
+						'<li class="listitem">' + details.opening_hours.weekday_text[5] + '</li>' +
+						'<li class="listitem">' + details.opening_hours.weekday_text[6] + '</li>' +
+						'</ul></p>';
 			}
-			else
+			
+			var ratingText = "";
+			if (typeof details.rating !== 'undefined')
 			{
-				openingHours = "Unavailable";
+				ratingText = "<p>Average rating: " + details.rating;
+				if (typeof details.user_ratings_total !== 'undefined') 
+					ratingText += " (" + details.rating + " voted)";
+				ratingText += "</p>";
 			}
-			contentString = '<div id="content">'+
-			  '<div id="siteNotice">'+
-			  '</div>'+
-			  '<h2 id="markerHeading" class="markerHeading">'+details.name+'</h2>'+
+			
+			var website = "";
+			if (typeof details.website !== 'undefined')
+				ratingText = "<p>Website: " + details.website+"</p>";
+			
+			placeContentString = '<div id="content">'+
+			  '<h2 id="markerHeading" class="markerHeading">Details: '+details.name+'</h2>'+
 			  '<div id="bodyContent">'+		  
-			  '<p>Address: '+details.formatted_address+
-			  '<br>Phone: '+details.formatted_phone_number+
-			  '<br>Website: '+details.website+
-			  '</p>' +
-			  '<p>Opening hours: <br>'+openingHours+'</p>' +
-			  '<p>Average rating: '+details.rating+'</p>' +
-			  '</div>'+
-			  '</div>';
+			  '<p>Address: '+details.formatted_address+'</p>'+
+			  '<p>Phone: '+details.formatted_phone_number+'</p>'+
+			  website +
+			  openingHours +
+			  ratingText +
+			  '</div></div>';
+			//console.log("Detail: " + details.name + " - " + details.formatted_address);
+			
+			//create marker image
+			var image = {
+				url: "images/point_of_interest/" + point_of_interest_type + "_icon.png",
+				scaledSize: new google.maps.Size(25, 25)
+			};
+			  
+			//create actual marker
+			var marker = new google.maps.Marker({
+				map: map,
+				position: place.geometry.location,
+				icon: image,
+				title: place.name
+			});
+			markerList.push(marker);
+			
+			var infowindow = new google.maps.InfoWindow({
+				content: placeContentString
+			});
+			inforWindowList.push(infowindow);
+			
+			google.maps.event.addListener(marker, 'click', function()
+			{
+				for (var i = 0; i < inforWindowList.length; i++) {
+					inforWindowList[i].close();
+				}
+				infowindow.open(map,marker);
+			});
+			points_of_interest[point_of_interest_type].push(marker);
+			
+			
 		}
 		else // cannot get information for the place
 		{
-			contentString = place.name;
+			var openingHours = "";
+			if(typeof place.opening_hours !== 'undefined')
+			{
+				//create a list containing opening and closing hours for the week
+				if (typeof place.opening_hours.open_now!=='undefined')
+				{
+					if (place.opening_hours.open_now === true) 
+						openingHours = "<p>Status: Opening</p>";
+					else if (place.opening_hours.open_now === false) 
+						openingHours = "<p>Status: Closing</p>";
+				}
+			}
+			
+			placeContentString = '<div id="content">'+
+			  '<h2 id="markerHeading" class="markerHeading">Place: '+place.name+'</h2>'+
+			  '<div id="bodyContent">'+		  
+			  '<p>Address: '+place.vicinity+'</p>'+
+			  openingHours +
+			  '</div></div>';
+			//console.log("Place: " + place.name + " - " + place.vicinity);
+			//create marker image
+			var image = {
+				url: "images/point_of_interest/" + point_of_interest_type + "_icon.png",
+				scaledSize: new google.maps.Size(25, 25)
+			};
+			  
+			//create actual marker
+			var marker = new google.maps.Marker({
+				map: map,
+				position: place.geometry.location,
+				icon: image,
+				title: place.name
+			});
+			markerList.push(marker);
+			
+			var infowindow = new google.maps.InfoWindow({
+				content: placeContentString
+			});
+			inforWindowList.push(infowindow);
+			
+			google.maps.event.addListener(marker, 'click', function() {
+				for (var i = 0; i < inforWindowList.length; i++) {
+					inforWindowList[i].close();
+				}
+				infowindow.open(map,marker);
+			});
+			points_of_interest[point_of_interest_type].push(marker);
 		}
 	});
-	  
-	//create marker image
-	var image = {
-		url: "images/point_of_interest/" + point_of_interest_type + "_icon.png",
-		scaledSize: new google.maps.Size(25, 25)
-	};
-	  
-	//create actual marker
-	var marker = new google.maps.Marker({
-		map: map,
-		position: place.geometry.location,
-		icon: image,
-		title: place.name
-	});
-
-	var infowindow = new google.maps.InfoWindow({
-		content: contentString
-	});
-	google.maps.event.addListener(marker, 'click', function() {
-		infowindow.open(map,marker);
-	});
-	points_of_interest[point_of_interest_type].push(marker);
+	
 }
 
 function changePointOfInterestType(point_of_interest_type, map)
@@ -107,7 +187,7 @@ function changePointOfInterestType(point_of_interest_type, map)
 			location: screen_point,
 				
 			//radius for the places to show up
-			radius: 30000,
+			radius: 10000,
 				
 			//set the type of places to search
 			types: [point_of_interest_type]
@@ -121,6 +201,7 @@ function changePointOfInterestType(point_of_interest_type, map)
 				for (var i = 0; i < results.length; i++) 
 				{
 					createPointOfInterestMarker(results[i], point_of_interest_type);
+					
 				}
 			}
 		});
@@ -130,11 +211,9 @@ function changePointOfInterestType(point_of_interest_type, map)
 			
 	}
 	
-	for(var key in points_of_interest){
-		var value = points_of_interest[key];    
-		for (j=0; j<value.length; j++)
-			value[j].setMap(null);
-	}
+	for (j=0; j<markerList.length; j++)
+		markerList[j].setMap(null);
+	
 	for (j=0; j<points_of_interest[point_of_interest_type].length; j++)
 		points_of_interest[point_of_interest_type][j].setMap(map);
 	
@@ -245,7 +324,7 @@ function menu(map)
 
 
 		
-		
+		changePointOfInterestType("restaurant", map);
 		
 		//changePointOfInterestType("restaurant", map);
 	});
@@ -299,7 +378,7 @@ function menu(map)
 	$hair_care_information_button.attr("id", "hair_care_information_button");
 	$hair_care_information_button.attr("class", "button");
 	$hair_care_information_button.attr("style", "margin-left:10px;width:90px;margin-top:10px;");
-	$hair_care_information_button.html("<center><img src='images/point_of_interest/hair_care_button.png' style='height:40px;' width='40px' /><div>Gym</div></center>");
+	$hair_care_information_button.html("<center><img src='images/point_of_interest/hair_care_button.png' style='height:40px;' width='40px' /><div>Hair Care</div></center>");
 	google.maps.event.addDomListener($hair_care_information_button.get(0), 'click', function()
 	{
 		changePointOfInterestType("hair_care", map);
@@ -310,7 +389,7 @@ function menu(map)
 	$pharmacy_information_button.attr("id", "pharmacy_information_button");
 	$pharmacy_information_button.attr("class", "button");
 	$pharmacy_information_button.attr("style", "margin-left:10px;width:90px;margin-top:10px;");
-	$pharmacy_information_button.html("<center><img src='images/point_of_interest/pharmacy_button.png' style='height:40px;' width='40px' /><div>Hair Care</div></center>");
+	$pharmacy_information_button.html("<center><img src='images/point_of_interest/pharmacy_button.png' style='height:40px;' width='40px' /><div>Pharmacy</div></center>");
 	google.maps.event.addDomListener($pharmacy_information_button.get(0), 'click', function()
 	{
 		changePointOfInterestType("pharmacy", map);
@@ -332,7 +411,7 @@ function menu(map)
 	$home_goods_store_information_button.attr("id", "home_goods_store_information_button");
 	$home_goods_store_information_button.attr("class", "button");
 	$home_goods_store_information_button.attr("style", "margin-left:10px;width:90px;margin-top:10px;");
-	$home_goods_store_information_button.html("<center><img src='images/point_of_interest/home_goods_store_button.png' style='height:40px;' width='40px' /><div>Travel Agency</div></center>");
+	$home_goods_store_information_button.html("<center><img src='images/point_of_interest/home_goods_store_button.png' style='height:40px;' width='40px' /><div>Store</div></center>");
 	google.maps.event.addDomListener($home_goods_store_information_button.get(0), 'click', function()
 	{
 		changePointOfInterestType("home_goods_store", map);
@@ -343,7 +422,7 @@ function menu(map)
 	$grocery_or_supermarket_information_button.attr("id", "grocery_or_supermarket_information_button");
 	$grocery_or_supermarket_information_button.attr("class", "button");
 	$grocery_or_supermarket_information_button.attr("style", "margin-left:10px;width:90px;margin-top:7px;");
-	$grocery_or_supermarket_information_button.html("<center><img src='images/point_of_interest/grocery_or_supermarket_button.png' style='height:40px;' width='40px' /><div>Travel Agency</div></center>");
+	$grocery_or_supermarket_information_button.html("<center><img src='images/point_of_interest/grocery_or_supermarket_button.png' style='height:40px;' width='40px' /><div>Supermarket</div></center>");
 	google.maps.event.addDomListener($grocery_or_supermarket_information_button.get(0), 'click', function()
 	{
 		changePointOfInterestType("grocery_or_supermarket", map);
@@ -354,7 +433,7 @@ function menu(map)
 	$shoe_store_information_button.attr("id", "shoe_store_information_button");
 	$shoe_store_information_button.attr("class", "button");
 	$shoe_store_information_button.attr("style", "margin-left:10px;width:90px;margin-top:7px;");
-	$shoe_store_information_button.html("<center><img src='images/point_of_interest/shoe_store_button.png' style='height:40px;' width='40px' /><div>Travel Agency</div></center>");
+	$shoe_store_information_button.html("<center><img src='images/point_of_interest/shoe_store_button.png' style='height:40px;' width='40px' /><div>Shoes Store</div></center>");
 	google.maps.event.addDomListener($shoe_store_information_button.get(0), 'click', function()
 	{
 		changePointOfInterestType("shoe_store", map);
@@ -365,7 +444,7 @@ function menu(map)
 	$hospital_information_button.attr("id", "hospital_information_button");
 	$hospital_information_button.attr("class", "button");
 	$hospital_information_button.attr("style", "margin-left:10px;width:90px;margin-top:7px;height:70px;");
-	$hospital_information_button.html("<center><img src='images/point_of_interest/hospital_button.png' style='height:40px;' width='40px' /><div>Travel Agency</div></center>");
+	$hospital_information_button.html("<center><img src='images/point_of_interest/hospital_button.png' style='height:40px;' width='40px' /><div>Hospital</div></center>");
 	google.maps.event.addDomListener($hospital_information_button.get(0), 'click', function()
 	{
 		changePointOfInterestType("hospital", map);
@@ -392,12 +471,10 @@ function menu(map)
 		$("#camera_information_button").attr('class', 'button');
 		$("#parking_information_button").attr('class', 'button');
 		// remove other markers
-		for (var i = 0; i < camera_markers.length; i++) {
-			camera_markers[i].setMap(null);
-		}
-		for (var i = 0; i < parking_markers.length; i++) {
-			parking_markers[i].setMap(null);
-		}
+		for (j=0; j<markerList.length; j++)
+			markerList[j].setMap(null);
+		
+		
 		// get weather info if uninitiazation
 		if (weather_markers.length === 0)
 		{
@@ -426,16 +503,21 @@ function menu(map)
 								title: name,
 								icon: 'images/weather_map_icon.png'
 							});
+							markerList.push(weather_marker);
 							
 							var contentString = '<div style="width:170px;height:100px;">'+
 							  '<b>' + name + '</b>'+
 							  '<p>' + description + '</p>'+
 							  '</div>';
 
-							  var infowindow = new google.maps.InfoWindow({
-								  content: contentString
-							  });
+							var infowindow = new google.maps.InfoWindow({
+								content: contentString
+							});
+							inforWindowList.push(infowindow);
 							google.maps.event.addListener(weather_marker, 'click', function() {
+								for (var i = 0; i < inforWindowList.length; i++) {
+									inforWindowList[i].close();
+								}
 								infowindow.open(map,weather_marker);
 							});
 							weather_markers.push(weather_marker);
@@ -466,12 +548,8 @@ function menu(map)
 		$("#camera_information_button").attr('class', 'button chosen_mode');
 		$("#parking_information_button").attr('class', 'button');
 		// remove other markers
-		for (var i = 0; i < parking_markers.length; i++) {
-			parking_markers[i].setMap(null);
-		}
-		for (var i = 0; i < weather_markers.length; i++) {
-			weather_markers[i].setMap(null);
-		}
+		for (j=0; j<markerList.length; j++)
+			markerList[j].setMap(null);
 		
 		// get camera info if uninitiazation
 		if (camera_markers.length === 0)
@@ -502,16 +580,22 @@ function menu(map)
 								title: name,
 								icon: 'images/camera_map_icon.png'
 							});
+							markerList.push(camera_marker);
+							
 							
 							var contentString = '<div style="width:170px;height:100px;">'+
 							  '<b>' + name + '</b>'+
 							  '<p><img src="' + img_src + '" style="width:70px;height:50px;" /></p>'+
 							  '</div>';
-
+							
 							  var infowindow = new google.maps.InfoWindow({
 								  content: contentString
 							  });
+							inforWindowList.push(infowindow);
 							google.maps.event.addListener(camera_marker, 'click', function() {
+								for (var i = 0; i < inforWindowList.length; i++) {
+									inforWindowList[i].close();
+								}
 								infowindow.open(map,camera_marker);
 							});
 							camera_markers.push(camera_marker);
@@ -542,12 +626,8 @@ function menu(map)
 		$("#camera_information_button").attr('class', 'button');
 		$("#parking_information_button").attr('class', 'button chosen_mode');
 		// remove other markers
-		for (var i = 0; i < camera_markers.length; i++) {
-			camera_markers[i].setMap(null);
-		}
-		for (var i = 0; i < weather_markers.length; i++) {
-			weather_markers[i].setMap(null);
-		}
+		for (j=0; j<markerList.length; j++)
+			markerList[j].setMap(null);
 		
 		// get parking info if uninitiazation
 		if (parking_markers.length === 0)
@@ -575,6 +655,7 @@ function menu(map)
 							title: name,
 							icon: 'images/parking_map_icon.png'
 						});
+						markerList.push(parking_marker);
 						var contentString = '<div style="width:170px;height:120px;">'+
 						  '<b>' + name + '</b>'+
 						  '<p>' + description + '</p>'+
@@ -584,7 +665,11 @@ function menu(map)
 						  var infowindow = new google.maps.InfoWindow({
 							  content: contentString
 						  });
+						inforWindowList.push(infowindow);
 						google.maps.event.addListener(parking_marker, 'click', function() {
+							for (var i = 0; i < inforWindowList.length; i++) {
+								inforWindowList[i].close();
+							}
 							infowindow.open(map,parking_marker);
 						});
 						parking_markers.push(parking_marker);

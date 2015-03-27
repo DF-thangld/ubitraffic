@@ -1,4 +1,4 @@
-response:
+route response:
 	response.routes[0].legs[0].start_address: start address
 	response.routes[0].legs[0].end_address: end address
 	response.routes[0].legs[0].distance.text: distance in kilometer
@@ -13,3 +13,16 @@ response:
 	response.routes[0].legs[0].steps[0].transit.arrival_time.text: estimation time for bus arrival
 	response.routes[0].legs[0].steps[0].transit.departure_stop.name: name of the destination bus stop
 	response.routes[0].legs[0].steps[0].transit.departure_time.text: estimation time for bus come
+	
+place response:
+	name
+	vicinity: address
+	formatted_address
+	formatted_phone_number
+	website
+	rating
+	user_ratings_total
+	opening_hours
+		open_now: true/false
+		weekday_text[0]
+	
