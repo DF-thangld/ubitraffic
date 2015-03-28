@@ -1,0 +1,1878 @@
+stop_id,stop_code,stop_name,stop_desc,stop_lat,stop_lon,zone_id,stop_url,location_type,parent_station,stop_timezone
+120523,1749,Tuulikintie E,,65.062829,25.486939,2,,0,,Europe/Helsinki
+120804,2119,Kastellinpolku P,,65.00788900000002,25.53376,2,,0,,Europe/Helsinki
+148101,2367,Kärppä taimi E,,64.974536,25.637025,2,,0,,Europe/Helsinki
+101617,1415,Mannintie P,,65.170739,25.594585,4,,0,,Europe/Helsinki
+101287,1897,Parolanmäki P,,65.03294,26.046305,4,,0,,Europe/Helsinki
+121055,2445,Jousenkaari E,,64.96558400000002,25.537644,2,,0,,Europe/Helsinki
+184252,1183,Maalismaantie P,,65.313344,25.687902,5,,0,,Europe/Helsinki
+120912,2265,Tinatie E,,64.99207800000002,25.50614,2,,0,,Europe/Helsinki
+98747,2805,Rova th E,,64.868963,25.869047,4,,0,,Europe/Helsinki
+120512,1738,Veitikka E,,65.065421,25.420096,2,,0,,Europe/Helsinki
+121024,2409,Turkkitie E,,64.971327,25.519666,2,,0,,Europe/Helsinki
+101550,1740,Hiirenvirna E,,65.065587,25.411988,2,,0,,Europe/Helsinki
+120972,2340,Jatulikiventie P,,64.98096200000002,25.574876,2,,0,,Europe/Helsinki
+120628,1885,Leväsuontie P,,65.03962900000002,25.578369,2,,0,,Europe/Helsinki
+184041,2131,Virastotalo E,,65.010214,25.465102,2,,0,,Europe/Helsinki
+120090,1289,Repolantie E,,65.213011,25.307506,3,,0,,Europe/Helsinki
+101048,2573,Vihiluoto P,,64.942598,25.453022,3,,0,,Europe/Helsinki
+120693,1990,Valtatie P,,65.026974,25.464373,2,,0,,Europe/Helsinki
+150359,1272,Kalliomäki E,,65.22407200000002,25.342893,3,,0,,Europe/Helsinki
+120488,1714,Vesipääskyntie E,,65.069008,25.517241,2,,0,,Europe/Helsinki
+150063,2825,Riikonen E,,64.862366,25.60548,3,,0,,Europe/Helsinki
+120386,1607,Jäälihalli P,,65.09262,25.689448,3,,0,,Europe/Helsinki
+101531,1536,Kalimensilta P,,65.125948,25.361324,3,,0,,Europe/Helsinki
+148002,2948,Nikula th P,,64.819496,25.601001,4,,0,,Europe/Helsinki
+150318,1407,Herralankuja E,,65.177035,25.348564,3,,0,,Europe/Helsinki
+101747,1064,Pohjukkaoja P,,65.364751,25.80203,5,,0,,Europe/Helsinki
+184615,3004,Pitkäkoski E,,64.808562,25.452798,4,,0,,Europe/Helsinki
+101518,1427,Viikki E,,65.16723500000002,25.347446,3,,0,,Europe/Helsinki
+98709,2425,Heikkilänsaari E,,64.96664,25.629063,2,,0,,Europe/Helsinki
+120703,2001,Hintanmutka P,,65.024763,25.525428,2,,0,,Europe/Helsinki
+120525,1751,Tapiontie E,,65.062821,25.478269,2,,0,,Europe/Helsinki
+120860,2198,Karjaportti P,,65.001072,25.491453,2,,0,,Europe/Helsinki
+169631,2515,Poikuekuja P,,64.954131,25.536131,2,,0,,Europe/Helsinki
+152861,2288,Kassinen E,,64.983218,25.96276,4,,0,,Europe/Helsinki
+120722,2025,Yrjänäntie E,,65.02322100000002,25.530988,2,,0,,Europe/Helsinki
+101679,1053,Yli-Iin keskusta E,,65.373227,25.844049,5,,0,,Europe/Helsinki
+120808,2124,OYS B1,,65.00808000000002,25.520304,2,,0,,Europe/Helsinki
+120119,1323,Haukiputaan ammattikoulu E,,65.194024,25.411515,4,,0,,Europe/Helsinki
+98471,1987,Typpitie P,,65.027174,25.512518,2,,0,,Europe/Helsinki
+191117,1193,Timpurintie E,,65.31617,25.388236,4,,0,,Europe/Helsinki
+148005,2963,Ängeslevä th E,,64.815373,25.609006,4,,0,,Europe/Helsinki
+307189,3321,Ritakierros E,,65.08380833,25.45384167,2,,0,,Europe/Helsinki
+148241,2309,Taimikko E,,64.984738,25.620677,2,,0,,Europe/Helsinki
+150157,2580,Pitkäkankaantie E,,64.94142,25.39673,3,,0,,Europe/Helsinki
+120963,2330,Snellmankoti P,,64.98382700000002,25.492192,2,,0,,Europe/Helsinki
+164187,3122,Mesaanitie P,,65.031198,25.433096,2,,0,,Europe/Helsinki
+120776,2085,Kuvernööri P,,65.015044,25.475984,2,,0,,Europe/Helsinki
+120949,2316,Kurrenkuja E,,64.984576,25.514971,2,,0,,Europe/Helsinki
+189734,2141,Anttilantie P,,65.00449,25.713935,3,,0,,Europe/Helsinki
+305705,2073,Kanervatie E,,65.015908,25.551034,2,,0,,Europe/Helsinki
+183955,3174,Pesätie P,,64.952362,25.536037,2,,0,,Europe/Helsinki
+188495,1968,Hintta E,,65.029298,25.524965,2,,0,,Europe/Helsinki
+148010,3040,Salosentie P,,64.789586,25.627837,4,,0,,Europe/Helsinki
+191212,2720,Hepo-oja P,,64.906741,25.833421,3,,0,,Europe/Helsinki
+120892,2235,Hanhitie E,,64.99578,25.495185,2,,0,,Europe/Helsinki
+101664,1659,Huttukylä th E,,65.078597,25.848463,3,,0,,Europe/Helsinki
+150156,2602,Oulunsalo ry P,,64.939547,25.39773,3,,0,,Europe/Helsinki
+148046,2941,Toivolakoti P,,64.81711039759502,26.03101747076533,4,,0,,Europe/Helsinki
+148170,2746,Ehtiäisentie E,,64.899308,25.845382,3,,0,,Europe/Helsinki
+120371,1591,Valkoherukkatie P,,65.100314,25.41445,2,,0,,Europe/Helsinki
+101055,2629,Lentäjäntie E,,64.93186900000002,25.385457,3,,0,,Europe/Helsinki
+101625,1450,Rasi P,,65.14747300000002,25.651736,3,,0,,Europe/Helsinki
+148450,1341,Huvipolku E,,65.192816,25.351874,3,,0,,Europe/Helsinki
+184237,1122,Naurua E,,65.331163,25.727158,5,,0,,Europe/Helsinki
+120980,2352,Kangasrinne P,,64.978842,25.582192,2,,0,,Europe/Helsinki
+120617,1867,Huurrekuja E,,65.04182900000002,25.601419,2,,0,,Europe/Helsinki
+184155,3234,Kurkelantie E,,65.018737,25.51216,1,,0,,Europe/Helsinki
+98472,1975,Hintta P,,65.028693,25.523683,2,,0,,Europe/Helsinki
+101049,2574,Vihiluoto E,,64.942246,25.45025,3,,0,,Europe/Helsinki
+150392,1234,Kaisto P (EP),,65.297348,25.627293,4,,0,,Europe/Helsinki
+150062,2821,Riikonen P,,64.86357,25.604701,3,,0,,Europe/Helsinki
+171797,2490,Oulunlahti E,,64.960956,25.50254,2,,0,,Europe/Helsinki
+189674,2637,Lapinkankaan koulu E,,64.925086,25.800616,3,,0,,Europe/Helsinki
+101320,1928,Ylikiimingin kirkko E2,,65.028355,26.125307,4,,0,,Europe/Helsinki
+120773,2082,Peltola P,,65.013021,25.5265,2,,0,,Europe/Helsinki
+148430,1361,Pentintie P,,65.184006,25.490981,4,,0,,Europe/Helsinki
+120378,1598,Holopaisenkuja P,,65.097055,25.419304,2,,0,,Europe/Helsinki
+187923,2914,Jokivainio P,,64.836500385807,25.20015806168924,4,,0,,Europe/Helsinki
+148258,2116,Kyhälä E,,65.004333,25.832494,3,,0,,Europe/Helsinki
+120552,1778,Elektroniikkatie 3E,,65.060242,25.439443,2,,0,,Europe/Helsinki
+120626,1876,Menninkäisentie E,,65.043229,25.479259,2,,0,,Europe/Helsinki
+121174,2591,Teeritie P,,64.940569,25.371182,3,,0,,Europe/Helsinki
+120928,2289,Mäntyrinne P,,64.98791900000002,25.564164,2,,0,,Europe/Helsinki
+307142,3368,Pirttilä E,,64.940276,25.560498,2,,0,,Europe/Helsinki
+120461,1687,Possakan th P,,65.07490300000002,25.427677,2,,0,,Europe/Helsinki
+98492,1700,Välikuja E,,65.070036,25.652572,3,,0,,Europe/Helsinki
+120876,2215,Kotkantie E,,64.997978,25.511238,2,,0,,Europe/Helsinki
+120302,1507,Sammalkuja P,,65.12864,25.76266,3,,0,,Europe/Helsinki
+101733,1096,H Ylitalo E,,65.342626,25.71434,5,,0,,Europe/Helsinki
+120485,1711,Kuivasoja E,,65.072059,25.408116,2,,0,,Europe/Helsinki
+120393,1614,Kehätie E,,65.09139500000002,25.695018,3,,0,,Europe/Helsinki
+101054,2628,Lentäjäntie P,,64.931736,25.385571,3,,0,,Europe/Helsinki
+120736,2041,Toivoniemi E,,65.021996,25.467969,2,,0,,Europe/Helsinki
+150247,1814,Syynimaa E,,65.051659,25.477143,2,,0,,Europe/Helsinki
+120569,1799,Pohjantie E,,65.055705,25.455261,2,,0,,Europe/Helsinki
+101072,2465,Niemenväli P,,64.965811,25.365094,3,,0,,Europe/Helsinki
+148435,1352,Onkamo th E,,65.188754,25.466432,4,,0,,Europe/Helsinki
+148243,2276,Joutsensuo E,,64.988496,25.648076,2,,0,,Europe/Helsinki
+189253,3330,Ilmarinkatu P,,65.001539,25.468633,1,,0,,Europe/Helsinki
+148458,1308,Martinniementie P,,65.203903,25.336206,3,,0,,Europe/Helsinki
+147997,2897,Peräoja E,,64.834999,25.576533,4,,0,,Europe/Helsinki
+101528,1517,Isohätälä E,,65.131715,25.357922,3,,0,,Europe/Helsinki
+153090,2966,Niemelä E,,64.818907,25.315922,4,,0,,Europe/Helsinki
+189273,3336,Ouluntullin ramppi E,,64.939849,25.53708,2,,0,,Europe/Helsinki
+101659,1562,Sinkontie P,,65.11043600000002,25.809894,3,,0,,Europe/Helsinki
+184245,1191,Raasakka E,,65.315428,25.514185,4,,0,,Europe/Helsinki
+120538,1764,Elektroniikkatie 4P,,65.060323,25.439545,2,,0,,Europe/Helsinki
+164186,3119,Mesaanitie E,,65.031359,25.432237,2,,0,,Europe/Helsinki
+98497,1640,Peltotie P,,65.085034,25.672487,3,,0,,Europe/Helsinki
+171808,2320,Äimärautio P,,64.98544800000002,25.475974,2,,0,,Europe/Helsinki
+120822,2151,Ratakatu P,,65.00718000000002,25.483325,2,,0,,Europe/Helsinki
+14040,9013,Runttilantie P,,65.088249,25.832327,3,,0,,Europe/Helsinki
+190173,2710,Kirkonmäki E,,64.914164,25.486764,3,,0,,Europe/Helsinki
+307210,1957,Loimukoivunpuisto E,,65.03179657000167,25.56042662487392,2,,0,,Europe/Helsinki
+120442,1668,Jalopuuntie E,,65.079199,25.410581,2,,0,,Europe/Helsinki
+120916,2269,Kallisensuora P,,64.99271400000002,25.465344,2,,0,,Europe/Helsinki
+101676,1058,Halajärventie P,,65.368757,25.825624,5,,0,,Europe/Helsinki
+147970,2998,Niittypirtti E,,64.81147300000002,25.419955,4,,0,,Europe/Helsinki
+169661,3097,Muinaisranta P,,64.83630700000002,25.678349,4,,0,,Europe/Helsinki
+120828,2161,Isterintie E,,65.003768,25.547133,2,,0,,Europe/Helsinki
+101718,1135,Niskala th E,,65.323519,25.647563,5,,0,,Europe/Helsinki
+101279,1952,Siltala P,,65.02700400000002,25.994526,4,,0,,Europe/Helsinki
+184624,2975,Virkkula E,,64.816444,25.327469,4,,0,,Europe/Helsinki
+101746,1065,Pohjukkaoja E,,65.36469700000002,25.798615,5,,0,,Europe/Helsinki
+120638,1906,Tervahovintie P,,65.040038,25.460181,2,,0,,Europe/Helsinki
+190296,1559,Vaajatie P,,65.118753,25.336913,3,,0,,Europe/Helsinki
+120603,1845,Rantakoskela P,,65.04692300000002,25.479027,2,,0,,Europe/Helsinki
+147994,2876,Rajakorven th P,,64.845286,25.54926,4,,0,,Europe/Helsinki
+101621,1442,Hurunmäki P,,65.154917,25.617068,3,,0,,Europe/Helsinki
+120852,2190,Radiomastontie P,,65.00164700000002,25.530265,2,,0,,Europe/Helsinki
+148011,3042,Salosentie E,,64.78879000000002,25.628171,4,,0,,Europe/Helsinki
+120387,1608,Jäälihalli E,,65.093271,25.685905,3,,0,,Europe/Helsinki
+186175,3319,Rita-aukio E,,65.08050278,25.45312222,2,,0,,Europe/Helsinki
+150060,2817,Rasila P,,64.867074,25.597599,3,,0,,Europe/Helsinki
+148098,2337,Eskelisentie P,,64.979716,25.626699,2,,0,,Europe/Helsinki
+101495,1259,Saanionpolku P,,65.251569,25.353498,3,,0,,Europe/Helsinki
+120986,2359,Kivipellon aukio P,,64.977563,25.586348,2,,0,,Europe/Helsinki
+188493,1976,Typpitie E,,65.027404,25.512272,2,,0,,Europe/Helsinki
+189530,2919,Tyrnävän th P,,64.824007,25.937719,4,,0,,Europe/Helsinki
+307143,3364,Vedenneidontie P,,64.93498,25.564713,3,,0,,Europe/Helsinki
+184134,3255,Tullikirjurinraitti E,,65.005476,25.472684,1,,0,,Europe/Helsinki
+101016,2958,Mikkola E,,64.820775,25.27307,4,,0,,Europe/Helsinki
+101297,1926,Makasiinikangas E,,65.02853500000002,26.140857,4,,0,,Europe/Helsinki
+98755,2840,Keränen E,,64.85281500000002,25.896291,4,,0,,Europe/Helsinki
+148434,1355,Harjunkangas P,,65.187373,25.471743,4,,0,,Europe/Helsinki
+101051,2609,Oulunsalon museo P,,64.936484,25.417585,3,,0,,Europe/Helsinki
+152760,1841,Polvisuontie P,,65.045596,25.64718,2,,0,,Europe/Helsinki
+101547,1671,Keskuskatu E,,65.078262,25.408468,2,,0,,Europe/Helsinki
+120934,2295,Vaskitie E,,64.989415,25.507221,2,,0,,Europe/Helsinki
+152885,2429,Paasilanmäki E,,64.95898,26.00072,4,,0,,Europe/Helsinki
+148452,1327,Siikasaari E,,65.194641,25.34815,3,,0,,Europe/Helsinki
+120784,2097,Välkkylä P,,65.011392,25.498888,2,,0,,Europe/Helsinki
+120287,1492,Viitanmäki E,,65.131179,25.765951,3,,0,,Europe/Helsinki
+120656,1937,Alppila P,,65.034983,25.465016,2,,0,,Europe/Helsinki
+101724,1117,Suoranpää E,,65.333859,25.68177,5,,0,,Europe/Helsinki
+101075,2413,Heikola P,,64.971848,25.346235,3,,0,,Europe/Helsinki
+120981,2353,Kangasrinne E,,64.978743,25.582176,2,,0,,Europe/Helsinki
+184249,1203,Patosillan th E,,65.31316,25.532698,4,,0,,Europe/Helsinki
+171805,2364,Karhunkedontie P,,64.978668,25.485936,2,,0,,Europe/Helsinki
+120786,2098,Raksila P,,65.011819,25.490549,2,,0,,Europe/Helsinki
+101700,1138,Yliranta E,,65.324671,25.494647,4,,0,,Europe/Helsinki
+120498,1724,Hanhikkitie P,,65.06867200000002,25.429767,2,,0,,Europe/Helsinki
+120959,2326,Patamäen koulu E,,64.983245,25.582891,2,,0,,Europe/Helsinki
+101744,1067,Puolakka E,,65.364221,25.789631,5,,0,,Europe/Helsinki
+98743,2792,Tuomi talli E,,64.880074,25.84988,4,,0,,Europe/Helsinki
+150269,1468,Hautakangas P,,65.14052100000002,25.629945,3,,0,,Europe/Helsinki
+190228,2448,Santaniemi E,,64.967877,25.25749,3,,0,,Europe/Helsinki
+101291,1892,Tielaitos P,,65.031921,26.101907,4,,0,,Europe/Helsinki
+101605,1375,Pirttikoski P,,65.181106,25.525023,4,,0,,Europe/Helsinki
+184622,3101,Rehu E,,65.193316,25.438126,4,,0,,Europe/Helsinki
+120891,2234,Merikotka E,,64.99532600000002,25.515243,2,,0,,Europe/Helsinki
+152733,1520,Kiimingin yläaste P,,65.126248,25.784967,3,,0,,Europe/Helsinki
+101298,1927,Makasiinikangas P,,65.02845600000002,26.141072,4,,0,,Europe/Helsinki
+152848,2257,Metsälä P,,64.98685500000002,25.932742,4,,0,,Europe/Helsinki
+148479,1552,Virpiniemen th P,,65.121871,25.343875,3,,0,,Europe/Helsinki
+120750,2055,Värtöntie P,,65.019509,25.520329,2,,0,,Europe/Helsinki
+120328,1541,Autokuja E,,65.12003900000002,25.741274,3,,0,,Europe/Helsinki
+101312,2243,Seluskajärvi th P,,64.98821700000002,26.045102,4,,0,,Europe/Helsinki
+101059,2719,Tiilitie P,,64.912391,25.497663,3,,0,,Europe/Helsinki
+120496,1722,Karjakenttä P,,65.06817700000002,25.490653,2,,0,,Europe/Helsinki
+120086,1283,Laitakarintie P,,65.216516,25.300078,3,,0,,Europe/Helsinki
+101743,1075,Keskikylä P,,65.359816,25.781775,5,,0,,Europe/Helsinki
+97778,2835,Ojala P,,64.855256,25.91112,4,,0,,Europe/Helsinki
+120741,2046,Koivumaantien ostoskeskus P,,65.019639,25.551914,2,,0,,Europe/Helsinki
+121108,2504,Siipikuja P,,64.958559,25.5303,2,,0,,Europe/Helsinki
+120612,1862,Kivennuoli P,,65.044442,25.484733,2,,0,,Europe/Helsinki
+120793,2105,Kastellinhäkki P,,65.009602,25.525341,2,,0,,Europe/Helsinki
+307148,3361,Satumaantie E,,64.927216,25.559971,3,,0,,Europe/Helsinki
+101590,2729,Vanhapappila E,,64.907526,25.520712,3,,0,,Europe/Helsinki
+101023,2967,Niemelä P,,64.819242,25.314596,4,,0,,Europe/Helsinki
+98710,2440,Sivutie th P,,64.964333,25.633776,2,,0,,Europe/Helsinki
+120976,2346,Snellmanintie E,,64.98153600000002,25.497109,2,,0,,Europe/Helsinki
+120360,1578,Kuokkamaa E,,65.110688,25.343422,3,,0,,Europe/Helsinki
+148009,3037,Kasvi E,,64.793245,25.624873,4,,0,,Europe/Helsinki
+153128,3005,Liminka yläaste P,,64.81054,25.414051,4,,0,,Europe/Helsinki
+120764,2072,Uimaranta E,,65.01451,25.548459,2,,0,,Europe/Helsinki
+183979,3186,Otsonkuja E,,64.97913200000002,25.516947,2,,0,,Europe/Helsinki
+184250,1213,Paasonperä P,,65.311297,25.481317,4,,0,,Europe/Helsinki
+148182,2788,Päivärinne P,,64.882178,25.869272,4,,0,,Europe/Helsinki
+120396,1617,Timolantie E,,65.094462,25.420181,2,,0,,Europe/Helsinki
+120423,1645,Kaijantie E,,65.088622,25.41087,2,,0,,Europe/Helsinki
+120817,2144,Kastellin kirkko P,,65.006567,25.539771,2,,0,,Europe/Helsinki
+188505,1858,Korvensuora E,,65.04401300000002,25.572402,2,,0,,Europe/Helsinki
+120081,1274,Mustakangas E,,65.224586,25.302874,3,,0,,Europe/Helsinki
+150096,3046,Haarankauppa P,,64.784403,25.691721,4,,0,,Europe/Helsinki
+101507,1338,Keiska P,,65.19312,25.364904,3,,0,,Europe/Helsinki
+148054,2904,Perhekoti P,,64.826725,26.047541,4,,0,,Europe/Helsinki
+101612,1397,Hanhela E,,65.175136,25.565285,4,,0,,Europe/Helsinki
+183963,3178,Ostomiehentie P,,64.94781,25.542063,2,,0,,Europe/Helsinki
+189251,3262,Alasintie P,,64.998746,25.467414,1,,0,,Europe/Helsinki
+101308,2450,Oulu th P,,64.957309,26.015217,4,,0,,Europe/Helsinki
+231429,3049,Ala-Temmeksen koulu P,,64.781814,25.547454,4,,0,,Europe/Helsinki
+148465,1292,Martinniemen koulu E,,65.210819,25.315254,3,,0,,Europe/Helsinki
+171807,2347,Joulumerkinpolku P,,64.981077,25.483702,2,,0,,Europe/Helsinki
+120835,2168,Hakakatu P,,65.004599,25.489833,2,,0,,Europe/Helsinki
+120329,1542,Autokuja P,,65.120822,25.743729,3,,0,,Europe/Helsinki
+120375,1595,Seelannintie P,,65.098994,25.419444,2,,0,,Europe/Helsinki
+101034,3009,Niskanen E,,64.81139,25.377366,4,,0,,Europe/Helsinki
+101281,1939,Paakki E,,65.02704,26.006748,4,,0,,Europe/Helsinki
+98508,1549,Viitantie E,,65.116601,25.738839,3,,0,,Europe/Helsinki
+307193,3322,Klippatie E,,65.08431389,25.44672778,2,,0,,Europe/Helsinki
+120756,2061,Kuparilammintie P,,65.017144,25.543478,2,,0,,Europe/Helsinki
+120948,2315,Metsänkuninkaantie P,,64.985034,25.512276,2,,0,,Europe/Helsinki
+121063,2456,Sanginsuun koulu P,,64.962634,25.676142,3,,0,,Europe/Helsinki
+186809,3328,Närhintie P,,65.009749,25.52762,2,,0,,Europe/Helsinki
+183951,3169,Ulkometsäntie E,,64.950821,25.555507,2,,0,,Europe/Helsinki
+164367,3106,Nupputie E,,65.072948,25.459705,2,,0,,Europe/Helsinki
+120777,2087,Toripakka E,,65.013311,25.469613,2,,0,,Europe/Helsinki
+500101,10004,Kontinkangas,,65.010855394714,25.51351095814217,1,,0,,Europe/Helsinki
+120537,1763,Yliopiston eläintarha P,,65.061761,25.458842,2,,0,,Europe/Helsinki
+121121,2519,Porttiväylän alikulku P,,64.954903,25.524405,2,,0,,Europe/Helsinki
+152886,2430,Paasilanmäki P,,64.95907800000002,26.000589,4,,0,,Europe/Helsinki
+120455,1681,Kuuselantie E,,65.077101,25.398012,2,,0,,Europe/Helsinki
+150052,2793,Keinäsentie P,,64.883473,25.572067,3,,0,,Europe/Helsinki
+148437,1331,Jokikylän th E,,65.192947,25.451838,4,,0,,Europe/Helsinki
+150394,1240,Päkkilä E,,65.29588,25.633587,4,,0,,Europe/Helsinki
+184256,1224,Rajala P,,65.303567,25.54908,4,,0,,Europe/Helsinki
+188497,1931,Porotie P,,65.033695,25.540665,2,,0,,Europe/Helsinki
+98751,2819,Männikkö E,,64.862196,25.887576,4,,0,,Europe/Helsinki
+121163,2577,Pitkämäki E,,64.943652,25.382378,3,,0,,Europe/Helsinki
+307173,1610,Laivakankaan koulu P,,65.083848,25.704131,3,,0,,Europe/Helsinki
+148436,1343,Onkamo th P,,65.18942300000002,25.4643,4,,0,,Europe/Helsinki
+101674,1059,Kiimingin th P,,65.366933,25.818289,5,,0,,Europe/Helsinki
+101290,1896,Linnakekuja P,,65.031797,26.058338,4,,0,,Europe/Helsinki
+101548,1708,Kuivasojan koulu P,,65.072739,25.409627,2,,0,,Europe/Helsinki
+97679,3039,Juotto P,,64.79292700000002,25.535264,4,,0,,Europe/Helsinki
+120372,1592,Vaapukkatie E,,65.101016,25.409598,2,,0,,Europe/Helsinki
+120964,2331,Snellmankoti E,,64.98312,25.492295,2,,0,,Europe/Helsinki
+150355,1267,Ukkolanperän th E2,,65.229501,25.360988,3,,0,,Europe/Helsinki
+148013,3050,Härmä E,,64.779707,25.641376,4,,0,,Europe/Helsinki
+120356,1574,Alavainio P,,65.11182700000002,25.348269,3,,0,,Europe/Helsinki
+120614,1864,Tullimiehentie P,,65.04521,25.444209,2,,0,,Europe/Helsinki
+164363,3105,Alatalontie P,,65.07233100000002,25.480022,2,,0,,Europe/Helsinki
+120397,1618,Kukkulatie E,,65.08891800000002,25.692821,3,,0,,Europe/Helsinki
+101068,2525,Hailuodon risteys P,,64.956163,25.384544,3,,0,,Europe/Helsinki
+188518,2701,Pirilä P,,64.916173,25.48756,3,,0,,Europe/Helsinki
+171795,2514,Lentokentän th P,,64.956307,25.505023,2,,0,,Europe/Helsinki
+183977,3195,Palhokuja P,,65.071365,25.447104,2,,0,,Europe/Helsinki
+101546,1670,Keskuskatu P,,65.07884,25.408816,2,,0,,Europe/Helsinki
+150146,2853,Oikotie th P,,64.85484700000002,25.488708,4,,0,,Europe/Helsinki
+120595,1828,Tuhtotie E,,65.04856100000002,25.446371,2,,0,,Europe/Helsinki
+120861,2199,Kollaanpuisto E,,65.00182,25.480321,2,,0,,Europe/Helsinki
+121199,2623,Riisikuja E,,64.933628,25.402102,3,,0,,Europe/Helsinki
+120717,2018,Kaplastie P,,65.022176,25.55914,2,,0,,Europe/Helsinki
+101630,1451,Kanniainen E,,65.144977,25.666508,3,,0,,Europe/Helsinki
+231430,3038,Juotto E,,64.792047,25.536995,4,,0,,Europe/Helsinki
+190187,1878,Ukkolanmäki P,,65.032904,26.090837,4,,0,,Europe/Helsinki
+120691,1988,Hoikantie P,,65.025851,25.497757,2,,0,,Europe/Helsinki
+101675,1057,Halajärventie E,,65.368586,25.82432,5,,0,,Europe/Helsinki
+101036,3023,Myllykuja E,,64.808148,25.392719,4,,0,,Europe/Helsinki
+190193,2556,Virtaoja P,,64.946821,25.517275,2,,0,,Europe/Helsinki
+148146,2630,Savikunnaksentie P,,64.92697200000002,25.796494,3,,0,,Europe/Helsinki
+190203,9016,Oikoreitti E,,65.07015800000002,25.855757,3,,0,,Europe/Helsinki
+148442,1316,Aseman koulu E,,65.19867600000002,25.392609,3,,0,,Europe/Helsinki
+101278,1942,Rokkarannantie E,,65.02847,25.978002,4,,0,,Europe/Helsinki
+184144,3245,Kiviharjuntie E,,65.009335,25.508548,1,,0,,Europe/Helsinki
+98761,2888,Rönköntie E,,64.835753,25.910939,4,,0,,Europe/Helsinki
+101541,1609,Herukka E,,65.096523,25.403823,2,,0,,Europe/Helsinki
+120917,2270,Kallisensuora E,,64.992843,25.464806,2,,0,,Europe/Helsinki
+121323,2871,Simontaival P,,64.845244,25.663492,4,,0,,Europe/Helsinki
+120601,1843,Kornetintie P,,65.046281,25.612251,2,,0,,Europe/Helsinki
+98493,1701,Välikuja P,,65.070053,25.653379,3,,0,,Europe/Helsinki
+101035,3024,Myllykuja P,,64.808558,25.3908,4,,0,,Europe/Helsinki
+150050,2787,Kerttula P,,64.887492,25.562817,3,,0,,Europe/Helsinki
+188507,1859,Korvensuora P,,65.044415,25.575035,2,,0,,Europe/Helsinki
+190428,3338,Zeppelinin ramppi E,,64.905076,25.534263,3,,0,,Europe/Helsinki
+120884,2223,Höyhtyä P,,64.997661,25.484183,2,,0,,Europe/Helsinki
+101678,1055,Leuvanjoen th P,,65.371166,25.83547,5,,0,,Europe/Helsinki
+97699,2827,Tupos th P,,64.86412300000002,25.502785,4,,0,,Europe/Helsinki
+120730,2035,Metsotie E,,65.02084000000002,25.535193,2,,0,,Europe/Helsinki
+148474,1531,Kellon liikekeskus P,,65.12852,25.357842,3,,0,,Europe/Helsinki
+120899,2245,Knuutilankangas E,,64.993103,25.561278,2,,0,,Europe/Helsinki
+120766,2074,Erkkola P,,65.015525,25.52842,2,,0,,Europe/Helsinki
+152750,1804,Puuperäntie E,,65.05129100000002,25.629218,2,,0,,Europe/Helsinki
+152626,1155,Iin keskusta P,,65.322885,25.377759,4,,0,,Europe/Helsinki
+307214,1963,Kiulukangas E,,65.02744174302246,25.57394830108656,2,,0,,Europe/Helsinki
+98749,2812,Rova arola E,,64.865746,25.87897,4,,0,,Europe/Helsinki
+164365,3113,Silmutie E,,65.075572,25.460999,2,,0,,Europe/Helsinki
+189655,2667,Savikorpi E,,64.922827,25.496127,3,,0,,Europe/Helsinki
+301592,2832,Tupos liikenneympyrä E,,64.863269,25.479628,4,,0,,Europe/Helsinki
+120757,2062,Kuparilammintie E,,65.017125,25.543373,2,,0,,Europe/Helsinki
+120323,1534,Honkimaa E,,65.12202600000002,25.746164,3,,0,,Europe/Helsinki
+97722,1125,Koni th P,,65.333797,25.374683,4,,0,,Europe/Helsinki
+307147,3360,Tuhkimonkaarre P,,64.925761,25.558641,3,,0,,Europe/Helsinki
+147972,2651,Ollila th P,,64.92662,25.507586,3,,0,,Europe/Helsinki
+101554,1779,Pönkänkari P,,65.0596,25.427007,2,,0,,Europe/Helsinki
+101717,1145,Juutinen P,,65.321102,25.643181,5,,0,,Europe/Helsinki
+150061,2820,Rasila E,,64.866634,25.599415,3,,0,,Europe/Helsinki
+101740,1078,Kakko E,,65.351856,25.768029,5,,0,,Europe/Helsinki
+101517,1428,Viikki P,,65.167293,25.347847,3,,0,,Europe/Helsinki
+184150,3239,Jäähalli P,,65.009097,25.492824,1,,0,,Europe/Helsinki
+148156,2660,Riihipellontie P,,64.918236,25.816753,3,,0,,Europe/Helsinki
+120721,2024,Yrjänäntie P,,65.02345800000002,25.530465,2,,0,,Europe/Helsinki
+171800,2412,Vesalantie E,,64.970997,25.491178,2,,0,,Europe/Helsinki
+101221,3078,Vaaranmaa P,,64.762432,25.567284,4,,0,,Europe/Helsinki
+190223,2552,Karvolankuja E,,64.949384,25.39564,3,,0,,Europe/Helsinki
+191215,3082,Huovila P,,64.838932,25.929945,4,,0,,Europe/Helsinki
+101062,2691,Kempeleen yläaste,,64.917046,25.477238,3,,0,,Europe/Helsinki
+101708,1210,Piste E,,65.311354,25.580164,4,,0,,Europe/Helsinki
+171801,2411,Vesalantie P,,64.971585,25.490763,2,,0,,Europe/Helsinki
+101723,1120,Koivuranta P,,65.332683,25.671438,5,,0,,Europe/Helsinki
+148015,3057,Puronkari E,,64.773684,25.644853,4,,0,,Europe/Helsinki
+120374,1594,Seelannintie E,,65.09893,25.419363,2,,0,,Europe/Helsinki
+120974,2342,Jättikivenkatu E,,64.981835,25.569617,2,,0,,Europe/Helsinki
+150228,2649,Vasankangas E,,64.923993,25.760244,3,,0,,Europe/Helsinki
+120922,2281,Nuolihaukka E,,64.99127,25.526024,2,,0,,Europe/Helsinki
+187982,1852,Putaala P,,65.043108,25.685997,3,,0,,Europe/Helsinki
+191213,2731,Toivanen P,,64.902819,25.840034,3,,0,,Europe/Helsinki
+169646,2518,Emopolku P,,64.954612,25.529437,2,,0,,Europe/Helsinki
+101713,1217,Mettovaaran puutarha P,,65.309179,25.606686,4,,0,,Europe/Helsinki
+148476,1538,Häli P,,65.127179,25.350064,3,,0,,Europe/Helsinki
+190226,2417,Mustaniemi E,,64.972284,25.265315,3,,0,,Europe/Helsinki
+187990,1648,Leppiojantie E,,65.087865,25.408001,2,,0,,Europe/Helsinki
+120675,1964,Mittamiehentie E,,65.032708,25.464468,2,,0,,Europe/Helsinki
+188520,1296,Verstasmutka E,,65.209029,25.321245,3,,0,,Europe/Helsinki
+189724,2721,Hepo-oja E,,64.906678,25.833361,3,,0,,Europe/Helsinki
+120660,1945,Sirppitie E,,65.03313900000002,25.481235,2,,0,,Europe/Helsinki
+120318,1529,Sammaloja P,,65.125018,25.755352,3,,0,,Europe/Helsinki
+164185,3118,Toppilansaarentie E,,65.032492,25.42818,2,,0,,Europe/Helsinki
+189732,2877,Huovila E,,64.83885100000002,25.929822,4,,0,,Europe/Helsinki
+171799,2423,Oulunlahden koulu P,,64.968469,25.494857,2,,0,,Europe/Helsinki
+120873,2211,Rantasaarela P,,64.99788100000002,25.573042,2,,0,,Europe/Helsinki
+101715,1208,Jakkukylä P,,65.309968,25.618271,4,,0,,Europe/Helsinki
+307153,3293,Hallituskatu P,,65.011747,25.478864,1,,0,,Europe/Helsinki
+148187,2797,Mettäperäntie E,,64.875562,25.879257,4,,0,,Europe/Helsinki
+120566,1794,Palloiluhalli E,,65.05565900000002,25.474428,2,,0,,Europe/Helsinki
+120775,2084,Lävistäjä E,,65.013311,25.479328,2,,0,,Europe/Helsinki
+187927,2924,Taarinkuja P,,64.832542,25.217233,4,,0,,Europe/Helsinki
+153145,3021,Sunilantie P,,64.808764,25.404913,4,,0,,Europe/Helsinki
+148248,2138,Riihipirtintie E,,65.004463,25.720255,3,,0,,Europe/Helsinki
+101525,1476,Hekkalansaarentie P,,65.141407,25.354104,3,,0,,Europe/Helsinki
+98760,2881,Rönköntie P,,64.837424,25.908785,4,,0,,Europe/Helsinki
+101579,2608,Hakamaa P,,64.935109,25.512296,3,,0,,Europe/Helsinki
+120886,2229,Knuutilanranta P,,64.995869,25.558776,2,,0,,Europe/Helsinki
+120931,2292,Jalohaukka E,,64.988012,25.517641,2,,0,,Europe/Helsinki
+97715,1221,Shell Ii E,,65.30819700000002,25.374223,4,,0,,Europe/Helsinki
+150054,2796,Pyykönmutka P,,64.879525,25.579579,3,,0,,Europe/Helsinki
+190427,3337,Zeppelinin ramppi P,,64.904454,25.536684,3,,0,,Europe/Helsinki
+120641,1917,Tupasvillatie P,,65.036743,25.573916,2,,0,,Europe/Helsinki
+120842,2178,OYS asunnot P,,65.00280100000002,25.527169,2,,0,,Europe/Helsinki
+231893,2887,Ritolantie E,,64.833984,25.942952,4,,0,,Europe/Helsinki
+101673,1071,Yli-Iin vanhainkoti P,,65.362566,25.821988,5,,0,,Europe/Helsinki
+120883,2221,Karjasillan kirkko P,,64.997792,25.490005,2,,0,,Europe/Helsinki
+25888,2086,Franzen E,,65.01501500000002,25.473143,2,,0,,Europe/Helsinki
+120559,1787,Rakentajantie E,,65.056905,25.458591,2,,0,,Europe/Helsinki
+184164,3225,Myllytulli E,,65.016804,25.489376,1,,0,,Europe/Helsinki
+121094,2487,Kaakkurinojantie E,,64.960353,25.541274,2,,0,,Europe/Helsinki
+184457,1584,Koiteli P,,65.099885,25.811983,3,,0,,Europe/Helsinki
+189735,2259,Sorvo P,,64.98752500000002,25.891755,4,,0,,Europe/Helsinki
+148453,1328,Siikasaari P,,65.195581,25.347131,3,,0,,Europe/Helsinki
+184251,1214,Paasonperä E,,65.311369,25.481398,4,,0,,Europe/Helsinki
+120874,2212,Kotkantie P,,64.99805600000002,25.51365,2,,0,,Europe/Helsinki
+231891,2538,Paaso E,,64.946697,25.736703,3,,0,,Europe/Helsinki
+307199,3308,Saalistajantie E,,65.08958333,25.44471111,2,,0,,Europe/Helsinki
+181288,3271,Kuovintie E,,64.942219,25.372732,3,,0,,Europe/Helsinki
+307158,4004,Kuntolenkki P,,64.9959453448382,25.60323295909788,2,,0,,Europe/Helsinki
+98699,2194,Huuhkajapuisto E,,65.001672,25.515506,2,,0,,Europe/Helsinki
+150268,1467,Hautakangas E,,65.139815,25.629299,3,,0,,Europe/Helsinki
+150038,3013,Pajutie P,,64.808243,25.445427,4,,0,,Europe/Helsinki
+101058,2718,Tiilitie E,,64.912149,25.499515,3,,0,,Europe/Helsinki
+307139,2239,Tyrnäväntie E,,64.996054,25.458278,1,,0,,Europe/Helsinki
+120865,2203,Svaanintie P,,64.99997500000002,25.532647,2,,0,,Europe/Helsinki
+187981,3287,Rasilantie E 2,,65.043902,25.681499,3,,0,,Europe/Helsinki
+150081,2917,Huovinen E,,64.829911,25.679379,4,,0,,Europe/Helsinki
+120120,1324,Haukiputaan ammattikoulu P,,65.1946,25.410883,4,,0,,Europe/Helsinki
+307171,10001,Toripakka E City,,65.013311,25.469613,1,,0,,Europe/Helsinki
+101680,1054,Yli-Iin keskusta P,,65.37318,25.844261,5,,0,,Europe/Helsinki
+150224,2605,Väinölä P,,64.931917,25.747782,3,,0,,Europe/Helsinki
+150266,1487,Sipolanpisto E,,65.134453,25.623652,3,,0,,Europe/Helsinki
+184238,1123,Manninen E,,65.330493,25.691813,5,,0,,Europe/Helsinki
+148019,3066,Tyrnävän yläaste E,,64.765963,25.650159,4,,0,,Europe/Helsinki
+101307,2449,Oulu th E,,64.956411,26.014206,4,,0,,Europe/Helsinki
+169654,2583,Teeritie E,,64.941136,25.371296,3,,0,,Europe/Helsinki
+101519,1440,Annalankangas P,,65.161517,25.347994,3,,0,,Europe/Helsinki
+101496,1260,Saanionpolku E,,65.250413,25.352735,3,,0,,Europe/Helsinki
+188710,3329,Susitie P,,65.033137,25.474909,2,,0,,Europe/Helsinki
+121324,2872,Pikkarala th E,,64.844741,25.651439,4,,0,,Europe/Helsinki
+184453,2307,Äimärautio E,,64.985259,25.475921,2,,0,,Europe/Helsinki
+101293,1912,Ukonkangas P,,65.030124,26.11345,4,,0,,Europe/Helsinki
+120950,2317,Kurrenkuja P,,64.984461,25.515126,2,,0,,Europe/Helsinki
+120404,1626,Havutie E,,65.087268,25.710492,3,,0,,Europe/Helsinki
+120798,2111,Hellaakoski E,,65.010036,25.472218,2,,0,,Europe/Helsinki
+14038,9011,Halme P,,65.091619,25.826116,3,,0,,Europe/Helsinki
+169659,3095,Peuraniemi P,,64.831204,25.687574,4,,0,,Europe/Helsinki
+101275,1914,Hautasuo th P,,65.03114600000002,25.969261,4,,0,,Europe/Helsinki
+148120,2506,Turkantie E,,64.95425,25.716621,3,,0,,Europe/Helsinki
+307167,3109,Tuulipurto E,,64.83999300000002,25.6741,4,,0,,Europe/Helsinki
+120214,1419,Hukantie E,,65.173604,25.349055,3,,0,,Europe/Helsinki
+98740,2777,Viskaali th P,,64.88583,25.833295,4,,0,,Europe/Helsinki
+101226,3074,Keskikyläntie P,,64.762908,25.633919,4,,0,,Europe/Helsinki
+101283,1900,Wathen E,,65.032134,26.02288,4,,0,,Europe/Helsinki
+101699,1140,Ylirannan koulu E,,65.324292,25.483637,4,,0,,Europe/Helsinki
+120958,2325,Metsärinne P,,64.981903,25.58239,2,,0,,Europe/Helsinki
+120659,1944,Huonesuonpuisto P,,65.03371300000002,25.563846,2,,0,,Europe/Helsinki
+120850,2188,Lämsänjärventie P,,65.000899,25.552908,2,,0,,Europe/Helsinki
+183978,3185,Otsonkuja P,,64.979773,25.518225,2,,0,,Europe/Helsinki
+120615,1865,Ruoritie E,,65.044657,25.438464,2,,0,,Europe/Helsinki
+307138,2565,Pitkämäki P,,64.94355055893558,25.38474039882766,3,,0,,Europe/Helsinki
+101309,2308,Seluska E,,64.9787,26.04379,4,,0,,Europe/Helsinki
+120795,2108,OYS E,,65.0108,25.518753,2,,0,,Europe/Helsinki
+98707,2388,Heikkilänkankaan th E,,64.970911,25.613596,2,,0,,Europe/Helsinki
+120713,2013,Merikosken tasku E,,65.024726,25.469128,2,,0,,Europe/Helsinki
+164369,3107,Rantakukantie P,,65.071566,25.454385,2,,0,,Europe/Helsinki
+152634,1163,Iin keskusta E,,65.32282,25.377549,4,,0,,Europe/Helsinki
+150259,1702,Oinaantie P,,65.070644,25.524846,2,,0,,Europe/Helsinki
+189729,2804,Laivurintie E,,64.87035,25.887555,4,,0,,Europe/Helsinki
+152655,1185,Laakso P,,65.316495,25.373389,4,,0,,Europe/Helsinki
+120592,1825,Solmutie P,,65.048575,25.452042,2,,0,,Europe/Helsinki
+97672,3055,Marttila E,,64.776168,25.548052,4,,0,,Europe/Helsinki
+121248,2696,Kuunsilta P,,64.914446,25.559493,3,,0,,Europe/Helsinki
+190183,3155,Aumaharju E,,65.02931,26.01354,4,,0,,Europe/Helsinki
+148218,2906,Hartikka E,,64.82802700000002,25.974887,4,,0,,Europe/Helsinki
+147973,2652,Ollila th E,,64.92615600000002,25.50609,3,,0,,Europe/Helsinki
+101640,1508,Hakosuvanto E,,65.129265,25.713228,3,,0,,Europe/Helsinki
+120685,1980,Vaakunakylä P,,65.029671,25.441485,2,,0,,Europe/Helsinki
+101558,3223,Tulliväylä E,,65.015021,25.488671,1,,0,,Europe/Helsinki
+101731,1098,Karjalankylä E,,65.339221,25.70742,5,,0,,Europe/Helsinki
+120529,1755,Elektroniikkatie 7E,,65.063823,25.437916,2,,0,,Europe/Helsinki
+101317,1970,Murtomaa P,,65.02067700000002,26.11773,4,,0,,Europe/Helsinki
+184172,3217,Valkealinna,,65.012835,25.474879,1,,0,,Europe/Helsinki
+101506,1305,Kuivalanperäntie E,,65.203153,25.362682,3,,0,,Europe/Helsinki
+121535,2009,Kalliola E,,65.02523100000002,25.487032,2,,0,,Europe/Helsinki
+120508,1734,Kerttulanpuisto E,,65.064968,25.506095,2,,0,,Europe/Helsinki
+189254,3331,Ilmarinkatu E,,65.00142200000002,25.468554,1,,0,,Europe/Helsinki
+121326,2878,Murron koulu P,,64.841903,25.670044,4,,0,,Europe/Helsinki
+101660,1571,Sinkontie E,,65.11004,25.809699,3,,0,,Europe/Helsinki
+120294,1499,Ukkola P,,65.129251,25.785853,3,,0,,Europe/Helsinki
+97724,1113,Sarkkinen P,,65.33987,25.368058,4,,0,,Europe/Helsinki
+148445,1325,Tuohilaakso P,,65.194503,25.37411,3,,0,,Europe/Helsinki
+101607,1373,Saarijärvi P,,65.180488,25.535218,4,,0,,Europe/Helsinki
+187997,1150,Myllytörmä E,,65.32229700000002,25.456775,4,,0,,Europe/Helsinki
+307157,4007,Suojuoksuntie E,,64.99750556,25.59729722,2,,0,,Europe/Helsinki
+190069,3124,Haapamaantie P,,64.89519,25.545277,3,,0,,Europe/Helsinki
+147975,2666,Savikorpi P,,64.92321200000002,25.496994,3,,0,,Europe/Helsinki
+148115,2494,Heikinniementie E,,64.956428,25.710209,3,,0,,Europe/Helsinki
+307159,4005,Kuntolenkki E,,64.9957113929004,25.60320220875516,2,,0,,Europe/Helsinki
+101615,1394,Kiimingin kunnanraja P,,65.174056,25.585767,4,,0,,Europe/Helsinki
+98705,2372,Juurus th E,,64.97316600000002,25.600474,2,,0,,Europe/Helsinki
+101688,1177,Iin terveyskeskus P,,65.31923500000002,25.408156,4,,0,,Europe/Helsinki
+120434,1658,Honkapirtti P,,65.084397,25.401593,2,,0,,Europe/Helsinki
+97680,3034,Huhta E,,64.796272,25.527023,4,,0,,Europe/Helsinki
+231166,2165,Raksilan urheilukeskus P,,65.005815,25.49566,2,,0,,Europe/Helsinki
+152421,3125,Kinnarinpalo P,,64.892882,25.557038,3,,0,,Europe/Helsinki
+101533,1556,Hietalanmäki P,,65.119458,25.375036,3,,0,,Europe/Helsinki
+101703,1137,Tiri P,,65.325065,25.508061,4,,0,,Europe/Helsinki
+148094,2261,Markkuu P,,64.990712,25.604262,2,,0,,Europe/Helsinki
+307149,2685,Haukkakaarto P,,64.91837013361328,25.55706400808505,3,,0,,Europe/Helsinki
+189252,3290,Alasintie E,,64.998807,25.467241,1,,0,,Europe/Helsinki
+101089,2336,Hirvonen P,,64.985875,25.262909,3,,0,,Europe/Helsinki
+120809,2126,Linja-autoasema P,,65.008839,25.484227,2,,0,,Europe/Helsinki
+120707,2006,Laamannintie E,,65.02371,25.513348,2,,0,,Europe/Helsinki
+97670,3060,Ketunmaan th E,,64.772588,25.548013,4,,0,,Europe/Helsinki
+120648,1924,Varsitie E,,65.038099,25.465283,2,,0,,Europe/Helsinki
+150042,3018,Kuormatie E,,64.808359,25.423253,4,,0,,Europe/Helsinki
+148192,2809,Rahko P,,64.86528800000002,25.895674,4,,0,,Europe/Helsinki
+120710,2011,Myllytie E,,65.025272,25.476886,2,,0,,Europe/Helsinki
+150067,2843,Heikkinen E,,64.856068,25.617869,3,,0,,Europe/Helsinki
+148257,2115,Kyhälä P,,65.004829,25.831709,3,,0,,Europe/Helsinki
+183967,3180,Savotta-aukio P,,64.944861,25.572923,2,,0,,Europe/Helsinki
+148222,2879,Koskela E,,64.835563,26.001359,4,,0,,Europe/Helsinki
+101503,1281,Taatanperän th P,,65.216599,25.36991,3,,0,,Europe/Helsinki
+97687,1368,Jokela P,,65.182876,25.500822,4,,0,,Europe/Helsinki
+101628,1447,Toivola E,,65.146254,25.66186,3,,0,,Europe/Helsinki
+120578,1811,Ruotutie P,,65.05151600000002,25.602229,2,,0,,Europe/Helsinki
+120317,1528,Sammaloja E,,65.125016,25.755118,3,,0,,Europe/Helsinki
+120531,1757,Elektroniikkatie 6P,,65.062155,25.4388,2,,0,,Europe/Helsinki
+307190,3320,Ritakierros P,,65.08387500000002,25.453825,2,,0,,Europe/Helsinki
+101559,3224,Tulliväylä P,,65.013538,25.486634,1,,0,,Europe/Helsinki
+150166,2529,Maksakuja P,,64.954561,25.38572,3,,0,,Europe/Helsinki
+120672,1961,Oravitie,,65.031682,25.470322,2,,0,,Europe/Helsinki
+190076,2938,Temmesjoki P,,64.82483000000002,25.453065,4,,0,,Europe/Helsinki
+189665,2918,Takalantie P,,64.822964,26.044284,4,,0,,Europe/Helsinki
+101727,1108,Alatalo P,,65.335928,25.690598,5,,0,,Europe/Helsinki
+171263,1250,Sorosenperän th E,,65.288387,25.372443,4,,0,,Europe/Helsinki
+150193,2735,Köykkyrintie E,,64.906126,25.54534,3,,0,,Europe/Helsinki
+150377,1167,Iin virastotalo E,,65.322835,25.369006,4,,0,,Europe/Helsinki
+150090,3000,Tulilanton th P,,64.806383,25.707242,4,,0,,Europe/Helsinki
+148059,2886,Jurvakainen P,,64.83237,26.059203,4,,0,,Europe/Helsinki
+189532,2971,Kellotie P,,64.80985200000002,25.983872,4,,0,,Europe/Helsinki
+120421,1643,Risuniitynkuja P,,65.08904200000002,25.41912,2,,0,,Europe/Helsinki
+101277,1941,Rokkarannantie P,,65.028646,25.977422,4,,0,,Europe/Helsinki
+190335,2982,Parras th E,,64.813423,25.487492,4,,0,,Europe/Helsinki
+98746,2806,Rova  P,,64.869828,25.867154,4,,0,,Europe/Helsinki
+120642,1918,Tupasvillatie E,,65.036388,25.572385,2,,0,,Europe/Helsinki
+120689,1983,Karttatie P,,65.02613,25.546851,2,,0,,Europe/Helsinki
+121013,2395,Lumijärventie P,,64.973233,25.508314,2,,0,,Europe/Helsinki
+186032,3314,Urpiaisentie P2,,65.07076600000002,25.519907,2,,0,,Europe/Helsinki
+101087,2348,Pajuniemi P,,64.983183,25.269059,3,,0,,Europe/Helsinki
+101013,2945,Letontie P,,64.823653,25.259846,4,,0,,Europe/Helsinki
+153144,3022,Sunilantie E,,64.8085,25.402887,4,,0,,Europe/Helsinki
+120911,2264,Nuolihaukka P,,64.991713,25.525448,2,,0,,Europe/Helsinki
+307137,2692,Koulutie,,64.917745,25.477551,3,,0,,Europe/Helsinki
+148062,2859,Leppiniemi E,,64.84355,26.042752,4,,0,,Europe/Helsinki
+120560,1788,Rakentajantie P,,65.05698,25.458863,2,,0,,Europe/Helsinki
+101539,1586,Oravaisenkuja P,,65.10411000000002,25.399409,2,,0,,Europe/Helsinki
+184147,3242,Ouluhalli E,,65.00727000000002,25.500911,1,,0,,Europe/Helsinki
+150095,3044,Korkala E,,64.786517,25.693449,4,,0,,Europe/Helsinki
+188499,1932,Porotie E,,65.034109,25.540791,2,,0,,Europe/Helsinki
+120422,1644,Risuniitynkuja E,,65.089112,25.419031,2,,0,,Europe/Helsinki
+150231,2681,Pikkarala P,,64.914411,25.765442,3,,0,,Europe/Helsinki
+101697,1148,Pakanen E,,65.323609,25.471958,4,,0,,Europe/Helsinki
+150194,2734,Köykkyrintie P,,64.90668,25.545056,3,,0,,Europe/Helsinki
+189721,2653,Pukkilantie P,,64.920597,25.811322,3,,0,,Europe/Helsinki
+101672,1070,Yli-Iin vanhainkoti E,,65.36241200000002,25.821759,5,,0,,Europe/Helsinki
+171362,2761,Leppäojantie P,,64.897808,25.52148,3,,0,,Europe/Helsinki
+150076,2883,Murto P,,64.840389,25.663333,4,,0,,Europe/Helsinki
+171361,2762,Leppäojantie E,,64.896691,25.521013,3,,0,,Europe/Helsinki
+184246,1204,Mökkiperä P,,65.313299,25.462,4,,0,,Europe/Helsinki
+184454,1263,Luukela P,,65.234105,25.360768,3,,0,,Europe/Helsinki
+184175,3214,Rotuaarinaukio,,65.012439,25.472102,1,,0,,Europe/Helsinki
+189256,3333,Ylikylä P,,64.895338,25.554442,3,,0,,Europe/Helsinki
+101229,3068,Tyrnävän kirkko E,,64.764962,25.656535,4,,0,,Europe/Helsinki
+120567,1795,Palloiluhalli P,,65.055785,25.474421,2,,0,,Europe/Helsinki
+148252,2135,Laukkala E,,65.004032,25.745572,3,,0,,Europe/Helsinki
+120826,2155,Heinätorin puisto P,,65.007792,25.461636,2,,0,,Europe/Helsinki
+189669,2545,Kaitajärvi P,,64.944804,25.740833,3,,0,,Europe/Helsinki
+152759,1840,Polvisuontie E,,65.044856,25.648619,2,,0,,Europe/Helsinki
+120358,1576,Lappotie E,,65.112915,25.33549,3,,0,,Europe/Helsinki
+188503,1886,Korvensuoran koulu E,,65.04189700000002,25.565996,2,,0,,Europe/Helsinki
+98756,2856,Riihikyläntie P,,64.848565,25.89908,4,,0,,Europe/Helsinki
+101720,1128,Viitakangas E,,65.328897,25.65817,5,,0,,Europe/Helsinki
+150366,1302,Vahtola P2,,65.207788,25.330598,3,,0,,Europe/Helsinki
+152855,2275,Pöytäkangas E,,64.985151,25.921538,4,,0,,Europe/Helsinki
+121162,2576,Raitakuja P,,64.942536,25.389575,3,,0,,Europe/Helsinki
+187710,3099,Ammustie P,,65.19303600000002,25.416487,4,,0,,Europe/Helsinki
+120564,1792,Johdinkuja E,,65.054118,25.597418,2,,0,,Europe/Helsinki
+169658,3094,Peuraniemi E,,64.830963,25.687692,4,,0,,Europe/Helsinki
+120787,2099,Raksila E,,65.011776,25.489873,2,,0,,Europe/Helsinki
+120723,2027,Nokkalantie E,,65.023575,25.505206,2,,0,,Europe/Helsinki
+148245,2172,Vainionmutka E,,65.001893,25.705197,3,,0,,Europe/Helsinki
+101522,1443,Hookana E,,65.154798,25.35048,3,,0,,Europe/Helsinki
+101742,1074,Keskikylä E,,65.35925,25.78049,5,,0,,Europe/Helsinki
+120768,2076,Autoheikki P,,65.016001,25.479175,2,,0,,Europe/Helsinki
+97676,3045,Riikola E,,64.78751800000002,25.542625,4,,0,,Europe/Helsinki
+101622,1441,Hurunmäki E,,65.154118,25.618986,3,,0,,Europe/Helsinki
+500102,10005,Kontinkangas piha,,65.01029200000002,25.514154,1,,0,,Europe/Helsinki
+152768,1854,Pääkankaantie E,,65.0422,25.665551,3,,0,,Europe/Helsinki
+98501,1597,Jääli th P,,65.094678,25.682666,3,,0,,Europe/Helsinki
+187999,1134,Marion P,,65.326399,25.519683,4,,0,,Europe/Helsinki
+120350,1567,Uhanperä P,,65.115236,25.344182,3,,0,,Europe/Helsinki
+184260,3212,Aalto P,,65.30179200000002,25.699584,5,,0,,Europe/Helsinki
+98745,2801,Laitasaari koulu E,,64.872936,25.860672,4,,0,,Europe/Helsinki
+148053,2905,Pohjolantie E,,64.826441,26.046646,4,,0,,Europe/Helsinki
+120877,2214,Kultatie E,,64.99765600000002,25.512252,2,,0,,Europe/Helsinki
+120621,1871,Rannanperä P,,65.042489,25.581891,2,,0,,Europe/Helsinki
+97706,1255,Hätälä P,,65.269741,25.362947,4,,0,,Europe/Helsinki
+120719,2022,Parkkisenkangas P,,65.022832,25.54164,2,,0,,Europe/Helsinki
+120780,2092,Laita P,,65.010877,25.554998,2,,0,,Europe/Helsinki
+152751,1805,Puuperäntie P,,65.051633,25.627437,2,,0,,Europe/Helsinki
+120699,1996,Vellamontie P,,65.027484,25.421194,2,,0,,Europe/Helsinki
+307150,2686,Haukkakaarto E,,64.919172,25.555766,3,,0,,Europe/Helsinki
+152658,1188,Siikatie E,,65.31771500000002,25.35516,4,,0,,Europe/Helsinki
+120862,2200,Kollaanpuisto P,,65.001858,25.48051,2,,0,,Europe/Helsinki
+101570,2521,Lentokentän th E,,64.95517,25.505192,2,,0,,Europe/Helsinki
+120490,1716,Saikkosentie E,,65.071152,25.482322,2,,0,,Europe/Helsinki
+120914,2267,Tavitie P,,64.992932,25.490258,2,,0,,Europe/Helsinki
+98720,2569,Määtäntie E,,64.940352,25.697762,3,,0,,Europe/Helsinki
+148135,2568,Ohrasenoja E,,64.938867,25.765776,3,,0,,Europe/Helsinki
+148018,3065,Tyrnävän yläaste P,,64.766632,25.649768,4,,0,,Europe/Helsinki
+148153,2654,Pukkilantie E,,64.920233,25.811867,3,,0,,Europe/Helsinki
+101620,1435,Nurmiojantie E,,65.160403,25.601126,3,,0,,Europe/Helsinki
+120924,2283,Vesaisentie E,,64.990546,25.490329,2,,0,,Europe/Helsinki
+188509,1818,Alavantie E,,65.048474,25.586861,2,,0,,Europe/Helsinki
+121195,2619,Riisikuja P,,64.933497,25.401624,3,,0,,Europe/Helsinki
+150155,2590,Oulunsalo ry E,,64.938552,25.397853,3,,0,,Europe/Helsinki
+187928,2922,Vesankuja E,,64.83075,25.233281,4,,0,,Europe/Helsinki
+185803,3302,Länsituulen koulu,,65.17789500000002,25.337112,3,,0,,Europe/Helsinki
+190182,3339,Kunnankuja P,,64.763032,25.649464,4,,0,,Europe/Helsinki
+101665,1833,Kiiminki th P2,,65.042248,25.869481,3,,0,,Europe/Helsinki
+101581,2635,Sohjanantie P,,64.92885200000002,25.511924,3,,0,,Europe/Helsinki
+150088,2972,Ojakylä P,,64.812185,25.710037,4,,0,,Europe/Helsinki
+307209,1956,Loimukoivunpuisto P,,65.0318533289066,25.56058629664307,2,,0,,Europe/Helsinki
+150391,1235,Kaisto E (EP),,65.297598,25.626208,4,,0,,Europe/Helsinki
+101726,1114,Alatalo E,,65.335323,25.689168,5,,0,,Europe/Helsinki
+98736,2747,Hangas th E,,64.900115,25.798795,3,,0,,Europe/Helsinki
+120620,1870,Rannanperä E,,65.042541,25.581697,2,,0,,Europe/Helsinki
+101527,1511,Isohätälä P,,65.133389,25.357584,3,,0,,Europe/Helsinki
+121506,1907,Lämpövoimala P,,65.038878,25.442603,2,,0,,Europe/Helsinki
+190222,2561,Lassila E,,64.945394,25.399158,3,,0,,Europe/Helsinki
+120746,2051,Metsola E,,65.019425,25.534591,2,,0,,Europe/Helsinki
+97713,1236,Liedes E,,65.30107700000002,25.374512,4,,0,,Europe/Helsinki
+101512,1379,Niemeläntörmä E,,65.182277,25.358677,3,,0,,Europe/Helsinki
+101642,1483,Honkimäentie P,,65.13277600000002,25.743356,3,,0,,Europe/Helsinki
+150217,2596,Ratsastuskoulu P,,64.934786,25.719033,3,,0,,Europe/Helsinki
+14048,9019,Mökkitie P,,65.048424,25.866522,3,,0,,Europe/Helsinki
+148102,2405,Korhosenkuja P,,64.96961,25.65282,2,,0,,Europe/Helsinki
+148215,2898,Hartikka P,,64.828296,25.970959,4,,0,,Europe/Helsinki
+121067,2459,Kuukkelipolku P,,64.963812,25.549153,2,,0,,Europe/Helsinki
+120666,1955,Tokkatie E,,65.030683,25.552929,2,,0,,Europe/Helsinki
+120692,1989,Valtatie E,,65.026793,25.465084,2,,0,,Europe/Helsinki
+101515,1424,Revontie P,,65.172083,25.350238,3,,0,,Europe/Helsinki
+148082,2021,Haapalehto E,,65.022592,25.54925,2,,0,,Europe/Helsinki
+121272,2724,Kokkokaarto E,,64.90982,25.547845,3,,0,,Europe/Helsinki
+189658,3279,Jukurintie P,,64.852688,25.53467,4,,0,,Europe/Helsinki
+120894,2237,Limingantulli P,,64.99718300000002,25.464621,2,,0,,Europe/Helsinki
+184167,3222,Matkakeskus P,,65.011527,25.483842,1,,0,,Europe/Helsinki
+98771,2935,Korivaaran koulu P,,64.820681,25.95693,4,,0,,Europe/Helsinki
+98738,2766,Oulun ja Muhoksen raja E,,64.89190000000002,25.80915,4,,0,,Europe/Helsinki
+184153,3236,Raksilan marketit E,,65.010198,25.488201,1,,0,,Europe/Helsinki
+187709,3100,Ammustie E,,65.19289000000002,25.417136,4,,0,,Europe/Helsinki
+98714,2510,Madekosken th E,,64.954138,25.663016,3,,0,,Europe/Helsinki
+97709,1252,Praavan th E,,65.281363,25.368354,4,,0,,Europe/Helsinki
+120737,2042,Toivoniemi P,,65.02227000000002,25.468463,2,,0,,Europe/Helsinki
+307162,4001,Sarvisuontie E,,64.99873056,25.61616667,2,,0,,Europe/Helsinki
+120712,2012,Merikosken tasku P,,65.024746,25.47021,2,,0,,Europe/Helsinki
+120410,1651,Järvitie E,,65.084441,25.69891,3,,0,,Europe/Helsinki
+186023,3305,Pomolantie E,,65.219337,25.300474,3,,0,,Europe/Helsinki
+120706,2004,Laanilan koulu P,,65.02437,25.520208,2,,0,,Europe/Helsinki
+148249,2136,Holtinkylä P,,65.003954,25.724711,3,,0,,Europe/Helsinki
+184171,3218,Vaarankatu,,65.01117600000002,25.476692,1,,0,,Europe/Helsinki
+121054,2444,Tiaisrinne P,,64.964347,25.555306,2,,0,,Europe/Helsinki
+183969,3182,Lähimetsä E,,64.946484,25.570002,2,,0,,Europe/Helsinki
+120975,2345,Snellmanintie P,,64.98185,25.496308,2,,0,,Europe/Helsinki
+121122,2520,Porttiväylän alikulku E,,64.954803,25.524241,2,,0,,Europe/Helsinki
+101578,2601,Kuivalanperä E,,64.936847,25.512898,3,,0,,Europe/Helsinki
+120794,2106,Kastellinhäkki E,,65.009464,25.524904,2,,0,,Europe/Helsinki
+148477,1537,Häli E,,65.12637700000002,25.348899,3,,0,,Europe/Helsinki
+98706,2387,Heikkilänkankaan th P,,64.971133,25.613394,2,,0,,Europe/Helsinki
+150091,3010,Tulilanton th E,,64.80604700000002,25.705721,4,,0,,Europe/Helsinki
+120082,1275,Mustakangas P,,65.224535,25.303091,3,,0,,Europe/Helsinki
+189533,2969,Keskustie E,,64.808458,25.989902,4,,0,,Europe/Helsinki
+189722,2675,Ritola P,,64.91536600000002,25.821444,3,,0,,Europe/Helsinki
+101028,2990,Rantakylän koulu E,,64.814573,25.342178,4,,0,,Europe/Helsinki
+120635,1903,Hiidentie,,65.038972,25.49653,2,,0,,Europe/Helsinki
+120293,1498,Ukkola E,,65.129286,25.784637,3,,0,,Europe/Helsinki
+101264,1881,Saviharju P,,65.03916700000002,25.717721,3,,0,,Europe/Helsinki
+120604,1846,Koskela,,65.04679400000002,25.456818,2,,0,,Europe/Helsinki
+152849,2258,Metsälä E,,64.986881,25.932656,4,,0,,Europe/Helsinki
+101616,1409,Kiimingin kunnanraja E,,65.173287,25.587942,4,,0,,Europe/Helsinki
+120452,1678,Pielikuja P,,65.07639,25.527101,2,,0,,Europe/Helsinki
+98766,2907,Soso P,,64.827945,25.9264,4,,0,,Europe/Helsinki
+120640,1909,Toppilan koulu E,,65.04054,25.440234,2,,0,,Europe/Helsinki
+120639,1908,Toppilan koulu P,,65.04056,25.440467,2,,0,,Europe/Helsinki
+120088,1286,Lastaajantie P,,65.214479,25.30162,3,,0,,Europe/Helsinki
+98713,2507,Madekosken th P,,64.954334,25.662901,3,,0,,Europe/Helsinki
+98739,2773,Malurintie E,,64.887557,25.822558,4,,0,,Europe/Helsinki
+301594,3103,Haukiputaan YA ja lukio,,65.175157,25.36552,3,,0,,Europe/Helsinki
+101690,1175,Tapio E,,65.319233,25.421675,4,,0,,Europe/Helsinki
+120903,2249,Hiirihaukka E,,64.993715,25.519191,2,,0,,Europe/Helsinki
+115888,2846,Kotilehto P,,64.855788,25.478912,4,,0,,Europe/Helsinki
+121327,2979,Muhoksen linja-autoasema,,64.806491,25.990944,4,,0,,Europe/Helsinki
+181287,3270,Kuovintie P,,64.94224,25.372985,3,,0,,Europe/Helsinki
+121066,2460,Kuukkelipolku E,,64.963882,25.54898,2,,0,,Europe/Helsinki
+301593,2768,Ketolanperäntie,,64.894887,25.546434,3,,0,,Europe/Helsinki
+101526,1475,Hekkalansaarentie E,,65.140573,25.354113,3,,0,,Europe/Helsinki
+150363,1287,Martinniemi th E,,65.213278,25.329803,3,,0,,Europe/Helsinki
+98708,2419,Heikkilänsaari P,,64.9674,25.627775,2,,0,,Europe/Helsinki
+101225,3071,Mäläskä P,,64.76484000000002,25.617849,4,,0,,Europe/Helsinki
+120528,1754,Yliopiston puutarha E,,65.062752,25.467073,2,,0,,Europe/Helsinki
+150140,2921,Pelto P,,64.829388,25.458302,4,,0,,Europe/Helsinki
+120080,1273,Kalastajantie PP,,65.224676,25.310117,3,,0,,Europe/Helsinki
+187989,1767,Meritaskila E,,65.061613,25.419663,2,,0,,Europe/Helsinki
+120751,2040,Koskenniska P,,65.020352,25.493356,2,,0,,Europe/Helsinki
+150380,1178,Valtarin koulu P,,65.320851,25.363012,4,,0,,Europe/Helsinki
+101687,1184,Iin terveyskeskus E,,65.318962,25.404396,4,,0,,Europe/Helsinki
+184139,3250,Rautatienkatu P,,65.009445,25.480269,1,,0,,Europe/Helsinki
+120942,2305,Mäntyrinne E,,64.987152,25.56465,2,,0,,Europe/Helsinki
+148024,2173,Saarela P,,65.002361,25.584719,2,,0,,Europe/Helsinki
+150362,1284,Martinniemi th P,,65.214315,25.331063,3,,0,,Europe/Helsinki
+121011,2393,Kaskiahontie P,,64.971755,25.585956,2,,0,,Europe/Helsinki
+184247,1205,Mökkiperä E,,65.313288,25.46185,4,,0,,Europe/Helsinki
+148500,1180,Rantakestilä E,,65.32064,25.32343,4,,0,,Europe/Helsinki
+121091,2486,Kaakkurinojantie P,,64.96047,25.54222,2,,0,,Europe/Helsinki
+120522,1748,Kukkonen P,,65.062472,25.495184,2,,0,,Europe/Helsinki
+120731,2036,Kurkelankuja E,,65.020208,25.515685,2,,0,,Europe/Helsinki
+120858,2196,OSAO PP,,65.000996,25.512575,2,,0,,Europe/Helsinki
+148041,2992,Leppiniemi th P2,,64.80574300000002,26.01446,4,,0,,Europe/Helsinki
+120446,1672,Itälahdentie P,,65.080208,25.397442,2,,0,,Europe/Helsinki
+190224,2543,Karvolankuja P,,64.949783,25.39515,3,,0,,Europe/Helsinki
+147999,2909,Ritokorpi E,,64.831042,25.583041,4,,0,,Europe/Helsinki
+148255,2088,Loppula P,,65.00899200000002,25.818103,3,,0,,Europe/Helsinki
+101707,1201,Pikkulaurila P,,65.312372,25.562626,4,,0,,Europe/Helsinki
+150357,1269,Parkumäki P,,65.227536,25.353539,3,,0,,Europe/Helsinki
+184262,3327,Vainiontie E,,65.195808,25.477237,4,,0,,Europe/Helsinki
+120438,1664,Palosuontie E,,65.07887100000002,25.425359,2,,0,,Europe/Helsinki
+120767,2075,Erkkola E,,65.016131,25.528959,2,,0,,Europe/Helsinki
+120939,2302,Kolehmaisentie E,,64.985385,25.576887,2,,0,,Europe/Helsinki
+150256,1728,Kivikankaankuja E,,65.06587500000002,25.517054,2,,0,,Europe/Helsinki
+101042,9021,Pappilanpelto E,,64.80337900000002,25.420693,4,,0,,Europe/Helsinki
+101650,1504,Kiimingin lukio E,,65.12935400000002,25.772022,3,,0,,Europe/Helsinki
+189257,3334,Ylikylä E,,64.895218,25.554442,3,,0,,Europe/Helsinki
+120576,1809,Välskärintie E,,65.050091,25.607125,2,,0,,Europe/Helsinki
+98697,2166,Teuvo Pakkala E,,65.005534,25.490946,2,,0,,Europe/Helsinki
+101623,1446,Kuivasjärven th P,,65.14886300000002,25.635846,3,,0,,Europe/Helsinki
+304311,3090,Mutkalankaari P,,64.801615,25.42359,4,,0,,Europe/Helsinki
+152758,1839,Rasilantie P,,65.044091,25.676456,3,,0,,Europe/Helsinki
+120859,2197,Karjaportti E,,65.001079,25.491283,2,,0,,Europe/Helsinki
+148078,1986,Hintan päiväkoti E,,65.026956,25.534985,2,,0,,Europe/Helsinki
+98702,2344,Maikkulantien th E,,64.98028100000002,25.562879,2,,0,,Europe/Helsinki
+98700,2262,Poikkimaantie P,,64.992733,25.534273,2,,0,,Europe/Helsinki
+150384,1161,Iin Työväentalo P,,65.321889,25.380203,4,,0,,Europe/Helsinki
+150390,1226,Hekkala P,,65.301405,25.622686,4,,0,,Europe/Helsinki
+307164,2079,Raitalantie E,,65.01276944,25.56361944,2,,0,,Europe/Helsinki
+120895,2238,Limingantulli E,,64.995879,25.464314,2,,0,,Europe/Helsinki
+120774,2083,Heikinkatu P,,65.013611,25.484105,2,,0,,Europe/Helsinki
+184143,3246,Kiviharjunkuja E,,65.008436,25.512861,1,,0,,Europe/Helsinki
+120992,2368,Tahkokangas P,,64.975991,25.517756,2,,0,,Europe/Helsinki
+120373,1593,Vaapukkatie P,,65.101376,25.40881,2,,0,,Europe/Helsinki
+150079,2894,Niitynmaa th E,,64.83379100000002,25.670824,4,,0,,Europe/Helsinki
+121064,2457,Punatulkunrinne P,,64.963038,25.560924,2,,0,,Europe/Helsinki
+150139,2930,Pelto E,,64.828614,25.457145,4,,0,,Europe/Helsinki
+189529,2704,Jauholantie P,,64.909845,25.777505,3,,0,,Europe/Helsinki
+150158,2575,Pitkäkankaantie P2,,64.942396,25.397327,3,,0,,Europe/Helsinki
+120526,1752,Tapiontie P,,65.06274000000002,25.478231,2,,0,,Europe/Helsinki
+97710,1251,Praavan th P,,65.282684,25.369344,4,,0,,Europe/Helsinki
+120503,1729,Poukamapolku P,,65.06672500000002,25.499663,2,,0,,Europe/Helsinki
+101080,2397,Kelanmutka P,,64.974212,25.308192,3,,0,,Europe/Helsinki
+120665,1954,Tokkatie P,,65.031194,25.554748,2,,0,,Europe/Helsinki
+101031,2987,Rantakylän th P,,64.81413000000002,25.358082,4,,0,,Europe/Helsinki
+120610,1860,Järvikioski P,,65.04390100000002,25.489797,2,,0,,Europe/Helsinki
+189730,2822,Määttä Könö E,,64.858775,25.905347,4,,0,,Europe/Helsinki
+98701,2263,Poikkimaantie E,,64.99258,25.534218,2,,0,,Europe/Helsinki
+120533,1759,Varvikkokuja E,,65.060105,25.62392,2,,0,,Europe/Helsinki
+120999,2377,Sutela P,,64.974281,25.501901,2,,0,,Europe/Helsinki
+97714,1233,Liedes P,,65.30218600000002,25.375044,4,,0,,Europe/Helsinki
+101510,1353,Törmäntie E,,65.189621,25.364864,3,,0,,Europe/Helsinki
+120724,2026,Nokkalantie P,,65.023597,25.505629,2,,0,,Europe/Helsinki
+148457,1307,Martinniementie E,,65.203371,25.336816,3,,0,,Europe/Helsinki
+121295,2776,Kinnarinpalo E,,64.892026,25.55757,3,,0,,Europe/Helsinki
+121247,2695,Kuunsilta E,,64.914254,25.559186,3,,0,,Europe/Helsinki
+150040,3015,Taalintie E,,64.808194,25.439072,4,,0,,Europe/Helsinki
+97677,3043,Riikola P,,64.788631,25.541766,4,,0,,Europe/Helsinki
+148079,1974,Hintan päiväkoti P,,65.02709,25.534935,2,,0,,Europe/Helsinki
+101523,1453,Luostarinvainio P,,65.147283,25.351565,3,,0,,Europe/Helsinki
+190188,1911,Ylikiimingin kirkko P,,65.029026,26.124967,4,,0,,Europe/Helsinki
+150145,2852,Oikotie th E,,64.854046,25.48753,4,,0,,Europe/Helsinki
+148455,1315,Siipola P,,65.200802,25.339819,3,,0,,Europe/Helsinki
+307213,1962,Kiulukangas P,,65.02734950980198,25.57407938605261,2,,0,,Europe/Helsinki
+101046,2550,Kempeleenlahti P,,64.947661,25.482144,2,,0,,Europe/Helsinki
+101076,2414,Heikola E,,64.971986,25.344913,3,,0,,Europe/Helsinki
+189659,3280,Jukurintie E,,64.852632,25.534483,4,,0,,Europe/Helsinki
+150192,2741,Zimmari P,,64.903708,25.544858,3,,0,,Europe/Helsinki
+184157,3232,Veteraanikatu P,,65.018942,25.506632,1,,0,,Europe/Helsinki
+101319,1951,Hillikkotie P,,65.024937,26.122046,4,,0,,Europe/Helsinki
+148220,2891,Montta th E,,64.832047,25.990745,4,,0,,Europe/Helsinki
+98780,2995,Nykäläntie P,,64.805377,26.002582,4,,0,,Europe/Helsinki
+101609,1386,Taipaleenkylä E,,65.175867,25.551779,4,,0,,Europe/Helsinki
+101083,2401,Ervastintörmä E,,64.975369,25.286956,3,,0,,Europe/Helsinki
+101300,2855,Paavolankuja P,,64.848664,25.903966,4,,0,,Europe/Helsinki
+120807,2122,Oulunsuun koulu E,,65.007593,25.52822,2,,0,,Europe/Helsinki
+184234,1082,Hökkä E,,65.353362,25.810391,5,,0,,Europe/Helsinki
+152627,1156,Iin linja-autoasema,,65.32449,25.378476,4,,0,,Europe/Helsinki
+121095,2488,Höyhenkuja E,,64.95966900000002,25.535511,2,,0,,Europe/Helsinki
+181285,3272,Automaatiotie E,,64.932223,25.383321,3,,0,,Europe/Helsinki
+121022,2407,Hanhikaarentie E,,64.970756,25.599923,2,,0,,Europe/Helsinki
+189733,2140,Anttilantie E,,65.004434,25.713725,3,,0,,Europe/Helsinki
+148000,2936,Jokisilta P,,64.824371,25.590911,4,,0,,Europe/Helsinki
+150371,1346,Onkamo th,,65.189446,25.46652,4,,0,,Europe/Helsinki
+150070,2861,Bask P,,64.849946,25.635935,3,,0,,Europe/Helsinki
+101543,1647,Leppiojantie P,,65.089289,25.407767,2,,0,,Europe/Helsinki
+120591,1824,Kornetintie E,,65.045917,25.611675,2,,0,,Europe/Helsinki
+120957,2324,Patamäen koulu P,,64.983359,25.582652,2,,0,,Europe/Helsinki
+98503,1585,Jäälinjärvi P,,65.101516,25.692202,3,,0,,Europe/Helsinki
+98502,1588,Jäälinjärvi E,,65.10064,25.690457,3,,0,,Europe/Helsinki
+121113,2511,Metelinkangas PP,,64.956153,25.550308,2,,0,,Europe/Helsinki
+101577,2586,Kuivalanperä P,,64.937782,25.514051,3,,0,,Europe/Helsinki
+101086,2356,Pajuniemi E,,64.982373,25.270362,3,,0,,Europe/Helsinki
+190216,2830,Tupos E,,64.863641,25.49064,4,,0,,Europe/Helsinki
+101591,2728,Kempeleen paloasema P,,64.907551,25.526035,3,,0,,Europe/Helsinki
+183950,3170,Ulkometsäntie P,,64.951368,25.552768,2,,0,,Europe/Helsinki
+120818,2145,Kastellin kirkko E,,65.006094,25.540942,2,,0,,Europe/Helsinki
+190815,3277,Kassinen th P,,64.95003800000002,26.014469,4,,0,,Europe/Helsinki
+148441,1313,Aseman koulu P,,65.199224,25.395203,3,,0,,Europe/Helsinki
+169623,2512,Kaakkurin koulu E,,64.955534,25.532879,2,,0,,Europe/Helsinki
+121010,2392,Kaskiahontie E,,64.97155,25.587068,2,,0,,Europe/Helsinki
+148168,2737,Ehtiäisentie P,,64.899816,25.844959,3,,0,,Europe/Helsinki
+120424,1646,Kaijantie P,,65.088538,25.410577,2,,0,,Europe/Helsinki
+150045,2744,Zeppelin P,,64.903762,25.540292,3,,0,,Europe/Helsinki
+120907,2253,Nokela th E,,64.994519,25.487519,2,,0,,Europe/Helsinki
+183965,3190,Metsokankaan koulu E,,64.943615,25.542418,2,,0,,Europe/Helsinki
+148475,1530,Kellon liikekeskus E,,65.12856600000002,25.355453,3,,0,,Europe/Helsinki
+148006,3028,Parras P,,64.800349,25.619861,4,,0,,Europe/Helsinki
+120853,2191,Radiomastontie E,,65.001591,25.530077,2,,0,,Europe/Helsinki
+185771,3300,Paulaharjuntie P,,65.031194,25.472557,2,,0,,Europe/Helsinki
+150319,1390,Härkätie E,,65.177812,25.345036,3,,0,,Europe/Helsinki
+101504,1280,Taatanperän th E,,65.215464,25.369552,3,,0,,Europe/Helsinki
+101516,1423,Revontie E,,65.172061,25.349898,3,,0,,Europe/Helsinki
+120401,1622,Vaunumiehenkuja P,,65.091416,25.422213,2,,0,,Europe/Helsinki
+120546,1772,Teknologiantie E,,65.059668,25.457688,2,,0,,Europe/Helsinki
+120661,1946,Karhitie E,,65.034599,25.481937,2,,0,,Europe/Helsinki
+120625,1875,Isko P,,65.042441,25.476692,2,,0,,Europe/Helsinki
+152770,1879,Vesala E,,65.034347,26.032182,4,,0,,Europe/Helsinki
+101494,1257,Pitäjänraja E,,65.258557,25.356702,4,,0,,Europe/Helsinki
+150225,2633,Sutelantie P,,64.927027,25.752937,3,,0,,Europe/Helsinki
+185716,3289,Nuottasaarentie P,,64.99622,25.459991,1,,0,,Europe/Helsinki
+190297,1561,Vaajatie E2,,65.117878,25.33486,3,,0,,Europe/Helsinki
+120479,1705,Saikkosentie P,,65.070579,25.484161,2,,0,,Europe/Helsinki
+307165,3087,Tyrnävän raja,,64.79589900000002,25.879711,4,,0,,Europe/Helsinki
+190218,2831,Tupos liikenneympyrä P,,64.863609,25.483976,4,,0,,Europe/Helsinki
+150092,3033,Matinolli P,,64.794628,25.684367,4,,0,,Europe/Helsinki
+120714,2014,Merikoskenkatu E,,65.024828,25.469483,2,,0,,Europe/Helsinki
+150370,1333,Allikontie E,,65.19285600000002,25.431896,4,,0,,Europe/Helsinki
+101529,1523,Kello P,,65.12938,25.359323,3,,0,,Europe/Helsinki
+101508,1337,Keiska E,,65.192212,25.364725,3,,0,,Europe/Helsinki
+121078,2471,Kivitaskunkuja P,,64.961668,25.560278,2,,0,,Europe/Helsinki
+184290,1254,Räinänperän th E,,65.27376700000002,25.364454,4,,0,,Europe/Helsinki
+190217,2826,Tupos th P2,,64.863672,25.500785,4,,0,,Europe/Helsinki
+148089,2103,Oulujoentie E,,65.009539,25.573501,2,,0,,Europe/Helsinki
+148253,2158,Kontiokoski E,,65.00268,25.760944,3,,0,,Europe/Helsinki
+307212,1959,Huurupolku E,,65.03056614336619,25.56998248044493,2,,0,,Europe/Helsinki
+121167,2582,Raitakuja E,,64.942238,25.390228,3,,0,,Europe/Helsinki
+101294,1913,Ukonkangas E,,65.02990800000002,26.114857,4,,0,,Europe/Helsinki
+184236,1121,Naurua P,,65.331184,25.728488,5,,0,,Europe/Helsinki
+187930,2931,Sallisentie E,,64.8291,25.244683,4,,0,,Europe/Helsinki
+307211,1958,Huurupolku P,,65.03066759990872,25.57001525439689,2,,0,,Europe/Helsinki
+150396,1244,Kumpu E,,65.293566,25.641553,4,,0,,Europe/Helsinki
+190071,2973,Marjakangas E,,64.813473,25.704523,4,,0,,Europe/Helsinki
+184152,3237,Raksilan marketit P,,65.010263,25.488389,1,,0,,Europe/Helsinki
+121090,2483,Sadekuja E,,64.959166,25.552897,2,,0,,Europe/Helsinki
+190200,1512,Kauppareitti P,,65.126797,25.778919,3,,0,,Europe/Helsinki
+120779,2091,Hiukkavaarantie P,,65.01244,25.551477,2,,0,,Europe/Helsinki
+98773,2943,Koivikko E,,64.815684,25.968387,4,,0,,Europe/Helsinki
+307160,4002,Juoksupolku P,,64.99777796835087,25.61287319154162,2,,0,,Europe/Helsinki
+101222,3076,Nipsinki E,,64.763694,25.588485,4,,0,,Europe/Helsinki
+101626,1449,Rasi E,,65.147209,25.654351,3,,0,,Europe/Helsinki
+120728,2033,Haapalehdontie E,,65.020734,25.554741,2,,0,,Europe/Helsinki
+101695,1149,Myllytörmä P,,65.322244,25.458666,4,,0,,Europe/Helsinki
+189720,2648,Välitalonkuja E,,64.922673,25.806241,3,,0,,Europe/Helsinki
+101555,1800,Keulapuisto E,,65.055655,25.443515,2,,0,,Europe/Helsinki
+152843,2226,Jylhänkylä P,,64.991466,25.869318,3,,0,,Europe/Helsinki
+190184,3156,Aumaharju P,,65.02917600000002,26.013672,4,,0,,Europe/Helsinki
+101261,1884,Jääkärintie P,,65.039448,25.700424,3,,0,,Europe/Helsinki
+101606,1374,Pirttikoski E,,65.18097,25.527592,4,,0,,Europe/Helsinki
+148460,1301,Vahtola P,,65.207616,25.328878,3,,0,,Europe/Helsinki
+101576,2578,Jarva E,,64.940819,25.517183,2,,0,,Europe/Helsinki
+98489,1768,Vesalanmäki P,,65.058151,25.618284,2,,0,,Europe/Helsinki
+120551,1777,Tutkijantie E,,65.05913700000002,25.448815,2,,0,,Europe/Helsinki
+121105,2501,Ropinakuja P,,64.957742,25.553144,2,,0,,Europe/Helsinki
+148466,1288,Kurtintie E,,65.212547,25.310934,3,,0,,Europe/Helsinki
+184258,1232,Leskelä E,,65.302523,25.561769,4,,0,,Europe/Helsinki
+164370,3110,Rantakukantie E,,65.071534,25.453876,2,,0,,Europe/Helsinki
+148429,1360,Pentintie E,,65.183663,25.493413,4,,0,,Europe/Helsinki
+148440,1312,Torvelantie E,,65.199951,25.397744,3,,0,,Europe/Helsinki
+148444,1318,Saarikankaantie E,,65.196587,25.383487,3,,0,,Europe/Helsinki
+150065,2837,Hovimurto E,,64.859113,25.612566,3,,0,,Europe/Helsinki
+97671,3061,Ketunmaan th P,,64.773578,25.548339,4,,0,,Europe/Helsinki
+121194,2618,Kunnantalo E,,64.934566,25.41019,3,,0,,Europe/Helsinki
+150376,1165,Haminan koulu E,,65.322701,25.373993,4,,0,,Europe/Helsinki
+120563,1791,Pönkänkari E,,65.05855,25.427791,2,,0,,Europe/Helsinki
+120880,2218,Karjasillan th E,,64.998537,25.491829,2,,0,,Europe/Helsinki
+186025,3307,Musiikkikeskus P,,65.00373500000002,25.478919,2,,0,,Europe/Helsinki
+120882,2220,Karjasillan kirkko E,,64.997061,25.490492,2,,0,,Europe/Helsinki
+189728,2781,Sairaalantie P,,64.883803,25.866966,4,,0,,Europe/Helsinki
+121007,2389,Hanhikaarentie P,,64.971113,25.599671,2,,0,,Europe/Helsinki
+101730,1102,Karjalankylä P,,65.33873800000002,25.706521,5,,0,,Europe/Helsinki
+101698,1142,Pakanen P,,65.323798,25.473771,4,,0,,Europe/Helsinki
+98717,2547,Turkansaari th P,,64.945103,25.685111,3,,0,,Europe/Helsinki
+120440,1666,Raamitie E,,65.078909,25.417063,2,,0,,Europe/Helsinki
+120878,2216,Höyhtyänpuisto E,,64.997783,25.499864,2,,0,,Europe/Helsinki
+190172,2620,Karhuojan th P,,64.933741,25.399304,3,,0,,Europe/Helsinki
+184261,1222,Aalto E,,65.301756,25.699521,5,,0,,Europe/Helsinki
+101292,1893,Tielaitos E,,65.031536,26.103576,4,,0,,Europe/Helsinki
+171803,2382,Kaakkurin th P,,64.974764,25.488381,2,,0,,Europe/Helsinki
+101301,2849,Laukka silta E2,,64.850325,25.913934,4,,0,,Europe/Helsinki
+150398,1248,Mäntyläntie E,,65.291771,25.66859,5,,0,,Europe/Helsinki
+307154,3292,Hallituskatu E,,65.011637,25.47852,1,,0,,Europe/Helsinki
+98748,2811,Rova arola P,,64.866512,25.877061,4,,0,,Europe/Helsinki
+101553,1766,Meritaskila P,,65.061748,25.41974,2,,0,,Europe/Helsinki
+148209,3083,Ritolantie P,,64.834389,25.941861,4,,0,,Europe/Helsinki
+120820,2149,OYS B2,,65.006993,25.520237,2,,0,,Europe/Helsinki
+98735,2739,Hangas th P,,64.90118200000002,25.797628,3,,0,,Europe/Helsinki
+101580,2616,Hakamaa E,,64.93389000000002,25.511497,3,,0,,Europe/Helsinki
+150058,2813,Ketolanperä P,,64.869575,25.587953,3,,0,,Europe/Helsinki
+171798,2426,Oulunlahden koulu E,,64.96826900000002,25.494677,2,,0,,Europe/Helsinki
+120923,2282,Vesaisentie P,,64.990548,25.490562,2,,0,,Europe/Helsinki
+101063,2690,Kempeleen yläaste E,,64.917148,25.476725,3,,0,,Europe/Helsinki
+98741,2783,Viskaali th E,,64.885256,25.835642,4,,0,,Europe/Helsinki
+120720,2023,Parkkisenkangas E,,65.022865,25.541384,2,,0,,Europe/Helsinki
+120519,1745,Kukkonen E,,65.062598,25.495156,2,,0,,Europe/Helsinki
+148490,1218,Partanen E,,65.309719,25.595225,4,,0,,Europe/Helsinki
+115886,2839,Tupos Koulukeskus P,,64.859239,25.471609,4,,0,,Europe/Helsinki
+97720,1162,Iin keskustan th E,,65.321703,25.37794,4,,0,,Europe/Helsinki
+184123,3266,Limingantulli,,64.99499400000002,25.461991,1,,0,,Europe/Helsinki
+183985,3198,Kuivasrannanaukio E,,65.076328,25.451599,2,,0,,Europe/Helsinki
+186033,3315,Urpiaisentie E2,,65.070585,25.519747,2,,0,,Europe/Helsinki
+186174,3318,Rita-aukio P,,65.08046667000002,25.45353333,2,,0,,Europe/Helsinki
+148122,2526,Turkka P,,64.94967800000002,25.729558,3,,0,,Europe/Helsinki
+307140,2090,Tervastie P,,65.010876,25.55574,2,,0,,Europe/Helsinki
+120524,1750,Tuulikintie P,,65.062739,25.486945,2,,0,,Europe/Helsinki
+171711,2774,Malurintie P,,64.887873,25.821573,4,,0,,Europe/Helsinki
+120565,1793,Johdinkuja P,,65.054834,25.596319,2,,0,,Europe/Helsinki
+120395,1616,Timolantie P,,65.09424300000002,25.420599,2,,0,,Europe/Helsinki
+101234,3047,Haarankauppa E,,64.78284,25.690472,4,,0,,Europe/Helsinki
+120769,2077,Pokkitörmä P,,65.01615,25.471847,2,,0,,Europe/Helsinki
+101273,1915,Jumila E,,65.032031,25.957171,4,,0,,Europe/Helsinki
+150064,2834,Hovimurto P,,64.859881,25.611177,3,,0,,Europe/Helsinki
+101728,1104,Ylitalo E,,65.338475,25.697858,5,,0,,Europe/Helsinki
+120572,1802,Oulunseläntie P,,65.056793,25.427916,2,,0,,Europe/Helsinki
+191214,3098,Nuolikivi P,,64.844467,25.921315,4,,0,,Europe/Helsinki
+148226,2863,Montan leirintäalue E,,64.842458,26.007658,4,,0,,Europe/Helsinki
+150141,2911,Selkämaa th E,,64.83232,25.46159,4,,0,,Europe/Helsinki
+148202,2844,Laukka silta P,,64.850908,25.915175,4,,0,,Europe/Helsinki
+148085,2030,Myllyoja P,,65.019796,25.555152,2,,0,,Europe/Helsinki
+120589,1822,Rantapellontie P,,65.051248,25.433001,2,,0,,Europe/Helsinki
+120935,2296,Lintula,,64.98841400000002,25.50041,2,,0,,Europe/Helsinki
+101656,1540,Paso E,,65.119372,25.803383,3,,0,,Europe/Helsinki
+120646,1922,Veräjätie P,,65.037446,25.47513,2,,0,,Europe/Helsinki
+101635,1486,Haipuskylä P,,65.134743,25.694296,3,,0,,Europe/Helsinki
+101223,3075,Nipsinki P,,64.763678,25.59063,4,,0,,Europe/Helsinki
+190295,1558,Apajatie E,,65.119957,25.339543,3,,0,,Europe/Helsinki
+120943,2306,Kihokkipuisto P,,64.986709,25.4915,2,,0,,Europe/Helsinki
+120509,1735,Kerttulanpuisto P,,65.064718,25.507151,2,,0,,Europe/Helsinki
+101540,1589,Oravaisenkuja E,,65.10340100000002,25.400175,2,,0,,Europe/Helsinki
+120414,1636,Laivakangas P2,,65.086255,25.684762,3,,0,,Europe/Helsinki
+171810,1801,Keulapuisto P,,65.055879,25.443523,2,,0,,Europe/Helsinki
+150387,1228,Kuopionharju P,,65.301919,25.617985,4,,0,,Europe/Helsinki
+148004,2962,Ängeslevä th P,,64.816354,25.608345,4,,0,,Europe/Helsinki
+121062,2455,Sanginsuun koulu E,,64.962589,25.676208,3,,0,,Europe/Helsinki
+120573,1803,Oulunseläntie E,,65.056063,25.427662,2,,0,,Europe/Helsinki
+240372,1806,Kaartintie P,,65.052716,25.601953,2,,0,,Europe/Helsinki
+120568,1798,Pohjantie P,,65.055817,25.45483,2,,0,,Europe/Helsinki
+101745,1066,Puolakka P,,65.364349,25.792118,5,,0,,Europe/Helsinki
+120812,2128,Rautasaari E,,65.008676,25.476983,2,,0,,Europe/Helsinki
+148454,1314,Siipola E,,65.20023500000002,25.340431,3,,0,,Europe/Helsinki
+98750,2818,Männikkö P,,64.863171,25.886038,4,,0,,Europe/Helsinki
+121273,2725,Kokkokaarto P,,64.90976000000002,25.548144,3,,0,,Europe/Helsinki
+120805,2120,Kastellinpolku E,,65.00779,25.533723,2,,0,,Europe/Helsinki
+150069,2851,Kälkäinen E,,64.852135,25.629098,3,,0,,Europe/Helsinki
+152796,1929,Ylikiimingin kirkko E,,65.028741,26.126865,4,,0,,Europe/Helsinki
+101269,1849,Lamu P,,65.04053500000002,25.888684,4,,0,,Europe/Helsinki
+101633,1473,Tirinkylä P,,65.137045,25.687683,3,,0,,Europe/Helsinki
+101677,1056,Leuvanjoen th E,,65.370811,25.833658,5,,0,,Europe/Helsinki
+101722,1119,Koivuranta E,,65.332625,25.669917,5,,0,,Europe/Helsinki
+148438,1320,Jokikylän th P,,65.19378500000002,25.450179,4,,0,,Europe/Helsinki
+120416,1638,Ojatie P,,65.085036,25.67774,3,,0,,Europe/Helsinki
+148048,2926,Perukka E,,64.821145,26.040515,4,,0,,Europe/Helsinki
+169663,3091,Murron koulu E,,64.841695,25.669844,4,,0,,Europe/Helsinki
+150360,1278,Häyrysenniemi th E,,65.219867,25.333386,3,,0,,Europe/Helsinki
+101220,3079,Vaaranmaa E,,64.762162,25.565386,4,,0,,Europe/Helsinki
+97725,1099,Virkkulan risteys E,,65.342809,25.368477,4,,0,,Europe/Helsinki
+187931,2939,Hirvasniemi E,,64.825716,25.25293,4,,0,,Europe/Helsinki
+120657,1938,Satamatie P,,65.03519,25.446003,2,,0,,Europe/Helsinki
+150229,2662,Pikkarala koulu E,,64.918922,25.766439,3,,0,,Europe/Helsinki
+120435,1661,Valkamantie P,,65.082368,25.399758,2,,0,,Europe/Helsinki
+98500,1596,Jääli th E,,65.09462720596537,25.68211299128541,3,,0,,Europe/Helsinki
+98752,2824,Kaupintie P,,64.85795,25.893255,4,,0,,Europe/Helsinki
+101041,9020,Pappilanpelto P,,64.80444300000002,25.419384,4,,0,,Europe/Helsinki
+120596,1829,Mustansuontie E,,65.047986,25.440202,2,,0,,Europe/Helsinki
+150093,3032,Matinolli E,,64.794224,25.683397,4,,0,,Europe/Helsinki
+120906,2252,Nokela th P,,64.994584,25.487727,2,,0,,Europe/Helsinki
+150051,2790,Kerttula E,,64.886821,25.563866,3,,0,,Europe/Helsinki
+148196,2823,Määttä Könö P,,64.85938,25.90469,4,,0,,Europe/Helsinki
+190221,2622,Oulunsalo-talo P,,64.936602,25.398329,3,,0,,Europe/Helsinki
+307156,4006,Suojuoksuntie P,,64.99762778,25.59725833,2,,0,,Europe/Helsinki
+120920,2279,Viriänpuisto P,,64.989781,25.562835,2,,0,,Europe/Helsinki
+120718,2019,Kaplastie E,,65.022238,25.559009,2,,0,,Europe/Helsinki
+120583,1816,Suolamännyntie P,,65.053021,25.430135,2,,0,,Europe/Helsinki
+101652,1513,Kauppareitti E,,65.126303,25.781066,3,,0,,Europe/Helsinki
+184244,1190,Raasakka  P,,65.31573,25.512129,4,,0,,Europe/Helsinki
+120946,2313,Maikkulantie P,,64.984763,25.565308,2,,0,,Europe/Helsinki
+120408,1630,Kaarnalenkki E,,65.08472,25.714614,3,,0,,Europe/Helsinki
+121037,2422,Kaiannontie P,,64.969097,25.529087,2,,0,,Europe/Helsinki
+101029,2989,Leisu P,,64.814452,25.349913,4,,0,,Europe/Helsinki
+189278,3341,Tyrnävän LA-as ,,64.764546,25.651217,4,,0,,Europe/Helsinki
+120806,2121,Oulunsuun koulu P,,65.007738,25.528361,2,,0,,Europe/Helsinki
+120481,1707,Talvikkitie E,,65.07266300000002,25.427958,2,,0,,Europe/Helsinki
+148251,2134,Laukkala P,,65.004246,25.743335,3,,0,,Europe/Helsinki
+120781,2093,Hiukkavaarantie E,,65.012154,25.551599,2,,0,,Europe/Helsinki
+101502,1266,Ukkolanperän th E,,65.229249,25.362522,3,,0,,Europe/Helsinki
+120547,1773,Teknologiantie P,,65.059622,25.456734,2,,0,,Europe/Helsinki
+184259,1231,Leskelä P,,65.302556,25.562389,4,,0,,Europe/Helsinki
+183952,3171,Seikkulantie E,,64.95036500000002,25.539998,2,,0,,Europe/Helsinki
+148172,2756,Roininen P,,64.893788,25.853136,4,,0,,Europe/Helsinki
+120398,1619,Kukkulatie P,,65.08915500000002,25.693298,3,,0,,Europe/Helsinki
+98734,2726,Harakkamäki E,,64.905514,25.789765,3,,0,,Europe/Helsinki
+120851,2189,Lämsänjärventie E,,65.000852,25.552698,2,,0,,Europe/Helsinki
+303647,3140,Linja-autoasema T,,65.00965,25.4845,2,,0,,Europe/Helsinki
+189666,2785,Leppiniemen kauppa E,,64.840306,26.047504,4,,0,,Europe/Helsinki
+101280,1953,Siltala E,,65.026684,25.996299,4,,0,,Europe/Helsinki
+120940,2303,Patamäki E,,64.985441,25.571459,2,,0,,Europe/Helsinki
+150056,2807,Palonperä P,,64.873929,25.582576,3,,0,,Europe/Helsinki
+120863,2201,Knuutila P,,64.998558,25.554773,2,,0,,Europe/Helsinki
+101619,1433,Nurmiojantie P,,65.161507,25.600279,3,,0,,Europe/Helsinki
+181290,3275,Kisakankaan th P,,64.936948,25.377219,3,,0,,Europe/Helsinki
+101721,1126,Viitakangas P,,65.329466,25.659665,5,,0,,Europe/Helsinki
+120788,2100,Rautatieasema E,,65.01216100000002,25.48353,2,,0,,Europe/Helsinki
+101608,1372,Saarijärvi E,,65.180194,25.536366,4,,0,,Europe/Helsinki
+97701,2816,Isoaukio P,,64.871194,25.507476,3,,0,,Europe/Helsinki
+121237,2683,Kokkorinne E,,64.916062,25.558751,3,,0,,Europe/Helsinki
+120539,1765,Elektroniikkatie 5E,,65.061573,25.438898,2,,0,,Europe/Helsinki
+187988,2535,Lepola P,,64.951953,25.508335,2,,0,,Europe/Helsinki
+150083,2928,Aaltomaa E,,64.825074,25.688252,4,,0,,Europe/Helsinki
+101033,2999,Niskanen P,,64.811796,25.375868,4,,0,,Europe/Helsinki
+120510,1736,Koisotie E,,65.065811,25.42562,2,,0,,Europe/Helsinki
+101501,1265,Ukkolanperän th P,,65.230294,25.362115,3,,0,,Europe/Helsinki
+120520,1746,Kaijonlahdentie E,,65.061646,25.495996,2,,0,,Europe/Helsinki
+148497,1207,Räinä E,,65.315303,25.340527,4,,0,,Europe/Helsinki
+150399,1246,Ojalantie P,,65.292057,25.68478,5,,0,,Europe/Helsinki
+148014,3054,Puronkari P,,64.774715,25.644865,4,,0,,Europe/Helsinki
+188000,1133,Marion E,,65.326495,25.519377,4,,0,,Europe/Helsinki
+186024,3306,Musiikkikeskus E,,65.003706,25.478708,2,,0,,Europe/Helsinki
+120433,1657,Sahantie P,,65.085563,25.404139,2,,0,,Europe/Helsinki
+120747,2052,Kursutie E,,65.018346,25.523342,2,,0,,Europe/Helsinki
+101521,1444,Hookana P,,65.15575,25.350613,3,,0,,Europe/Helsinki
+101071,2464,Niemenväli E,,64.965199,25.36655,3,,0,,Europe/Helsinki
+148103,2404,Korhosenkuja E,,64.969308,25.655059,2,,0,,Europe/Helsinki
+101613,1396,Kuivala P,,65.175043,25.573443,4,,0,,Europe/Helsinki
+101272,1847,Ahmasjärventie E,,65.039599,25.901653,4,,0,,Europe/Helsinki
+150147,2828,Tupos P,,64.86421900000002,25.491915,4,,0,,Europe/Helsinki
+120443,1669,Jalopuuntie P,,65.079289,25.410597,2,,0,,Europe/Helsinki
+230853,3017,Kurkitie E,,64.807879,25.429617,4,,0,,Europe/Helsinki
+184141,3248,Medipolis,,65.006875,25.514923,1,,0,,Europe/Helsinki
+120644,1920,Alikäytävä E,,65.036941,25.48019,2,,0,,Europe/Helsinki
+101634,1477,Tirinkylä E,,65.136408,25.689718,3,,0,,Europe/Helsinki
+120744,2049,Koivumaantie P,,65.018495,25.548688,2,,0,,Europe/Helsinki
+101662,1587,Koiteli E,,65.098833,25.812796,3,,0,,Europe/Helsinki
+120618,1868,Huurrekuja P,,65.041849,25.602607,2,,0,,Europe/Helsinki
+101627,1448,Toivola P,,65.146807,25.659509,3,,0,,Europe/Helsinki
+120854,2192,Svaanin th P,,65.001577,25.528657,2,,0,,Europe/Helsinki
+101022,2953,Luontokeskus th P,,64.820019,25.308797,4,,0,,Europe/Helsinki
+56776,2123,OYS Sairaalaparkki P,,65.00925100000002,25.520812,2,,0,,Europe/Helsinki
+150137,2965,Toivontie P,,64.817844,25.437903,4,,0,,Europe/Helsinki
+101299,2854,Paavolankuja E,,64.848349,25.901386,4,,0,,Europe/Helsinki
+183953,3172,Seikkulantie P,,64.950484,25.540224,2,,0,,Europe/Helsinki
+120429,1632,Järvitie P,,65.08452,25.698715,3,,0,,Europe/Helsinki
+148254,2133,Kontiokoski P,,65.003087,25.763469,3,,0,,Europe/Helsinki
+148084,2031,Myllyoja E,,65.019995,25.554356,2,,0,,Europe/Helsinki
+150221,2592,Pukki P,,64.933669,25.739516,3,,0,,Europe/Helsinki
+120754,2059,Raatti E,,65.019661,25.4677,2,,0,,Europe/Helsinki
+169594,3081,Oulun Rauhanyhdistys P,,65.00672400000002,25.508481,2,,0,,Europe/Helsinki
+120962,2329,Repolaisentie E,,64.983392,25.521351,2,,0,,Europe/Helsinki
+120945,2312,Kolehmaisentie P,,64.985344,25.577291,2,,0,,Europe/Helsinki
+150094,3041,Korkala P,,64.787455,25.693992,4,,0,,Europe/Helsinki
+120705,2003,Laanilan koulu E,,65.02404900000002,25.518592,2,,0,,Europe/Helsinki
+101549,1709,Kuivasojan koulu E,,65.07264600000002,25.409314,2,,0,,Europe/Helsinki
+98778,2978,Muhoksen keskusta P,,64.807126,25.995908,4,,0,,Europe/Helsinki
+101228,3069,Tyrnävän kirkko P,,64.76468800000002,25.655981,4,,0,,Europe/Helsinki
+98774,2970,Kellotie E,,64.809335,25.985638,4,,0,,Europe/Helsinki
+120619,1855,Nietospolku P,,65.042673,25.594835,2,,0,,Europe/Helsinki
+120590,1823,Rantapellontie E,,65.051157,25.432901,2,,0,,Europe/Helsinki
+101310,2300,Seluska P,,64.979726,26.042821,4,,0,,Europe/Helsinki
+120658,1943,Huonesuonpuisto E,,65.03342000000002,25.562312,2,,0,,Europe/Helsinki
+120825,2154,Pohjankartano P,,65.006299,25.480533,2,,0,,Europe/Helsinki
+121264,2714,Tiilimestarinrinne E,,64.911262,25.558734,3,,0,,Europe/Helsinki
+120997,2375,Haarankankaantie E,,64.973078,25.581713,2,,0,,Europe/Helsinki
+120297,1502,Terveystie P,,65.12941944000002,25.77660833,3,,0,,Europe/Helsinki
+147998,2910,Ritokorpi P,,64.831881,25.581649,4,,0,,Europe/Helsinki
+148229,2847,Kieksi E,,64.848028,26.017044,4,,0,,Europe/Helsinki
+120437,1663,Honkapirtti E,,65.08390900000002,25.401261,2,,0,,Europe/Helsinki
+14037,9010,Halme E,,65.091635,25.825988,3,,0,,Europe/Helsinki
+101069,2491,Niemi E,,64.961626,25.373734,3,,0,,Europe/Helsinki
+190225,2416,Mustaniemi P,,64.972506,25.265915,3,,0,,Europe/Helsinki
+101079,2398,Kelanmutka E,,64.974227,25.307132,3,,0,,Europe/Helsinki
+101284,1899,Wathen P,,65.03249700000002,26.024926,4,,0,,Europe/Helsinki
+120932,2293,Jalohaukka P,,64.988109,25.515729,2,,0,,Europe/Helsinki
+120504,1730,Poukamapolku E,,65.066907,25.498165,2,,0,,Europe/Helsinki
+115887,2845,Kotilehto E,,64.855572,25.479726,4,,0,,Europe/Helsinki
+120796,2109,Linja-autoasema E,,65.009929,25.485523,2,,0,,Europe/Helsinki
+148008,3036,Kasvi P,,64.79430000000002,25.624462,4,,0,,Europe/Helsinki
+189671,2559,Pukintie E,,64.94149400000002,25.751608,3,,0,,Europe/Helsinki
+150039,3014,Taalintie P,,64.808173,25.440505,4,,0,,Europe/Helsinki
+98769,2920,Tyrnävän th E,,64.824161,25.935333,4,,0,,Europe/Helsinki
+120797,2110,Elokuvakeskus P,,65.01122700000002,25.466784,2,,0,,Europe/Helsinki
+152629,1158,Tanko th P,,65.32452600000002,25.313932,4,,0,,Europe/Helsinki
+120711,2010,Myllytie P,,65.0253,25.47873,2,,0,,Europe/Helsinki
+98753,2833,Kaupintie E,,64.856503,25.894053,4,,0,,Europe/Helsinki
+101641,1484,Honkimäentie E,,65.13285500000002,25.744162,3,,0,,Europe/Helsinki
+98711,2441,Konttisenkangas E,,64.963341,25.635224,2,,0,,Europe/Helsinki
+120971,2339,Metsärinne E,,64.981471,25.582201,2,,0,,Europe/Helsinki
+121001,2379,Eteläranta P,,64.975127,25.496834,2,,0,,Europe/Helsinki
+97717,1195,Laakso E,,65.31660100000002,25.37319,4,,0,,Europe/Helsinki
+189534,2996,Nykäläntie E,,64.805504,26.001462,4,,0,,Europe/Helsinki
+120633,1901,Leväsuontie E,,65.039055,25.577381,2,,0,,Europe/Helsinki
+121089,2482,Sadekuja P,,64.959767,25.552971,2,,0,,Europe/Helsinki
+307152,3294,Harjapäänkatu E,,65.00378338836121,25.47013330500684,1,,0,,Europe/Helsinki
+121048,2437,Kaiposenniementie P,,64.963983,25.66947,3,,0,,Europe/Helsinki
+120755,2060,Raatti P,,65.020482,25.468162,2,,0,,Europe/Helsinki
+150136,2964,Toivontie E,,64.817308,25.436418,4,,0,,Europe/Helsinki
+189675,2647,Välitalonkuja P,,64.922939,25.805891,3,,0,,Europe/Helsinki
+120752,2057,Nahkatehtaankatu E,,65.019779,25.486365,2,,0,,Europe/Helsinki
+101729,1103,Ylitalo P,,65.338464,25.699706,5,,0,,Europe/Helsinki
+120383,1604,Blomintie P,,65.092351,25.70597,3,,0,,Europe/Helsinki
+120762,2070,Kanervatie P,,65.016074,25.551577,2,,0,,Europe/Helsinki
+184521,1890,Joloksentie P,,65.03130400000002,26.146562,4,,0,,Europe/Helsinki
+120915,2268,Tavitie E,,64.992896,25.490239,2,,0,,Europe/Helsinki
+120384,1605,Blomintie E,,65.092406,25.705052,3,,0,,Europe/Helsinki
+190199,1387,Taipaleenkylä P,,65.176298,25.549984,4,,0,,Europe/Helsinki
+120517,1743,Varvikkokuja P,,65.060553,25.625831,2,,0,,Europe/Helsinki
+97674,3051,Ala-Temmeksen koulu E,,64.780425,25.547613,4,,0,,Europe/Helsinki
+120309,1514,Sammalkuja E,,65.127959,25.761648,3,,0,,Europe/Helsinki
+120605,1869,Nietospolku E,,65.042365,25.595424,2,,0,,Europe/Helsinki
+181286,3269,Automaatiotie P,,64.932217,25.383617,3,,0,,Europe/Helsinki
+148242,2301,Taimikko P,,64.984936,25.621705,2,,0,,Europe/Helsinki
+120904,2250,Sorsatie E,,64.993505,25.495483,2,,0,,Europe/Helsinki
+152628,1157,Tanko th E,,65.32448100000002,25.31387,4,,0,,Europe/Helsinki
+120632,1889,Niittyarontie P,,65.041598,25.452298,2,,0,,Europe/Helsinki
+101231,3059,Ylitalon th P,,64.772151,25.673836,4,,0,,Europe/Helsinki
+184149,3240,Uimahalli E,,65.008189,25.497117,1,,0,,Europe/Helsinki
+304237,2177,Professorintie E,,65.010069,25.506905,2,,0,,Europe/Helsinki
+97723,1116,Sarkkinen E,,65.338807,25.367587,4,,0,,Europe/Helsinki
+120630,1887,Järvenkorventie E,,65.041144,25.499232,2,,0,,Europe/Helsinki
+120594,1827,Tuhtotie P,,65.048599,25.447431,2,,0,,Europe/Helsinki
+188501,1902,Huonesuo th E,,65.038453,25.553909,2,,0,,Europe/Helsinki
+120893,2236,Hanhitie P,,64.995826,25.495225,2,,0,,Europe/Helsinki
+121025,2410,Turkkitie P,,64.970957,25.521254,2,,0,,Europe/Helsinki
+101509,1351,Törmäntie P,,65.190227,25.365317,3,,0,,Europe/Helsinki
+190368,3001,Lännentie P,,64.809844,25.470893,4,,0,,Europe/Helsinki
+190294,1553,Apajatie P,,65.120471,25.341321,3,,0,,Europe/Helsinki
+307196,3325,Loukkutie E,,65.08628889000002,25.44488056,2,,0,,Europe/Helsinki
+120829,2162,Sarkkapuisto P,,65.005151,25.52986,2,,0,,Europe/Helsinki
+189673,2636,Lapinkankaan koulu P,,64.92539600000002,25.800179,3,,0,,Europe/Helsinki
+98742,2791,Tuomi talli P,,64.880962,25.84866,4,,0,,Europe/Helsinki
+301591,3085,Muhoksen kirkonkylän koulu,,64.802629,26.008871,4,,0,,Europe/Helsinki
+97704,2802,Rajakorpi E,,64.877517,25.512676,3,,0,,Europe/Helsinki
+148138,2603,Vaalantie P,,64.931542,25.785885,3,,0,,Europe/Helsinki
+187929,2932,Sallisentie P,,64.829664,25.243066,4,,0,,Europe/Helsinki
+120913,2266,Tinatie P,,64.992828,25.506713,2,,0,,Europe/Helsinki
+150084,2946,Patala P,,64.818204,25.691555,4,,0,,Europe/Helsinki
+120091,1290,Repolantie P,,65.212757,25.308869,3,,0,,Europe/Helsinki
+148246,2159,Vainionmutka P,,65.001936,25.706976,3,,0,,Europe/Helsinki
+150142,2912,Selkämaa th P,,64.83338500000002,25.463067,4,,0,,Europe/Helsinki
+148044,2951,Ponkila E,,64.811466,26.019872,4,,0,,Europe/Helsinki
+190170,2587,Hailuodon th P,,64.93845,25.428723,3,,0,,Europe/Helsinki
+153129,3006,Liminka yläaste E,,64.810681,25.412969,4,,0,,Europe/Helsinki
+184233,1083,Hökkä P,,65.353472,25.810729,5,,0,,Europe/Helsinki
+190159,,Karintie P,,64.840459,25.179955,4,,0,,Europe/Helsinki
+120534,1760,Yliopistokatu P,,65.061022,25.472464,2,,0,,Europe/Helsinki
+150066,2842,Heikkinen P,,64.856771,25.617306,3,,0,,Europe/Helsinki
+120687,1981,Leiritie P,,65.02825,25.415567,2,,0,,Europe/Helsinki
+121080,2473,Tiaispuisto E,,64.961519,25.544005,2,,0,,Europe/Helsinki
+148110,2431,Peräkylä th P,,64.963079,25.691004,3,,0,,Europe/Helsinki
+171811,2415,Keskipiiri E,,64.973233,25.328843,3,,0,,Europe/Helsinki
+120933,2294,Vaskitie P,,64.989417,25.507454,2,,0,,Europe/Helsinki
+148503,1131,Alaranta E,,65.32956,25.298024,4,,0,,Europe/Helsinki
+121008,2390,Kaskiahonkuja P,,64.972377,25.59575,2,,0,,Europe/Helsinki
+120783,2095,Kontinkankaan sairaala E,,65.011652,25.514167,2,,0,,Europe/Helsinki
+101006,2923,Taarinkuja E,,64.832263,25.218727,4,,0,,Europe/Helsinki
+101706,1212,Pikkulaurila E,,65.311697,25.567146,4,,0,,Europe/Helsinki
+120802,2117,Oulujoen koulu P,,65.008625,25.560464,2,,0,,Europe/Helsinki
+98762,2892,Vääräntie P,,64.833186,25.915573,4,,0,,Europe/Helsinki
+120472,1698,Hämäläntie P,,65.073808,25.402186,2,,0,,Europe/Helsinki
+190288,2467,Harju E,,64.965945,25.254121,3,,0,,Europe/Helsinki
+120803,2118,Oulujoen koulu E,,65.008495,25.56098,2,,0,,Europe/Helsinki
+183974,3184,Ritaharjuntie E,,65.062649,25.446634,2,,0,,Europe/Helsinki
+120745,2050,Metsola P,,65.019373,25.534785,2,,0,,Europe/Helsinki
+101741,1079,Kakko P,,65.352872,25.769399,5,,0,,Europe/Helsinki
+101081,2400,Ervastinkylä P,,64.973906,25.301793,3,,0,,Europe/Helsinki
+150246,2433,Lylyojantie E,,64.96413,25.684008,3,,0,,Europe/Helsinki
+120729,2034,Metsotie P,,65.021562,25.534792,2,,0,,Europe/Helsinki
+97726,1100,Virkkulan risteys P,,65.34412,25.369269,4,,0,,Europe/Helsinki
+101618,1420,Mannintie E,,65.169775,25.596066,4,,0,,Europe/Helsinki
+101567,2209,Kempeleentie P,,65.000085,25.464157,2,,0,,Europe/Helsinki
+120385,1606,Jäälin ostoskeskus E,,65.091979,25.692117,3,,0,,Europe/Helsinki
+101288,1898,Parolanmäki E,,65.032602,26.048185,4,,0,,Europe/Helsinki
+187998,1141,Ylirannan koulu P,,65.324585,25.481602,4,,0,,Europe/Helsinki
+121023,2408,Oritputaantie PP,,64.970951,25.577844,2,,0,,Europe/Helsinki
+148448,1339,Rippala E,,65.19220900000002,25.361949,3,,0,,Europe/Helsinki
+171363,2753,Takatie E,,64.901095,25.521764,3,,0,,Europe/Helsinki
+120683,1977,Hartaantie E,,65.02795500000002,25.456888,2,,0,,Europe/Helsinki
+97673,3056,Marttila P,,64.777283,25.548266,4,,0,,Europe/Helsinki
+98782,2994,Leppiniemi th E,,64.80512400000002,26.011768,4,,0,,Europe/Helsinki
+101705,1147,Pajarinperä E,,65.321511,25.545624,4,,0,,Europe/Helsinki
+169675,3141,Haukiputaan ammattikoulu,,65.196214,25.413285,4,,0,,Europe/Helsinki
+120451,1677,Pielikuja E,,65.076326,25.527912,2,,0,,Europe/Helsinki
+148104,2403,Metsäkouluntie P,,64.968484,25.665223,3,,0,,Europe/Helsinki
+150148,2829,Tupos E2,,64.864076,25.489265,4,,0,,Europe/Helsinki
+101614,1395,Kuivala E,,65.174872,25.576205,4,,0,,Europe/Helsinki
+148194,2810,Rahko E,,64.865047,25.895832,4,,0,,Europe/Helsinki
+120575,1808,Ruotutie E,,65.051399,25.602171,2,,0,,Europe/Helsinki
+120653,1934,Kesätie,,65.035689,25.474402,2,,0,,Europe/Helsinki
+171366,2736,Riihivainio P,,64.90582000000002,25.519708,3,,0,,Europe/Helsinki
+148140,2604,Vaalantie E,,64.931082,25.786688,3,,0,,Europe/Helsinki
+148178,2772,Käpykankaantie E,,64.887075,25.862057,4,,0,,Europe/Helsinki
+153143,3020,Limingan linja-autoasema P,,64.80845100000002,25.414195,4,,0,,Europe/Helsinki
+190292,1682,Jylkynkankaan th E,,65.073888,25.529067,2,,0,,Europe/Helsinki
+121114,2513,Kaakkurin koulu P,,64.955587,25.53186,2,,0,,Europe/Helsinki
+98698,2164,Raksilan urheilukeskus E,,65.005572,25.495546,2,,0,,Europe/Helsinki
+101574,2554,Virtaoja E,,64.945377,25.51818,2,,0,,Europe/Helsinki
+120545,1771,Yliopisto E,,65.058572,25.469778,2,,0,,Europe/Helsinki
+307192,3323,Klippatie P,,65.08428889,25.44693056,2,,0,,Europe/Helsinki
+187995,1192,Timpurintie P,,65.31625200000002,25.388317,4,,0,,Europe/Helsinki
+184154,3235,Värttö,,65.016657,25.511321,1,,0,,Europe/Helsinki
+120636,1904,Varsitie P,,65.03884600000002,25.465558,2,,0,,Europe/Helsinki
+120549,1775,Teknologiakylä P,,65.05872,25.458869,2,,0,,Europe/Helsinki
+185718,3291,Madetojanraitti E,,65.007434,25.476729,1,,0,,Europe/Helsinki
+121127,2527,Pesätie PP,,64.952969,25.535686,2,,0,,Europe/Helsinki
+120379,1599,Holopaisenkuja E,,65.097017,25.419115,2,,0,,Europe/Helsinki
+307161,4003,Juoksupolku E,,64.99756944000002,25.61131944,2,,0,,Europe/Helsinki
+184253,1182,Maalismaantie E,,65.313074,25.687851,5,,0,,Europe/Helsinki
+190181,3340,Kunnankuja E,,64.763111,25.648305,4,,0,,Europe/Helsinki
+120748,2053,Kursutie P,,65.018419,25.523465,2,,0,,Europe/Helsinki
+181289,3274,Kisakankaan th E,,64.936945,25.376944,3,,0,,Europe/Helsinki
+148023,2182,Saarela E,,65.001394,25.585788,2,,0,,Europe/Helsinki
+150331,1402,Jokelantie koulukeskus P,,65.175901,25.362145,3,,0,,Europe/Helsinki
+101719,1132,Niskala th P,,65.323887,25.648574,5,,0,,Europe/Helsinki
+184148,3241,Uimahalli P,,65.008251,25.497071,1,,0,,Europe/Helsinki
+152767,1853,Pääkankaantie P,,65.042496,25.667532,3,,0,,Europe/Helsinki
+101734,1090,Suvanto P,,65.34461400000002,25.725498,5,,0,,Europe/Helsinki
+120758,2063,Makasiinikatu P,,65.018301,25.482205,2,,0,,Europe/Helsinki
+147971,2642,Sohjanantie E,,64.927965,25.509267,3,,0,,Europe/Helsinki
+101637,1494,Putkonen P,,65.132519,25.699455,3,,0,,Europe/Helsinki
+150364,1295,Kropsu P,,65.20956,25.330209,3,,0,,Europe/Helsinki
+120782,2094,Kontinkankaan sairaala P,,65.011775,25.514818,2,,0,,Europe/Helsinki
+150080,2908,Huovinen P,,64.830635,25.678101,4,,0,,Europe/Helsinki
+120843,2179,OYS asunnot E,,65.002764,25.527108,2,,0,,Europe/Helsinki
+148109,2432,Sanginsuun th E,,64.96429000000002,25.686985,3,,0,,Europe/Helsinki
+304238,2176,Professorintie P,,65.00893201477508,25.50732099580587,2,,0,,Europe/Helsinki
+184265,3316,Onkamontie E,,65.192053,25.474143,4,,0,,Europe/Helsinki
+185120,2687,Linnakangastalo P,,64.923112,25.557633,3,,0,,Europe/Helsinki
+121542,1623,Vaunumiehenkuja E,,65.091379,25.42213,2,,0,,Europe/Helsinki
+148180,2782,Sairaalantie E,,64.883809,25.866692,4,,0,,Europe/Helsinki
+148489,1209,Partanen P,,65.310196,25.590652,4,,0,,Europe/Helsinki
+152757,1838,Rasilantie E,,65.04395,25.678778,3,,0,,Europe/Helsinki
+120409,1631,Kaarnalenkki P,,65.084891,25.71467,3,,0,,Europe/Helsinki
+191530,3283,Ylikiimingin th E,,65.063296,25.633404,2,,0,,Europe/Helsinki
+101266,1836,Saarinen E,,65.042977,25.801776,3,,0,,Europe/Helsinki
+120681,1973,Manttaalitie E,,65.028399,25.549529,2,,0,,Europe/Helsinki
+101551,1739,Hiirenvirna P,,65.065183,25.41282,2,,0,,Europe/Helsinki
+101636,1485,Haipuskylä E,,65.134213,25.695175,3,,0,,Europe/Helsinki
+148097,2311,Sanginjoen th E,,64.983375,25.618777,2,,0,,Europe/Helsinki
+150165,2528,Maksakuja E,,64.953647,25.385754,3,,0,,Europe/Helsinki
+121107,2503,Siipikuja E,,64.958471,25.530453,2,,0,,Europe/Helsinki
+101271,1848,Ahmasjärventie P,,65.039818,25.89967,4,,0,,Europe/Helsinki
+150267,1488,Sipolanpisto P,,65.135036,25.624708,3,,0,,Europe/Helsinki
+187974,1919,Huonesuo th P,,65.037482,25.552794,2,,0,,Europe/Helsinki
+97688,1367,Jokela E,,65.182487,25.503278,4,,0,,Europe/Helsinki
+120772,2081,Peltola E,,65.01301,25.526267,2,,0,,Europe/Helsinki
+187987,2542,Lepola E,,64.951872,25.508297,2,,0,,Europe/Helsinki
+97629,2980,Ojakylä E,,64.811367,25.709824,4,,0,,Europe/Helsinki
+169634,2516,Poikuekuja E,,64.953681,25.535986,2,,0,,Europe/Helsinki
+148498,1198,Vaihtometsäntie E,,65.317387,25.333486,4,,0,,Europe/Helsinki
+190671,3344,Hakkuutie P,,64.94641,25.577284,2,,0,,Europe/Helsinki
+190161,2903,Lumijoki PP,,64.836929,25.188301,4,,0,,Europe/Helsinki
+150230,2661,Pikkarala koulu P,,64.918871,25.76678,3,,0,,Europe/Helsinki
+150191,2743,Zimmari E,,64.903597,25.542604,3,,0,,Europe/Helsinki
+120936,2297,Kihokkitie P,,64.98906700000002,25.493147,2,,0,,Europe/Helsinki
+98719,2560,Määtäntie P,,64.941153,25.696009,3,,0,,Europe/Helsinki
+191964,3347,Neitsytkorventie PP,,64.947069,25.583407,2,,0,,Europe/Helsinki
+120447,1673,Itälahdentie E,,65.080342,25.397413,2,,0,,Europe/Helsinki
+188517,2689,Pirilä E,,64.916752,25.487147,3,,0,,Europe/Helsinki
+169586,3117,Toppilansaarentie E2,,65.032039,25.42602,2,,0,,Europe/Helsinki
+98763,2893,Vääräntie E,,64.832298,25.916915,4,,0,,Europe/Helsinki
+150402,1238,Turtinen P,,65.295895,25.69503,5,,0,,Europe/Helsinki
+101032,2986,Rantakylä th E,,64.81390500000002,25.360433,4,,0,,Europe/Helsinki
+121537,2107,OYS P,,65.010991,25.518997,2,,0,,Europe/Helsinki
+121012,2394,Lumijärventie E,,64.97316600000002,25.509737,2,,0,,Europe/Helsinki
+101007,2933,Vesankuja P,,64.830716,25.234127,4,,0,,Europe/Helsinki
+101534,1557,Hietalanmäki E,,65.119235,25.375092,3,,0,,Europe/Helsinki
+150222,2593,Pukki E,,64.93364,25.740342,3,,0,,Europe/Helsinki
+120753,2058,Nahkatehtaankatu P,,65.019473,25.485385,2,,0,,Europe/Helsinki
+101732,1097,H Ylitalo P,,65.342101,25.713765,5,,0,,Europe/Helsinki
+184254,1220,Autiontie P,,65.306946,25.700059,5,,0,,Europe/Helsinki
+120623,1873,Järvenkorventie P,,65.041794,25.49875,2,,0,,Europe/Helsinki
+148086,2067,Hiukkavaara E,,65.015109,25.564061,2,,0,,Europe/Helsinki
+169581,3121,Kahvelitie P,,65.029961,25.43839,2,,0,,Europe/Helsinki
+120824,2153,Pohjankartano E,,65.006368,25.480253,2,,0,,Europe/Helsinki
+101712,1216,Mettovaaran puutarha E,,65.308981,25.608477,4,,0,,Europe/Helsinki
+150378,1168,Iin virastotalo P,,65.322637,25.367215,4,,0,,Europe/Helsinki
+101716,1159,Juutinen E,,65.320187,25.641125,5,,0,,Europe/Helsinki
+101646,1479,Kirkonniementie E,,65.132598,25.761752,3,,0,,Europe/Helsinki
+148124,2537,Paaso P,,64.94677900000002,25.736763,3,,0,,Europe/Helsinki
+120284,1489,Kiiminki PP,,65.131253,25.794922,3,,0,,Europe/Helsinki
+101704,1146,Pajarinperä P,,65.322189,25.545222,4,,0,,Europe/Helsinki
+120930,2291,Suohaukka E,,64.98845,25.522958,2,,0,,Europe/Helsinki
+97667,3077,Ala-Temmes P,,64.763474,25.548041,4,,0,,Europe/Helsinki
+120441,1667,Raamitie P,,65.078965,25.418144,2,,0,,Europe/Helsinki
+184618,1910,Ylikiimingin keskusta,,65.03052592335068,26.1520429439751,4,,0,,Europe/Helsinki
+101520,1439,Annalankangas E,,65.160388,25.348085,3,,0,,Europe/Helsinki
+101493,1258,Pitäjänraja P,,65.259616,25.357557,4,,0,,Europe/Helsinki
+101030,2988,Leisu E,,64.814396,25.351264,4,,0,,Europe/Helsinki
+120837,2171,Kyösti Kallion puisto E,,65.005695,25.458342,2,,0,,Europe/Helsinki
+231937,3317,Onkamontie P,,65.191765,25.474843,4,,0,,Europe/Helsinki
+101655,1539,Paso P,,65.120422,25.802249,3,,0,,Europe/Helsinki
+150226,2632,Sutelantie E,,64.926504,25.753659,3,,0,,Europe/Helsinki
+148495,1197,Jakkila E,,65.316217,25.350254,4,,0,,Europe/Helsinki
+120489,1715,Vesipääskyntie P,,65.06918,25.517402,2,,0,,Europe/Helsinki
+97686,2944,Temmesjoki E,,64.823263,25.450753,4,,0,,Europe/Helsinki
+101643,1481,Lukkarintie P,,65.13318700000002,25.752839,3,,0,,Europe/Helsinki
+190369,2984,Haaransilta E,,64.812714,25.479594,4,,0,,Europe/Helsinki
+120743,2048,Koivumaantie E,,65.01821700000002,25.547706,2,,0,,Europe/Helsinki
+98704,2373,Juurus th P,,64.973778,25.597858,2,,0,,Europe/Helsinki
+120735,2056,Koskenniska E,,65.020315,25.491491,2,,0,,Europe/Helsinki
+150383,1160,Iin Työväentalo E,,65.321401,25.380748,4,,0,,Europe/Helsinki
+230852,3003,Pitkäkoski E2,,64.80814,25.455348,4,,0,,Europe/Helsinki
+171804,2363,Karhunkedontie E,,64.977899,25.486149,2,,0,,Europe/Helsinki
+148204,2848,Laukka silta E,,64.850093,25.915356,4,,0,,Europe/Helsinki
+121077,2470,Kivitaskunkuja E,,64.96114,25.559502,2,,0,,Europe/Helsinki
+189657,1936,Kemintie P,,65.035249,25.468185,2,,0,,Europe/Helsinki
+120499,1725,Hanhikkitie E,,65.068607,25.429558,2,,0,,Europe/Helsinki
+121534,2008,Kalliola P,,65.025307,25.48654,2,,0,,Europe/Helsinki
+101545,1655,Aaltokankaantie E,,65.08447,25.408501,2,,0,,Europe/Helsinki
+121036,2421,Kaiannontie E,,64.968446,25.530393,2,,0,,Europe/Helsinki
+101737,1088,Kaisto E (PP),,65.346738,25.74782,5,,0,,Europe/Helsinki
+183961,3176,Ukkoherrantie P,,64.950017,25.543868,2,,0,,Europe/Helsinki
+120709,2007,Hoikantie E,,65.024857,25.497028,2,,0,,Europe/Helsinki
+120394,1615,Kehätie P,,65.091005,25.695526,3,,0,,Europe/Helsinki
+121053,2443,Tiaisrinne E,,64.96424,25.555376,2,,0,,Europe/Helsinki
+121328,3303,Muhos linja-autoasema 2,,64.806581,25.99094,4,,0,,Europe/Helsinki
+184242,1144,Niskala P,,65.320322,25.690902,5,,0,,Europe/Helsinki
+300825,2323,Käpylä,,64.987982,25.258173,3,,0,,Europe/Helsinki
+150248,1815,Syynimaa P,,65.052492,25.477031,2,,0,,Europe/Helsinki
+148494,1196,Jakkila P,,65.316131,25.350624,4,,0,,Europe/Helsinki
+101649,1505,Kiimingin lukio P,,65.129409,25.772211,3,,0,,Europe/Helsinki
+190168,2523,Lentokentän th E2,,64.955232,25.503347,2,,0,,Europe/Helsinki
+307166,3108,Tuulipurto P,,64.840153,25.674058,4,,0,,Europe/Helsinki
+101318,1950,Hillikkotie E,,65.024394,26.121278,4,,0,,Europe/Helsinki
+190220,2611,Oulunsalo-talo E,,64.934823,25.398985,3,,0,,Europe/Helsinki
+101542,1601,Herukka P,,65.096581,25.404224,2,,0,,Europe/Helsinki
+150073,2867,Karppilantie E,,64.84730500000002,25.643426,3,,0,,Europe/Helsinki
+231892,2546,Kaitajärvi E,,64.94436,25.741425,3,,0,,Europe/Helsinki
+101536,1572,Holstinmäki E,,65.113015,25.383137,3,,0,,Europe/Helsinki
+101082,2399,Ervastinkylä E,,64.973781,25.300276,3,,0,,Europe/Helsinki
+98768,2915,Korilantie P,,64.82555000000002,25.931445,4,,0,,Europe/Helsinki
+120740,2045,Koivumaantien ostoskeskus E,,65.019674,25.551849,2,,0,,Europe/Helsinki
+184156,3233,Kurkelantie P,,65.018992,25.511658,1,,0,,Europe/Helsinki
+148087,2066,Hiukkavaara P,,65.014866,25.564837,2,,0,,Europe/Helsinki
+148256,2089,Loppula E,,65.008822,25.819298,3,,0,,Europe/Helsinki
+120708,2005,Laamannintie P,,65.023862,25.511472,2,,0,,Europe/Helsinki
+10439,9012,Runttilantie E,,65.088266,25.83222,3,,0,,Europe/Helsinki
+187986,2727,Kempeleen paloasema E,,64.907353,25.525941,3,,0,,Europe/Helsinki
+307198,3309,Saalistajantie P,,65.09055,25.44463611,2,,0,,Europe/Helsinki
+120494,1720,Kuovitie P,,65.06689900000002,25.516275,2,,0,,Europe/Helsinki
+307136,5049,Lumijoen peruskoulu P,,64.84181700000002,25.179769,4,,0,,Europe/Helsinki
+153078,2955,Hakala E,,64.82017,25.301584,4,,0,,Europe/Helsinki
+120987,2360,Kivipellon aukio E,,64.977473,25.586353,2,,0,,Europe/Helsinki
+101289,1895,Linnakekuja E,,65.03186700000002,26.058166,4,,0,,Europe/Helsinki
+121294,2767,Haapamaa,,64.895474,25.558863,3,,0,,Europe/Helsinki
+97705,1256,Hätälä E,,65.268497,25.362467,4,,0,,Europe/Helsinki
+98712,2497,Sääskensuon th E,,64.956408,25.653082,3,,0,,Europe/Helsinki
+150375,1166,Haminan koulu P,,65.322759,25.375213,4,,0,,Europe/Helsinki
+120960,2327,Jättikivenkatu P,,64.981933,25.569549,2,,0,,Europe/Helsinki
+120083,1276,Heinonpolku E,,65.222033,25.300878,3,,0,,Europe/Helsinki
+120432,1656,Sahantie E,,65.085346,25.40562,2,,0,,Europe/Helsinki
+148088,2102,Oulujoentie P,,65.01032,25.572632,2,,0,,Europe/Helsinki
+190195,1654,Aaltokankaantie P,,65.08450000000002,25.408755,2,,0,,Europe/Helsinki
+121265,2715,Tiilimestarinrinne P,,64.911968,25.559351,3,,0,,Europe/Helsinki
+101227,3073,Keskikyläntie E,,64.762463,25.637283,4,,0,,Europe/Helsinki
+120584,1817,Suolamännyntie E,,65.052939,25.430034,2,,0,,Europe/Helsinki
+183960,3175,Ukkoherrantie E,,64.950077,25.543569,2,,0,,Europe/Helsinki
+183970,3191,Lähimetsäntie E,,64.948529,25.565301,2,,0,,Europe/Helsinki
+101286,1880,Vesala P,,65.034353,26.034453,4,,0,,Europe/Helsinki
+120126,1330,Jokikylän koulu P,,65.191673,25.461437,4,,0,,Europe/Helsinki
+120811,2127,Rautasaari P,,65.00863,25.477749,2,,0,,Europe/Helsinki
+184142,3247,Kiviharjunkuja P,,65.008324,25.513313,1,,0,,Europe/Helsinki
+101714,1215,Jakkukylä E,,65.309685,25.614854,4,,0,,Europe/Helsinki
+147996,2896,Peräoja P,,64.836092,25.575442,4,,0,,Europe/Helsinki
+184163,3226,Myllytulli P,,65.016913,25.489498,1,,0,,Europe/Helsinki
+231889,2227,Kivikkokangas P,,64.99845960976556,25.59048249032445,2,,0,,Europe/Helsinki
+169642,2517,Emopolku E,,64.954129,25.528638,2,,0,,Europe/Helsinki
+190227,2447,Santaniemi P,,64.968329,25.25854,3,,0,,Europe/Helsinki
+148099,2349,Eskelisentie E,,64.97885,25.628099,2,,0,,Europe/Helsinki
+184168,3221,Matkakeskus E,,65.01146,25.483485,1,,0,,Europe/Helsinki
+101230,3058,Ylitalon th E,,64.771269,25.672492,4,,0,,Europe/Helsinki
+101748,1063,Kiimingin th E,,65.36653,25.816158,5,,0,,Europe/Helsinki
+189727,2763,Junnintie E,,64.890795,25.856959,4,,0,,Europe/Helsinki
+101709,1211,Piste P,,65.311799,25.576965,4,,0,,Europe/Helsinki
+150048,2780,Seppäsentie E,,64.890073,25.557843,3,,0,,Europe/Helsinki
+120550,1776,Tutkijantie P,,65.05922700000002,25.448831,2,,0,,Europe/Helsinki
+120749,2054,Värtöntie E,,65.019436,25.520184,2,,0,,Europe/Helsinki
+150368,1322,Kiimingintien th P,,65.193378,25.447562,4,,0,,Europe/Helsinki
+148100,2366,Kärppä taimi P,,64.975516,25.635344,2,,0,,Europe/Helsinki
+121047,2436,Vallinkorva P,,64.964604,25.667766,3,,0,,Europe/Helsinki
+150223,2606,Väinölä E,,64.932109,25.747096,3,,0,,Europe/Helsinki
+152878,2384,Lusikka P,,64.967702,25.986483,4,,0,,Europe/Helsinki
+184161,3228,Intiöntie E,,65.01686,25.498517,1,,0,,Europe/Helsinki
+120864,2202,Knuutila E,,64.998476,25.554629,2,,0,,Europe/Helsinki
+150265,1495,Nurmioja P,,65.132092,25.620557,3,,0,,Europe/Helsinki
+120982,2354,Mäntylä P,,64.980507,25.502739,2,,0,,Europe/Helsinki
+97683,3030,Lampola P,,64.802522,25.513212,4,,0,,Europe/Helsinki
+148451,1342,Huvipolku P,,65.19321600000002,25.350738,3,,0,,Europe/Helsinki
+150086,2961,Marjakangas P,,64.814,25.703192,4,,0,,Europe/Helsinki
+153131,3007,Kirkko th P,,64.810911,25.408534,4,,0,,Europe/Helsinki
+148464,1293,Martinniemen koulu P,,65.210822,25.315511,3,,0,,Europe/Helsinki
+148447,1336,Keiska P2,,65.192892,25.366178,3,,0,,Europe/Helsinki
+150385,1229,Jakkuranta P,,65.300943,25.606564,4,,0,,Europe/Helsinki
+307144,3365,Vedenneidontie E,,64.934662,25.564241,3,,0,,Europe/Helsinki
+120527,1753,Yliopiston puutarha P,,65.062805,25.467006,2,,0,,Europe/Helsinki
+120139,1344,Jokikylä E,,65.19089700000002,25.467162,4,,0,,Europe/Helsinki
+148449,1340,Rippala P,,65.192385,25.360037,3,,0,,Europe/Helsinki
+98506,1564,Piltonen E,,65.111593,25.725898,3,,0,,Europe/Helsinki
+121000,2378,Etelärata E,,64.975006,25.497243,2,,0,,Europe/Helsinki
+184239,1124,Manninen P,,65.330503,25.691898,5,,0,,Europe/Helsinki
+101084,2371,Ristihäkki E,,64.978607,25.277512,3,,0,,Europe/Helsinki
+307194,3324,Loukkutie P,,65.08725833,25.44513611,2,,0,,Europe/Helsinki
+148143,2612,Tervaojantie P,,64.9292,25.791319,3,,0,,Europe/Helsinki
+148096,2310,Sanginjoen th P,,64.98403,25.617811,2,,0,,Europe/Helsinki
+148431,1362,Isojämsä E,,65.184524,25.48271,4,,0,,Europe/Helsinki
+184159,3230,Viestikatu P,,65.01718,25.503549,1,,0,,Europe/Helsinki
+120996,2374,Haarankankaantie P,,64.973107,25.581924,2,,0,,Europe/Helsinki
+101011,2940,Hirvasniemi P,,64.825883,25.252645,4,,0,,Europe/Helsinki
+153150,3026,Värminkosken th P,,64.807535,25.399892,4,,0,,Europe/Helsinki
+98721,2599,Vanhantien th P,,64.934719,25.714405,3,,0,,Europe/Helsinki
+97777,2836,Ojala E,,64.855007,25.911341,4,,0,,Europe/Helsinki
+101085,2370,Ristihäkki P,,64.978889,25.277112,3,,0,,Europe/Helsinki
+121154,2564,Salavakuja E,,64.94485,25.378579,3,,0,,Europe/Helsinki
+153149,3027,Värminkosken th P2,,64.807362,25.398807,4,,0,,Europe/Helsinki
+120678,1967,Manttaalitie P,,65.029346,25.551006,2,,0,,Europe/Helsinki
+120521,1747,Kaijonlahdentie P,,65.061657,25.496229,2,,0,,Europe/Helsinki
+98758,2860,Nokiantie P,,64.845279,25.90109,4,,0,,Europe/Helsinki
+120704,2002,Hintanmutka E,,65.024718,25.525388,2,,0,,Europe/Helsinki
+74397,2146,OYS A6,,65.00712900000002,25.521226,2,,0,,Europe/Helsinki
+148206,2865,Nuolikivi E,,64.844262,25.921408,4,,0,,Europe/Helsinki
+120890,2233,Svaaninkuja P,,64.996461,25.534726,2,,0,,Europe/Helsinki
+148176,2771,Käpykankaantie P,,64.887716,25.861397,4,,0,,Europe/Helsinki
+152837,2157,Kinnunen E,,65.000367,25.855521,3,,0,,Europe/Helsinki
+301899,2230,Knuutilanranta E,,64.995778,25.558633,2,,0,,Europe/Helsinki
+150369,1332,Allikontie P,,65.192851,25.43228,4,,0,,Europe/Helsinki
+120301,1506,Viitanmäki P,,65.130327,25.764904,3,,0,,Europe/Helsinki
+120624,1874,Järvikioski E,,65.043429,25.490991,2,,0,,Europe/Helsinki
+120973,2341,Jatulikiventie E,,64.980871,25.574775,2,,0,,Europe/Helsinki
+120952,2319,Kihokkipuisto E,,64.986107,25.491343,2,,0,,Europe/Helsinki
+120405,1627,Havutie P,,65.08734,25.710595,3,,0,,Europe/Helsinki
+150254,1744,Raitotien risteys E,,65.062692,25.509963,2,,0,,Europe/Helsinki
+101645,1480,Kirkonniementie P,,65.13305200000002,25.759174,3,,0,,Europe/Helsinki
+121041,2427,Väliranta E,,64.968705,25.3549,3,,0,,Europe/Helsinki
+120602,1844,Rantakoskela E,,65.046858,25.478755,2,,0,,Europe/Helsinki
+190194,2477,Oulunlahti P,,64.961023,25.502918,2,,0,,Europe/Helsinki
+120557,1785,Ylioppilaskylä P,,65.05759500000002,25.472469,2,,0,,Europe/Helsinki
+120286,1491,Kotikumpu P,,65.13176300000002,25.766073,3,,0,,Europe/Helsinki
+44469,2838,Tupos Koulukeskus E,,64.859208,25.471189,4,,0,,Europe/Helsinki
+101015,2959,Mikkola P,,64.821164,25.271065,4,,0,,Europe/Helsinki
+101305,3278,Kassinen th E,,64.949353,26.013838,4,,0,,Europe/Helsinki
+153079,2954,Hakala P,,64.820152,25.303144,4,,0,,Europe/Helsinki
+500100,5100,Kalliosuontie th E,,65.5227395960583,26.21438854782202,5,,0,,Europe/Helsinki
+186022,3304,Pomolantie P,,65.219799,25.300808,3,,0,,Europe/Helsinki
+150365,1294,Kropsu E,,65.20928000000002,25.330055,3,,0,,Europe/Helsinki
+120993,2369,Tahkokangas E,,64.975442,25.518465,2,,0,,Europe/Helsinki
+120558,1786,Ylioppilaskylä E,,65.05758400000002,25.472236,2,,0,,Europe/Helsinki
+183973,3183,Ritaharjuntie P,,65.062474,25.447027,2,,0,,Europe/Helsinki
+101653,1524,Korkeamaantie P,,65.12382700000002,25.792873,3,,0,,Europe/Helsinki
+150071,2862,Bask E,,64.849524,25.636842,3,,0,,Europe/Helsinki
+120613,1863,Tullimiehentie E,,65.045102,25.444151,2,,0,,Europe/Helsinki
+98730,2694,Pikkarala E,,64.91291200000002,25.765447,3,,0,,Europe/Helsinki
+121505,1925,Lämpövoimala E,,65.03790600000002,25.44317,2,,0,,Europe/Helsinki
+189668,2493,Heikinniementie P,,64.95693900000002,25.709063,3,,0,,Europe/Helsinki
+189723,2676,Ritola E,,64.91496600000002,25.821821,3,,0,,Europe/Helsinki
+184137,3252,Madetojanraitti P,,65.007341,25.477144,1,,0,,Europe/Helsinki
+148459,1300,Vahtola E,,65.206689,25.331009,3,,0,,Europe/Helsinki
+120961,2328,Repolaisentie P,,64.983985,25.521445,2,,0,,Europe/Helsinki
+121065,2458,Punatulkunrinne E,,64.96295600000002,25.560759,2,,0,,Europe/Helsinki
+148433,1354,Harjunkangas E,,65.18665,25.473856,4,,0,,Europe/Helsinki
+148439,1311,Torvelantie P,,65.20017,25.399803,3,,0,,Europe/Helsinki
+150043,3019,Kuormatie P,,64.808464,25.422994,4,,0,,Europe/Helsinki
+120998,2376,Sutela E,,64.973867,25.503576,2,,0,,Europe/Helsinki
+148160,2680,Anttosentie E,,64.912656,25.824712,3,,0,,Europe/Helsinki
+169846,3146,Tähtipolku P,,65.043128,25.61662,2,,0,,Europe/Helsinki
+120473,1699,Hämäläntie E,,65.073438,25.402867,2,,0,,Europe/Helsinki
+150078,2895,Niitynmaa th P,,64.834458,25.670201,4,,0,,Europe/Helsinki
+120715,2015,Merikoskenkatu P,,65.024942,25.47005,2,,0,,Europe/Helsinki
+121215,2646,Lentoasema E,,64.928802,25.374032,3,,0,,Europe/Helsinki
+300903,2688,Linnakangastalo E,,64.92397800000002,25.557493,3,,0,,Europe/Helsinki
+171360,2716,Kuntakeskus E,,64.912087,25.505816,3,,0,,Europe/Helsinki
+148001,2937,Jokisilta E,,64.823556,25.591965,4,,0,,Europe/Helsinki
+190672,3345,Hakkuutie E,,64.946487,25.576836,2,,0,,Europe/Helsinki
+101663,1652,Huttukylä th P,,65.079691,25.847289,3,,0,,Europe/Helsinki
+150381,1186,Ellala P,,65.319356,25.360058,4,,0,,Europe/Helsinki
+120834,2167,Hakakatu E,,65.004732,25.489656,2,,0,,Europe/Helsinki
+120335,1550,Viitantie P,,65.117297,25.739487,3,,0,,Europe/Helsinki
+120411,1634,Laivakankangas E,,65.085615,25.684454,3,,0,,Europe/Helsinki
+148443,1317,Saarikankaantie P,,65.196876,25.385349,3,,0,,Europe/Helsinki
+101073,2428,Väliranta P,,64.968099,25.356949,3,,0,,Europe/Helsinki
+148123,2530,Turkka E,,64.94936,25.730166,3,,0,,Europe/Helsinki
+183968,3181,Lähimetsä P,,64.946576,25.57023,2,,0,,Europe/Helsinki
+148174,2757,Roininen E,,64.89341400000002,25.853427,4,,0,,Europe/Helsinki
+148227,2864,Montan leirintäalue P,,64.843242,26.008093,4,,0,,Europe/Helsinki
+101070,2478,Niemi P,,64.962406,25.372797,3,,0,,Europe/Helsinki
+120684,1978,Hartaantie P,,65.02802,25.457075,2,,0,,Europe/Helsinki
+184623,2976,Virkkula P,,64.81691600000002,25.325523,4,,0,,Europe/Helsinki
+120947,2314,Maikkulantie E,,64.984082,25.564412,2,,0,,Europe/Helsinki
+120759,2064,Makasiinikatu E,,65.018264,25.482038,2,,0,,Europe/Helsinki
+98716,2534,Kievarintie E,,64.9493,25.675806,3,,0,,Europe/Helsinki
+190171,2588,Hailuodon th E,,64.938554,25.428336,3,,0,,Europe/Helsinki
+150270,1436,Rinnetie E,,65.14818687256334,25.63624673840818,3,,0,,Europe/Helsinki
+101631,1457,Uusikanniainen P,,65.143633,25.670796,3,,0,,Europe/Helsinki
+164368,3111,Nupputie P,,65.073103,25.460801,2,,0,,Europe/Helsinki
+184145,3244,Kiviharjuntie P,,65.00924002742056,25.50880805745451,1,,0,,Europe/Helsinki
+120631,1888,Niittyarontie E,,65.041498,25.452176,2,,0,,Europe/Helsinki
+150320,1391,Härkätie P,,65.178046,25.344253,3,,0,,Europe/Helsinki
+98777,2977,Muhoksen keskusta E,,64.80723500000002,25.994831,4,,0,,Europe/Helsinki
+101267,1835,Kiiminki th P,,65.041746,25.868356,3,,0,,Europe/Helsinki
+150059,2814,Ketolanperä E,,64.86881200000002,25.588795,3,,0,,Europe/Helsinki
+307155,10000,Toripakka P2,,65.013846,25.470629,2,,0,,Europe/Helsinki
+97708,1253,Räinänperän th P,,65.275088,25.365443,4,,0,,Europe/Helsinki
+101589,2730,Vanhapappila P,,64.90765500000002,25.520198,3,,0,,Europe/Helsinki
+152600,1127,Koni th E,,65.332349,25.376017,4,,0,,Europe/Helsinki
+184241,1172,Iin Aseman koulu E,,65.31984300000002,25.448442,4,,0,,Europe/Helsinki
+120688,1982,Karttatie E,,65.025617,25.545754,2,,0,,Europe/Helsinki
+150053,2794,Keinäsentie E,,64.882755,25.57392,3,,0,,Europe/Helsinki
+148478,1546,Virpiniemen th E,,65.122368,25.344185,3,,0,,Europe/Helsinki
+169875,3150,Runkotie E,,64.944856,25.376804,3,,0,,Europe/Helsinki
+300826,2420,Heikkilänkangas E,,64.96853400000002,25.607832,2,,0,,Europe/Helsinki
+148134,2567,Ohrasenoja P,,64.939043,25.765281,3,,0,,Europe/Helsinki
+98509,1535,Honkimaa P,,65.122441,25.747465,3,,0,,Europe/Helsinki
+120598,1831,Vilkkutie P,,65.049021,25.436212,2,,0,,Europe/Helsinki
+190075,2974,Niittomiehentie P,,64.814781,25.429847,4,,0,,Europe/Helsinki
+185772,3301,Paulaharjuntie E,,65.031075,25.472373,2,,0,,Europe/Helsinki
+152842,2225,Jylhänkylä E,,64.99131300000002,25.869261,3,,0,,Europe/Helsinki
+150401,1237,Turtinen E,,65.295384,25.694026,5,,0,,Europe/Helsinki
+120848,2186,Painijantie P,,64.99998600000002,25.581198,2,,0,,Europe/Helsinki
+190202,9017,Oikoreitti P,,65.07014,25.8558,3,,0,,Europe/Helsinki
+101611,1398,Hanhela P,,65.175296,25.562395,4,,0,,Europe/Helsinki
+152657,1187,Ellala E,,65.318876,25.358757,4,,0,,Europe/Helsinki
+171262,1249,Sorosenperän th P,,65.288311,25.372876,4,,0,,Europe/Helsinki
+188511,1807,Kaartintie E,,65.053084,25.600999,2,,0,,Europe/Helsinki
+120370,1590,Valkoherukkatie E,,65.100212,25.41586,2,,0,,Europe/Helsinki
+101057,2717,Kuntakeskus P,,64.912175,25.505663,3,,0,,Europe/Helsinki
+120819,2148,OYS B3,,65.005791,25.520155,2,,0,,Europe/Helsinki
+148037,3084,Veturitie E,,64.801625,26.012948,4,,0,,Europe/Helsinki
+148501,1181,Rantakestilä P,,65.320996,25.322377,4,,0,,Europe/Helsinki
+101017,2957,Syrjäpalo P,,64.819923,25.286288,4,,0,,Europe/Helsinki
+98757,2857,Riihikyläntie E,,64.847259,25.899576,4,,0,,Europe/Helsinki
+101270,1850,Lamu E,,65.040309,25.890902,4,,0,,Europe/Helsinki
+150037,3012,Pajutie E,,64.808193,25.446714,4,,0,,Europe/Helsinki
+120353,1570,Lohitie E,,65.11594100000002,25.329316,3,,0,,Europe/Helsinki
+231167,2195,Huuhkajapuisto P,,65.00181000000002,25.515901,2,,0,,Europe/Helsinki
+148057,2889,Jurvakainen E,,64.831997,26.058394,4,,0,,Europe/Helsinki
+101632,1456,Uusikanniainen E,,65.14281,25.672073,3,,0,,Europe/Helsinki
+120530,1756,Elektroniikkatie 8P,,65.063645,25.438075,2,,0,,Europe/Helsinki
+164288,3273,Murto PP,,64.829527,25.686687,4,,0,,Europe/Helsinki
+184519,2899,Ketolanoja E,,64.829117,25.966441,4,,0,,Europe/Helsinki
+120436,1662,Valkamantie E,,65.082357,25.399652,2,,0,,Europe/Helsinki
+148080,1985,Sivutie E,,65.0256,25.540386,2,,0,,Europe/Helsinki
+101538,1582,Holstinmutka E,,65.108294,25.389598,3,,0,,Europe/Helsinki
+120454,1680,Kuuselantie P,,65.07746400000002,25.397628,2,,0,,Europe/Helsinki
+189527,2496,Sääskensuon th P,,64.957174,25.650567,3,,0,,Europe/Helsinki
+190186,1894,Ukkolanmäki E,,65.032843,26.089672,4,,0,,Europe/Helsinki
+184133,3256,Tullikirjurinraitti P,,65.005461,25.472791,1,,0,,Europe/Helsinki
+120868,2206,Kotkantien oppilaitokset P,,65.00013800000002,25.512835,2,,0,,Europe/Helsinki
+74328,1062,Kiimingin th E2,,65.366435,25.817688,5,,0,,Europe/Helsinki
+150393,1239,Päkkilä P,,65.29610700000002,25.632846,4,,0,,Europe/Helsinki
+98703,2343,Maikkulantien th P,,64.98028100000002,25.563747,2,,0,,Europe/Helsinki
+120511,1737,Veitikka P,,65.06534000000002,25.419994,2,,0,,Europe/Helsinki
+101315,2065,Karahkan kylä P,,65.007804,26.097968,4,,0,,Europe/Helsinki
+120493,1719,Kuovitie E,,65.066827,25.516194,2,,0,,Europe/Helsinki
+187127,3282,Ylikiimingin th P,,65.06317900000002,25.63341,2,,0,,Europe/Helsinki
+120879,2217,Höyhtyänpuisto P,,64.997891,25.499879,2,,0,,Europe/Helsinki
+120084,1277,Heinonpolku P,,65.22227700000002,25.301012,3,,0,,Europe/Helsinki
+120085,1282,Laitakarintie E,,65.216025,25.29949,3,,0,,Europe/Helsinki
+150389,1225,Hekkala E,,65.30102,25.623714,4,,0,,Europe/Helsinki
+184257,1223,Rajala E,,65.303438,25.54868,4,,0,,Europe/Helsinki
+101654,1525,Korkeamaantie E,,65.123307,25.795133,3,,0,,Europe/Helsinki
+150153,2874,Pikkarala th E2,,64.84358,25.652045,4,,0,,Europe/Helsinki
+190370,2983,Haaransilta P,,64.813196,25.481104,4,,0,,Europe/Helsinki
+98733,2723,Pikkaraisenkylä P,,64.906609,25.787667,3,,0,,Europe/Helsinki
+101018,2956,Syrjäpalo E,,64.819745,25.287963,4,,0,,Europe/Helsinki
+148159,2670,Riihipellontie E,,64.917846,25.817362,3,,0,,Europe/Helsinki
+184151,3238,Jäähalli E,,65.009058,25.492571,1,,0,,Europe/Helsinki
+97685,3011,Arotie P,,64.807549,25.501862,4,,0,,Europe/Helsinki
+120792,2104,Laita E,,65.010525,25.555696,2,,0,,Europe/Helsinki
+148496,1206,Räinä P,,65.315275,25.342095,4,,0,,Europe/Helsinki
+97719,1164,Iin keskustan th P,,65.321725,25.378367,4,,0,,Europe/Helsinki
+148149,2631,Savikunnaksentie E,,64.926609,25.797102,3,,0,,Europe/Helsinki
+101725,1118,Suoranpää P,,65.333946,25.683526,5,,0,,Europe/Helsinki
+307163,2080,Raitalantie P,,65.01278056,25.56385278,2,,0,,Europe/Helsinki
+101513,1406,Haukiputaan kuntakeskus P,,65.177114,25.354109,3,,0,,Europe/Helsinki
+101702,1136,Tiri E,,65.32506600000002,25.506343,4,,0,,Europe/Helsinki
+150386,1230,Jakkuranta E,,65.301007,25.605724,4,,0,,Europe/Helsinki
+184173,3216,Galleria,,65.011747,25.474623,1,,0,,Europe/Helsinki
+101575,2572,Jarva P,,64.941763,25.518316,2,,0,,Europe/Helsinki
+150072,2868,Karppilantie P,,64.847858,25.642112,3,,0,,Europe/Helsinki
+120867,2205,Kotkantien oppilaitokset E,,64.999023,25.512579,2,,0,,Europe/Helsinki
+169845,3143,Pikku Karhu E,,65.041026,25.612461,2,,0,,Europe/Helsinki
+120836,2170,Kyösti Kallion puisto P,,65.004711,25.460414,2,,0,,Europe/Helsinki
+120606,1856,Tuiskutie P,,65.044352,25.588311,2,,0,,Europe/Helsinki
+120392,1612,Rantapolku P,,65.091507,25.698608,3,,0,,Europe/Helsinki
+120929,2290,Suohaukka P,,64.988788,25.524423,2,,0,,Europe/Helsinki
+98737,2765,Oulun ja Muhoksen raja P,,64.892815,25.807969,4,,0,,Europe/Helsinki
+184174,3215,Kaupungintalo,,65.013648,25.471948,1,,0,,Europe/Helsinki
+120663,1948,Alppila E,,65.034945,25.464785,2,,0,,Europe/Helsinki
+120742,2047,Koivumaantie E2,,65.01812700000002,25.54858,2,,0,,Europe/Helsinki
+150400,1245,Ojalantie E,,65.29218,25.685546,5,,0,,Europe/Helsinki
+189672,2613,Tervaojantie E,,64.92977,25.789771,3,,0,,Europe/Helsinki
+150227,2638,Vasankangas P,,64.924373,25.759571,3,,0,,Europe/Helsinki
+171365,2745,Riihivainio E,,64.904679,25.520426,3,,0,,Europe/Helsinki
+183962,3177,Ostomiehentie E,,64.947745,25.541833,2,,0,,Europe/Helsinki
+307201,3310,Jahtireitti E,,65.09220556,25.44517778,2,,0,,Europe/Helsinki
+120881,2219,Karjasillan th P,,64.998627,25.491887,2,,0,,Europe/Helsinki
+148502,1169,Alarannan koulu E,,65.322301,25.317937,4,,0,,Europe/Helsinki
+120698,1995,Vellamontie E,,65.027457,25.421175,2,,0,,Europe/Helsinki
+97668,3067,Ala-Temmes ns E,,64.768423,25.547754,4,,0,,Europe/Helsinki
+120611,1861,Kivennuoli E,,65.044678,25.485824,2,,0,,Europe/Helsinki
+189271,3335,Ouluntullin ramppi P,,64.941516,25.538703,2,,0,,Europe/Helsinki
+148043,2960,Ponkila P,,64.81052800000002,26.019085,4,,0,,Europe/Helsinki
+150163,2544,Karhuoja P,,64.951312,25.390593,3,,0,,Europe/Helsinki
+150219,2594,Närhi E,,64.934136,25.734355,3,,0,,Europe/Helsinki
+98731,2705,Jauholantie E,,64.909885,25.776933,3,,0,,Europe/Helsinki
+98505,1580,Putkonen th P,,65.104705,25.699942,3,,0,,Europe/Helsinki
+120875,2213,Merikotka P,,64.996833,25.513443,2,,0,,Europe/Helsinki
+231890,2228,Kivikkokangas E,,64.99776193696142,25.59128678559366,2,,0,,Europe/Helsinki
+187934,2711,Kirkonmäki P,,64.914324,25.486628,3,,0,,Europe/Helsinki
+120415,1637,Ojatie E,,65.084802,25.67671,3,,0,,Europe/Helsinki
+120921,2280,Viriänpuisto E,,64.989262,25.562905,2,,0,,Europe/Helsinki
+120208,1413,Kauppakuja P,,65.175433,25.350563,3,,0,,Europe/Helsinki
+120087,1285,Lastaajantie E,,65.214484,25.301256,3,,0,,Europe/Helsinki
+148117,2505,Turkantie P,,64.95447,25.716166,3,,0,,Europe/Helsinki
+184240,1171,Iin Aseman koulu P,,65.319957,25.448221,4,,0,,Europe/Helsinki
+307146,3363,Miessuontie E,,64.930071,25.562932,3,,0,,Europe/Helsinki
+101274,1916,Jumila P,,65.032207,25.959308,4,,0,,Europe/Helsinki
+101498,1261,Halosenniemi th E,,65.246465,25.35266,3,,0,,Europe/Helsinki
+120937,2298,Kihokkitie E,,64.988468,25.493287,2,,0,,Europe/Helsinki
+120898,2244,Knuutilankangas P,,64.993161,25.561636,2,,0,,Europe/Helsinki
+189255,3332,Limingantie E,,64.998387,25.463958,1,,0,,Europe/Helsinki
+189519,1674,Siitosen th E,,65.074472,25.661001,3,,0,,Europe/Helsinki
+98480,1872,Korvensuoran koulu P,,65.041571,25.565631,2,,0,,Europe/Helsinki
+120544,1770,Yliopisto P,,65.058942,25.469927,2,,0,,Europe/Helsinki
+190771,3086,Limingan linja-autoasema E,,64.80845100000002,25.414195,4,,0,,Europe/Helsinki
+120593,1826,Solmutie E,,65.048513,25.452067,2,,0,,Europe/Helsinki
+189656,1935,Kemintie E,,65.03526100000002,25.467633,2,,0,,Europe/Helsinki
+101738,1084,Kaiston koulu P,,65.348092,25.755273,5,,0,,Europe/Helsinki
+187707,1403,Ukonkaivoksentie P,,65.176311,25.357851,3,,0,,Europe/Helsinki
+148083,2020,Haapalehto P,,65.022339,25.55007,2,,0,,Europe/Helsinki
+148184,2789,Päivärinne E,,64.881652,25.869695,4,,0,,Europe/Helsinki
+187932,2952,Luontokeskus th E,,64.819619,25.311434,4,,0,,Europe/Helsinki
+152856,2274,Pöytäkangas P,,64.985116,25.921645,4,,0,,Europe/Helsinki
+98764,2901,Huovisentie P,,64.83033,25.921333,4,,0,,Europe/Helsinki
+150164,2536,Karhuoja E,,64.951748,25.388598,3,,0,,Europe/Helsinki
+98754,2841,Keränen P,,64.854103,25.895775,4,,0,,Europe/Helsinki
+121193,2617,Kunnantalo P,,64.934219,25.408687,3,,0,,Europe/Helsinki
+189520,1639,Peltotie E,,65.084912,25.671919,3,,0,,Europe/Helsinki
+101638,1493,Putkonen E,,65.131548,25.701271,3,,0,,Europe/Helsinki
+148007,3031,Parras E,,64.799155,25.620721,4,,0,,Europe/Helsinki
+101224,3070,Mäläskä E,,64.764557,25.61925,4,,0,,Europe/Helsinki
+98759,2866,Nokiantie E,,64.84410800000002,25.901601,4,,0,,Europe/Helsinki
+120298,1503,Terveystie E,,65.12938056,25.77645,3,,0,,Europe/Helsinki
+101088,2335,Hirvonen E,,64.985286,25.263943,3,,0,,Europe/Helsinki
+101735,1091,Suvanto E,,65.344677,25.723454,5,,0,,Europe/Helsinki
+150068,2850,Kälkäinen P,,64.852688,25.627826,3,,0,,Europe/Helsinki
+191393,1404,Ukonkaivoksentie E,,65.176194,25.35694,3,,0,,Europe/Helsinki
+101524,1461,Luostarinvainio E,,65.146475,25.35153,3,,0,,Europe/Helsinki
+190191,1969,Murtomaa E,,65.020098,26.116858,4,,0,,Europe/Helsinki
+101532,1545,Kalimensilta E,,65.124192,25.362391,3,,0,,Europe/Helsinki
+169657,3093,Pohjoisranta E,,64.834015,25.684951,4,,0,,Europe/Helsinki
+150395,1243,Kumpu P,,65.293701,25.64056,4,,0,,Europe/Helsinki
+184140,3249,Rautatienkatu E,,65.00957,25.480198,1,,0,,Europe/Helsinki
+121079,2472,Tiaispuisto P,,64.961486,25.54424,2,,0,,Europe/Helsinki
+169655,2492,Salonpää PP,,64.963368,25.241013,3,,0,,Europe/Helsinki
+190190,1998,Vapo P,,65.016445,26.113394,4,,0,,Europe/Helsinki
+187702,1408,Herralankuja P,,65.177089,25.348603,3,,0,,Europe/Helsinki
+97716,1219,Shell Ii P,,65.309051,25.374363,4,,0,,Europe/Helsinki
+98718,2553,Turkansaari th E,,64.944548,25.686196,3,,0,,Europe/Helsinki
+183964,3189,Metsokankaan koulu P,,64.94376800000002,25.542452,2,,0,,Europe/Helsinki
+171806,2355,Joulumerkinpolku E,,64.98041000000002,25.48427,2,,0,,Europe/Helsinki
+189531,2942,Koivikko P,,64.816295,25.967353,4,,0,,Europe/Helsinki
+120701,1999,Etupääntie P,,65.024169,25.564889,2,,0,,Europe/Helsinki
+171812,2396,Keskipiiri P,,64.973648,25.326678,3,,0,,Europe/Helsinki
+101514,1405,Haukiputaan kuntakeskus E,,65.177137,25.353787,3,,0,,Europe/Helsinki
+97682,3029,Lampola E,,64.801624,25.514861,4,,0,,Europe/Helsinki
+98715,2533,Kievarintie P,,64.95007,25.674668,3,,0,,Europe/Helsinki
+152734,1521,Kiimingin yläaste E,,65.126184,25.784842,3,,0,,Europe/Helsinki
+101624,1445,Kuivasjärven th E,,65.148365,25.638281,3,,0,,Europe/Helsinki
+171802,2381,Kaakkurin th E,,64.973869,25.488601,2,,0,,Europe/Helsinki
+101260,1851,Putaala E,,65.042723,25.688161,3,,0,,Europe/Helsinki
+121002,2380,Kaakkurin th P2,,64.97441000000002,25.489799,2,,0,,Europe/Helsinki
+185770,3299,Ahmatie E,,65.03093,25.48015,2,,0,,Europe/Helsinki
+120734,2039,Siilasvuonkatu E,,65.021165,25.501967,2,,0,,Europe/Helsinki
+120951,2318,Metsänkuninkaantie E,,64.985032,25.512127,2,,0,,Europe/Helsinki
+120079,1271,Kalastajantie E,,65.22508000000002,25.310883,3,,0,,Europe/Helsinki
+183983,3196,Palhokuja E,,65.07159900000002,25.447154,2,,0,,Europe/Helsinki
+101736,1089,Kaisto P (PP),,65.346367,25.746334,5,,0,,Europe/Helsinki
+190074,2985,Niittomiehentie E,,64.814176,25.427819,4,,0,,Europe/Helsinki
+101691,1173,Ii Asemankylä P,,65.319923,25.436184,4,,0,,Europe/Helsinki
+101233,3053,Kotimetsä P,,64.775393,25.679248,4,,0,,Europe/Helsinki
+121045,2434,Kaiposenniementie E,,64.963945,25.669239,3,,0,,Europe/Helsinki
+120810,2125,Linja-autoasema L,,65.009421,25.484109,2,,0,,Europe/Helsinki
+120505,1731,Koisotie P,,65.065827,25.427128,2,,0,,Europe/Helsinki
+14047,9018,Mökkitie E,,65.04843200000002,25.866416,3,,0,,Europe/Helsinki
+150367,1321,Kiimingintien th E,,65.193217,25.448447,4,,0,,Europe/Helsinki
+98484,1819,Alavantie P,,65.048874,25.589262,2,,0,,Europe/Helsinki
+120627,1877,Isko E,,65.042289,25.475915,2,,0,,Europe/Helsinki
+231888,2934,Toivolakoti E,,64.81662437009102,26.02955075414427,4,,0,,Europe/Helsinki
+101232,3052,Kotimetsä E,,64.77487600000002,25.677571,4,,0,,Europe/Helsinki
+101511,1380,Niemeläntörmä P,,65.182245,25.358957,3,,0,,Europe/Helsinki
+101537,1581,Holstinmutka P,,65.109223,25.388435,3,,0,,Europe/Helsinki
+150255,1732,Raitotien risteys P,,65.063677,25.512543,2,,0,,Europe/Helsinki
+148221,2890,Montta th P,,64.832562,25.992643,4,,0,,Europe/Helsinki
+101689,1176,Tapio P,,65.31909400000002,25.419516,4,,0,,Europe/Helsinki
+184160,3229,Viestikatu E,,65.017178,25.503337,1,,0,,Europe/Helsinki
+121322,2870,Simontaival E,,64.845107,25.664216,4,,0,,Europe/Helsinki
+150057,2808,Palonperä E,,64.873231,25.583647,3,,0,,Europe/Helsinki
+120702,2000,Etupääntie E,,65.024232,25.564907,2,,0,,Europe/Helsinki
+101497,1262,Halosenniemi th P,,65.247551,25.352721,3,,0,,Europe/Helsinki
+148189,2803,Laivurintie P,,64.870732,25.887117,4,,0,,Europe/Helsinki
+153130,3008,Kirkko th E,,64.81052200000002,25.407378,4,,0,,Europe/Helsinki
+120453,1679,Jylkynkankaantie,,65.077398,25.520177,2,,0,,Europe/Helsinki
+150135,2997,Niittypirtti P,,64.812106,25.422107,4,,0,,Europe/Helsinki
+183966,3179,Savotta-aukio E,,64.94487700000002,25.572648,2,,0,,Europe/Helsinki
+120866,2204,Svaanintie E,,64.999402,25.532805,2,,0,,Europe/Helsinki
+120616,1866,Ruoritie P,,65.045743,25.438486,2,,0,,Europe/Helsinki
+121046,2435,Vallinkorva E,,64.964566,25.667472,3,,0,,Europe/Helsinki
+101639,1509,Hakosuvanto P,,65.129286,25.710521,3,,0,,Europe/Helsinki
+150074,2873,Pikkarala th P,,64.84487300000002,25.650252,4,,0,,Europe/Helsinki
+97681,3035,Huhta P,,64.79718800000002,25.525332,4,,0,,Europe/Helsinki
+164364,3104,Alatalontie E,,65.07230800000002,25.479556,2,,0,,Europe/Helsinki
+120412,1633,Laivakangas P,,65.08582490126328,25.6829722321376,3,,0,,Europe/Helsinki
+120763,2071,Uimaranta P,,65.014564,25.548477,2,,0,,Europe/Helsinki
+101014,2950,Letontie E,,64.82319,25.260971,4,,0,,Europe/Helsinki
+231431,2981,Parras th P,,64.812927,25.489015,4,,0,,Europe/Helsinki
+148463,1297,Verstasmutka P,,65.209195,25.32085,3,,0,,Europe/Helsinki
+150085,2947,Patala E,,64.81814900000002,25.691369,4,,0,,Europe/Helsinki
+150077,2882,Murto E,,64.839896,25.664306,4,,0,,Europe/Helsinki
+307174,1611,Laivakankaan koulu E,,65.08340800000002,25.706029,3,,0,,Europe/Helsinki
+148081,1984,Sivutie P,,65.02570900000002,25.540465,2,,0,,Europe/Helsinki
+120140,1345,Jokikylä P,,65.19095900000002,25.467094,4,,0,,Europe/Helsinki
+189725,2732,Toivanen E,,64.902755,25.839868,3,,0,,Europe/Helsinki
+120507,1733,Raitotie P,,65.06374,25.509862,2,,0,,Europe/Helsinki
+101701,1139,Yliranta P,,65.324885,25.497167,4,,0,,Europe/Helsinki
+121009,2391,Kaskiahonkuja E,,64.972349,25.596662,2,,0,,Europe/Helsinki
+184243,1143,Niskala E,,65.32018600000002,25.690694,5,,0,,Europe/Helsinki
+101282,1940,Paakki P,,65.027367,26.008645,4,,0,,Europe/Helsinki
+101692,1174,Ii Asemankylä E,,65.319799,25.437221,4,,0,,Europe/Helsinki
+148244,2277,Joutsensuo P,,64.988773,25.649948,2,,0,,Europe/Helsinki
+98504,1583,Putkonen th E,,65.1041,25.697353,3,,0,,Europe/Helsinki
+169844,3144,Pikku Karhu P,,65.041136,25.61271,2,,0,,Europe/Helsinki
+190196,1573,Holstinmäki P,,65.114515,25.381683,3,,0,,Europe/Helsinki
+152836,2156,Kinnunen P,,65.000454,25.855242,3,,0,,Europe/Helsinki
+120664,1949,Satamatie E,,65.033996,25.446752,2,,0,,Europe/Helsinki
+190215,2884,Tupoksentie P,,64.84267800000002,25.474214,4,,0,,Europe/Helsinki
+184146,3243,Ouluhalli P,,65.007528,25.499855,1,,0,,Europe/Helsinki
+148061,2858,Leppiniemi P,,64.843605,26.042961,4,,0,,Europe/Helsinki
+101739,1085,Kaiston koulu E,,65.348385,25.757107,5,,0,,Europe/Helsinki
+101314,2078,Karahkan kylä E,,65.007432,26.095839,4,,0,,Europe/Helsinki
+101263,1882,Saviharju E,,65.038978,25.715543,3,,0,,Europe/Helsinki
+120391,1613,Rantapolku E,,65.091588,25.698625,3,,0,,Europe/Helsinki
+120439,1665,Palosuontie P,,65.078942,25.425248,2,,0,,Europe/Helsinki
+189521,1620,Hamari E,,65.088752,25.67596,3,,0,,Europe/Helsinki
+98744,2800,Laitasaaren koulu P,,64.873559,25.860013,4,,0,,Europe/Helsinki
+183971,3192,Lähimetsäntie P,,64.948802,25.565646,2,,0,,Europe/Helsinki
+169656,3092,Muinaisranta E,,64.836476,25.678109,4,,0,,Europe/Helsinki
+120462,1688,Possakan th E,,65.07480200000002,25.427449,2,,0,,Europe/Helsinki
+116064,2180,Harjapuisto E,,65.00335,25.463291,2,,0,,Europe/Helsinki
+101644,1482,Lukkarintie E,,65.133175,25.750262,3,,0,,Europe/Helsinki
+120814,2132,Heinätorin puisto E,,65.008009,25.461836,2,,0,,Europe/Helsinki
+184621,3102,Rehu P,,65.193269,25.437873,4,,0,,Europe/Helsinki
+120597,1830,Mustansuontie P,,65.048069,25.44041,2,,0,,Europe/Helsinki
+148432,1363,Isojämsä P,,65.184978,25.480592,4,,0,,Europe/Helsinki
+120823,2152,Teuvo Pakkala P,,65.006364,25.486997,2,,0,,Europe/Helsinki
+189726,2764,Junnintie P,,64.891347,25.85645,4,,0,,Europe/Helsinki
+150358,1270,Kalliomäki P,,65.224567,25.344636,3,,0,,Europe/Helsinki
+148060,2869,Leppiniemen kauppa P,,64.840361,26.047755,4,,0,,Europe/Helsinki
+97684,3025,Arotie E,,64.806501,25.503857,4,,0,,Europe/Helsinki
+120846,2184,Painijantie E,,64.999827,25.579574,2,,0,,Europe/Helsinki
+120296,1500,Kiimingin keskustan th P,,65.129318,25.781951,3,,0,,Europe/Helsinki
+190178,2402,Ervastintörmä P,,64.975118,25.288498,3,,0,,Europe/Helsinki
+97669,3064,Ala-Temmes ns P,,64.769584,25.548091,4,,0,,Europe/Helsinki
+120480,1706,Talvikkitie P,,65.07271900000002,25.428146,2,,0,,Europe/Helsinki
+183954,3173,Pesätie E,,64.952219,25.536087,2,,0,,Europe/Helsinki
+148186,2795,Mettäperäntie P,,64.87612300000002,25.878643,4,,0,,Europe/Helsinki
+120535,1761,Yliopistokatu E,,65.06102,25.47223,2,,0,,Europe/Helsinki
+101262,1883,Jääkärintie E,,65.038962,25.702338,3,,0,,Europe/Helsinki
+150160,2562,Lassila P,,64.945458,25.399281,3,,0,,Europe/Helsinki
+147995,2875,Rajakorven th E,,64.844561,25.551238,4,,0,,Europe/Helsinki
+150082,2929,Aaltomaa P,,64.825558,25.688228,4,,0,,Europe/Helsinki
+148003,2949,Nikula th E,,64.818883,25.60257,4,,0,,Europe/Helsinki
+148224,2880,Koskela P,,64.8363,26.002955,4,,0,,Europe/Helsinki
+120548,1774,Teknologiakylä E,,65.058709,25.458593,2,,0,,Europe/Helsinki
+98499,1621,Hamari P,,65.0889,25.676549,3,,0,,Europe/Helsinki
+148211,2900,Ketolanoja P,,64.82947900000002,25.964341,4,,0,,Europe/Helsinki
+120732,2037,Kurkelankuja P,,65.02049,25.514312,2,,0,,Europe/Helsinki
+14043,9014,Nuorisoseura E,,65.076545,25.851082,3,,0,,Europe/Helsinki
+184162,3227,Intiöntie P,,65.017006,25.49696,1,,0,,Europe/Helsinki
+121106,2502,Ropinakuja E,,64.95746800000002,25.552735,2,,0,,Europe/Helsinki
+98765,2902,Huovisentie E,,64.82933800000002,25.923079,4,,0,,Europe/Helsinki
+98775,2968,Keskustie P,,64.808619,25.989875,4,,0,,Europe/Helsinki
+152877,2383,Lusikka E,,64.967769,25.985909,4,,0,,Europe/Helsinki
+120676,1965,Mittamiehentie P,,65.031821,25.464603,2,,0,,Europe/Helsinki
+101268,1834,Kiiminki th E,,65.041628,25.870612,3,,0,,Europe/Helsinki
+148112,2451,Peräkylä th E,,64.962278,25.692822,3,,0,,Europe/Helsinki
+189670,2558,Pukintie P,,64.94187700000002,25.750152,3,,0,,Europe/Helsinki
+120536,1762,Yliopiston eläintarha E,,65.06175,25.458588,2,,0,,Europe/Helsinki
+150356,1268,Parkumäki E,,65.227718,25.353763,3,,0,,Europe/Helsinki
+101568,2210,Kempeleentie E,,65.000035,25.463651,2,,0,,Europe/Helsinki
+101610,1399,Taipaleenkylä,,65.17568300000002,25.554051,4,,0,,Europe/Helsinki
+120599,1832,Vilkkutie E,,65.048858,25.436116,2,,0,,Europe/Helsinki
+120497,1723,Karjakenttä E,,65.068371,25.489431,2,,0,,Europe/Helsinki
+120830,2163,Sarkkapuisto E,,65.005113,25.529629,2,,0,,Europe/Helsinki
+120905,2251,Sorsatie P,,64.993596,25.495647,2,,0,,Europe/Helsinki
+120125,1329,Jokikylän koulu E,,65.19162900000002,25.461567,4,,0,,Europe/Helsinki
+190229,2466,Harju P,,64.966495,25.255123,3,,0,,Europe/Helsinki
+169580,3120,Kahvelitie E,,65.030058,25.437344,2,,0,,Europe/Helsinki
+120885,2224,Höyhtyä E,,64.997596,25.483974,2,,0,,Europe/Helsinki
+121056,2446,Jousenkaari P,,64.964887,25.539757,2,,0,,Europe/Helsinki
+120902,2248,Hiirihaukka P,,64.993678,25.520867,2,,0,,Europe/Helsinki
+150218,2598,Ratsastuskoulu E,,64.934675,25.720688,3,,0,,Europe/Helsinki
+101530,1522,Kello E,,65.129341,25.359027,3,,0,,Europe/Helsinki
+169593,2183,Muuraojantie,,65.000515,25.582039,2,,0,,Europe/Helsinki
+187924,2913,Jokivainio E,,64.83642124263666,25.20056372783477,4,,0,,Europe/Helsinki
+101500,1264,Luukela E,,65.23283600000002,25.360739,3,,0,,Europe/Helsinki
+101694,1152,Paakkola P,,65.323157,25.447925,4,,0,,Europe/Helsinki
+121166,2581,Pitkäkankaantie P,,64.941971,25.395364,3,,0,,Europe/Helsinki
+120484,1710,Kuivasoja P,,65.072103,25.40807,2,,0,,Europe/Helsinki
+101693,1151,Paakkola E,,65.323163,25.445049,4,,0,,Europe/Helsinki
+184248,1202,Patosillan th P,,65.31346000000002,25.532167,4,,0,,Europe/Helsinki
+150049,2779,Seppäsentie P,,64.88999,25.558587,3,,0,,Europe/Helsinki
+97702,2815,Isoaukio E,,64.870241,25.50639,3,,0,,Europe/Helsinki
+148499,1189,Vaihtometsäntie P,,65.318377,25.331342,4,,0,,Europe/Helsinki
+101047,2551,Kempeleenlahti E,,64.947463,25.480356,2,,0,,Europe/Helsinki
+98507,1563,Piltonen P,,65.11222,25.727912,3,,0,,Europe/Helsinki
+169847,3145,Tähtipolku E,,65.042889,25.615995,2,,0,,Europe/Helsinki
+148016,3062,Ahintie P,,64.77047,25.646612,4,,0,,Europe/Helsinki
+185769,3298,Ahmatie P,,65.031012,25.480231,2,,0,,Europe/Helsinki
+101219,3080,Ala-Temmes E,,64.762609,25.55042,4,,0,,Europe/Helsinki
+101629,1452,Kanniainen P,,65.145617,25.664856,3,,0,,Europe/Helsinki
+101505,1306,Kuivalanperäntie P,,65.204229,25.363513,3,,0,,Europe/Helsinki
+120116,1319,Jokikylän th E2,,65.193058,25.452215,4,,0,,Europe/Helsinki
+184263,3326,Vainiontie P,,65.195908,25.477402,4,,0,,Europe/Helsinki
+150388,1227,Kuopionharju E,,65.301953,25.616889,4,,0,,Europe/Helsinki
+101052,2610,Oulunsalon museo E,,64.936322,25.415818,3,,0,,Europe/Helsinki
+190066,3016,Kurkitie P,,64.807912,25.431005,4,,0,,Europe/Helsinki
+148446,1326,Tuohilaakso E,,65.194062,25.371488,3,,0,,Europe/Helsinki
+120637,1905,Tervahovintie E,,65.03990400000002,25.460253,2,,0,,Europe/Helsinki
+148017,3063,Ahintie E,,64.769567,25.646973,4,,0,,Europe/Helsinki
+120700,1997,Leiritie E,,65.02818600000002,25.415507,2,,0,,Europe/Helsinki
+98469,3002,Lännentie E,,64.809235,25.468443,4,,0,,Europe/Helsinki
+120827,2160,Isterintie P,,65.00384,25.547235,2,,0,,Europe/Helsinki
+307141,3367,Pirttilä P,,64.940943,25.559472,2,,0,,Europe/Helsinki
+169660,3096,Pohjoisranta P,,64.834176,25.684817,4,,0,,Europe/Helsinki
+120727,2032,Haapalehdontie P,,65.020664,25.554872,2,,0,,Europe/Helsinki
+101316,2017,Vapo E,,65.015704,26.112443,4,,0,,Europe/Helsinki
+101648,1490,Kotikumpu E,,65.130876,25.768372,3,,0,,Europe/Helsinki
+148161,2679,Anttosentie P,,64.913084,25.824418,3,,0,,Europe/Helsinki
+171364,2752,Takatie P,,64.901214,25.522011,3,,0,,Europe/Helsinki
+148050,2925,Perukka P,,64.820339,26.037828,4,,0,,Europe/Helsinki
+150379,1179,Valtarin koulu E,,65.320921,25.362901,4,,0,,Europe/Helsinki
+187128,1675,Siitosen th P,,65.07557,25.662434,3,,0,,Europe/Helsinki
+101027,2991,Rantakylän koulu P,,64.814778,25.340438,4,,0,,Europe/Helsinki
+150220,2595,Närhi P,,64.933746,25.732787,3,,0,,Europe/Helsinki
+150361,1279,Häyrysenniemi th P,,65.21927,25.333722,3,,0,,Europe/Helsinki
+150143,2885,Tupoksentie E,,64.841912,25.473077,4,,0,,Europe/Helsinki
+148247,2139,Riihipirtintie P,,65.00481600000002,25.718542,3,,0,,Europe/Helsinki
+183984,3197,Kuivasrannanaukio P,,65.076187,25.452713,2,,0,,Europe/Helsinki
+98767,2916,Korilantie E,,64.826838,25.928382,4,,0,,Europe/Helsinki
+120607,1857,Tuiskutie E,,65.044353,25.586443,2,,0,,Europe/Helsinki
+148250,2137,Holtinkylä E,,65.00387000000002,25.72533,3,,0,,Europe/Helsinki
+184158,3231,Veteraanikatu E,,65.018995,25.506502,1,,0,,Europe/Helsinki
+150046,2749,Zeppelin E,,64.902815,25.540682,3,,0,,Europe/Helsinki
+121152,2563,Salavakuja P,,64.94460100000002,25.379718,3,,0,,Europe/Helsinki
+120577,1810,Välskärintie P,,65.05046,25.605364,2,,0,,Europe/Helsinki
+120941,2304,Patamäki P,,64.985596,25.569777,2,,0,,Europe/Helsinki
+120789,2101,Toripakka P,,65.014231,25.471211,2,,0,,Europe/Helsinki
+101053,2621,Karhuojan th E,,64.933826,25.398833,3,,0,,Europe/Helsinki
+101265,1837,Saarinen P,,65.043274,25.799661,3,,0,,Europe/Helsinki
+120209,1414,Kauppakuja E,,65.175504,25.350495,3,,0,,Europe/Helsinki
+120733,2038,Siilasvuonkatu P,,65.021335,25.503655,2,,0,,Europe/Helsinki
+190160,,Karintiie E,,64.840255,25.179723,4,,0,,Europe/Helsinki
+101311,2242,Seluskajärvi th E,,64.987695,26.043362,4,,0,,Europe/Helsinki
+120785,2096,Välkkylä E,,65.01159800000002,25.498855,2,,0,,Europe/Helsinki
+98770,2927,Korivaaran koulu E,,64.821392,25.954796,4,,0,,Europe/Helsinki
+98781,2993,Leppiniemi th P,,64.805029,26.012192,4,,0,,Europe/Helsinki
+56566,2147,OYS A5,,65.006151,25.521195,2,,0,,Europe/Helsinki
+120855,2193,Svaanin th E,,65.001637,25.528293,2,,0,,Europe/Helsinki
+148095,2278,Markkuu E,,64.989987,25.605359,2,,0,,Europe/Helsinki
+152860,2287,Kassinen P,,64.983183,25.962783,4,,0,,Europe/Helsinki
+120821,2150,Ratakatu E,,65.007049,25.482887,2,,0,,Europe/Helsinki
+120799,2112,Rotuaari P,,65.010933,25.469558,2,,0,,Europe/Helsinki
+164366,3112,Silmutie P,,65.075205,25.461913,2,,0,,Europe/Helsinki
+120295,1501,Kiimingin keskustan th E,,65.129237,25.781827,3,,0,,Europe/Helsinki
+97703,2799,Rajakorpi P,,64.8784,25.513978,3,,0,,Europe/Helsinki
+307145,3362,Miessuontie P,,64.93050700000002,25.563641,3,,0,,Europe/Helsinki
+152851,2260,Sorvo E,,64.98744600000002,25.891886,4,,0,,Europe/Helsinki
+120213,1418,Hukantie P,,65.173596,25.349141,3,,0,,Europe/Helsinki
+148012,3048,Härmä P,,64.781246,25.639911,4,,0,,Europe/Helsinki
+98488,1769,Vesalanmäki E,,65.057852,25.61694,2,,0,,Europe/Helsinki
+101276,1930,Hautasuo th E,,65.030666,25.971211,4,,0,,Europe/Helsinki
+121096,2489,Höyhenkuja P,,64.959758,25.536374,2,,0,,Europe/Helsinki
+150055,2798,Pyykönmutka E,,64.87872400000002,25.580191,3,,0,,Europe/Helsinki
+14044,9015,Nuorisoseura P,,65.076528,25.851189,3,,0,,Europe/Helsinki
+121087,2481,Kuukkelitie P,,64.96021,25.556948,2,,0,,Europe/Helsinki

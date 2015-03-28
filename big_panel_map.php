@@ -23,8 +23,7 @@
 	<script src="javascript/Keyboard-master/js/jquery.keyboard.js" type="text/javascript"></script>
 	
 	<!-- Google Map -->
-	<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
 	
 	<script src="javascript/ubitraffic_traffic_places.js" type="text/javascript"></script>
 	<script src="javascript/ubitraffic_menu.js" type="text/javascript"></script>
