@@ -1,4 +1,5 @@
 <?php
+	include("config.php");
 	$service = $_GET['service'];
 	$url = '';
 	if ($service=='weather')

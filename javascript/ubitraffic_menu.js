@@ -82,7 +82,7 @@ function createPointOfInterestMarker(place, point_of_interest_type)
 				ratingText = "<p>Website: " + details.website+"</p>";
 			
 			placeContentString = '<div id="content">'+
-			  '<h2 id="markerHeading" class="markerHeading">Details: '+details.name+'</h2>'+
+			  '<h2 id="markerHeading" class="markerHeading">'+details.name+'</h2>'+
 			  '<div id="bodyContent">'+		  
 			  '<p>Address: '+details.formatted_address+'</p>'+
 			  '<p>Phone: '+details.formatted_phone_number+'</p>'+
@@ -90,7 +90,6 @@ function createPointOfInterestMarker(place, point_of_interest_type)
 			  openingHours +
 			  ratingText +
 			  '</div></div>';
-			//console.log("Detail: " + details.name + " - " + details.formatted_address);
 			
 			//create marker image
 			var image = {
@@ -139,7 +138,7 @@ function createPointOfInterestMarker(place, point_of_interest_type)
 			}
 			
 			placeContentString = '<div id="content">'+
-			  '<h2 id="markerHeading" class="markerHeading">Place: '+place.name+'</h2>'+
+			  '<h2 id="markerHeading" class="markerHeading">'+place.name+'</h2>'+
 			  '<div id="bodyContent">'+		  
 			  '<p>Address: '+place.vicinity+'</p>'+
 			  openingHours +
