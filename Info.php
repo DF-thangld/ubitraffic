@@ -28,9 +28,12 @@
   To send the message, you can use the function in default.php
   here is a brief introduction about how to send message, for exaple the type is "test", the data is "I can use RabbitMQ now.":
   
-  client.send(destination, {type:'test'}, 'I can use RabbitMQ now.');
-
-
+  client.send(destination, {type:'test'}, 'I can use RabbitMQ now.');//you can use the below method if you don't know what is destination
+  
+  But in default.php, i create a simple method for you. also you can see the example.
+    RabbitMQ_send(message_type,message)
+  for example you can call the function like:
+    RabbitMQ_send('test',I can use RabbitMQ now.)
 
 -->
 
