@@ -16,6 +16,8 @@ points_of_interest["grocery_or_supermarket"] = [];
 points_of_interest["shoe_store"] = [];
 points_of_interest["home_goods_store"] = [];
 
+var busStopInfo = [];
+var busStopMarkerList = [];
 var inforWindowList = [];
 var markerList = [];
 
@@ -220,7 +222,93 @@ function changePointOfInterestType(point_of_interest_type, map)
 	{
 		$("#"+point_of_interest_types[i]+"_information_button").attr("class", "button");
 	}
+	$("#bus_stop_information_button").attr("class", "button");
 	$("#"+point_of_interest_type+"_information_button").attr("class", "button chosen_mode");
+}
+
+function get_all_bus_stops(map)
+{
+	if (busStopMarkerList.length == 0)
+	{
+		$.ajax({
+			type: "GET",
+			url: "oulunliikenne_siri_service.php?service=all_bus_stops",
+			cache: false,
+			dataType: "xml",
+			success: function(xml) {
+				
+				$(xml).find('stop').each(function(){
+					var stop_id = $(this).find("stop_id").text();
+					var name = $(this).find("stop_name").text();
+					var latitude = $(this).find("stop_lat").text();
+					var longitude = $(this).find("stop_lon").text();
+					var busStopMarker = new google.maps.Marker({
+						position: new google.maps.LatLng(latitude,longitude),
+						map: map,
+						title: name,
+						icon: 'images/bus_stop_icon.png'
+					});
+					markerList.push(busStopMarker);
+					busStopMarkerList.push(busStopMarker);
+					
+					google.maps.event.addListener(busStopMarker, 'click', function() {
+						for (var i = 0; i < inforWindowList.length; i++)
+						{
+							inforWindowList[i].close();
+						}
+						var infowindow = null;
+						$.ajax({
+							type: "GET",
+							url: "oulunliikenne_siri_service.php?service=bus_stop&stop_id="+stop_id,
+							async :false,
+							cache: false,
+							dataType: "xml",
+							success: function(xml_bus)
+							{
+								var incoming_buses = '';
+								$(xml).find('bus').each(function()
+								{
+									var bus_name = $(this).find("route_short_name").text();
+									var bus_headsign = $(this).find("trip_headsign").text();
+									var bus_arrival_time = $(this).find("arrival_time").text();
+									
+									incoming_buses += 'Bus number ' + bus_name + ' to ' + bus_headsign + 'arrive at ' + bus_arrival_time + '<\br>';
+								});
+								
+								
+								var contentString = '<div style="width:170px;height:100px;">'+
+													'<b>' + name + '</b>'+
+													'<p>' + incoming_buses + '</p>'+
+													'</div>';
+
+								infowindow = new google.maps.InfoWindow({
+									content: contentString
+								});
+								inforWindowList.push(infowindow);
+							}
+						});
+						
+						
+						infowindow.open(map,busStopMarker);
+					});
+					
+					
+					
+				});
+			}
+		});
+	}
+	for (j=0; j<markerList.length; j++)
+		markerList[j].setMap(null);
+	
+	for (j=0; j<busStopMarkerList.length; j++)
+		busStopMarkerList[j].setMap(map);
+	
+	for (i = 0, len = point_of_interest_types.length; i < len; i++)
+	{
+		$("#"+point_of_interest_types[i]+"_information_button").attr("class", "button");
+	}
+	$("#bus_stop_information_button").attr("class", "button chosen_mode");
 }
 
 function menu(map)
@@ -427,17 +515,7 @@ function menu(map)
 		changePointOfInterestType("grocery_or_supermarket", map);
 	});
 	$point_of_interest_menu.append($grocery_or_supermarket_information_button);
-	// point of interest menu - shoe_store button
-	var $shoe_store_information_button = $(document.createElement("DIV"));
-	$shoe_store_information_button.attr("id", "shoe_store_information_button");
-	$shoe_store_information_button.attr("class", "button");
-	$shoe_store_information_button.attr("style", "margin-left:10px;width:90px;margin-top:7px;");
-	$shoe_store_information_button.html("<center><img src='images/point_of_interest/shoe_store_button.png' style='height:40px;' width='40px' /><div>Shoes Store</div></center>");
-	google.maps.event.addDomListener($shoe_store_information_button.get(0), 'click', function()
-	{
-		changePointOfInterestType("shoe_store", map);
-	});
-	$point_of_interest_menu.append($shoe_store_information_button);
+	
 	// point of interest menu - hospital button
 	var $hospital_information_button = $(document.createElement("DIV"));
 	$hospital_information_button.attr("id", "hospital_information_button");
@@ -449,7 +527,29 @@ function menu(map)
 		changePointOfInterestType("hospital", map);
 	});
 	$point_of_interest_menu.append($hospital_information_button);
-
+	/*// point of interest menu - shoe_store button
+	var $shoe_store_information_button = $(document.createElement("DIV"));
+	$shoe_store_information_button.attr("id", "shoe_store_information_button");
+	$shoe_store_information_button.attr("class", "button");
+	$shoe_store_information_button.attr("style", "margin-left:10px;width:90px;margin-top:7px;");
+	$shoe_store_information_button.html("<center><img src='images/point_of_interest/shoe_store_button.png' style='height:40px;' width='40px' /><div>Shoes Store</div></center>");
+	google.maps.event.addDomListener($shoe_store_information_button.get(0), 'click', function()
+	{
+		changePointOfInterestType("shoe_store", map);
+	});
+	$point_of_interest_menu.append($shoe_store_information_button);*/
+	// point of interest menu - bus stop button
+	var $bus_stop_information_button = $(document.createElement("DIV"));
+	$bus_stop_information_button.attr("id", "bus_stop_information_button");
+	$bus_stop_information_button.attr("class", "button");
+	$bus_stop_information_button.attr("style", "margin-left:10px;width:90px;margin-top:7px;");
+	$bus_stop_information_button.html("<center><img src='images/bus_stop_button.png' style='height:40px;' width='40px' /><div>Bus Stops</div></center>");
+	google.maps.event.addDomListener($bus_stop_information_button.get(0), 'click', function()
+	{
+		//changePointOfInterestType("shoe_store", map);
+		get_all_bus_stops(map);
+	});
+	$point_of_interest_menu.append($bus_stop_information_button);
 	
 	$innerContainer.append($point_of_interest_menu);
 	

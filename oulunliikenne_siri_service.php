@@ -48,15 +48,14 @@ function get_bus_stop_info($conn, $stop_id)
 	
 	
 	// get incoming bus
-	$sql = 'SELECT c.route_id, c.route_short_name, a.stop_id, 
-			min(STR_TO_DATE(concat(DATE_FORMAT(now(), "%Y/%m/%d"), " ", a.arrival_time), "%Y/%m/%d %H:%i:%s")-now()) time_till_arrival,
-			now() + min(STR_TO_DATE(concat(DATE_FORMAT(now(), "%Y/%m/%d"), " ", a.arrival_time), "%Y/%m/%d %H:%i:%s")-now()) arrival_time
-			FROM `stop_times` a
+	$sql = "select c.route_id, c.route_short_name, b.trip_headsign, a.stop_id, min(a.arrival_time) arrival_time
+			from stop_times a
 			inner join trips b on a.trip_id = b.trip_id
 			inner join routes c on b.route_id = c.route_id
-			where STR_TO_DATE(concat(DATE_FORMAT(now(), "%Y/%m/%d"), " ", a.arrival_time), "%Y/%m/%d %H:%i:%s")-now() > 0
-			and a.stop_id = '.$stop_id.'
-			group by c.route_id, c.route_short_name, a.stop_id';
+			inner join calendar_dates d on b.service_id = d.service_id and d.date = ".date('Ymd')."
+			where a.stop_id = ".$stop_id." and a.arrival_time > '".date('H:i:s')."'
+			group by c.route_id, c.route_short_name, b.trip_headsign, a.stop_id";
+
 	$result = $conn->query($sql);
 	if ($result->num_rows > 0)
 	{
@@ -67,8 +66,8 @@ function get_bus_stop_info($conn, $stop_id)
 			$response_xml .= "\t<bus>\n";
 			$response_xml .= "\t\t<route_id>".$row["route_id"]."</route_id>\n";
 			$response_xml .= "\t\t<route_short_name>".$row["route_short_name"]."</route_short_name>\n";
+			$response_xml .= "\t\t<trip_headsign>".$row["trip_headsign"]."</trip_headsign>\n";
 			$response_xml .= "\t\t<stop_id>".$row["stop_id"]."</stop_id>\n";
-			$response_xml .= "\t\t<time_till_arrival>".$row["time_till_arrival"]."</time_till_arrival>\n";
 			$response_xml .= "\t\t<arrival_time>".$row["arrival_time"]."</arrival_time>\n";
 			$response_xml .= "\t</bus>\n";
 		}
@@ -126,10 +125,10 @@ function get_bus_route_info($conn, $bus_route_id)
 	$sql = "select a.trip_id, b.route_id, b.direction_id, min(a.arrival_time), max(a.arrival_time)
 			from stop_times a
 			inner join trips b on a.trip_id = b.trip_id
-			inner join calendar_dates c on b.service_id = c.service_id and c.date = DATE_FORMAT(now(), '%Y/%m/%d')
+			inner join calendar_dates c on b.service_id = c.service_id and c.date = ".date('Ymd')."
 			where b.route_id = ".$bus_route_id."
 			group by a.trip_id, b.route_id, b.direction_id
-			having min(a.arrival_time) <= DATE_FORMAT(now(), '%H:%i:%s') and max(a.arrival_time) >= DATE_FORMAT(now(), '%H:%i:%s')";
+			having min(a.arrival_time) <= '".date('H:i:s')."' and max(a.arrival_time) >= '".date('H:i:s')."'";
 	$result = $conn->query($sql);
 	if ($result->num_rows > 0)
 	{
@@ -144,12 +143,12 @@ function get_bus_route_info($conn, $bus_route_id)
 			from (	SELECT a.trip_id, min(arrival_time) arrival_time
 					FROM `stop_times` a
 					where a.trip_id in (".$running_trips.")
-					and a.arrival_time >DATE_FORMAT(now(), '%H:%i:%s')
+					and a.arrival_time > '".date('H:i:s')."'
 					group by a.trip_id) a
 			inner join stop_times b on a.trip_id = b.trip_id and a.arrival_time = b.arrival_time
 			inner join stops c on b.stop_id = c.stop_id";
 	$result = $conn->query($sql);
-	var_dump($sql);
+	
 	$response_xml .= "\t<running_buses>\n";
 	if ($result->num_rows > 0)
 	{
