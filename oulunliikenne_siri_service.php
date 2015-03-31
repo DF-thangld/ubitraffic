@@ -169,6 +169,101 @@ function get_bus_route_info($conn, $bus_route_id)
 	echo $response_xml;
 }
 
+function get_all_bus_route($conn)
+{
+	$sql = "select * from routes";
+	$response_xml = '<?xml version="1.0" encoding="UTF-8"?>';
+	$response_xml .= "\n<bus_routes>\n";
+	$result = $conn->query($sql);
+
+	if ($result->num_rows > 0) {
+		// output data of each row
+		while($row = $result->fetch_assoc())
+		{
+			$response_xml .= "\t<route>\n";
+			$response_xml .= "\t\t<route_id>".$row["route_id"]."</route_id>\n";
+			$response_xml .= "\t\t<route_short_name>".$row["route_short_name"]."</route_short_name>\n";
+			$response_xml .= "\t\t<route_long_name>".$row["route_long_name"]."</route_long_name>\n";
+			$response_xml .= "\t</route>\n";
+		}
+	}
+	$response_xml .= '</bus_routes>';
+	header("Content-type: text/xml; charset=utf-8");
+	echo $response_xml;
+}
+
+function get_bus_route_detail($conn, $route_id)
+{
+	
+	$response_xml = '<?xml version="1.0" encoding="UTF-8"?>';
+	$response_xml .= "\n<route_detail>\n";
+	
+	//get route information
+	$sql = "select * from routes where route_id = ".$route_id."";
+	$result = $conn->query($sql);
+	if ($result->num_rows > 0) 
+	{
+		$row = $result->fetch_assoc();
+		$response_xml .= "\t<route_information>\n";
+		$response_xml .= "\t\t<route_id>".$row["route_id"]."</route_id>\n";
+		$response_xml .= "\t\t<route_short_name>".$row["route_short_name"]."</route_short_name>\n";
+		$response_xml .= "\t\t<route_long_name>".$row["route_long_name"]."</route_long_name>\n";
+		$response_xml .= "\t</route_information>\n";
+	}
+	
+	//get current bus stop for each bus of the route
+	//get running bus trip_id
+	$response_xml .= "\t<current_bus_position>\n";
+	$sql = "SELECT distinct a.trip_id
+			FROM `stop_times` a
+			inner join trips b on a.trip_id = b.trip_id
+			inner join calendar_dates c on b.service_id = c.service_id and c.date = ".date('Ymd')."
+			where b.route_id = ".$route_id." 
+			group by a.trip_id
+			having min(a.arrival_time) < '".date('H:i:s')."' and max(a.arrival_time) > '".date('H:i:s')."'";
+	$result = $conn->query($sql);
+	$running_buses = '';
+	if ($result->num_rows > 0) 
+	{
+		
+		while($row = $result->fetch_assoc())
+		{
+			$running_buses .= "'".$row["trip_id"]."',";
+		}
+		$running_buses .= "''";
+		//get neareast bus stops
+		$sql = "select x.trip_id, x.arrival_time, y.stop_id, z.stop_name, z.stop_lat, z.stop_lon
+				from (	SELECT a.trip_id, min(a.arrival_time) arrival_time
+						FROM `stop_times` a
+						inner join trips b on a.trip_id = b.trip_id
+						inner join calendar_dates c on b.service_id = c.service_id and c.date = ".date('Ymd')."
+						where a.arrival_time > '".date('H:i:s')."'
+						and a.trip_id in (".$running_buses.")
+						group by a.trip_id) x
+				inner join stop_times y on x.trip_id = y.trip_id and x.arrival_time = y.arrival_time
+				inner join stops z on y.stop_id = z.stop_id";
+		$result = $conn->query($sql);
+		while($row = $result->fetch_assoc())
+		{
+			$response_xml .= "\t\t<bus>\n";
+			
+			$response_xml .= "\t\t\t<trip_id>".$row["trip_id"]."</trip_id>\n";
+			$response_xml .= "\t\t\t<arrival_time>".$row["arrival_time"]."</arrival_time>\n";
+			$response_xml .= "\t\t\t<stop_id>".$row["stop_id"]."</stop_id>\n";
+			$response_xml .= "\t\t\t<stop_name>".$row["stop_name"]."</stop_name>\n";
+			$response_xml .= "\t\t\t<stop_lat>".$row["stop_lat"]."</stop_lat>\n";
+			$response_xml .= "\t\t\t<stop_lon>".$row["stop_lon"]."</stop_lon>\n";
+			
+			$response_xml .= "\t\t</bus>\n";
+		}
+	}
+	$response_xml .= "\t</current_bus_position>\n";
+	
+	$response_xml .= '</route_detail>';
+	header("Content-type: text/xml; charset=utf-8");
+	echo $response_xml;
+}
+
 $service = $_GET['service'];
 
 if ($service == 'all_bus_stops')
@@ -183,6 +278,9 @@ else if ($service == 'route')
 	$route_id = $_GET['route_id'];
 	get_bus_route_info($conn, $route_id);
 }
-
+else if ($service == 'all_bus_routes')
+{
+	get_all_bus_route($conn);
+}
 
 ?>

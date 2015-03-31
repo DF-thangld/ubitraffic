@@ -266,20 +266,20 @@ function get_all_bus_stops(map)
 							success: function(xml_bus)
 							{
 								var incoming_buses = '';
-								$(xml).find('bus').each(function()
+								$(xml_bus).find('bus').each(function()
 								{
 									var bus_name = $(this).find("route_short_name").text();
 									var bus_headsign = $(this).find("trip_headsign").text();
 									var bus_arrival_time = $(this).find("arrival_time").text();
 									
-									incoming_buses += 'Bus number ' + bus_name + ' to ' + bus_headsign + 'arrive at ' + bus_arrival_time + '<\br>';
+									incoming_buses += '<tr><td>' + bus_name + '</td><td>' + bus_headsign + '</td><td>' + bus_arrival_time + '</td></tr>';
 								});
 								
-								
-								var contentString = '<div style="width:170px;height:100px;">'+
-													'<b>' + name + '</b>'+
-													'<p>' + incoming_buses + '</p>'+
-													'</div>';
+								var contentString = '<table>'+
+													'<tr><td colspan="3"><center><b>' + name + '</b></center></td></tr>'+
+													'<tr><td>Number</td><td>Destination</td><td>Arrival time</td></tr>'+
+													incoming_buses+
+													'</table>';
 
 								infowindow = new google.maps.InfoWindow({
 									content: contentString

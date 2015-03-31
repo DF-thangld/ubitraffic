@@ -146,7 +146,8 @@
 		var marker = new google.maps.Marker({
 			position: screen_point,
 			map: map,
-			title:"UBI-Screen"
+			title:"UBI-Screen",
+			animation: google.maps.Animation.DROP
 		});
 		google.maps.event.addListener(marker, 'click', function() {
 			infowindow.open(map,marker);
