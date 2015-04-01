@@ -158,6 +158,28 @@
 			reset();
 			$("#start_place").keyboard();
 			$("#destination").keyboard();
+			$("#bus_number").keyboard();
+			setInterval(function(){
+				$( "a" ).each(function( index ) {
+					if ($( this ).attr('title')=='Report errors in the road map or imagery to Google')
+						$( this ).css('display', 'none');
+					if ($( this ).html()=='Terms of Use')
+						$( this ).css('display', 'none');
+					if ($( this ).attr('title')=='Click to see this area on Google Maps')
+						$( this ).css('display', 'none');
+					
+				});
+				$( "span" ).each(function( index ) {
+					console.log($( this ).html());
+					if ($( this ).html()=='Map data ©2015 Google')
+						$( this ).css('display', 'none');
+				});
+			}, 500);
+				
+				
+			
+			
+			
 			google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
 				
 			});

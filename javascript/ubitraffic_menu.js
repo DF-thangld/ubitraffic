@@ -20,6 +20,7 @@ var busStopInfo = [];
 var busStopMarkerList = [];
 var inforWindowList = [];
 var markerList = [];
+var bus_shapes = [];
 
 function findMarkerByName(markers_array, marker_name)
 {
@@ -311,6 +312,102 @@ function get_all_bus_stops(map)
 	$("#bus_stop_information_button").attr("class", "button chosen_mode");
 }
 
+function show_shape(route_id, direction_id)
+{
+	for (j=0; j<markerList.length; j++)
+		markerList[j].setMap(null);
+	for (j=0; j<bus_shapes.length; j++)
+		bus_shapes[j].setMap(null);
+		
+	$.ajax({
+			type: "GET",
+			url: "oulunliikenne_siri_service.php?service=route&route_id=" + route_id + "&direction_id=" + direction_id,
+			cache: false,
+			dataType: "xml",
+			success: function(xml) {
+				//display bus routes
+				var shapes = [];
+				$(xml).find('shape').each(function()
+				{
+					var shape_point = new google.maps.LatLng($(this).find("shape_pt_lat").text(), $(this).find("shape_pt_lon").text())
+					shapes.push(shape_point);
+				});
+				var bus_path = new google.maps.Polyline({
+					path: shapes,
+					geodesic: true,
+					strokeColor: '#FF0000',
+					strokeOpacity: 1.0,
+					strokeWeight: 2
+				});
+				bus_shapes.push(bus_path);
+				bus_path.setMap(map);
+				
+				//display bus stops
+				$(xml).find('stop').each(function()
+				{
+					var stop_id = $(this).find("stop_id").text();
+					var busStopMarker = new google.maps.Marker({
+						position: new google.maps.LatLng($(this).find("stop_lat").text(), $(this).find("stop_lon").text()),
+						map: map,
+						title: name,
+						icon: 'images/bus_stop_icon.png'
+					});
+					if ($(this).find("is_next_stop").text() == '1')
+					{
+						busStopMarker.setIcon('images/busIcon.png');
+						busStopMarker.setAnimation(google.maps.Animation.BOUNCE);
+					}
+					markerList.push(busStopMarker);
+					
+					google.maps.event.addListener(busStopMarker, 'click', function() {
+						for (var i = 0; i < inforWindowList.length; i++)
+						{
+							inforWindowList[i].close();
+						}
+						
+						var infowindow = null;
+						$.ajax({
+							type: "GET",
+							url: "oulunliikenne_siri_service.php?service=bus_stop&stop_id="+stop_id,
+							async :false,
+							cache: false,
+							dataType: "xml",
+							success: function(xml_bus)
+							{
+								var incoming_buses = '';
+								$(xml_bus).find('bus').each(function()
+								{
+									var bus_name = $(this).find("route_short_name").text();
+									var bus_headsign = $(this).find("trip_headsign").text();
+									var bus_arrival_time = $(this).find("arrival_time").text();
+									
+									incoming_buses += '<tr><td>' + bus_name + '</td><td>' + bus_headsign + '</td><td>' + bus_arrival_time + '</td></tr>';
+								});
+								
+								var contentString = '<table>'+
+													'<tr><td colspan="3"><center><b>' + name + '</b></center></td></tr>'+
+													'<tr><td>Number</td><td>Destination</td><td>Arrival time</td></tr>'+
+													incoming_buses+
+													'</table>';
+
+								infowindow = new google.maps.InfoWindow({
+									content: contentString
+								});
+								inforWindowList.push(infowindow);
+							}
+						});
+						
+						
+						infowindow.open(map,busStopMarker);
+					});
+					
+					
+				});
+				
+			}
+		});
+}
+
 function menu(map)
 {
 	// menu container definition
@@ -367,7 +464,7 @@ function menu(map)
 	$bus_timetable_button.attr("style", "margin-left:3px;");
 	$bus_timetable_button.html("<center><img src='images/bus_timetable_button.png' /><div>Timetable</div></center>");
 	google.maps.event.addDomListener($bus_timetable_button.get(0), 'click', function() {
-		// TODO
+		change_sub_menu('bus_timetable_menu');
 	});
 	$main_menu.append($bus_timetable_button);
 	
@@ -846,14 +943,90 @@ function menu(map)
 		navigate_route();
 	});
 	$navigation_right_panel.append($navigate_button);
-	
 	$navigation_menu.append($navigation_left_panel);
 	$navigation_menu.append($navigation_right_panel);
-	
-	
 	$innerContainer.append($navigation_menu);
+	
+	// bus_timetable menu
+	var $bus_timetable_menu = $(document.createElement("DIV"));
+	$bus_timetable_menu.attr("id", "bus_timetable_menu");
+	$bus_timetable_menu.attr("style", "display:none;position:absolute;margin-left:-50px;bottom:110px;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:420px;height:136px;");
+	// bus_timetable menu - bus number form
+	var $bus_number_form = $(document.createElement("DIV"));
+	$bus_number_form.attr("id", "bus_number_form");
+	$bus_number_form.attr("style", "margin:17px;margin-left:10px;margin-right:0;font-size:14px;");
+	$bus_number_form.html("Type bus number: <input id='bus_number' class='text_box' value='' style='width:125px;' /> ");
+	$bus_info_button = $(document.createElement("button"));
+	$bus_info_button.attr("id", "display_bus_info");
+	$bus_info_button.attr("style", "height:28px;");
+	$bus_info_button.html("Display Bus Information");
+	google.maps.event.addDomListener($bus_info_button.get(0), 'click', function() {
+		var content = "";
+		$.ajax({
+				type: "GET",
+				url: "oulunliikenne_siri_service.php?service=bus_directions&route_id=" + $("#bus_number").val(),
+				cache: true,
+				dataType: "xml",
+				success: function(xml) 
+				{
+					$(xml).find('direction').each(function(){
+						var route_id = $(this).find("route_id").text();
+						var route_short_name = $(this).find("route_short_name").text();
+						var route_long_name = $(this).find("route_long_name").text();
+						var direction_id = $(this).find("direction_id").text();
+						var trip_headsign = $(this).find("trip_headsign").text();
+						content += "<tr><td>Direction to <b>" + trip_headsign + "</b></td><td><input type='radio' name='show_bus_shape' onclick='show_shape(\"" + route_id + "\", "+direction_id+");'></td></tr>";
+					});
+					if (content === "")
+					{
+						$("#bus_direction_form").html("Cannot find route, please try again");
+					}
+					else
+					{
+						$("#bus_direction_form").html("<div>Direction:</div><table>"+ content + "</table>");
+					}
+				}
+			});
+	});
+	
+	
+	$bus_number_form.append($bus_info_button);
+	$bus_timetable_menu.append($bus_number_form);
+	// bus_timetable menu - direction_form
+	var $bus_direction_form = $(document.createElement("DIV"));
+	$bus_direction_form.attr('id', 'bus_direction_form');
+	$bus_direction_form.attr('style', 'font-size:14px;margin-left:10px;');
+	$bus_direction_form.html("");
+	$bus_timetable_menu.append($bus_direction_form);
+	
+	$innerContainer.append($bus_timetable_menu);
+	
+	var $zoom_menu = $(document.createElement('DIV'));
+	$zoom_menu.attr("style", "float:right;");
+	// zoom-in button
+	var $zoomin_menu = $(document.createElement('DIV'));
+	$zoomin_menu.attr("id", "zoomin_menu");
+	$zoomin_menu.attr("style", "float:left;");
+	$zoomin_menu.html("<img style='' width='30px;' src='images/zoom_in.ico' />");
+	google.maps.event.addDomListener($zoomin_menu.get(0), 'click', function()
+	{
+		var zoom_value = map.getZoom();
+		map.setZoom(zoom_value+1);
+	});
+	$zoom_menu.append($zoomin_menu);
+	// zoom-out button
+	var $zoomout_menu = $(document.createElement('DIV'));
+	$zoomout_menu.attr("id", "zoomout_menu");
+	$zoomout_menu.attr("style", "float:left;");
+	$zoomout_menu.html("<img style='' width='30px;' src='images/zoom_out.png' />");
+	google.maps.event.addDomListener($zoomout_menu.get(0), 'click', function() {
+		var zoom_value = map.getZoom();
+		map.setZoom(zoom_value-1);
+	});
+	$zoom_menu.append($zoomout_menu);
 	
 	// Insert menu to map
 	$container.append($innerContainer);
 	map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push($container.get(0));
+	map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push($zoom_menu.get(0));
 }

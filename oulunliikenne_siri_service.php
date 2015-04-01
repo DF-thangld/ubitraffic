@@ -100,7 +100,7 @@ function get_bus_route_info($conn, $bus_route_id)
 	}
 	
 	//route direction
-	$sql = "SELECT distinct trip_headsign, direction_id
+	$sql = "SELECT distinct trip_headsign, direction_id, shape_id
 			from trips
 			where route_id = ".$bus_route_id." 
 			ORDER BY `route_id` ASC";
@@ -114,6 +114,7 @@ function get_bus_route_info($conn, $bus_route_id)
 			$response_xml .= "\t\t<direction>\n";
 			$response_xml .= "\t\t\t<direction_id>".$row["direction_id"]."</direction_id>\n";
 			$response_xml .= "\t\t\t<trip_headsign>".$row["trip_headsign"]."</trip_headsign>\n";
+			$response_xml .= "\t\t\t<shape_id>".$row["shape_id"]."</shape_id>\n";
 			$response_xml .= "\t\t</direction>\n";
 		}
 		$response_xml .= "\t</bus_directions>\n";
@@ -192,14 +193,14 @@ function get_all_bus_route($conn)
 	echo $response_xml;
 }
 
-function get_bus_route_detail($conn, $route_id)
+function get_bus_route_detail($conn, $route_id, $direction_id)
 {
 	
 	$response_xml = '<?xml version="1.0" encoding="UTF-8"?>';
 	$response_xml .= "\n<route_detail>\n";
 	
 	//get route information
-	$sql = "select * from routes where route_id = ".$route_id."";
+	$sql = "select * from routes where route_short_name = '".$route_id."'";
 	$result = $conn->query($sql);
 	if ($result->num_rows > 0) 
 	{
@@ -213,14 +214,17 @@ function get_bus_route_detail($conn, $route_id)
 	
 	//get current bus stop for each bus of the route
 	//get running bus trip_id
+	$next_stops = array();
 	$response_xml .= "\t<current_bus_position>\n";
 	$sql = "SELECT distinct a.trip_id
 			FROM `stop_times` a
 			inner join trips b on a.trip_id = b.trip_id
 			inner join calendar_dates c on b.service_id = c.service_id and c.date = ".date('Ymd')."
-			where b.route_id = ".$route_id." 
+			inner join routes d on b.route_id = d.route_id
+			where d.route_short_name = '".$route_id."' and b.direction_id = ".$direction_id."
 			group by a.trip_id
 			having min(a.arrival_time) < '".date('H:i:s')."' and max(a.arrival_time) > '".date('H:i:s')."'";
+			//echo $sql;
 	$result = $conn->query($sql);
 	$running_buses = '';
 	if ($result->num_rows > 0) 
@@ -255,11 +259,107 @@ function get_bus_route_detail($conn, $route_id)
 			$response_xml .= "\t\t\t<stop_lon>".$row["stop_lon"]."</stop_lon>\n";
 			
 			$response_xml .= "\t\t</bus>\n";
+			$next_stops[] = $row["stop_id"];
 		}
 	}
 	$response_xml .= "\t</current_bus_position>\n";
 	
+	//get route shape
+	$sql = "select * 
+			from route_shape 
+			where route_short_name = '".$route_id."' and direction_id = ".$direction_id." 
+			order by shape_pt_sequence asc";
+	$response_xml .= "\t<route_shape>\n";
+	$result = $conn->query($sql);
+	while($row = $result->fetch_assoc())
+	{
+		$response_xml .= "\t\t<shape>\n";
+		$response_xml .= "\t\t\t<shape_pt_sequence>".$row["shape_pt_sequence"]."</shape_pt_sequence>\n";
+		$response_xml .= "\t\t\t<shape_pt_lat>".$row["shape_pt_lat"]."</shape_pt_lat>\n";
+		$response_xml .= "\t\t\t<shape_pt_lon>".$row["shape_pt_lon"]."</shape_pt_lon>\n";
+		$response_xml .= "\t\t</shape>\n";
+	}
+	$response_xml .= "\t</route_shape>\n";
+	
+	//get route bus stop
+	$sql = "select * 
+			from route_stops 
+			where route_short_name = '".$route_id."' and direction_id = ".$direction_id." 
+			order by stop_sequence asc";
+	$response_xml .= "\t<route_stops>\n";
+	$result = $conn->query($sql);
+	while($row = $result->fetch_assoc())
+	{
+		$is_next_stop = 0;
+		$response_xml .= "\t\t<stop>\n";
+		$response_xml .= "\t\t\t<stop_id>".$row["stop_id"]."</stop_id>\n";
+		$response_xml .= "\t\t\t<stop_sequence>".$row["stop_sequence"]."</stop_sequence>\n";
+		$response_xml .= "\t\t\t<stop_lat>".$row["stop_lat"]."</stop_lat>\n";
+		$response_xml .= "\t\t\t<stop_lon>".$row["stop_lon"]."</stop_lon>\n";
+		foreach ($next_stops as $i => $stop) {
+			if ($next_stops[$i] == $row["stop_id"])
+				$is_next_stop = 1;
+		}
+		$response_xml .= "\t\t\t<is_next_stop>".$is_next_stop."</is_next_stop>\n";
+		
+		
+		$response_xml .= "\t\t</stop>\n";
+	}
+	$response_xml .= "\t</route_stops>\n";
+	
+	
+	
 	$response_xml .= '</route_detail>';
+	header("Content-type: text/xml; charset=utf-8");
+	echo $response_xml;
+}
+
+function get_bus_shape($conn, $shape_id)
+{
+	$sql = "select * from shapes where shape_id = ".$shape_id." order by shape_pt_sequence asc";
+	$response_xml = '<?xml version="1.0" encoding="UTF-8"?>';
+	$response_xml .= "\n<bus_shapes>\n";
+	$result = $conn->query($sql);
+	if ($result->num_rows > 0) {
+		// output data of each row
+		while($row = $result->fetch_assoc())
+		{
+			$response_xml .= "\t<shape>\n";
+			$response_xml .= "\t\t<shape_id>".$row["shape_id"]."</shape_id>\n";
+			$response_xml .= "\t\t<shape_pt_lat>".$row["shape_pt_lat"]."</shape_pt_lat>\n";
+			$response_xml .= "\t\t<shape_pt_lon>".$row["shape_pt_lon"]."</shape_pt_lon>\n";
+			$response_xml .= "\t\t<shape_pt_sequence>".$row["shape_pt_sequence"]."</shape_pt_sequence>\n";
+			$response_xml .= "\t</shape>\n";
+		}
+	}
+	$response_xml .= '</bus_shapes>';
+	header("Content-type: text/xml; charset=utf-8");
+	echo $response_xml;
+}
+
+function get_bus_directions($conn, $route_id)
+{
+	$response_xml = '<?xml version="1.0" encoding="UTF-8"?>';
+	$response_xml .= "\n<bus_directions>\n";
+	$sql = "SELECT route_id, route_short_name, route_long_name, direction_id, trip_headsign
+			FROM `route_stops` 
+			WHERE route_short_name = '".$route_id."'
+			group by route_id, route_short_name, route_long_name, direction_id, trip_headsign";
+	$result = $conn->query($sql);
+	if ($result->num_rows > 0) {
+		// output data of each row
+		while($row = $result->fetch_assoc())
+		{
+			$response_xml .= "\t<direction>\n";
+			$response_xml .= "\t\t<route_id>".$row["route_id"]."</route_id>\n";
+			$response_xml .= "\t\t<route_short_name>".$row["route_short_name"]."</route_short_name>\n";
+			$response_xml .= "\t\t<route_long_name>".$row["route_long_name"]."</route_long_name>\n";
+			$response_xml .= "\t\t<direction_id>".$row["direction_id"]."</direction_id>\n";
+			$response_xml .= "\t\t<trip_headsign>".$row["trip_headsign"]."</trip_headsign>\n";
+			$response_xml .= "\t</direction>\n";
+		}
+	}
+	$response_xml .= "</bus_directions>\n";
 	header("Content-type: text/xml; charset=utf-8");
 	echo $response_xml;
 }
@@ -273,14 +373,25 @@ else if ($service == 'bus_stop')
 	$stop_id = $_GET['stop_id'];
 	get_bus_stop_info($conn, $stop_id);
 }
-else if ($service == 'route')
-{
-	$route_id = $_GET['route_id'];
-	get_bus_route_info($conn, $route_id);
-}
 else if ($service == 'all_bus_routes')
 {
 	get_all_bus_route($conn);
+}
+else if ($service == 'route')
+{
+	$route_id = $_GET['route_id'];
+	$direction_id = $_GET['direction_id'];
+	get_bus_route_detail($conn, $route_id,$direction_id);
+}
+else if ($service == 'bus_shape')
+{
+	$shape_id = $_GET['shape_id'];
+	get_bus_shape($conn, $shape_id);
+}
+else if ($service == 'bus_directions')
+{
+	$route_id = $_GET['route_id'];
+	get_bus_directions($conn, $route_id);
 }
 
 ?>
