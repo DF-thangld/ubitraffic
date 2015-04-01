@@ -327,62 +327,9 @@
 		});
 	}
 	
+	//download map to phone
 	function downloadToPhone()
-	{
-		//get divs by id
-		var actualMap = document.getElementById('map_panel');
-		//var textInfo = document.getElementById('info_panel').textContent;
-		
-		//var regexedText = textInfo.replace(/([-])/g, '<br /> - ')
-		var div;
-		if( !document.getElementById('tempText')){
-			div = document.createElement("div");
-			div.id = "tempText";
-		}
-		else
-		{
-			div = document.getElementById('tempText');
-		}
-		
-		//div.style.position = "absolute";
-		//div.style.left = "530px";
-		//div.style.top = "530px";
-		div.style.position = "absolute";// Create a <p> element
-		div.style.width = "470px";
-		div.style.top = "530px";
-		//div.style.right = "20px";
-		//div.style.visibility = "hidden";
-		var t = document.createTextNode(txtInfo);      // Create a text node
-		div.innerHTML = txtInfo;                                          // Append the text to <p>
-		document.body.appendChild(div);
-		
-		//actualMap.appendChild(div);
-		//var divTemp = document.createElement("div");
-		//divTemp.style.width = "470px";
-		//divTemp.id = "divtemp";
-		//divTemp.style.visibility = "hidden";
-		
-		
-		
-		
-		//$('#divtemp').html($('#map_panel').html());
-		
-	//	divTemp.appendChild(actualMap);
-	//	divTemp.appendChild(div);
-		
-		//document.body.appendChild(div);
-		
-		//actualMap.appendChild(div);
-		//save as 1 image
-		/*
-		html2canvas(actualMap, {
-			proxy: 'javascript/html2canvas-php-proxy-master/html2canvasproxy.php',
-			useCORS: false,
-			onrendered: function(canvas) {
-			document.body.appendChild(canvas);
-			}
-		});
-		*/
+	{		
 		//get transform value
 		var transform=$("#map_panel").css("transform")
 		var comp=transform.split(",") //split up the transform matrix
@@ -393,38 +340,39 @@
 		  "left":mapleft,
 		  "top":maptop,
 		})
-		//var asd = $('#tempText').clone();
-		$('#map_panel').append(div);
-		//div.appendChild
-		//document.body.appendChild(div);
+		
+		//convert google map to canvas and save it as image
 		html2canvas($('#map_panel'),
 		{
 		  useCORS: true,
 		  onrendered: function(canvas)
 		  {
-			//document.body.appendChild(canvas);
+		
+			//Insert info text to canvas
+			var ctx=canvas.getContext("2d");			
+			
+			var maxWidth = 470;
+			var lineHeight = 17;
+			var x = (canvas.width - maxWidth) / 2;
+			var y = 560;
+			var text = document.getElementById('info_panel').textContent;
+
+			ctx.font = '12pt Calibri';
+			ctx.fillStyle = '#333';
+
+			wrapText(ctx, text, x, y, maxWidth, lineHeight);
 			
 			
+			//show canvas in page (can be removed later)
+			document.body.appendChild(canvas);
 			
-		//	var dataUrl= canvas.toDataURL('image/png');
-			
-			
-			//console.log("DATAURL::"+dataUrl);
-			//window.open=dataUrl //for testing I never get window.open to work			
-			//canvasAll.appendChild(div);
-			//canvasAll.appendChild(canvas);
-			//document.body.appendChild(canvasAll);
-			var screenshot ={};
+			//hold the data to save canvas as image
+			var screenshot ={};			
 			
 			screenshot.img = canvas.toDataURL( "image/png" );
 			screenshot.data = { 'image' : screenshot.img };
 			
-		//	var cur_path = window.location.href;
-		//	var dir = cur_path.substring(0, cur_path.lastIndexOf('/'));
-		//	var output = encodeURIComponent(dataUrl);
-		//	var Parameters = "image=" + output + "&filedir=" + dir;
-		//	console.log("current path "+dir);
-		//	console.log("current image "+output);
+			//call savePNG to save the image to /images/png/[name].png
             $.ajax({
                 type: "POST",
                 url: "savePNG.php",
@@ -437,9 +385,6 @@
                 //$('body').html(data);
             });
 
-			
-			
-			
 			
 			//create qr code
 			var source = "https://chart.googleapis.com/chart?cht=qr&chl=";
@@ -454,43 +399,49 @@
 				image = document.getElementById('QRcode');
 			}
 			
-			//image.style.position = "absolute";
-			//image.style.top = "500px";
-			//image.style.height = "100px";
 			
+			//create url for the image
 			var imgUrl = window.location.href.substring(0, window.location.href.lastIndexOf('/'))+"/images/png/testing.png";
-			image.src = source+imgUrl+"&chs=180x180";
-			//a.href = "www.google.com";
-			//a.appendChild(image);
-			//div.appendChild(a);
+			image.src = source+encodeURIComponent(imgUrl)+"&chs=180x180";
+			
+			//show it to user
 			document.body.appendChild(image);
 			console.log(""+image.src);
-			
-			
-			//<img style="position:absolute; left: 5px; top: 200px;"src='https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fmaps.googleapis.com%2Fmaps%2Fapi%2Fstaticmap%3Fcenter%3D%252865.01236%2C%252025.46816000000001%2529%26zoom%3D13%26size%3D400x600&chs=180x180&choe=UTF-8&chld=L|2' rel='nofollow' alt='qr code'><a href='http://www.qrcode-generator.de' border='0' style='cursor:default'  rel='nofollow'></a>
-			
-			
-			//document.body.append(image);
-			
+						
+			//set transform back
 			$("#map_panel").css({
 			  left:0,
 			  top:0,
 			  "transform":transform
 			})
-		  }
+		  },
+		  height: 1000
 		});
-		/*html2canvas(div, {			
-			onrendered: function(canvas) {
-			document.body.appendChild(canvas);
-			}
-		});*/
-		
-		
 		
 		
 	}
 	
 	
+	//wrap text to fit to canvas
+	function wrapText(context, text, x, y, maxWidth, lineHeight) {
+		var words = text.split(/([)])/);
+        var line = '';
+
+        for(var n = 0; n < words.length; n++) {
+			var testLine = line + words[n] + ' ';
+			var metrics = context.measureText(testLine);
+			var testWidth = metrics.width;
+			if (testWidth > maxWidth && n > 0) {
+				context.fillText(line, x, y);
+				line = words[n] + ' ';
+				y += lineHeight;
+			}
+			else {
+				line = testLine;
+			}
+        }
+        context.fillText(line, x, y);
+    }
 	    
 	
 	
