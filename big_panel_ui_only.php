@@ -121,6 +121,8 @@
             border-right: 1px solid #CCC;
             border-top: 1px solid #DDD;
             padding: 2px 3px 3px 4px;
+            width: 15%;
+            align: center;
         }
         tbody.scrollContent tr.alternateRow td {
             background: #EEE;
@@ -257,21 +259,21 @@
 					
 					
 					<!--busTimeTable Table, use absolute positioning-->
-					<div id="busTimetable" class="busTimetable">
+					<div id="busTimetable" class="busTimetable" style="border:2px solid;border-color: #2a3333;border-radius: 6px;">
 						<!-- Use margin-left:auto;margin-right:auto to centre the table inside the div -->
                         <table margin-left="auto" margin-right="auto" class=scrollTable" border="0" cellpadding="0" cellspacing="0" width="100%">
                             <thead class="fixedHeader" style='overflow:auto;background: #C96;border-left:1px solid #EB8; border-right:1px solid #B74; border-top:1px solid #EB8; font-weight:normal; padding:4px 3px; text-align:left; display:table; width:100%'>
                                 <tr>
-                                    <th width="33%">Station</th>
-                                    <th width="33%">Arrive</th>
-                                    <th width="33%">Leave</th>
+                                    <th align="left" width="33%">Station</th>
+                                    <th align="left" width="33%">Arrive</th>
+                                    <th align="left" width="33%">Leave</th>
                                 </tr>
                             </thead>
                             <tbody class="scrollContent">
                                 <tr>
-                                    <td width="30%"> Content 1</td>
-                                    <td width="30%"> Content 2</td>
-                                    <td width="30%"> Content 3</td>
+                                    <td> Content 1</td>
+                                    <td> Content 2</td>
+                                    <td> Content 3</td>
                                 </tr>
                                 <tr>
                                     <td> Content 1</td>
