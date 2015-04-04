@@ -1025,14 +1025,20 @@ function menu(map)
 	});
 	$zoom_menu.append($zoomout_menu);
 	
-	// download button
+	// download menu
 	var $download_menu = $(document.createElement('DIV'));
 	$download_menu.attr("id", "download_menu");
 	$download_menu.attr("style", "float:left;");
-	$download_menu.html("<img style='' width='30px;' src='images/zoom_out.png' />");
+	$download_menu.html("<img style='' width='30px;' src='images/download_button.png' />");
 	google.maps.event.addDomListener($download_menu.get(0), 'click', function() {		
 		if($('#download_div').css('display') == 'none')
+		{
 			$('#download_div').css('display', 'inline');
+			if($('#QRcode'))
+			{
+				$('#QRcode').css('display', 'none');
+			}
+		}
 		else
 			$('#download_div').css('display', 'none');
 		
@@ -1042,28 +1048,59 @@ function menu(map)
 	//download div
 	var $download_div = $(document.createElement('DIV'));
 	$download_div.attr('id', 'download_div');
-	$download_div.attr("style", "font-size:14px; display:none;position:absolute;margin-left:-50px;bottom:260px;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:420px;height:136px;");
+	$download_div.attr("style", "font-size:14px; display:none;position:absolute;left:585px;top:230px;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:420px;height:136px;");
 	$download_div.html("<center style='margin-top:5px;'>Download map to phone</center>");
-	$innerContainer.append($download_div);
+	$('body').append($download_div);
 	
 	//qr code div
 	var $qrcode_div = $(document.createElement('DIV'));
 	$qrcode_div.attr("id", "qrcode_div");
 	$qrcode_div.attr("class", "button");
 	$qrcode_div.attr("style", "margin-left:80px;width:100px;margin-top:5px;");
-	$qrcode_div.html("<center><img src='images/weather_sign.png' style='height:40px;' width='40px' /><div>QR code</div></center>");
-	google.maps.event.addDomListener($qrcode_div.get(0), 'click', function() {
+	$qrcode_div.html("");
+	
+	//qr button
+	$qr_button = $(document.createElement("button"));
+	$qr_button.attr("id", "qr_button");
+	$qr_button.attr("style", "height:38px;");
+	$qr_button.html("Create QR Code");
+	$qrcode_div.append($qr_button);
+	
+	google.maps.event.addDomListener($qr_button.get(0), 'click', function() {
 		downloadToPhone("QR");
 	});
 	$download_div.append($qrcode_div);	
+	
+	
+	//actual qr code
+	var $qrcode = $(document.createElement('DIV'));
+	$qrcode.attr("id", "QRcode");	
+	$qrcode.attr("style", "position:absolute;width:110px;height:110px;right:162px;background-color:white;border:2px solid;border-color:#2a3333;border-radius:6px;");
+	$qrcode.html("");
+	
+	
+	//create close button for qr code
+	/*var $closeB = $(document.createElement('a'));
+	$closeB.attr("id", "close_qr");
+	$closeB.attr("style", "position:absolute;height:17px; width:9px;float:right; right:-10px; top:-10px;cursor:pointer;border:1px solid;border-color: #2a3333;border-radius:15px;display:inline-block; padding: 2px 5px; background: #ccc;");
+	$closeB.html("x");
+	$qrcode.append($closeB);
+	
+	google.maps.event.addDomListener($closeB.get(0), 'click', function() {
+		$qrcode.css('display', 'none');
+	});*/
+	$download_div.append($qrcode);	
+	
+	
 	
 	//e-mail div
 	var $email_div = $(document.createElement('DIV'));
 	$email_div.attr("id", "email_div");
 	$email_div.attr("class", "button");
 	$email_div.attr("style", "margin-left:60px;width:100px;margin-top:5px;");
-	$email_div.html("<center><input id='email_input' class='text_box' value='' style='width:125px;'></input><img src='images/weather_sign.png' style='height:40px;' width='40px' /><div>E-mail</div></center>");
+	$email_div.html("<center><input id='email_input' class='text_box' value='' style='width:125px;'></input></center>"); //<img src='images/weather_sign.png' style='height:40px;' width='40px' /><div>E-mail</div>
 	
+	//email button
 	$email_button = $(document.createElement("button"));
 	$email_button.attr("id", "email_button");
 	$email_button.attr("style", "height:28px;");
@@ -1072,7 +1109,6 @@ function menu(map)
 	google.maps.event.addDomListener($email_button.get(0), 'click', function() {
 		downloadToPhone("Email");
 	});
-	//var $email_input = $(document.createElement('input'));
 	
 	$download_div.append($email_div);	
 	

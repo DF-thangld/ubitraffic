@@ -353,6 +353,8 @@
 	//download map to phone
 	function downloadToPhone(selection)
 	{		
+		//reset the divs to get the image of the full map
+		reset();
 		//get transform value
 		var transform=$("#map_panel").css("transform")
 		var comp=transform.split(",") //split up the transform matrix
@@ -384,10 +386,6 @@
 			ctx.fillStyle = '#333';
 
 			wrapText(ctx, text, x, y, maxWidth, lineHeight);
-			
-			
-			//show canvas in page (can be removed later)
-			//document.body.appendChild(canvas);
 			
 			//hold the data to save canvas as image
 			var screenshot ={};			
@@ -435,47 +433,41 @@
 	//create qr code
 	function createQR()
 	{
-		//create qr code
+		//use google api chart for QR code
 		var source = "https://chart.googleapis.com/chart?cht=qr&chl=";
-		
-		var image;	
-		if( !document.getElementById('QRcode')){
-			image = document.createElement("img");
-			image.id = "QRcode";
-		}
-		else
-		{
-			image = document.getElementById('QRcode');
-		}
-		
 		
 		//create url for the image
 		var imgUrl = window.location.href.substring(0, window.location.href.lastIndexOf('/'))+"/images/png/testing.png";
-		image.src = source+encodeURIComponent(imgUrl)+"&chs=180x180";
-		image.style = "position:absolute; margin-left:40%;width:100px;margin-top:45%;";
-		//show it to user
-	/*	var closeB = document.createElement("span");
-		closeB.id = "close";
-		closeB.innerHTML = "x";
-		closeB.style = "float:right; display:inline-block; padding: 2px 5px; background: #ccc;";
-		$('#QRcode').append(closeB);
-	*/		
+		var src = source+encodeURIComponent(imgUrl)+"&chs=180x180";
 		
-		$('#map_panel').append(image);
-		//console.log(""+image.src);						
+		//set image to qr div
+		$('#QRcode').html("<img src="+src+" style='position:absolute;width:100px;margin:5px;' />");
+			
+		//create close button for qr code image
+		var closeB = document.createElement("a");
+		closeB.id = "close_qr";
+		closeB.innerHTML = "x";
+		closeB.style = "position:absolute;height:17px; width:9px;float:right; right:-10px; top:-10px;cursor:pointer;border:1px solid;border-color: #2a3333;border-radius:15px;display:inline-block; padding: 2px 5px; background: #ccc;";
+		$('#QRcode').append(closeB);
+			
+		//show it to user
+		$('#QRcode').css('display', 'inline');
+		//$('#download_div').append($image);
+		//console.log(""+image.src);	
+
+		google.maps.event.addDomListener($('#close_qr').get(0), 'click', function() {
+		$('#QRcode').css('display', 'none');
+		});
 	}
 	
 	//create email
 	function sendEmail()
 	{
-		var emailaddr = $("#email_input").val();
-		
+		//get e-mail address from input field
+		var emailaddr = $("#email_input").val();		
 		var emaildata = "dest="+emailaddr;
 		
-		
-		//var emaildata = "filename=testing.png&path=/images/png";
-		
-		
+		//Send e-mail
 		console.log("Sending email");
 		$.ajax({
                 type: "POST",
