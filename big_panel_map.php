@@ -27,6 +27,7 @@
 	
 	<script src="javascript/ubitraffic_traffic_places.js" type="text/javascript"></script>
 	<script src="javascript/ubitraffic_menu.js" type="text/javascript"></script>
+	<script src="javascript/html2canvas.js" type="text/javascript"></script>
 	
 	<style>
 		document
@@ -159,6 +160,7 @@
 			$("#start_place").keyboard();
 			$("#destination").keyboard();
 			$("#bus_number").keyboard();
+			$("#email_input").keyboard();
 			setInterval(function(){
 				$( "a" ).each(function( index ) {
 					if ($( this ).attr('title')=='Report errors in the road map or imagery to Google')
@@ -170,7 +172,7 @@
 					
 				});
 				$( "span" ).each(function( index ) {
-					console.log($( this ).html());
+					//console.log($( this ).html());
 					if ($( this ).html()=='Map data ©2015 Google')
 						$( this ).css('display', 'none');
 				});
@@ -347,6 +349,169 @@
 			}
 		});
 	}
+	
+	//download map to phone
+	function downloadToPhone(selection)
+	{		
+		//get transform value
+		var transform=$("#map_panel").css("transform")
+		var comp=transform.split(",") //split up the transform matrix
+		var mapleft=parseFloat(comp[4]) //get left value
+		var maptop=parseFloat(comp[5])  //get top value
+		$("#map_panel").css({ //get the map container. not sure if stable
+		  "transform":"none",
+		  "left":mapleft,
+		  "top":maptop,
+		})
+		
+		//convert google map to canvas and save it as image
+		html2canvas($('#map_panel'),
+		{
+		  useCORS: true,
+		  onrendered: function(canvas)
+		  {
+		
+			//Insert info text to canvas
+			var ctx=canvas.getContext("2d");			
+			
+			var maxWidth = 470;
+			var lineHeight = 17;
+			var x = (canvas.width - maxWidth) / 2;
+			var y = 560;
+			var text = document.getElementById('info_panel').textContent;
+
+			ctx.font = '12pt Calibri';
+			ctx.fillStyle = '#333';
+
+			wrapText(ctx, text, x, y, maxWidth, lineHeight);
+			
+			
+			//show canvas in page (can be removed later)
+			//document.body.appendChild(canvas);
+			
+			//hold the data to save canvas as image
+			var screenshot ={};			
+			
+			screenshot.img = canvas.toDataURL( "image/png" );
+			screenshot.data = { 'image' : screenshot.img };
+			
+			//call savePNG to save the image to /images/png/[name].png
+            $.ajax({
+                type: "POST",
+                url: "savePNG.php",
+                data: screenshot.data,
+                success : function(data)
+                {
+                    //console.log("screenshot done "+data);
+                }
+            }).done(function() {
+                //$('body').html(data);
+            });
+
+			//set transform back
+			$("#map_panel").css({
+			  left:0,
+			  top:0,
+			  "transform":transform
+			})
+		  },
+		  height: 1000
+		});
+		
+		
+		if(selection == "QR")
+		{
+			setTimeout(createQR,1000);
+			//createQR();
+		}
+		else if(selection == "Email")
+		{
+			setTimeout(sendEmail,1000);
+			//sendEmail();
+		}
+		
+	}
+	
+	//create qr code
+	function createQR()
+	{
+		//create qr code
+		var source = "https://chart.googleapis.com/chart?cht=qr&chl=";
+		
+		var image;	
+		if( !document.getElementById('QRcode')){
+			image = document.createElement("img");
+			image.id = "QRcode";
+		}
+		else
+		{
+			image = document.getElementById('QRcode');
+		}
+		
+		
+		//create url for the image
+		var imgUrl = window.location.href.substring(0, window.location.href.lastIndexOf('/'))+"/images/png/testing.png";
+		image.src = source+encodeURIComponent(imgUrl)+"&chs=180x180";
+		image.style = "position:absolute; margin-left:40%;width:100px;margin-top:45%;";
+		//show it to user
+	/*	var closeB = document.createElement("span");
+		closeB.id = "close";
+		closeB.innerHTML = "x";
+		closeB.style = "float:right; display:inline-block; padding: 2px 5px; background: #ccc;";
+		$('#QRcode').append(closeB);
+	*/		
+		
+		$('#map_panel').append(image);
+		//console.log(""+image.src);						
+	}
+	
+	//create email
+	function sendEmail()
+	{
+		var emailaddr = $("#email_input").val();
+		
+		var emaildata = "dest="+emailaddr;
+		
+		
+		//var emaildata = "filename=testing.png&path=/images/png";
+		
+		
+		console.log("Sending email");
+		$.ajax({
+                type: "POST",
+                url: "sendMail.php",
+                data: emaildata,
+                success : function(data)
+                {
+                    console.log("email done "+data);
+                }
+            }).done(function() {
+                //$('body').html(data);
+            });
+		
+	}
+	
+	
+	//wrap text to fit to canvas
+	function wrapText(context, text, x, y, maxWidth, lineHeight) {
+		var words = text.split(/([)])/);
+        var line = '';
+
+        for(var n = 0; n < words.length; n++) {
+			var testLine = line + words[n] + ' ';
+			var metrics = context.measureText(testLine);
+			var testWidth = metrics.width;
+			if (testWidth > maxWidth && n > 0) {
+				context.fillText(line, x, y);
+				line = words[n] + ' ';
+				y += lineHeight;
+			}
+			else {
+				line = testLine;
+			}
+        }
+        context.fillText(line, x, y);
+    }
 	
 	
     </script>

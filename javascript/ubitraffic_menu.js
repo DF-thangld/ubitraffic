@@ -1025,6 +1025,59 @@ function menu(map)
 	});
 	$zoom_menu.append($zoomout_menu);
 	
+	// download button
+	var $download_menu = $(document.createElement('DIV'));
+	$download_menu.attr("id", "download_menu");
+	$download_menu.attr("style", "float:left;");
+	$download_menu.html("<img style='' width='30px;' src='images/zoom_out.png' />");
+	google.maps.event.addDomListener($download_menu.get(0), 'click', function() {		
+		if($('#download_div').css('display') == 'none')
+			$('#download_div').css('display', 'inline');
+		else
+			$('#download_div').css('display', 'none');
+		
+	});
+	$zoom_menu.append($download_menu);
+	
+	//download div
+	var $download_div = $(document.createElement('DIV'));
+	$download_div.attr('id', 'download_div');
+	$download_div.attr("style", "font-size:14px; display:none;position:absolute;margin-left:-50px;bottom:260px;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:420px;height:136px;");
+	$download_div.html("<center style='margin-top:5px;'>Download map to phone</center>");
+	$innerContainer.append($download_div);
+	
+	//qr code div
+	var $qrcode_div = $(document.createElement('DIV'));
+	$qrcode_div.attr("id", "qrcode_div");
+	$qrcode_div.attr("class", "button");
+	$qrcode_div.attr("style", "margin-left:80px;width:100px;margin-top:5px;");
+	$qrcode_div.html("<center><img src='images/weather_sign.png' style='height:40px;' width='40px' /><div>QR code</div></center>");
+	google.maps.event.addDomListener($qrcode_div.get(0), 'click', function() {
+		downloadToPhone("QR");
+	});
+	$download_div.append($qrcode_div);	
+	
+	//e-mail div
+	var $email_div = $(document.createElement('DIV'));
+	$email_div.attr("id", "email_div");
+	$email_div.attr("class", "button");
+	$email_div.attr("style", "margin-left:60px;width:100px;margin-top:5px;");
+	$email_div.html("<center><input id='email_input' class='text_box' value='' style='width:125px;'></input><img src='images/weather_sign.png' style='height:40px;' width='40px' /><div>E-mail</div></center>");
+	
+	$email_button = $(document.createElement("button"));
+	$email_button.attr("id", "email_button");
+	$email_button.attr("style", "height:28px;");
+	$email_button.html("Send E-mail");
+	$email_div.append($email_button);	
+	google.maps.event.addDomListener($email_button.get(0), 'click', function() {
+		downloadToPhone("Email");
+	});
+	//var $email_input = $(document.createElement('input'));
+	
+	$download_div.append($email_div);	
+	
+	
+	
 	// Insert menu to map
 	$container.append($innerContainer);
 	map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push($container.get(0));
