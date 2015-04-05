@@ -73,7 +73,7 @@ var weather_places = [	{name:'Tie 4 Ouluntulli',latitude:'64.947356998755623',lo
 						{name:'Tie 4 Oulu, Kuivasjärvi',latitude:'65.078228962868536',longitude:'25.440024378581025'},
 						{name:'Tie 5 Jokivaara',latitude:'65.721322200694942',longitude:'29.151568426907801'}];
 
-	var camera_places = [	{name:'Tie 849 Yli-Ii, Tannila (Yli-Iihin)',latitude:'65.482777999999996',longitude:'25.975166999999999'},
+var camera_places = [	{name:'Tie 849 Yli-Ii, Tannila (Yli-Iihin)',latitude:'65.482777999999996',longitude:'25.975166999999999'},
 							{name:'Tie 4 Oulu, Intiö',latitude:'65.012014620000002',longitude:'25.50644685'},
 							{name:'Tie 4 Oulu, Laanila (Jyväskylään)',latitude:'65.02703262',longitude:'25.507368490000001'},
 							{name:'Tie 20 Hönttämäki (Kuusamoon)',latitude:'65.052443999999994',longitude:'25.598721999999999'},

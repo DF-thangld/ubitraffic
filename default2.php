@@ -37,6 +37,10 @@ indenpendent URLs, I will implement this changes soon.
 	
 	<script src="javascript/ubitraffic_traffic_places.js" type="text/javascript"></script>
 	<script src="javascript/ubitraffic_menu.js" type="text/javascript"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/ModernBlue.css" />
+    <link rel="stylesheet" type="text/css" href="css/style4.css" />
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css' />
 	
 	<style>
 		document
@@ -73,8 +77,6 @@ indenpendent URLs, I will implement this changes soon.
 		}
     </style>
 
-
-	
 	<script type="text/javascript">
 	
 	//menu parameters
@@ -334,7 +336,7 @@ indenpendent URLs, I will implement this changes soon.
 			<!-- <div style="float:left;border:10px solid;border-color: #2a3333;border-radius:25px; width:480px;height:270px;padding:20px;overflow:scroll;" id="info_panel"></div> -->
 			<!-- <div style="float:left;border:10px solid;border-color: #2a3333;border-radius:25px;width:480px;height:540px;" id="background" > -->
 			<div id="background" > 
-				<div id="connected">
+				<div id="connected" style="display:none">
 		            <div class="page-header">
 		              Send message to Info example
 		            </div>
@@ -345,9 +347,17 @@ indenpendent URLs, I will implement this changes soon.
 		              <button class="btn" type="submit">Send</button>
 		            </form>
 		          </div>
-		        </div>
+		     	</div>
+		     	<div id="wrap_menu" class="button-wrapper" >
+					<div href="#" class="a-btn">
+						<div class="a-btn-text" ><font face="Arial Narrow" size="4px">Menu+</font></div>
+                        <div class="a-btn-slide-text" id= "main_menu" >
+                        </div>
+						<div class="a-btn-icon-right"><span></span></div>
+					</div>
+				</div>
 				<div id="map_panel"></div>
-			</div>
+
 		</div>
 
 		<!-- set the width and heighth -->
@@ -391,7 +401,6 @@ indenpendent URLs, I will implement this changes soon.
 	        });
 	    	function RabbitMQ_send(message_type,message){
 	    		client.send(destination, {type:message_type}, message);
-			
 			};
 		</script>
 	</body>

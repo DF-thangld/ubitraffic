@@ -410,40 +410,38 @@ function show_shape(route_id, direction_id)
 
 function menu(map)
 {
+
 	// menu container definition
 	var $container = $(document.createElement('DIV'));
-	$container.attr("style", "position:absolute;");
+	$container.attr("style", "position:absolute;margin-bottom:50px");
 	var $innerContainer = $(document.createElement('DIV'));
-	$innerContainer.attr("style", "");
+	$innerContainer.attr("style", "margin-bottom:60px");
+	var $mainContainer = $(document.createElement('DIV'));
+	$mainContainer.attr("style", "");
+
 	
-	//show menu button
-	var $show_menu = $(document.createElement('DIV'));
-	$show_menu.attr("id", "show_menu");
-	$show_menu.attr("style", "position:absolute;margin-left:-50px;bottom:30px;float:left;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:73px;height:68px;");
-	$show_menu.html("<img style='' src='images/open_button.png' />");
-	google.maps.event.addDomListener($show_menu.get(0), 'click', function() {
-		$('#show_menu').css('display', 'none');
+	//new code
+	var $menu = $(document.getElementById("wrap_menu"));
+	google.maps.event.addDomListener($menu.get(0), 'mouseover', function() {
+		$('#point_of_interest_menu').css('display', 'inline');
+		$('#traffic_congestion_menu').css('display', 'inline');
+		$('#navigation_button').css('display', 'inline');
+		$('#bus_timetable_button').css('display', 'inline');
 		$('#main_menu').css('display', 'inline');
 		main_menu_opening=true;
 	});
-	$innerContainer.append($show_menu);
-	
-	//main menu
-	var $main_menu = $(document.createElement("DIV"));
-	$main_menu.attr("id", "main_menu");
-	$main_menu.attr("style", "display:none;position:absolute;margin-left:-50px;bottom:30px;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:420px;height:68px;");
-	
-	//main menu - close button
-	var $close_button = $(document.createElement("DIV"));
-	$close_button.attr("id", "close_button");
-	$close_button.attr("class", "button");
-	$close_button.attr("style", "margin-left:3px;");
-	$close_button.html("<img src='images/close_button.png' style='width:70px;height:67px;' />");
-	google.maps.event.addDomListener($close_button.get(0), 'click', function() {
-		reset();
+	google.maps.event.addDomListener($menu.get(0), 'mouseout', function() {
+		//$('#innerContainer').css('display', 'none');
+		main_menu_opening=false;
 	});
-	$main_menu.append($close_button);
+	var $main_menu = $(document.getElementById("main_menu"));
+	$mainContainer.append($menu);
 	
+
+	//__________________
+
+
+
 	//main menu - navigate button
 	var $navigation_button = $(document.createElement("DIV"));
 	$navigation_button.attr("id", "navigation_button");
@@ -456,6 +454,7 @@ function menu(map)
 		
 	});
 	$main_menu.append($navigation_button);
+
 	
 	//main menu - bus timetable button
 	var $bus_timetable_button = $(document.createElement("DIV"));
@@ -473,7 +472,7 @@ function menu(map)
 	$place_button.attr("id", "place_button");
 	$place_button.attr("class", "button");
 	$place_button.attr("style", "margin-left:3px;");
-	$place_button.html("<center><img src='images/point_of_interest.png' style='' /><div>Points of interest</div></center>");
+	$place_button.html("<center><img src='images/point_of_interest.png' style='' /><div>Placesc</div></center>");
 	google.maps.event.addDomListener($place_button.get(0), 'click', function() {
 		change_sub_menu('point_of_interest');
 	});
@@ -484,14 +483,13 @@ function menu(map)
 	$traffic_congestion_button.attr("id", "traffic_congestion_button");
 	$traffic_congestion_button.attr("class", "button");
 	$traffic_congestion_button.attr("style", "margin-left:3px;");
-	$traffic_congestion_button.html("<center><img src='images/traffic_congestion_button.png' /><div>Traffic Block</div></center>");
+	$traffic_congestion_button.html("<center><img src='images/traffic_congestion_button.png' /><div>Traffic</div></center>");
 	google.maps.event.addDomListener($traffic_congestion_button.get(0), 'click', function() {
 		change_sub_menu('traffic_congestion');
 	});
 	$main_menu.append($traffic_congestion_button);
 	
-	// insert main menu to map
-	$innerContainer.append($main_menu);
+
 	
 	// point of interest menu
 	var $point_of_interest_menu = $(document.createElement("DIV"));
@@ -506,8 +504,6 @@ function menu(map)
 	google.maps.event.addDomListener($restaurant_information_button.get(0), 'click', function()
 	{
 
-
-		
 		changePointOfInterestType("restaurant", map);
 		
 		//changePointOfInterestType("restaurant", map);
@@ -1002,12 +998,12 @@ function menu(map)
 	$innerContainer.append($bus_timetable_menu);
 	
 	var $zoom_menu = $(document.createElement('DIV'));
-	$zoom_menu.attr("style", "float:right;");
+	$zoom_menu.attr("style", "");
 	// zoom-in button
 	var $zoomin_menu = $(document.createElement('DIV'));
 	$zoomin_menu.attr("id", "zoomin_menu");
 	$zoomin_menu.attr("style", "float:left;");
-	$zoomin_menu.html("<img style='' width='30px;' src='images/zoom_in.ico' />");
+	$zoomin_menu.html("<img style='' width='50px;' src='images/zoom_in.png' />");
 	google.maps.event.addDomListener($zoomin_menu.get(0), 'click', function()
 	{
 		var zoom_value = map.getZoom();
@@ -1018,7 +1014,7 @@ function menu(map)
 	var $zoomout_menu = $(document.createElement('DIV'));
 	$zoomout_menu.attr("id", "zoomout_menu");
 	$zoomout_menu.attr("style", "float:left;");
-	$zoomout_menu.html("<img style='' width='30px;' src='images/zoom_out.png' />");
+	$zoomout_menu.html("<img style='' width='50px;' src='images/zoom_out.png' />");
 	google.maps.event.addDomListener($zoomout_menu.get(0), 'click', function() {
 		var zoom_value = map.getZoom();
 		map.setZoom(zoom_value-1);
@@ -1029,7 +1025,7 @@ function menu(map)
 	var $download_menu = $(document.createElement('DIV'));
 	$download_menu.attr("id", "download_menu");
 	$download_menu.attr("style", "float:left;");
-	$download_menu.html("<img style='' width='30px;' src='images/download_button.png' />");
+	$download_menu.html("<img style='' width='50px;' src='images/download_button.png' />");
 	google.maps.event.addDomListener($download_menu.get(0), 'click', function() {		
 		if($('#download_div').css('display') == 'none')
 		{
@@ -1115,7 +1111,9 @@ function menu(map)
 	
 	
 	// Insert menu to map
-	$container.append($innerContainer);
+	//$container.append($innerContainer);
+	$container.append($mainContainer);
 	map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push($container.get(0));
+	map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push($innerContainer.get(0));
 	map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push($zoom_menu.get(0));
 }
