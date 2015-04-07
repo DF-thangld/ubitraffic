@@ -41,6 +41,8 @@ indenpendent URLs, I will implement this changes soon.
 	<!-- Google Map -->
 	<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 	<script src="javascript/gmap3/gmap3.js" type="text/javascript"></script>
+
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
 	
 	<script src="javascript/ubitraffic_traffic_places.js" type="text/javascript"></script>
 	<script src="javascript/ubitraffic_menu.js" type="text/javascript"></script>
@@ -103,6 +105,7 @@ indenpendent URLs, I will implement this changes soon.
 	var directionsDisplay;
 	var directionsService = new google.maps.DirectionsService();
 	var map;
+	var point_of_interest_service;
 	var oulu = new google.maps.LatLng(65.0123600, 25.4681600);
 	var orig = new google.maps.LatLng(65.059248, 25.466337);
 	var dest = new google.maps.LatLng(65.010786, 25.469942);
@@ -143,6 +146,7 @@ indenpendent URLs, I will implement this changes soon.
 		  disableDefaultUI: true
 		};
 		map = new google.maps.Map(document.getElementById('map_panel'), mapOptions);
+		point_of_interest_service = new google.maps.places.PlacesService(map);
 		directionsDisplay.setMap(map);
 		
 		var contentString = '<div id="content">'+

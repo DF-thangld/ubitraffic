@@ -205,12 +205,12 @@ function changePointOfInterestType(point_of_interest_type, map)
 			//set the type of places to search
 			types: [point_of_interest_type]
 		};
-		alert(new google.maps.places.PlacesService(map));
+
 		var point_of_interest_service = new google.maps.places.PlacesService(map);
-		alert("point_of_interest_service");
+
 		point_of_interest_service.nearbySearch(request, function(results, status)
 		{
-			alert(results.length);
+
 			if (status == google.maps.places.PlacesServiceStatus.OK)
 			{
 			
@@ -226,19 +226,25 @@ function changePointOfInterestType(point_of_interest_type, map)
 	{
 			
 	}
-	
+
 	for (j=0; j<markerList.length; j++)
 		markerList[j].setMap(null);
-	
+
 	for (j=0; j<points_of_interest[point_of_interest_type].length; j++)
 		points_of_interest[point_of_interest_type][j].setMap(map);
-	
+
 	for (i = 0, len = point_of_interest_types.length; i < len; i++)
 	{
 		$("#"+point_of_interest_types[i]+"_information_button").attr("class", "button");
 	}
+
 	$("#bus_stop_information_button").attr("class", "button");
-	$("#"+point_of_interest_type+"_information_button").attr("class", "button chosen_mode");
+
+
+	//This cause the problem with the position change after click
+	//$("#"+point_of_interest_type+"_information_button").attr("class", "button chosen_mode");
+
+
 }
 
 function get_all_bus_stops(map)
@@ -522,8 +528,10 @@ function menu(map)
 
 
 		changePointOfInterestType("restaurant", map);
+
+		$('#point_of_interest').css('display', 'none');//hide the panel
 		
-		//changePointOfInterestType("restaurant", map);
+
 	});
 	$point_of_interest_menu.append($restaurant_information_button);
 	// point of interest menu - cafe button
@@ -675,6 +683,8 @@ function menu(map)
 	$weather_information_button.html("<center><img src='images/weather_sign.png' style='height:40px;' width='40px' /><div>Weather Information</div></center>");
 	google.maps.event.addDomListener($weather_information_button.get(0), 'click', function() {
 		
+
+
 		// change class to chosen_mode
 		$("#weather_information_button").attr('class', 'button chosen_mode');
 		$("#camera_information_button").attr('class', 'button');
@@ -960,6 +970,8 @@ function menu(map)
 	$navigate_button.html("<button style='width:100px;height:90px;font-size:17px;margin-top:17px;margin-left:5px;'>Navigate</button>");
 	google.maps.event.addDomListener($navigate_button.get(0), 'click', function() {
 		navigate_route();
+		$('#navigation_menu').css('display', 'none');
+		
 	});
 	$navigation_right_panel.append($navigate_button);
 	$navigation_menu.append($navigation_left_panel);
