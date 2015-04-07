@@ -42,7 +42,7 @@ error_reporting(E_ALL);
 
 // Database configuration
 
-$db_server   = 'vm0104.virtues.fi';
+$db_server   = 'localh';
 $db_name     = 'ubi_traffic';
 $db_username = 'pli';
 $db_password = 'smeZSswr46'; 
@@ -94,7 +94,7 @@ $string_quotes = '\'';                  // Change to '"' if your dump file uses 
 
 // How many lines may be considered to be one query (except text lines)
 
-$max_query_lines = 300;
+$max_query_lines = 3000;
 
 // Where to put the upload files into (default: bigdump folder)
 
