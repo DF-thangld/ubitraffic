@@ -59,12 +59,12 @@ a{
 }*/
 h1{
 	margin:0px;
-	padding:20px 20px 10px 20px;
+	padding:20px 0px 0px 0px;
 	font-size:34px;
 	color:#333;
     text-shadow:1px 1px 1px #fff;
 	text-align:left;
-	font-weight:400;
+	font-weight:500;
     text-align:center;
 }
 h1 span{
@@ -74,6 +74,24 @@ h1 span{
     font-style: italic;
 	color:#aaa;
 	padding-top:10px;
+}
+h3{
+	margin:0px;
+	padding:0px 0px 0px 0px;
+	font-size:14px;
+	color:#F0FFFF;
+    text-shadow:1px 1px 1px #5F9EA0;
+	text-align:left;
+	font-weight:600;
+    text-align:center;
+}
+h3 span{
+    display:block;
+	font-size: 7px;
+    font-family: Georgia, serif;
+    font-style: italic;
+	color:#5F9EA0;
+	padding-top:5px;
 }
 /* Header Style */
 .header{

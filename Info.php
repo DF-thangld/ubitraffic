@@ -44,12 +44,12 @@
     <title>MAP INFO</title>
   </head>
 
-  <body>
+  <body background="images/stucco.png">
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span6">
           <div class="page-header">
-            <h2>Content</h2>
+            <h2 align="center">Ubi Traffic</h2>
           </div>
           <div id="messages">
           </div>

@@ -22,6 +22,9 @@ var inforWindowList = [];
 var markerList = [];
 var bus_shapes = [];
 
+var point_of_interest_service;
+
+
 function findMarkerByName(markers_array, marker_name)
 {
 	for (var i = 0; i < markers_array.length; i++) 
@@ -42,12 +45,14 @@ function createPointOfInterestMarker(place, point_of_interest_type)
 	var request = { reference: place.reference };
 	
 	//get details for place
+
 	point_of_interest_service.getDetails(request, function(details, status) 
 	{
 		
 		if(status == google.maps.places.PlacesServiceStatus.OK) // got information for the place
 		{
 			//window.alert(2);
+
 			var openingHours = "";
 			if(typeof details.opening_hours !== 'undefined')
 			{
@@ -181,9 +186,15 @@ function createPointOfInterestMarker(place, point_of_interest_type)
 
 function changePointOfInterestType(point_of_interest_type, map)
 {
+
 	if (points_of_interest[point_of_interest_type].length === 0)
 	{
-	
+
+		//missing screen_point since the js file first created, I add it but don't know whether it is correct
+		var screen_point = new google.maps.LatLng(65.057333, 25.472555);
+
+
+
 		var request = {
 			//the location from which the search is done (this could be changed to ubihotspot's location later)
 			location: screen_point,
@@ -194,9 +205,12 @@ function changePointOfInterestType(point_of_interest_type, map)
 			//set the type of places to search
 			types: [point_of_interest_type]
 		};
-		
+		alert(new google.maps.places.PlacesService(map));
+		var point_of_interest_service = new google.maps.places.PlacesService(map);
+		alert("point_of_interest_service");
 		point_of_interest_service.nearbySearch(request, function(results, status)
 		{
+			alert(results.length);
 			if (status == google.maps.places.PlacesServiceStatus.OK)
 			{
 			
@@ -411,11 +425,13 @@ function show_shape(route_id, direction_id)
 function menu(map)
 {
 
+
+
 	// menu container definition
 	var $container = $(document.createElement('DIV'));
 	$container.attr("style", "position:absolute;margin-bottom:50px");
 	var $innerContainer = $(document.createElement('DIV'));
-	$innerContainer.attr("style", "margin-bottom:60px");
+	$innerContainer.attr("style", "margin-bottom:60px;margin-left:-150px");
 	var $mainContainer = $(document.createElement('DIV'));
 	$mainContainer.attr("style", "");
 
@@ -446,8 +462,8 @@ function menu(map)
 	var $navigation_button = $(document.createElement("DIV"));
 	$navigation_button.attr("id", "navigation_button");
 	$navigation_button.attr("class", "button");
-	$navigation_button.attr("style", "margin-left:3px;");
-	$navigation_button.html("<center><img src='images/navigation_button.png' /><div>Navigation</div></center>");
+	$navigation_button.attr("style", "margin-left:3px;margin-top:10px;");
+	$navigation_button.html("<center><img src='images/navigation_button.png' style='margin-left:15px' /><div style='margin-top:-10px' ><h3>Navigation</div></center>");
 	google.maps.event.addDomListener($navigation_button.get(0), 'click', function() {
 		
 		change_sub_menu('navigation_menu');
@@ -460,8 +476,8 @@ function menu(map)
 	var $bus_timetable_button = $(document.createElement("DIV"));
 	$bus_timetable_button.attr("id", "bus_timetable_button");
 	$bus_timetable_button.attr("class", "button");
-	$bus_timetable_button.attr("style", "margin-left:3px;");
-	$bus_timetable_button.html("<center><img src='images/bus_timetable_button.png' /><div>Timetable</div></center>");
+	$bus_timetable_button.attr("style", "margin-left:12px;margin-top:10px;");
+	$bus_timetable_button.html("<center><img src='images/bus_timetable_button.png' /><div style='margin-top:-10px;'><h3>Timetable</div></center>");
 	google.maps.event.addDomListener($bus_timetable_button.get(0), 'click', function() {
 		change_sub_menu('bus_timetable_menu');
 	});
@@ -471,8 +487,8 @@ function menu(map)
 	var $place_button = $(document.createElement("DIV"));
 	$place_button.attr("id", "place_button");
 	$place_button.attr("class", "button");
-	$place_button.attr("style", "margin-left:3px;");
-	$place_button.html("<center><img src='images/point_of_interest.png' style='' /><div>Placesc</div></center>");
+	$place_button.attr("style", "margin-left:3px;margin-top:10px;");
+	$place_button.html("<center><img src='images/point_of_interest.png' style='' /><div style='margin-top:-10px'><h3>Places</div></center>");
 	google.maps.event.addDomListener($place_button.get(0), 'click', function() {
 		change_sub_menu('point_of_interest');
 	});
@@ -482,8 +498,8 @@ function menu(map)
 	var $traffic_congestion_button = $(document.createElement("DIV"));
 	$traffic_congestion_button.attr("id", "traffic_congestion_button");
 	$traffic_congestion_button.attr("class", "button");
-	$traffic_congestion_button.attr("style", "margin-left:3px;");
-	$traffic_congestion_button.html("<center><img src='images/traffic_congestion_button.png' /><div>Traffic</div></center>");
+	$traffic_congestion_button.attr("style", "margin-left:3px;margin-top:10px;");
+	$traffic_congestion_button.html("<center><img src='images/traffic_congestion_button.png' /><div style='margin-top:-10px'><h3>Traffic</div></center>");
 	google.maps.event.addDomListener($traffic_congestion_button.get(0), 'click', function() {
 		change_sub_menu('traffic_congestion');
 	});
@@ -503,6 +519,7 @@ function menu(map)
 	$restaurant_information_button.html("<center><img src='images/point_of_interest/restaurant_button.png' style='height:40px;' width='40px' /><div>Restaurant</div></center>");
 	google.maps.event.addDomListener($restaurant_information_button.get(0), 'click', function()
 	{
+
 
 		changePointOfInterestType("restaurant", map);
 		
@@ -650,7 +667,7 @@ function menu(map)
 	// traffic congestion menu
 	var $traffic_congestion_menu = $(document.createElement("DIV"));
 	$traffic_congestion_menu.attr("id", "traffic_congestion");
-	$traffic_congestion_menu.attr("style", "display:none;position:absolute;margin-left:-50px;bottom:110px;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:420px;height:68px;");
+	$traffic_congestion_menu.attr("style", "display:none;position:absolute;margin-left:-50px;bottom:110px;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:420px;height:85px;");
 	var $weather_information_button = $(document.createElement("DIV"));
 	$weather_information_button.attr("id", "weather_information_button");
 	$weather_information_button.attr("class", "button");
@@ -903,6 +920,8 @@ function menu(map)
 	$walking_icon = $(document.createElement("img"));
 	$walking_icon.attr("id", "walking_icon");
 	$walking_icon.attr("src", "images/pedestrial.png");
+	$walking_icon.attr("width", "60px");
+	$walking_icon.attr("height", "60px");
 	$walking_icon.attr("class", "travel_mode chosen_mode");
 	google.maps.event.addDomListener($walking_icon.get(0), 'click', function() {
 		change_travel_mode('walking_icon', google.maps.TravelMode.WALKING);
@@ -912,6 +931,8 @@ function menu(map)
 	$bicycle_icon = $(document.createElement("img"));
 	$bicycle_icon.attr("id", "bicycle_icon");
 	$bicycle_icon.attr("src", "images/bike.png");
+	$walking_icon.attr("width", "60px");
+	$walking_icon.attr("height", "60px");
 	$bicycle_icon.attr("class", "travel_mode");
 	google.maps.event.addDomListener($bicycle_icon.get(0), 'click', function() {
 		change_travel_mode('bicycle_icon', google.maps.TravelMode.BICYCLING);
@@ -921,6 +942,8 @@ function menu(map)
 	$bus_icon = $(document.createElement("img"));
 	$bus_icon.attr("id", "bus_icon");
 	$bus_icon.attr("src", "images/bus.png");
+	$walking_icon.attr("width", "60px");
+	$walking_icon.attr("height", "60px");
 	$bus_icon.attr("class", "travel_mode");
 	google.maps.event.addDomListener($bus_icon.get(0), 'click', function() {
 		change_travel_mode('bus_icon', google.maps.TravelMode.TRANSIT);
@@ -1114,6 +1137,6 @@ function menu(map)
 	//$container.append($innerContainer);
 	$container.append($mainContainer);
 	map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push($container.get(0));
-	map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push($innerContainer.get(0));
+	map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push($innerContainer.get(0));
 	map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push($zoom_menu.get(0));
 }

@@ -357,21 +357,20 @@ indenpendent URLs, I will implement this changes soon.
 		     	</div>
 		     	<div id="wrap_menu" class="button-wrapper" >
 					<div href="#" class="a-btn">
-						<div class="a-btn-text" ><font face="Arial Narrow" size="4px">Menu+</font></div>
+						<!-- <div class="a-btn-text" ><font face="Arial Narrow" size="4px">Menu+</font></div> -->
+						<div class="a-btn-text" ><h1>Menu</div>
                         <div class="a-btn-slide-text" id= "main_menu" >
                         </div>
 						<div class="a-btn-icon-right"><span></span></div>
 					</div>
 				</div>
 				<div id="map_panel"></div>
-
 		</div>
 
 		<!-- set the width and heighth -->
 	    <script language=javascript>
-
 			var map=document.getElementById("map_panel");
-			map.style.height=screen.height*0.80 + "px";
+			map.style.height=screen.height*0.898 + "px";
 			map.style.width=screen.width*0.50+ "px";
 		</script>
 		
