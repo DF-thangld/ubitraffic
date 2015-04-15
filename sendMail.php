@@ -1,7 +1,8 @@
 <?php
-require '/libraries/PHPMailer/PHPMailerAutoload.php';
-
+require 'libraries/PHPMailer/PHPMailerAutoload.php';
 $destination = $_POST['dest'];
+$name = $_POST['fname'];
+
 $email = new PHPMailer;
 
 //set SMTP
@@ -19,7 +20,7 @@ $email->FromName  = 'UbiTraffic';
 $email->addAddress($destination);
 
 //add attachment
-$email->addAttachment('images/png/testing.png', 'UbiTraffic_map.png');
+$email->addAttachment('images/png/'.$name.'.png', 'UbiTraffic_map.png');
 $email->isHTML(true);  
 
 

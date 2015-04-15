@@ -35,17 +35,15 @@ indenpendent URLs, I will implement this changes soon.
 	<script src="javascript/facebox/facebox.js" type="text/javascript"></script>
 	
 	<!-- Virtual keyboard -->
-	<link href="javascript/Keyboard-master/css/keyboard.css" rel="stylesheet" />
-	<script src="javascript/Keyboard-master/js/jquery.keyboard.js" type="text/javascript"></script>
+	<link href="javascript/keyboard_master/css/keyboard.css" rel="stylesheet" />
+	<script src="javascript/keyboard_master/js/jquery.keyboard.js" type="text/javascript"></script>
 	
 	<!-- Google Map -->
-	<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-	<script src="javascript/gmap3/gmap3.js" type="text/javascript"></script>
-
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
 	
 	<script src="javascript/ubitraffic_traffic_places.js" type="text/javascript"></script>
 	<script src="javascript/ubitraffic_menu.js" type="text/javascript"></script>
+	<script src="javascript/html2canvas.js" type="text/javascript"></script>
 
 	<link rel="stylesheet" type="text/css" href="css/ModernBlue.css" />
     <link rel="stylesheet" type="text/css" href="css/style4.css" />
@@ -94,9 +92,9 @@ indenpendent URLs, I will implement this changes soon.
 	
 	var travel_mode_map = google.maps.TravelMode.WALKING;
 	var travel_mode_link = 'walking';
-	var screen_address = 'yliopistokatu 12';
+	var screen_address = 'Yliopistokatu 12';
 	var origin_place = screen_address;
-	var destination_place = 'torikatu 9'; 
+	var destination_place = ''; 
 	var markers_list = [];
 	var weather_markers = [];
 	var camera_markers = [];
@@ -110,6 +108,8 @@ indenpendent URLs, I will implement this changes soon.
 	var orig = new google.maps.LatLng(65.059248, 25.466337);
 	var dest = new google.maps.LatLng(65.010786, 25.469942);
 	var txtInfo = '';
+	var email_text = '';
+	var file_name = '';
 
 	
 	function reset(){
@@ -124,7 +124,7 @@ indenpendent URLs, I will implement this changes soon.
 		travel_mode_map = google.maps.TravelMode.WALKING;
 		travel_mode_link = 'walking';
 		origin_place = screen_address;
-		destination_place = 'torikatu 9';
+		destination_place = '';
 		txtInfo = '';		
 		
 		//reset navigation form value
@@ -137,37 +137,38 @@ indenpendent URLs, I will implement this changes soon.
 	}
     $(function(){
         //initMap();
-
+		
+		var contentString = '<div id="content">'+
+		  '<div id="siteNotice">'+
+		  '</div>'+
+		  '<h2>UBI-Screen</h2>'+
+		  '<div id="bodyContent">'+
+		  '<p>Hello, You are here :)</p>'+
+		  '</div>'+
+		  '</div>';
+		var infowindow = new google.maps.InfoWindow({
+			content: contentString
+		});
+		var myLatlng = new google.maps.LatLng(65.057858, 25.468006);
 		
 		directionsDisplay = new google.maps.DirectionsRenderer();
 		var mapOptions = {
-		  center: oulu,
-		  zoom: 16,
+		  center: myLatlng,
+		  zoom: 13,
 		  disableDefaultUI: true
 		};
 		map = new google.maps.Map(document.getElementById('map_panel'), mapOptions);
 		point_of_interest_service = new google.maps.places.PlacesService(map);
 		directionsDisplay.setMap(map);
 		
-		var contentString = '<div id="content">'+
-		  '<div id="siteNotice">'+
-		  '</div>'+
-		  '<h1 id="firstHeading" class="firstHeading">Hospital</h1>'+
-		  '<div id="bodyContent">'+
-		  '<p>Hello, this is Oulu Hospital</p>'+
-			'<p>Visit <a href="http://www.ppshp.fi/oulun_yliopistollinen_sairaala"></a></p>'+
-		  '</div>'+
-		  '</div>';
-		var infowindow = new google.maps.InfoWindow({
-			content: contentString
-		});
+		
 			
 			
-		var myLatlng = new google.maps.LatLng(65.0075,25.518611);
+		
 		var marker = new google.maps.Marker({
 			position: myLatlng,
 			map: map,
-			title:"Hello World!"
+			title:"UBI-Screen"
 		});
 		google.maps.event.addListener(marker, 'click', function() {
 			infowindow.open(map,marker);
@@ -176,8 +177,11 @@ indenpendent URLs, I will implement this changes soon.
 		menu(map);
 		google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
 			reset();
+			//window.alert(1);
 			$("#start_place").keyboard();
 			$("#destination").keyboard();
+			$("#bus_number").keyboard();
+			$("#email_input").keyboard();
 			google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
 				
 			});
@@ -274,7 +278,7 @@ indenpendent URLs, I will implement this changes soon.
 							txtInfo += "	<div>- " + step.instructions + " (" + step.distance.text + " - " + step.duration.text + ")</div>";
 					});
 				}
-				$("#info_panel").html(txtInfo);
+				//$("#info_panel").html(txtInfo);
 			}
 		});
 		
@@ -336,10 +340,173 @@ indenpendent URLs, I will implement this changes soon.
 							txtInfo += "	<div>- " + step.instructions + " (" + step.distance.text + " - " + step.duration.text + ")</div>";
 					});
 				}
-				$("#info_panel").html(txtInfo);
+				//$("#info_panel").html(txtInfo);
+				email_text = txtInfo;
+				RabbitMQ_send("html",txtInfo);
 			}
 		});
 	}
+	
+	//download map to phone
+	function downloadToPhone(selection)
+	{		
+		//reset the divs to get the image of the full map
+		reset();
+		//get transform value
+		var transform=$("#map_panel").css("transform")
+		var comp=transform.split(",") //split up the transform matrix
+		var mapleft=parseFloat(comp[4]) //get left value
+		var maptop=parseFloat(comp[5])  //get top value
+		$("#map_panel").css({ //get the map container. not sure if stable
+		  "transform":"none",
+		  "left":mapleft,
+		  "top":maptop,
+		})
+		
+		//convert google map to canvas and save it as image
+		html2canvas($('#map_panel'),
+		{
+		  useCORS: true,
+		  onrendered: function(canvas)
+		  {
+		
+			//Insert info text to canvas
+			var ctx=canvas.getContext("2d");			
+			
+			var maxWidth =960;
+			var lineHeight = 17;
+			var x = (canvas.width - maxWidth) / 2;
+			var y = 1080;
+			  
+			  
+			var div = document.createElement("div");
+			div.innerHTML = email_text;
+			var text = div.textContent; //document.getElementById('info_panel').textContent;
+
+			ctx.font = '12pt Calibri';
+			ctx.fillStyle = '#333';
+
+			wrapText(ctx, text, x, y, maxWidth, lineHeight);
+			
+			//hold the data to save canvas as image
+			var screenshot ={};			
+			
+			screenshot.img = canvas.toDataURL( "image/png" );
+			screenshot.data = { 'image' : screenshot.img };
+			
+			//call savePNG to save the image to /images/png/[name].png
+            $.ajax({
+                type: "POST",
+                url: "savePNG.php",
+                data: screenshot.data,
+                success : function(data)
+                {
+					file_name = data;
+                    //console.log("screenshot done "+data);
+                }
+            }).done(function() {
+                //console.log("blablabl");
+				if(selection == "QR")
+				{
+					setTimeout(createQR,1000);
+					//createQR();
+				}
+				else if(selection == "Email")
+				{
+					setTimeout(sendEmail,1000);
+					//sendEmail();
+				}
+            });
+
+			//set transform back
+			$("#map_panel").css({
+			  left:0,
+			  top:0,
+			  "transform":transform
+			})
+		  },
+		  height: 2000
+		});
+		
+		
+		
+		
+	}
+	
+	//create qr code
+	function createQR()
+	{
+		//use google api chart for QR code
+		var source = "https://chart.googleapis.com/chart?cht=qr&chl=";
+		
+		//create url for the image
+		var imgUrl = window.location.href.substring(0, window.location.href.lastIndexOf('/'))+"/images/png/"+file_name+".png";
+		var src = source+encodeURIComponent(imgUrl)+"&chs=180x180";
+		
+		//set image to qr div
+		$('#QRcode').html("<img src="+src+" style='position:absolute;width:100px;margin:5px;' />");
+			
+		//create close button for qr code image
+		var closeB = document.createElement("a");
+		closeB.id = "close_qr";
+		closeB.innerHTML = "x";
+		closeB.style = "position:absolute;height:17px; width:9px;float:right; right:-10px; top:-10px;cursor:pointer;border:1px solid;border-color: #2a3333;border-radius:15px;display:inline-block; padding: 2px 5px; background: #ccc;";
+		$('#QRcode').append(closeB);
+			
+		//show it to user
+		$('#QRcode').css('display', 'inline');
+		//$('#download_div').append($image);
+		//console.log(""+image.src);	
+
+		google.maps.event.addDomListener($('#close_qr').get(0), 'click', function() {
+		$('#QRcode').css('display', 'none');
+		});
+	}
+	
+	//create email
+	function sendEmail()
+	{
+		//get e-mail address from input field
+		var emailaddr = $("#email_input").val();		
+		var emaildata = "dest="+emailaddr+"&fname="+file_name;
+		
+		//Send e-mail
+		console.log("Sending email");
+		$.ajax({
+                type: "POST",
+                url: "sendMail.php",
+                data: emaildata,
+                success : function(data)
+                {
+                    console.log(data);
+                }
+            }).done(function() {
+                //$('body').html(data);
+            });
+		
+	}
+	
+	
+	//wrap text to fit to canvas
+	function wrapText(context, text, x, y, maxWidth, lineHeight) {
+		var words = text.split(/([)])/);
+        var line = '';
+
+        for(var n = 0; n < words.length; n++) {
+			var testLine = line + words[n] + ' ';
+			var metrics = context.measureText(testLine);
+			var testWidth = metrics.width;
+			if (testWidth > maxWidth && n > 0) {
+				context.fillText(line, x, y);
+				line = words[n] + ' ';
+				y += lineHeight;
+			}
+			else {
+				line = testLine;
+			}
+        }
+        context.fillText(line, x, y);
+    }
     </script>
   </head>
 	<body>
@@ -378,7 +545,6 @@ indenpendent URLs, I will implement this changes soon.
 			map.style.width=screen.width*0.50+ "px";
 		</script>
 		
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 		<script src="stomp.js"></script>
 	    <script language=javascript>
 	    	var client, destination;

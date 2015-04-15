@@ -125,6 +125,8 @@ function createPointOfInterestMarker(place, point_of_interest_type)
 					inforWindowList[i].close();
 				}
 				infowindow.open(map,marker);
+				email_text = infowindow.getContent();
+				RabbitMQ_send("html",email_text);
 			});
 			points_of_interest[point_of_interest_type].push(marker);
 			
@@ -177,6 +179,8 @@ function createPointOfInterestMarker(place, point_of_interest_type)
 					inforWindowList[i].close();
 				}
 				infowindow.open(map,marker);
+				email_text = infowindow.getContent();
+				RabbitMQ_send("html",email_text);
 			});
 			points_of_interest[point_of_interest_type].push(marker);
 		}
@@ -311,6 +315,8 @@ function get_all_bus_stops(map)
 						
 						
 						infowindow.open(map,busStopMarker);
+						email_text = infowindow.getContent();
+						RabbitMQ_send("html",email_text);
 					});
 					
 					
@@ -419,6 +425,8 @@ function show_shape(route_id, direction_id)
 						
 						
 						infowindow.open(map,busStopMarker);
+						email_text = infowindow.getContent();
+						RabbitMQ_send("html",email_text);
 					});
 					
 					
@@ -738,6 +746,8 @@ function menu(map)
 									inforWindowList[i].close();
 								}
 								infowindow.open(map,weather_marker);
+								email_text = infowindow.getContent();
+								RabbitMQ_send("html",email_text);
 							});
 							weather_markers.push(weather_marker);
 						}
@@ -816,6 +826,8 @@ function menu(map)
 									inforWindowList[i].close();
 								}
 								infowindow.open(map,camera_marker);
+								email_text = infowindow.getContent();
+								RabbitMQ_send("html",email_text);
 							});
 							camera_markers.push(camera_marker);
 						}
@@ -890,6 +902,8 @@ function menu(map)
 								inforWindowList[i].close();
 							}
 							infowindow.open(map,parking_marker);
+							email_text = infowindow.getContent();
+							RabbitMQ_send("html",email_text);
 						});
 						parking_markers.push(parking_marker);
 						
@@ -1079,7 +1093,7 @@ function menu(map)
 	//download div
 	var $download_div = $(document.createElement('DIV'));
 	$download_div.attr('id', 'download_div');
-	$download_div.attr("style", "font-size:14px; display:none;position:absolute;left:585px;top:230px;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:420px;height:136px;");
+	$download_div.attr("style", "font-size:14px; display:none;position:absolute;left:141px;top:230px;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:420px;height:136px;");
 	$download_div.html("<center style='margin-top:5px;'>Download map to phone</center>");
 	$('body').append($download_div);
 	

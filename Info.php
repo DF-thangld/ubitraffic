@@ -88,7 +88,11 @@
           if(message.headers.type!='keep_alive')// if is not keep connection message
           {
 
-            $("#messages").append("<p>" + message.body + "</p>\n");//just for debug
+            if(message.headers.type=='html')
+			{
+				$("#messages").html("<p>" + message.body + "</p>\n");
+			}
+			  
 
           }
         });

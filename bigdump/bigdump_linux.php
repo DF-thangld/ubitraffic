@@ -42,9 +42,9 @@ error_reporting(E_ALL);
 
 // Database configuration
 
-$db_server   = 'localh';
+$db_server   = 'localhost';
 $db_name     = 'ubi_traffic';
-$db_username = 'pli';
+$db_username = 'root';
 $db_password = 'smeZSswr46'; 
 
 // Connection charset should be the same as the dump file charset (utf8, latin1, cp1251, koi8r etc.)

@@ -1,7 +1,7 @@
 <?php
 	$image = $_POST['image'];
 	$filedir = "images/png";
-	$name = "testing";
+	$name = time();
 
 	$image = str_replace('data:image/png;base64,', '', $image);
 	$decoded = base64_decode($image);
@@ -10,5 +10,5 @@
 
 
 
-   echo $image;
+   echo $name;
 ?>
