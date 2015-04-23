@@ -522,8 +522,6 @@ indenpendent URLs, I will implement this changes soon.
   </head>
 	<body>
 		<div style="">
-			<!-- <div style="float:left;border:10px solid;border-color: #2a3333;border-radius:25px; width:480px;height:270px;padding:20px;overflow:scroll;" id="info_panel"></div> -->
-			<!-- <div style="float:left;border:10px solid;border-color: #2a3333;border-radius:25px;width:480px;height:540px;" id="background" > -->
 			<div id="background" > 
 				<div id="connected" style="display:none">
 		            <div class="page-header">

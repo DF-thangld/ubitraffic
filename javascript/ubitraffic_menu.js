@@ -975,7 +975,9 @@ function menu(map)
 	// navigate menu - right panel - navigate button
 	$navigate_button = $(document.createElement("div"));
 	$navigate_button.attr("style", "");
-	$navigate_button.html("<button style='width:100px;height:90px;font-size:17px;margin-top:17px;margin-left:5px;'>Navigate</button>");
+	
+	$navigate_button.html("<img src='images/startNavigation.png' style='width:100px;height:100px;margin-top:17px;margin-left:5px;' >");
+	
 	google.maps.event.addDomListener($navigate_button.get(0), 'click', function() {
 		navigate_route();
 		$('#navigation_menu').css('display', 'none');
