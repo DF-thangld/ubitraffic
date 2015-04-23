@@ -173,7 +173,18 @@ indenpendent URLs, I will implement this changes soon.
 		google.maps.event.addListener(marker, 'click', function() {
 			infowindow.open(map,marker);
 		});
+		
 		google.maps.event.addListener(map, 'click', function(event) {
+			
+			var latitude = event.latLng.lat();
+			var longitude = event.latLng.lng();
+			
+			dest = new google.maps.LatLng(latitude,longitude);
+			origin_place = $("#start_place").val();
+			
+			find_route(origin_place,dest,travel_mode_map);
+			
+			
     		if(0)//is navigation mode
 			{}
 			else
@@ -185,6 +196,7 @@ indenpendent URLs, I will implement this changes soon.
 				$('#traffic_congestion').css('display', 'none');
 			}
   		});
+		
 		menu(map);
 		google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
 			reset();
@@ -256,6 +268,8 @@ indenpendent URLs, I will implement this changes soon.
 					txtInfo += "<div><center><h2>Walking Route</h2></center></div>";
 					txtInfo += "<div><b>From:</b> " + response.routes[0].legs[0].start_address + "</div>";
 					txtInfo += "<div><b>To:</b> " + response.routes[0].legs[0].end_address + "</div>";
+					//set destination field
+					$("#destination").val(response.routes[0].legs[0].end_address);
 					txtInfo += "<div><b>Steps:</b></div>";
 					$.each(response.routes[0].legs[0].steps, function( index, step )
 					{
@@ -268,6 +282,8 @@ indenpendent URLs, I will implement this changes soon.
 					txtInfo += "<div><center><h2>Bicycle Route</h2></center></div>";
 					txtInfo += "<div><b>From:</b> " + response.routes[0].legs[0].start_address + "</div>";
 					txtInfo += "<div><b>To:</b> " + response.routes[0].legs[0].end_address + "</div>";
+					//set destination field
+					$("#destination").val(response.routes[0].legs[0].end_address);
 					txtInfo += "<div><b>Steps:</b></div>";
 					$.each(response.routes[0].legs[0].steps, function( index, step )
 					{
@@ -280,6 +296,8 @@ indenpendent URLs, I will implement this changes soon.
 					txtInfo += "<div><center><h2>Bus Route</h2></center></div>";
 					txtInfo += "<div><b>From:</b> " + response.routes[0].legs[0].start_address + "</div>";
 					txtInfo += "<div><b>To:</b> " + response.routes[0].legs[0].end_address + "</div>";
+					//set destination field
+					$("#destination").val(response.routes[0].legs[0].end_address);
 					txtInfo += "<div><b>Steps:</b></div>";
 					$.each(response.routes[0].legs[0].steps, function( index, step )
 					{
@@ -290,6 +308,8 @@ indenpendent URLs, I will implement this changes soon.
 					});
 				}
 				//$("#info_panel").html(txtInfo);
+				email_text = txtInfo;
+				RabbitMQ_send("html",txtInfo);
 			}
 		});
 		

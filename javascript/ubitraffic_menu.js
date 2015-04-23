@@ -1089,7 +1089,8 @@ function menu(map)
 	//download div
 	var $download_div = $(document.createElement('DIV'));
 	$download_div.attr('id', 'download_div');
-	$download_div.attr("style", "font-size:14px; display:none;position:absolute;left:141px;top:230px;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:420px;height:136px;");
+	$download_div.attr("style", "font-size:14px; display:none;position:absolute;left:"+$('#map_panel').width()*0.25+"px;top:230px;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:420px;height:136px;");
+	//$download_div.attr("style", "font-size:14px; display:none;position:absolute;left:144px;top:230px;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:420px;height:136px;");
 	$download_div.html("<center style='margin-top:5px;'>Download map to phone</center>");
 	$('body').append($download_div);
 	
