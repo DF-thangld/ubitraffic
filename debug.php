@@ -173,6 +173,7 @@ indenpendent URLs, I will implement this changes soon.
 		google.maps.event.addListener(marker, 'click', function() {
 			infowindow.open(map,marker);
 		});
+		
 		google.maps.event.addListener(map, 'click', function(event) {
     		if(0)//is navigation mode
 			{}
@@ -185,6 +186,8 @@ indenpendent URLs, I will implement this changes soon.
 				$('#traffic_congestion').css('display', 'none');
 			}
   		});
+
+		
 		menu(map);
 		google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
 			reset();

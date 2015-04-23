@@ -533,13 +533,7 @@ function menu(map)
 	$restaurant_information_button.html("<center><img src='images/point_of_interest/restaurant_button.png' style='height:40px;' width='40px' /><div>Restaurant</div></center>");
 	google.maps.event.addDomListener($restaurant_information_button.get(0), 'click', function()
 	{
-
-
 		changePointOfInterestType("restaurant", map);
-
-		$('#point_of_interest').css('display', 'none');//hide the panel
-		
-
 	});
 	$point_of_interest_menu.append($restaurant_information_button);
 	// point of interest menu - cafe button
