@@ -404,7 +404,7 @@ indenpendent URLs, I will implement this changes soon.
 			//Insert info text to canvas
 			var ctx=canvas.getContext("2d");			
 			
-			var maxWidth =960;
+			var maxWidth =900;
 			var lineHeight = 17;
 			var x = (canvas.width - maxWidth) / 2;
 			var y = 1080;
@@ -522,21 +522,46 @@ indenpendent URLs, I will implement this changes soon.
 	function wrapText(context, text, x, y, maxWidth, lineHeight) {
 		var words = text.split(/([)])/);
         var line = '';
-
+		//console.log(text);
         for(var n = 0; n < words.length; n++) {
-			var testLine = line + words[n] + ' ';
-			var metrics = context.measureText(testLine);
-			var testWidth = metrics.width;
-			if (testWidth > maxWidth && n > 0) {
+			//if first line: break it into smaller parts
+			if(n == 0) {
+				var firstline = words[0].split(/(Suomi)/);
+				for(var i=0; i < firstline.length; i++) {
+					//break it into more smaller parts
+					if(i==0) {
+						var firstfirstline = firstline[0].split(/(Route)/); 
+						for(var j=0; j< firstfirstline.length; j++) {
+							if(j%2 == 0) {
+								context.fillText(line, x, y);
+								line = firstfirstline[j] + '';
+								y += lineHeight;
+							}
+							else {
+								line += "Route"; 
+							}
+						}
+					}
+					
+					if(i%2 == 0 && i!=0) {
+						context.fillText(line, x, y);
+						line = firstline[i] + '';
+						y += lineHeight;
+					}
+					else {
+						line += "Suomi"; 
+					}
+				}             
+			}
+			if (n % 2 == 0 && n != 0) {
 				context.fillText(line, x, y);
-				line = words[n] + ' ';
+				line = words[n] + '';
 				y += lineHeight;
 			}
-			else {
-				line = testLine;
+			else if(n != 0){
+				line += ")";				
 			}
-        }
-        context.fillText(line, x, y);
+        }        
     }
     </script>
   </head>
