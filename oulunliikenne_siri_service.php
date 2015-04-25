@@ -364,6 +364,27 @@ function get_bus_directions($conn, $route_id)
 	echo $response_xml;
 }
 
+function get_bus_lines($conn)
+{	
+	$response_xml = '<?xml version="1.0" encoding="UTF-8"?>';
+	$response_xml .= "\n<bus_lines>\n";
+	$sql = "SELECT route_short_name, route_long_name FROM routes ORDER BY route_short_name + 0 ASC";
+	$result = $conn->query($sql);
+	if ($result->num_rows > 0) {
+		// output data of each row		
+		while($row = $result->fetch_assoc())
+		{
+			$response_xml .= "\t<line>\n";
+			$response_xml .= "\t\t<route_short_name>".$row['route_short_name']."</route_short_name>\n";	
+			$response_xml .= "\t\t<route_long_name>".$row['route_long_name']."</route_long_name>\n";			
+			$response_xml .= "\t</line>\n";
+		}
+	}
+	$response_xml .= "</bus_lines>\n";
+	header("Content-type: text/xml; charset=utf-8");
+	echo $response_xml;	
+}
+
 $service = $_GET['service'];
 
 if ($service == 'all_bus_stops')
@@ -393,5 +414,8 @@ else if ($service == 'bus_directions')
 	$route_id = $_GET['route_id'];
 	get_bus_directions($conn, $route_id);
 }
-
+else if ($service == 'bus_lines')
+{	
+	get_bus_lines($conn);
+}
 ?>

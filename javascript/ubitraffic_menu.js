@@ -24,6 +24,7 @@ var bus_shapes = [];
 
 var point_of_interest_service;
 
+var selectInserted = false;
 
 function findMarkerByName(markers_array, marker_name)
 {
@@ -494,6 +495,34 @@ function menu(map)
 	$bus_timetable_button.html("<center><img src='images/bus_timetable_button.png' /><div style='margin-top:-10px;'><h3>Timetable</div></center>");
 	google.maps.event.addDomListener($bus_timetable_button.get(0), 'click', function() {
 		change_sub_menu('bus_timetable_menu');
+		var content = "";
+		$.ajax({
+				type: "GET",
+				url: "oulunliikenne_siri_service.php?service=bus_lines",
+				cache: true,
+				dataType: "xml",
+				success: function(xml) 
+				{
+					console.log("success");
+					if(!selectInserted)
+					{
+						$(xml).find('line').each(function(){						
+							var route_short_name = $(this).find("route_short_name").text();
+							var route_long_name = $(this).find("route_long_name").text();
+							$('#bus_line').append($("<option></option>").attr("value", route_short_name).text(route_short_name+ " ("+route_long_name+")")); 
+						});
+						selectInserted = true;
+					}
+					if (content === "")
+					{
+						$("#bus_direction_form").html("Cannot find route, please try again");
+					}
+					else
+					{
+						$("#bus_direction_form").html("<div>Direction:</div><table>"+ content + "</table>");
+					}
+				}
+			});
 	});
 	$main_menu.append($bus_timetable_button);
 	
@@ -991,12 +1020,48 @@ function menu(map)
 	// bus_timetable menu
 	var $bus_timetable_menu = $(document.createElement("DIV"));
 	$bus_timetable_menu.attr("id", "bus_timetable_menu");
-	$bus_timetable_menu.attr("style", "display:none;position:absolute;margin-left:-50px;bottom:110px;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:420px;height:136px;");
+	$bus_timetable_menu.attr("style", "display:none;position:absolute;margin-left:-50px;bottom:110px;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:420px;height:172px;");
 	// bus_timetable menu - bus number form
 	var $bus_number_form = $(document.createElement("DIV"));
 	$bus_number_form.attr("id", "bus_number_form");
 	$bus_number_form.attr("style", "margin:17px;margin-left:10px;margin-right:0;font-size:14px;");
 	$bus_number_form.html("Type bus number: <input id='bus_number' class='text_box' value='' style='width:125px;' /> ");
+	
+	//bus dropdown
+	var $bus_dropdown = $(document.createElement("DIV"));
+	$bus_dropdown.attr("id", "bus_dropdown");
+	$bus_dropdown.attr("style", "margin:17px;margin-left:10px;margin-right:0;font-size:14px;");
+	$bus_dropdown.html("or choose bus number: <select id='bus_line' value='' style='width:225px;' /> ");
+	google.maps.event.addDomListener($bus_dropdown.get(0), 'click', function() {
+		var content = "";
+		$.ajax({
+				type: "GET",
+				url: "oulunliikenne_siri_service.php?service=bus_directions&route_id=" + $("#bus_line").val(),
+				cache: true,
+				dataType: "xml",
+				success: function(xml) 
+				{
+					$(xml).find('direction').each(function(){
+						var route_id = $(this).find("route_id").text();
+						var route_short_name = $(this).find("route_short_name").text();
+						var route_long_name = $(this).find("route_long_name").text();
+						var direction_id = $(this).find("direction_id").text();
+						var trip_headsign = $(this).find("trip_headsign").text();
+						content += "<tr><td>Direction to <b>" + trip_headsign + "</b></td><td><input type='radio' name='show_bus_shape' onclick='show_shape(\"" + route_id + "\", "+direction_id+");'></td></tr>";
+					});
+					if (content === "")
+					{
+						$("#bus_direction_form").html("Cannot find route, please try again");
+					}
+					else
+					{
+						$("#bus_direction_form").html("<div>Direction:</div><table>"+ content + "</table>");
+					}
+				}
+			});
+		
+	});
+	
 	$bus_info_button = $(document.createElement("button"));
 	$bus_info_button.attr("id", "display_bus_info");
 	$bus_info_button.attr("style", "height:28px;");
@@ -1032,6 +1097,7 @@ function menu(map)
 	
 	
 	$bus_number_form.append($bus_info_button);
+	$bus_number_form.append($bus_dropdown);
 	$bus_timetable_menu.append($bus_number_form);
 	// bus_timetable menu - direction_form
 	var $bus_direction_form = $(document.createElement("DIV"));
@@ -1089,8 +1155,8 @@ function menu(map)
 	//download div
 	var $download_div = $(document.createElement('DIV'));
 	$download_div.attr('id', 'download_div');
-	$download_div.attr("style", "font-size:14px; display:none;position:absolute;left:"+$('#map_panel').width()*0.25+"px;top:230px;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:420px;height:136px;");
-	//$download_div.attr("style", "font-size:14px; display:none;position:absolute;left:144px;top:230px;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:420px;height:136px;");
+	//$download_div.attr("style", "font-size:14px; display:none;position:absolute;left:"+$('#map_panel').width()*0.25+"px;top:230px;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:420px;height:136px;");
+	$download_div.attr("style", "font-size:14px; display:none;position:absolute;left:280px;top:400px;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:420px;height:136px;");
 	$download_div.html("<center style='margin-top:5px;'>Download map to phone</center>");
 	$('body').append($download_div);
 	
