@@ -210,13 +210,9 @@ indenpendent URLs, I will implement this changes soon.
 			$("#bus_number").keyboard();
 			$("#email_input").keyboard();
 			$.ajax({
-
                 type: "GET",
-
                 url: "oulunliikenne_statistic.php",
-
                 data: { instance_id: "xyz", action: "OPEN_APP" }, // change instance_id to the right variable
-
                 cache: false
 
 			});
@@ -327,18 +323,16 @@ indenpendent URLs, I will implement this changes soon.
 				RabbitMQ_send("html",txtInfo);
 			}
 		});
-		
 		$.ajax({
                 type: "GET",
                 url: "oulunliikenne_statistic.php",
-                data: { instance_id: "xyz", // change instance_id to the right variable
+                data: { instance_id: "xyz", 
 					action: "FIND_ROUTE",
-					data_1: travel_mode,
-					data_2: start_point,
-					data_3: end_point},
+					data_1: travel_mode.toString(),
+					data_2: start_point.toString(),
+					data_3: end_point.toString()},
 				cache: false
 		});
-
 	}
 	
 	
