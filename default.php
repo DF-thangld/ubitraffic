@@ -176,16 +176,8 @@ indenpendent URLs, I will implement this changes soon.
 		
 		google.maps.event.addListener(map, 'click', function(event) {
 			
-			var latitude = event.latLng.lat();
-			var longitude = event.latLng.lng();
-			
-			dest = new google.maps.LatLng(latitude,longitude);
-			origin_place = $("#start_place").val();
-			
-			find_route(origin_place,dest,travel_mode_map);
-			
-			
-    		if(0)//is navigation mode
+			//close the useless panel
+			if(0)//is navigation mode
 			{}
 			else
 			{
@@ -195,6 +187,18 @@ indenpendent URLs, I will implement this changes soon.
 				$('#point_of_interest').css('display', 'none');
 				$('#traffic_congestion').css('display', 'none');
 			}
+			
+			//find route
+			var latitude = event.latLng.lat();
+			var longitude = event.latLng.lng();
+			
+			dest = new google.maps.LatLng(latitude,longitude);
+			origin_place = $("#start_place").val();
+			
+			find_route(origin_place,dest,travel_mode_map);
+			
+			
+    		
   		});
 		
 		menu(map);
@@ -205,6 +209,17 @@ indenpendent URLs, I will implement this changes soon.
 			$("#destination").keyboard();
 			$("#bus_number").keyboard();
 			$("#email_input").keyboard();
+			$.ajax({
+
+                type: "GET",
+
+                url: "oulunliikenne_statistic.php",
+
+                data: { instance_id: "xyz", action: "OPEN_APP" }, // change instance_id to the right variable
+
+                cache: false
+
+			});
 			google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
 				
 			});
@@ -313,7 +328,19 @@ indenpendent URLs, I will implement this changes soon.
 			}
 		});
 		
+		$.ajax({
+                type: "GET",
+                url: "oulunliikenne_statistic.php",
+                data: { instance_id: "xyz", // change instance_id to the right variable
+					action: "FIND_ROUTE",
+					data_1: travel_mode,
+					data_2: start_point,
+					data_3: end_point},
+				cache: false
+		});
+
 	}
+	
 	
 	function navigate_route(){
 		
@@ -563,6 +590,17 @@ indenpendent URLs, I will implement this changes soon.
 			}
         }        
     }
+	$(window).on("beforeunload", function() {
+		$.ajax({
+			type: "GET",
+				url: "oulunliikenne_statistic.php",
+				data: { instance_id: "xyz", // change instance_id to the right variable
+					action: "CLOSE_APP"},
+					cache: false,
+					async :false
+		});          
+		//return true;
+})
     </script>
   </head>
 	<body>

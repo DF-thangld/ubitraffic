@@ -128,6 +128,16 @@ function createPointOfInterestMarker(place, point_of_interest_type)
 				infowindow.open(map,marker);
 				email_text = infowindow.getContent();
 				RabbitMQ_send("html",email_text);
+				$.ajax({
+					type: "GET",
+					url: "oulunliikenne_statistic.php",
+						data: { instance_id: "xyz", // change instance_id to the right variable
+													action: "CLICK_PLACE",
+													data_1: point_of_interest_type,
+													data_2: place.name},
+						cache: false
+
+				});
 			});
 			points_of_interest[point_of_interest_type].push(marker);
 			
@@ -182,6 +192,15 @@ function createPointOfInterestMarker(place, point_of_interest_type)
 				infowindow.open(map,marker);
 				email_text = infowindow.getContent();
 				RabbitMQ_send("html",email_text);
+				$.ajax({
+					type: "GET",
+					url: "oulunliikenne_statistic.php",
+						data: { instance_id: "xyz", // change instance_id to the right variable
+													action: "CLICK_PLACE",
+													data_1: point_of_interest_type,
+													data_2: place.name},
+						cache: false
+				});
 			});
 			points_of_interest[point_of_interest_type].push(marker);
 		}
@@ -248,7 +267,14 @@ function changePointOfInterestType(point_of_interest_type, map)
 
 	//This cause the problem with the position change after click
 	//$("#"+point_of_interest_type+"_information_button").attr("class", "button chosen_mode");
-
+	$.ajax({
+                type: "GET",
+                url: "oulunliikenne_statistic.php",
+                data: { instance_id: "xyz", // change instance_id to the right variable
+                                                action: "PLACE",
+                                                data_1: point_of_interest_type},
+                cache: false
+	});
 
 }
 
@@ -318,6 +344,22 @@ function get_all_bus_stops(map)
 						infowindow.open(map,busStopMarker);
 						email_text = infowindow.getContent();
 						RabbitMQ_send("html",email_text);
+						
+						$.ajax({
+
+							type: "GET",
+
+							url: "oulunliikenne_statistic.php",
+
+							data: { instance_id: "xyz", // change instance_id to the right variable
+															action: "CLICK_BUS_STOP_FROM_TIMETABLE",
+															data_1: route_id,
+															data_2: direction_id,
+															data_3: stop_id},
+							cache: false
+
+						});
+						
 					});
 					
 					
@@ -435,6 +477,23 @@ function show_shape(route_id, direction_id)
 				
 			}
 		});
+	$.ajax({
+
+                type: "GET",
+
+                url: "oulunliikenne_statistic.php",
+
+                data: { instance_id: "xyz", // change instance_id to the right variable
+
+                                                action: "BUS_TIMETABLE",
+
+                                                data_1: route_id,
+
+                                                data_2: direction_id},
+
+                cache: false
+
+	});
 }
 
 function menu(map)
@@ -553,13 +612,13 @@ function menu(map)
 	// point of interest menu
 	var $point_of_interest_menu = $(document.createElement("DIV"));
 	$point_of_interest_menu.attr("id", "point_of_interest");
-	$point_of_interest_menu.attr("style", "display:none;position:absolute;margin-left:-50px;bottom:110px;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:420px;height:220px;");
+	$point_of_interest_menu.attr("style", "display:none;position:absolute;margin-left:-50px;bottom:110px;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:420px;height:260px;");
 	// point of interest menu - restaurant button
 	var $restaurant_information_button = $(document.createElement("DIV"));
 	$restaurant_information_button.attr("id", "restaurant_information_button");
 	$restaurant_information_button.attr("class", "button");
 	$restaurant_information_button.attr("style", "margin-left:10px;width:90px;margin-top:7px;");
-	$restaurant_information_button.html("<center><img src='images/point_of_interest/restaurant_button.png' style='height:40px;' width='40px' /><div>Restaurant</div></center>");
+	$restaurant_information_button.html("<center><img src='images/point_of_interest/restaurant_button.png' style='height:40px;' width='40px' /><div style='font-size:15px'>Restaurant</div></center>");
 	google.maps.event.addDomListener($restaurant_information_button.get(0), 'click', function()
 	{
 		changePointOfInterestType("restaurant", map);
@@ -570,7 +629,7 @@ function menu(map)
 	$cafe_information_button.attr("id", "cafe_information_button");
 	$cafe_information_button.attr("class", "button");
 	$cafe_information_button.attr("style", "margin-left:10px;width:90px;margin-top:7px;");
-	$cafe_information_button.html("<center><img src='images/point_of_interest/cafe_button.png' style='height:40px;' width='40px' /><div>Cafe</div></center>");
+	$cafe_information_button.html("<center><img src='images/point_of_interest/cafe_button.png' style='height:40px;' width='40px' /><div style='font-size:15px'>Cafe</div></center>");
 	google.maps.event.addDomListener($cafe_information_button.get(0), 'click', function()
 	{
 		changePointOfInterestType("cafe", map);
@@ -581,7 +640,7 @@ function menu(map)
 	$movie_theater_information_button.attr("id", "movie_theater_information_button");
 	$movie_theater_information_button.attr("class", "button");
 	$movie_theater_information_button.attr("style", "margin-left:10px;width:90px;margin-top:7px;");
-	$movie_theater_information_button.html("<center><img src='images/point_of_interest/movie_theater_button.png' style='height:40px;' width='40px' /><div>Theater</div></center>");
+	$movie_theater_information_button.html("<center><img src='images/point_of_interest/movie_theater_button.png' style='height:40px;' width='40px' /><div style='font-size:15px'>Theater</div></center>");
 	google.maps.event.addDomListener($movie_theater_information_button.get(0), 'click', function()
 	{
 		changePointOfInterestType("movie_theater", map);
@@ -592,7 +651,7 @@ function menu(map)
 	$art_gallery_information_button.attr("id", "art_gallery_information_button");
 	$art_gallery_information_button.attr("class", "button");
 	$art_gallery_information_button.attr("style", "margin-left:10px;width:90px;margin-top:7px;");
-	$art_gallery_information_button.html("<center><img src='images/point_of_interest/art_gallery_button.png' style='height:40px;' width='40px' /><div>Art Gallery</div></center>");
+	$art_gallery_information_button.html("<center><img src='images/point_of_interest/art_gallery_button.png' style='height:40px;' width='40px' /><div style='font-size:15px'>Art Gallery</div></center>");
 	google.maps.event.addDomListener($art_gallery_information_button.get(0), 'click', function()
 	{
 		changePointOfInterestType("art_gallery", map);
@@ -603,7 +662,7 @@ function menu(map)
 	$gym_information_button.attr("id", "gym_information_button");
 	$gym_information_button.attr("class", "button");
 	$gym_information_button.attr("style", "margin-left:10px;width:90px;margin-top:7px;");
-	$gym_information_button.html("<center><img src='images/point_of_interest/gym_button.png' style='height:40px;' width='40px' /><div>Gym</div></center>");
+	$gym_information_button.html("<center><img src='images/point_of_interest/gym_button.png' style='height:40px;' width='40px' /><div style='font-size:15px'>Gym</div></center>");
 	google.maps.event.addDomListener($gym_information_button.get(0), 'click', function()
 	{
 		changePointOfInterestType("gym", map);
@@ -614,7 +673,7 @@ function menu(map)
 	$hair_care_information_button.attr("id", "hair_care_information_button");
 	$hair_care_information_button.attr("class", "button");
 	$hair_care_information_button.attr("style", "margin-left:10px;width:90px;margin-top:10px;");
-	$hair_care_information_button.html("<center><img src='images/point_of_interest/hair_care_button.png' style='height:40px;' width='40px' /><div>Hair Care</div></center>");
+	$hair_care_information_button.html("<center><img src='images/point_of_interest/hair_care_button.png' style='height:40px;' width='40px' /><div style='font-size:15px'>Hair Care</div></center>");
 	google.maps.event.addDomListener($hair_care_information_button.get(0), 'click', function()
 	{
 		changePointOfInterestType("hair_care", map);
@@ -625,7 +684,7 @@ function menu(map)
 	$pharmacy_information_button.attr("id", "pharmacy_information_button");
 	$pharmacy_information_button.attr("class", "button");
 	$pharmacy_information_button.attr("style", "margin-left:10px;width:90px;margin-top:10px;");
-	$pharmacy_information_button.html("<center><img src='images/point_of_interest/pharmacy_button.png' style='height:40px;' width='40px' /><div>Pharmacy</div></center>");
+	$pharmacy_information_button.html("<center><img src='images/point_of_interest/pharmacy_button.png' style='height:40px;' width='40px' /><div style='font-size:15px'>Pharmacy</div></center>");
 	google.maps.event.addDomListener($pharmacy_information_button.get(0), 'click', function()
 	{
 		changePointOfInterestType("pharmacy", map);
@@ -636,7 +695,7 @@ function menu(map)
 	$travel_agency_information_button.attr("id", "travel_agency_information_button");
 	$travel_agency_information_button.attr("class", "button");
 	$travel_agency_information_button.attr("style", "margin-left:10px;width:90px;margin-top:10px;");
-	$travel_agency_information_button.html("<center><img src='images/point_of_interest/travel_agency_button.png' style='height:40px;' width='40px' /><div>Travel Agency</div></center>");
+	$travel_agency_information_button.html("<center><img src='images/point_of_interest/travel_agency_button.png' style='height:40px;' width='40px' /><div style='font-size:15px'>Travel Agency</div></center>");
 	google.maps.event.addDomListener($travel_agency_information_button.get(0), 'click', function()
 	{
 		changePointOfInterestType("travel_agency", map);
@@ -647,7 +706,7 @@ function menu(map)
 	$home_goods_store_information_button.attr("id", "home_goods_store_information_button");
 	$home_goods_store_information_button.attr("class", "button");
 	$home_goods_store_information_button.attr("style", "margin-left:10px;width:90px;margin-top:10px;");
-	$home_goods_store_information_button.html("<center><img src='images/point_of_interest/home_goods_store_button.png' style='height:40px;' width='40px' /><div>Store</div></center>");
+	$home_goods_store_information_button.html("<center><img src='images/point_of_interest/home_goods_store_button.png' style='height:40px;' width='40px' /><div style='font-size:15px'>Store</div></center>");
 	google.maps.event.addDomListener($home_goods_store_information_button.get(0), 'click', function()
 	{
 		changePointOfInterestType("home_goods_store", map);
@@ -658,7 +717,7 @@ function menu(map)
 	$grocery_or_supermarket_information_button.attr("id", "grocery_or_supermarket_information_button");
 	$grocery_or_supermarket_information_button.attr("class", "button");
 	$grocery_or_supermarket_information_button.attr("style", "margin-left:10px;width:90px;margin-top:7px;");
-	$grocery_or_supermarket_information_button.html("<center><img src='images/point_of_interest/grocery_or_supermarket_button.png' style='height:40px;' width='40px' /><div>Supermarket</div></center>");
+	$grocery_or_supermarket_information_button.html("<center><img src='images/point_of_interest/grocery_or_supermarket_button.png' style='height:40px;' width='40px' /><div style='font-size:15px'>Supermarket</div></center>");
 	google.maps.event.addDomListener($grocery_or_supermarket_information_button.get(0), 'click', function()
 	{
 		changePointOfInterestType("grocery_or_supermarket", map);
@@ -670,29 +729,19 @@ function menu(map)
 	$hospital_information_button.attr("id", "hospital_information_button");
 	$hospital_information_button.attr("class", "button");
 	$hospital_information_button.attr("style", "margin-left:10px;width:90px;margin-top:7px;height:70px;");
-	$hospital_information_button.html("<center><img src='images/point_of_interest/hospital_button.png' style='height:40px;' width='40px' /><div>Hospital</div></center>");
+	$hospital_information_button.html("<center><img src='images/point_of_interest/hospital_button.png' style='height:40px;' width='40px' /><div style='font-size:15px'>Hospital</div></center>");
 	google.maps.event.addDomListener($hospital_information_button.get(0), 'click', function()
 	{
 		changePointOfInterestType("hospital", map);
 	});
 	$point_of_interest_menu.append($hospital_information_button);
-	/*// point of interest menu - shoe_store button
-	var $shoe_store_information_button = $(document.createElement("DIV"));
-	$shoe_store_information_button.attr("id", "shoe_store_information_button");
-	$shoe_store_information_button.attr("class", "button");
-	$shoe_store_information_button.attr("style", "margin-left:10px;width:90px;margin-top:7px;");
-	$shoe_store_information_button.html("<center><img src='images/point_of_interest/shoe_store_button.png' style='height:40px;' width='40px' /><div>Shoes Store</div></center>");
-	google.maps.event.addDomListener($shoe_store_information_button.get(0), 'click', function()
-	{
-		changePointOfInterestType("shoe_store", map);
-	});
-	$point_of_interest_menu.append($shoe_store_information_button);*/
+
 	// point of interest menu - bus stop button
 	var $bus_stop_information_button = $(document.createElement("DIV"));
 	$bus_stop_information_button.attr("id", "bus_stop_information_button");
 	$bus_stop_information_button.attr("class", "button");
 	$bus_stop_information_button.attr("style", "margin-left:10px;width:90px;margin-top:7px;");
-	$bus_stop_information_button.html("<center><img src='images/bus_stop_button.png' style='height:40px;' width='40px' /><div>Bus Stops</div></center>");
+	$bus_stop_information_button.html("<center><img src='images/bus_stop_button.png' style='height:40px;' width='40px' /><div style='font-size:15px'>Bus Stops</div></center>");
 	google.maps.event.addDomListener($bus_stop_information_button.get(0), 'click', function()
 	{
 		//changePointOfInterestType("shoe_store", map);
@@ -706,12 +755,12 @@ function menu(map)
 	// traffic congestion menu
 	var $traffic_congestion_menu = $(document.createElement("DIV"));
 	$traffic_congestion_menu.attr("id", "traffic_congestion");
-	$traffic_congestion_menu.attr("style", "display:none;position:absolute;margin-left:-50px;bottom:110px;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:420px;height:85px;");
+	$traffic_congestion_menu.attr("style", "display:none;position:absolute;margin-left:-50px;bottom:110px;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:420px;height:90px;");
 	var $weather_information_button = $(document.createElement("DIV"));
 	$weather_information_button.attr("id", "weather_information_button");
 	$weather_information_button.attr("class", "button");
-	$weather_information_button.attr("style", "margin-left:60px;width:100px;margin-top:5px;");
-	$weather_information_button.html("<center><img src='images/weather_sign.png' style='height:40px;' width='40px' /><div>Weather Information</div></center>");
+	$weather_information_button.attr("style", "margin-left:40px;width:100px;margin-top:5px;");
+	$weather_information_button.html("<center><img src='images/weather_sign.png' style='height:40px;' width='40px' /><div style='font-size:15px'>Weather Information</div></center>");
 	google.maps.event.addDomListener($weather_information_button.get(0), 'click', function() {
 		
 
@@ -771,6 +820,23 @@ function menu(map)
 								infowindow.open(map,weather_marker);
 								email_text = infowindow.getContent();
 								RabbitMQ_send("html",email_text);
+								$.ajax({
+
+									type: "GET",
+
+									url: "oulunliikenne_statistic.php",
+
+									data: { instance_id: "xyz", // change instance_id to the right variable
+
+																	action: "CLICK_TRAFFIC_PLACE",
+
+																	data_1: "WEATHER", // change to {WEATHER, CAMERA, PARKING} in actual code
+
+																	data_2: name},
+
+									cache: false
+
+								});
 							});
 							weather_markers.push(weather_marker);
 						}
@@ -783,6 +849,21 @@ function menu(map)
 		for (var i = 0; i < weather_markers.length; i++) {
 			weather_markers[i].setMap(map);
 		}
+		$.ajax({
+
+                type: "GET",
+
+                url: "oulunliikenne_statistic.php",
+
+                data: { instance_id: "xyz", // change instance_id to the right variable
+
+                                                action: "TRAFFIC",
+
+                                                data_1: 'WEATHER'}, // change to {WEATHER, CAMERA, PARKING} in actual code
+
+                cache: false
+
+	});
 		
 	});
 	$traffic_congestion_menu.append($weather_information_button);
@@ -790,8 +871,8 @@ function menu(map)
 	var $camera_information_button = $(document.createElement("DIV"));
 	$camera_information_button.attr("id", "camera_information_button");
 	$camera_information_button.attr("class", "button");
-	$camera_information_button.attr("style", "margin-left:10px;width:100px;margin-top:5px;");
-	$camera_information_button.html("<center><img src='images/camera_sign.png' style='height:40px;' width='40px' /><div>Live Camera</div></center>");
+	$camera_information_button.attr("style", "margin-left:20px;width:100px;margin-top:5px;");
+	$camera_information_button.html("<center><img src='images/camera_sign.png' style='height:40px;' width='40px' /><div style='font-size:15px'>Live Camera</div></center>");
 	google.maps.event.addDomListener($camera_information_button.get(0), 'click', function() {
 		
 		// TODO: 
@@ -851,6 +932,16 @@ function menu(map)
 								infowindow.open(map,camera_marker);
 								email_text = infowindow.getContent();
 								RabbitMQ_send("html",email_text);
+								$.ajax({
+                					type: "GET",
+                					url: "oulunliikenne_statistic.php",
+                					data: { instance_id: "xyz", // change instance_id to the right variable
+                                                action: "CLICK_TRAFFIC_PLACE",
+                                                data_1: "CAMERA", // change to {WEATHER, CAMERA, PARKING} in actual code
+                                                data_2: name},
+                					cache: false
+
+									});
 							});
 							camera_markers.push(camera_marker);
 						}
@@ -863,6 +954,18 @@ function menu(map)
 		for (var i = 0; i < camera_markers.length; i++) {
 			camera_markers[i].setMap(map);
 		}
+		$.ajax({
+			type: "GET",
+			url: "oulunliikenne_statistic.php",
+			data: { instance_id: "xyz", // change instance_id to the right variable
+
+                                                action: "TRAFFIC",
+
+                                                data_1: 'CAMERA'}, // change to {WEATHER, CAMERA, PARKING} in actual code
+
+			cache: false
+
+		});
 		
 	});
 	$traffic_congestion_menu.append($camera_information_button);
@@ -870,8 +973,8 @@ function menu(map)
 	var $parking_information_button = $(document.createElement("DIV"));
 	$parking_information_button.attr("id", "parking_information_button");
 	$parking_information_button.attr("class", "button");
-	$parking_information_button.attr("style", "margin-left:10px;width:100px;margin-top:5px;");
-	$parking_information_button.html("<center><img src='images/parking_sign.png' style='height:40px;' width='40px' /><div>Parking Slots</div></center>");
+	$parking_information_button.attr("style", "margin-left:20px;width:100px;margin-top:5px;");
+	$parking_information_button.html("<center><img src='images/parking_sign.png' style='height:40px;' width='40px' /><div style='font-size:15px'>Parking Slots</div></center>");
 	google.maps.event.addDomListener($parking_information_button.get(0), 'click', function() {
 		
 		// TODO: 
@@ -927,6 +1030,16 @@ function menu(map)
 							infowindow.open(map,parking_marker);
 							email_text = infowindow.getContent();
 							RabbitMQ_send("html",email_text);
+							$.ajax({
+								type: "GET",
+								url: "oulunliikenne_statistic.php",
+								data: { instance_id: "xyz", // change instance_id to the right variable
+																action: "CLICK_TRAFFIC_PLACE",
+																data_1: "PARKING", // change to {WEATHER, CAMERA, PARKING} in actual code
+																data_2: name},
+								cache: false
+
+							});
 						});
 						parking_markers.push(parking_marker);
 						
@@ -938,6 +1051,18 @@ function menu(map)
 		for (var i = 0; i < parking_markers.length; i++) {
 			parking_markers[i].setMap(map);
 		}
+		$.ajax({
+			type: "GET",
+			url: "oulunliikenne_statistic.php",
+			data: { instance_id: "xyz", // change instance_id to the right variable
+
+                                                action: "TRAFFIC",
+
+                                                data_1: 'PARKING'}, // change to {WEATHER, CAMERA, PARKING} in actual code
+
+			cache: false
+
+		});
 		
 	});
 	$traffic_congestion_menu.append($parking_information_button);
@@ -953,13 +1078,13 @@ function menu(map)
 	$navigation_left_panel.attr("style", "float:left");
 	
 	$navigateForm = $(document.createElement("DIV"));
-	$navigateForm.attr("style", "margin:17px;margin-left:10px;margin-right:0;font-size:14px;float:left;");
+	$navigateForm.attr("style", "margin:17px;margin-left:10px;margin-right:0;font-size:18px;float:left;");
 	$navigateForm.html("From:&nbsp;&nbsp;<input id='start_place' class='text_box' value='' />&nbsp;&nbsp;To:&nbsp;&nbsp;<input id='destination' class='text_box' value='' />");
 	$navigation_left_panel.append($navigateForm);
 	
 	
 	$navigation_travel_mode = $(document.createElement("DIV"));
-	$navigation_travel_mode.attr("style", "margin-left:8px;margin-right:0;font-size:14px;");
+	$navigation_travel_mode.attr("style", "margin-left:8px;margin-right:0;font-size:18px;");
 	$navigation_travel_mode_span = $(document.createElement("span"));
 	$navigation_travel_mode_span.html("Travel mode: ");
 	$navigation_travel_mode.append($navigation_travel_mode_span);
@@ -1020,17 +1145,17 @@ function menu(map)
 	// bus_timetable menu
 	var $bus_timetable_menu = $(document.createElement("DIV"));
 	$bus_timetable_menu.attr("id", "bus_timetable_menu");
-	$bus_timetable_menu.attr("style", "display:none;position:absolute;margin-left:-50px;bottom:110px;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:420px;height:172px;");
+	$bus_timetable_menu.attr("style", "display:none;position:absolute;margin-left:-50px;bottom:110px;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:420px;height:200px;");
 	// bus_timetable menu - bus number form
 	var $bus_number_form = $(document.createElement("DIV"));
 	$bus_number_form.attr("id", "bus_number_form");
-	$bus_number_form.attr("style", "margin:17px;margin-left:10px;margin-right:0;font-size:14px;");
-	$bus_number_form.html("Type bus number: <input id='bus_number' class='text_box' value='' style='width:125px;' /> ");
+	$bus_number_form.attr("style", "margin:17px;margin-left:10px;margin-right:0;font-size:18px;");
+	$bus_number_form.html("Type bus number: <input id='bus_number' class='text_box' value='' style='width:80px;' /> ");
 	
 	//bus dropdown
 	var $bus_dropdown = $(document.createElement("DIV"));
 	$bus_dropdown.attr("id", "bus_dropdown");
-	$bus_dropdown.attr("style", "margin:17px;margin-left:10px;margin-right:0;font-size:14px;");
+	$bus_dropdown.attr("style", "margin:17px;margin-left:10px;margin-right:0;font-size:18px;");
 	$bus_dropdown.html("or choose bus number: <select id='bus_line' value='' style='width:225px;' /> ");
 	google.maps.event.addDomListener($bus_dropdown.get(0), 'click', function() {
 		var content = "";
@@ -1119,6 +1244,15 @@ function menu(map)
 	{
 		var zoom_value = map.getZoom();
 		map.setZoom(zoom_value+1);
+		$.ajax({
+                type: "GET",
+                url: "oulunliikenne_statistic.php",
+                data: { instance_id: "xyz", // change instance_id to the right variable
+                                                action: "ZOOM_IN",
+                                                data_1: zoom_value,
+                                                data_2: zoom_value+1},
+                cache: false
+		});
 	});
 	$zoom_menu.append($zoomin_menu);
 	// zoom-out button
@@ -1129,6 +1263,15 @@ function menu(map)
 	google.maps.event.addDomListener($zoomout_menu.get(0), 'click', function() {
 		var zoom_value = map.getZoom();
 		map.setZoom(zoom_value-1);
+		$.ajax({
+                type: "GET",
+                url: "oulunliikenne_statistic.php",
+                data: { instance_id: "xyz", // change instance_id to the right variable
+					action: "ZOOM_OUT",
+                    data_1: zoom_value,
+					data_2: zoom_value-1},
+                cache: false
+		});
 	});
 	$zoom_menu.append($zoomout_menu);
 	
