@@ -112,6 +112,8 @@ indenpendent URLs, I will implement this changes soon.
 	var email_text = '';
 	var file_name = '';
 	var geocoder;
+		
+	
 	
 	function reset(){
 		//reset menu
@@ -672,7 +674,8 @@ indenpendent URLs, I will implement this changes soon.
 			var login = 'ubitraffic';
 			var passcode = '2iUn1oX3q4v35rP';
 			destination = '/exchange/ubitraffic';
-
+			var ipAddress = "<?php echo $_SERVER['REMOTE_ADDR']; ?>";
+			
 			client = Stomp.client(url);
 
 			// this allows to display debug logs directly on the web page
@@ -696,7 +699,7 @@ indenpendent URLs, I will implement this changes soon.
 	          return false;
 	        });
 	    	function RabbitMQ_send(message_type,message){
-	    		client.send(destination, {type:message_type}, message);
+	    		client.send(destination, {type:message_type , ip:ipAddress }, message);
 			};
 		</script>
 	</body>

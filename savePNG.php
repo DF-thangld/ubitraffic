@@ -9,6 +9,7 @@
 	file_put_contents($filedir . "/" . $name . ".png", $decoded, LOCK_EX);
 
 
-
+	//chmod("image/png/". $name . ".png", 0777);
    echo $name;
+   
 ?>

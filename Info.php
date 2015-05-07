@@ -72,6 +72,8 @@
       var url = 'ws://bunny.ubioulu.fi:15674/stomp/websocket';
       var login = 'ubitraffic';
       var passcode = '2iUn1oX3q4v35rP';
+	  var ipAddress = "<?php echo $_SERVER['REMOTE_ADDR'];?>";
+	  
       destination = '/exchange/ubitraffic';
 
       client = Stomp.client(url);
@@ -80,7 +82,7 @@
       client.debug = function(str) {
         $("#debug").append(str + "\n");
       };
-
+		
       // the client is notified when it is connected to the server.
       client.connect(login, passcode, function(frame) {
         client.subscribe(destination, function(message) {
@@ -90,7 +92,9 @@
 
             if(message.headers.type=='html')
 			{
-				$("#messages").html("<p>" + message.body + "</p>\n");
+
+				if(message.headers.ip==ipAddress)
+					$("#messages").html("<p>" + message.body + "</p>\n");
 			}
 			  
 

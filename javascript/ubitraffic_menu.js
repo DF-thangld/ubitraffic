@@ -288,7 +288,6 @@ function get_all_bus_stops(map)
 			cache: false,
 			dataType: "xml",
 			success: function(xml) {
-				
 				$(xml).find('stop').each(function(){
 					var stop_id = $(this).find("stop_id").text();
 					var name = $(this).find("stop_name").text();
@@ -300,8 +299,9 @@ function get_all_bus_stops(map)
 						title: name,
 						icon: 'images/bus_stop_icon.png'
 					});
-					markerList.push(busStopMarker);
-					busStopMarkerList.push(busStopMarker);
+					markerList.push(busStopMarker); //record first and used for remove old ones
+					//busStopMarkerList.push(busStopMarker);
+					
 					
 					google.maps.event.addListener(busStopMarker, 'click', function() {
 						for (var i = 0; i < inforWindowList.length; i++)
@@ -346,33 +346,29 @@ function get_all_bus_stops(map)
 						RabbitMQ_send("html",email_text);
 						
 						$.ajax({
-
 							type: "GET",
-
 							url: "oulunliikenne_statistic.php",
-
 							data: { instance_id: "xyz", // change instance_id to the right variable
 															action: "CLICK_BUS_STOP_FROM_TIMETABLE",
 															data_1: route_id,
 															data_2: direction_id,
 															data_3: stop_id},
 							cache: false
-
-						});
-						
-					});
-					
-					
+						});//end of ajax
+					});//Inforwindow onclick event
 					
 				});
 			}
 		});
 	}
-	for (j=0; j<markerList.length; j++)
+	for (j=0; j<markerList.length; j++)//remove
 		markerList[j].setMap(null);
 	
-	for (j=0; j<busStopMarkerList.length; j++)
-		busStopMarkerList[j].setMap(map);
+	//for (j=0; j<busStopMarkerList.length; j++)//show 
+	//	busStopMarkerList[j].setMap(map);
+	
+	//var markerclusterer = new MarkerClusterer(map, busStopMarkerList);//code for markercluster
+
 	
 	for (i = 0, len = point_of_interest_types.length; i < len; i++)
 	{
@@ -746,6 +742,7 @@ function menu(map)
 	{
 		//changePointOfInterestType("shoe_store", map);
 		get_all_bus_stops(map);
+
 	});
 	$point_of_interest_menu.append($bus_stop_information_button);
 	
@@ -821,21 +818,13 @@ function menu(map)
 								email_text = infowindow.getContent();
 								RabbitMQ_send("html",email_text);
 								$.ajax({
-
 									type: "GET",
-
 									url: "oulunliikenne_statistic.php",
-
 									data: { instance_id: "xyz", // change instance_id to the right variable
-
-																	action: "CLICK_TRAFFIC_PLACE",
-
-																	data_1: "WEATHER", // change to {WEATHER, CAMERA, PARKING} in actual code
-
-																	data_2: name},
-
+										action: "CLICK_TRAFFIC_PLACE",
+										data_1: "WEATHER", // change to {WEATHER, CAMERA, PARKING} in actual code
+										data_2: name},
 									cache: false
-
 								});
 							});
 							weather_markers.push(weather_marker);
@@ -856,10 +845,8 @@ function menu(map)
                 url: "oulunliikenne_statistic.php",
 
                 data: { instance_id: "xyz", // change instance_id to the right variable
-
-                                                action: "TRAFFIC",
-
-                                                data_1: 'WEATHER'}, // change to {WEATHER, CAMERA, PARKING} in actual code
+                	action: "TRAFFIC",
+					data_1: 'WEATHER'}, // change to {WEATHER, CAMERA, PARKING} in actual code
 
                 cache: false
 
@@ -916,9 +903,9 @@ function menu(map)
 							markerList.push(camera_marker);
 							
 							
-							var contentString = '<div style="width:170px;height:100px;">'+
+							var contentString = '<div style="width:530px;height:360px;">'+
 							  '<b>' + name + '</b>'+
-							  '<p><img src="' + img_src + '" style="width:70px;height:50px;" /></p>'+
+							  '<p><img src="' + img_src + '" style="width:500px;height:330px;" /></p>'+
 							  '</div>';
 							
 							  var infowindow = new google.maps.InfoWindow({
@@ -1016,7 +1003,7 @@ function menu(map)
 						var contentString = '<div style="width:170px;height:120px;">'+
 						  '<b>' + name + '</b>'+
 						  '<p>' + description + '</p>'+
-						  '<p><a href="javascript:find_route(\'' + screen_address + ',oulu,finland\', new google.maps.LatLng(' + geo_point[1] + ',' + geo_point[0] + '),google.maps.TravelMode.WALKING );">Walk there</a></p>'+
+						  //'<p><a href="javascript:find_route(\'' + screen_address + ',oulu,finland\', new google.maps.LatLng(' + geo_point[1] + ',' + geo_point[0] + '),google.maps.TravelMode.WALKING );">Walk there</a></p>'+
 						  '</div>';
 
 						  var infowindow = new google.maps.InfoWindow({
@@ -1038,7 +1025,6 @@ function menu(map)
 																data_1: "PARKING", // change to {WEATHER, CAMERA, PARKING} in actual code
 																data_2: name},
 								cache: false
-
 							});
 						});
 						parking_markers.push(parking_marker);
