@@ -112,6 +112,7 @@ indenpendent URLs, I will implement this changes soon.
 	var email_text = '';
 	var file_name = '';
 	var geocoder;
+	var destDisplay;
 	
 	function reset(){
 		//reset menu
@@ -208,7 +209,7 @@ indenpendent URLs, I will implement this changes soon.
 					info_window_content += "<img src='images/bus.png' onclick='find_route(\"" + $("#start_place").val() + "\",new google.maps.LatLng(" + latitude + "," + longitude + "),google.maps.TravelMode.TRANSIT);' style='height:40px;' width='40px'/>";
 					
 					//create info window to show content
-					var destDisplay = new google.maps.InfoWindow({
+					destDisplay = new google.maps.InfoWindow({
 						content: info_window_content
 					});
 					
@@ -301,6 +302,16 @@ indenpendent URLs, I will implement this changes soon.
 			destination: end_point,
 			travelMode: travel_mode
 		};
+		//clear marker and info window when route is found
+		if(destDisplay)
+		{
+			destDisplay.close();
+		}
+		if(dest_markers.length > 0)
+		{
+			dest_markers[0].setMap(null);
+			dest_markers = [];
+		}
 		directionsService.route(request, function(response, status) {
 			if (status == google.maps.DirectionsStatus.OK) 
 			{
@@ -585,48 +596,117 @@ indenpendent URLs, I will implement this changes soon.
 	
 	//wrap text to fit to canvas
 	function wrapText(context, text, x, y, maxWidth, lineHeight) {
-		var words = text.split(/([)])/);
-        var line = '';
-		//console.log(text);
-        for(var n = 0; n < words.length; n++) {
-			//if first line: break it into smaller parts
-			if(n == 0) {
-				var firstline = words[0].split(/(Suomi)/);
-				for(var i=0; i < firstline.length; i++) {
-					//break it into more smaller parts
-					if(i==0) {
-						var firstfirstline = firstline[0].split(/(Route)/); 
-						for(var j=0; j< firstfirstline.length; j++) {
-							if(j%2 == 0) {
-								context.fillText(line, x, y);
-								line = firstfirstline[j] + '';
-								y += lineHeight;
-							}
-							else {
-								line += "Route"; 
+		if(text.search("Route") != -1)
+		{
+			var words = text.split(/([)])/);
+			var line = '';
+			//console.log(text);
+			for(var n = 0; n < words.length; n++) {
+				//if first line: break it into smaller parts
+				if(n == 0) {
+					var firstline = words[0].split(/(Suomi|Finland)/);
+					for(var i=0; i < firstline.length; i++) {
+						//break it into more smaller parts
+						if(i==0) {
+							var firstfirstline = firstline[0].split(/(Route)/); 
+							for(var j=0; j< firstfirstline.length; j++) {
+								if(j%2 == 0) {
+									context.fillText(line, x, y);
+									line = firstfirstline[j] + '';
+									y += lineHeight;
+								}
+								else {
+									line += "Route"; 
+								}
 							}
 						}
+						
+						if(i%2 == 0 && i!=0 && i!=firstline.length-1) {
+							context.fillText(line, x, y);
+							line = firstline[i] + '';
+							y += lineHeight;
+						}
+						else if(i!=0 && i!=firstline.length-1){
+							if(navigator.language=='fi-FI' || navigator.language=='fi')
+							{
+								line += "Suomi"; 						
+							}
+							else
+							{
+								line += "Finland";
+							}
+						}
+					}   
+					var secondline = words[0].split(/(Steps:)/);
+					for(var t=0; t < secondline.length; t++) {
+						if(t==2)
+						{
+							context.fillText(line, x, y);
+							line = secondline[t] + '';
+							y += lineHeight;
+						}
+						else if(t!=0)
+						{
+							context.fillText(line, x, y);
+							line = 'Steps:';
+							y += lineHeight;
+						}
 					}
-					
-					if(i%2 == 0 && i!=0) {
-						context.fillText(line, x, y);
-						line = firstline[i] + '';
-						y += lineHeight;
+				}
+				if (n % 2 == 0 && n != 0 && n!=words.length-3 && n!=words.length-1) {
+					context.fillText(line, x, y);
+					line = words[n] + '';
+					y += lineHeight;
+				}
+				else if(n != 0 && n!=words.length-3){
+					line += ")";				
+				}
+				if(n==words.length-3)
+				{
+					var lastline = words[words.length-3].split(/(Kohde)/);
+					for(var p=0; p < lastline.length; p++) {
+						if(p%2==0)
+						{
+							context.fillText(line, x, y);
+							line = lastline[p]+"";
+							y += lineHeight;
+						}
+						else if(p==1 && (navigator.language=='fi-FI'|| navigator.language=='fi'))
+						{
+							context.fillText(line, x, y);
+							line = "Kohde"+lastline[p+1]+")";
+							y += lineHeight;
+						}
+						else if(p==1 && (navigator.language!='fi-FI'|| navigator.language!='fi'))
+						{
+							context.fillText(line, x, y);
+							line = "Destination"+lastline[p+1]+")";
+							y += lineHeight;
+						}					
 					}
-					else {
-						line += "Suomi"; 
-					}
-				}             
-			}
-			if (n % 2 == 0 && n != 0) {
+				}
+			}  
+		}
+		else
+		{
+			var words = text.split(' ');
+			var line = '';
+
+			for(var n = 0; n < words.length; n++) {
+			  var testLine = line + words[n] + ' ';
+			  var metrics = context.measureText(testLine);
+			  var testWidth = metrics.width;
+			  if (testWidth > maxWidth && n > 0) {
 				context.fillText(line, x, y);
-				line = words[n] + '';
+				line = words[n] + ' ';
 				y += lineHeight;
+			  }
+			  else {
+				line = testLine;
+			  }
 			}
-			else if(n != 0){
-				line += ")";				
-			}
-        }        
+			context.fillText(line, x, y);
+		}	
     }
 	$(window).on("beforeunload", function() {
 		$.ajax({
