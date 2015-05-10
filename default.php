@@ -556,8 +556,8 @@ indenpendent URLs, I will implement this changes soon.
 		//create close button for qr code image
 		var closeB = document.createElement("a");
 		closeB.id = "close_qr";
-		closeB.innerHTML = "x";
-		closeB.style = "position:absolute;height:17px; width:9px;float:right; right:-10px; top:-10px;cursor:pointer;border:1px solid;border-color: #2a3333;border-radius:15px;display:inline-block; padding: 2px 5px; background: #ccc;";
+		closeB.innerHTML = "close";
+		closeB.style = "position:absolute;height:35px; width:35px;float:right; right:-20px; top:-20px;cursor:pointer;border:1px solid;border-color: #2a3333;border-radius:15px;display:inline-block; padding: 2px 5px; background: #ccc; text-align:center; padding-top:10px;";
 		$('#QRcode').append(closeB);
 			
 		//show it to user
@@ -566,7 +566,7 @@ indenpendent URLs, I will implement this changes soon.
 		//console.log(""+image.src);	
 
 		google.maps.event.addDomListener($('#close_qr').get(0), 'click', function() {
-		$('#QRcode').css('display', 'none');
+			$('#QRcode').css('display', 'none');
 		});
 	}
 	
@@ -586,6 +586,20 @@ indenpendent URLs, I will implement this changes soon.
                 success : function(data)
                 {
                     console.log(data);
+					
+					$('#mailDone').html(data);
+					
+					//close button for download div
+					$closeMail = $(document.createElement('a'));
+					$closeMail.attr("id", "close_mail");
+					$closeMail.attr("style", "position:absolute;height:35px; width:35px;float:right; right:-20px; top:-20px;cursor:pointer;border:1px solid;border-color: #2a3333;border-radius:15px;display:inline-block; padding: 2px 5px; background: #ccc; text-align:center; padding-top:10px;");
+					$closeMail.html("close");
+					$('#mailDone').append($closeMail);
+					$('#mailDone').css('display', 'inline');
+					$('#download_div').append($('#mailDone'));
+					google.maps.event.addDomListener($closeMail.get(0), 'click', function() {
+						$('#mailDone').css('display', 'none');
+					});
                 }
             }).done(function() {
                 //$('body').html(data);

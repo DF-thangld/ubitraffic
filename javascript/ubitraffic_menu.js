@@ -1302,6 +1302,10 @@ function menu(map)
 			{
 				$('#QRcode').css('display', 'none');
 			}
+			if ($('#mailDone'))
+			{
+				$('#mailDone').css('display', 'none');
+			}
 		}
 		else
 			$('#download_div').css('display', 'none');
@@ -1316,6 +1320,18 @@ function menu(map)
 	$download_div.attr("style", "font-size:14px; display:none;position:absolute;left:280px;top:400px;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:420px;height:136px;");
 	$download_div.html("<center style='margin-top:5px;'>Download map to phone</center>");
 	$('body').append($download_div);
+	
+	//close button for download div
+	$closeButton = $(document.createElement('a'));
+	$closeButton.attr("id", "close_download");
+	$closeButton.attr("style", "position:absolute;height:35px; width:35px;float:right; right:-20px; top:-20px;cursor:pointer;border:1px solid;border-color: #2a3333;border-radius:15px;display:inline-block; padding: 2px 5px; background: #ccc; text-align:center; padding-top:10px;");
+	$closeButton.html("close");
+	$download_div.append($closeButton);
+	
+	google.maps.event.addDomListener($closeButton.get(0), 'click', function() {
+		$download_div.css('display', 'none');
+	});
+	
 	
 	//qr code div
 	var $qrcode_div = $(document.createElement('DIV'));
@@ -1364,6 +1380,12 @@ function menu(map)
 	$email_div.attr("class", "button");
 	$email_div.attr("style", "margin-left:60px;width:100px;margin-top:5px;");
 	$email_div.html("<center><input id='email_input' class='text_box' value='' style='width:125px;'></input></center>"); //<img src='images/weather_sign.png' style='height:40px;' width='40px' /><div>E-mail</div>
+	
+	var $mailDone = $(document.createElement('DIV'));
+	$mailDone.attr("id", "mailDone");					
+	$mailDone.attr("style", "display=none; position:absolute;width:210px;height:110px;right:105px;background-color:white;border:2px solid;border-color:#2a3333;border-radius:6px; padding:10px;");
+	$mailDone.html("");
+	$email_div.append($mailDone);	
 	
 	//email button
 	$email_button = $(document.createElement("button"));
