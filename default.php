@@ -262,6 +262,15 @@ indenpendent URLs, I will implement this changes soon.
 		google.maps.event.addListener(map, 'click', function(event) {
 			is_key_down = false;
 		});
+		google.maps.event.addListener(map, 'mousemove', function(event) {
+			is_key_down = false;
+		});
+		google.maps.event.addListener(map, 'mouseout', function(event) {
+			is_key_down = false;
+		});
+		google.maps.event.addListener(map, 'mouseover', function(event) {
+			is_key_down = false;
+		});
 		
 		menu(map);
 		google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
