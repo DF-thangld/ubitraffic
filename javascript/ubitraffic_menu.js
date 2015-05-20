@@ -1234,6 +1234,7 @@ function menu(map)
 	$bus_dropdown.html("or choose bus number: <select id='bus_line' value='' style='width:225px;' /> ");
 	google.maps.event.addDomListener($bus_dropdown.get(0), 'click', function() {
 		var content = "";
+		$('#bus_number').val($("#bus_line").val());
 		$.ajax({
 				type: "GET",
 				url: "oulunliikenne_siri_service.php?service=bus_directions&route_id=" + $("#bus_line").val(),
@@ -1268,6 +1269,7 @@ function menu(map)
 	$bus_info_button.html("Display Bus Information");
 	google.maps.event.addDomListener($bus_info_button.get(0), 'click', function() {
 		var content = "";
+		$("#bus_line").val($("#bus_number").val());
 		$.ajax({
 				type: "GET",
 				url: "oulunliikenne_siri_service.php?service=bus_directions&route_id=" + $("#bus_number").val(),

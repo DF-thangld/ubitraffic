@@ -736,7 +736,18 @@ indenpendent URLs, I will implement this changes soon.
 					async :false
 		});          
 		//return true;
-})
+	});
+	
+	function copy_screen()
+	{
+		var content = window.document.getElementById("map_panel"); // get you map details
+		var logoBox = "<div class='logoBox' id='logoBox' style='width:300px;    height:65px; border-radius:4px; background-color:rgba(255,255,255,0.75);    box-shadow:5px 5px 2px rgba(50,50,50,0.5);  float:left; z-index:10; position:absolute;  top:10px;   left:10px; padding:5px;'><img src='myLogo_300x65.png' id='myLogo'></div>";
+		var printWindow = window.open("","printWindow", "Width=640, Height=620,location=no,menu bar=no,resizable=no,scrollbars=no,status=no,titlebar=no,toolbar=no"); // open a new window
+		printWindow.document.write(content.innerHTML); // write the map into the new window
+		printWindow.document.write(logoBox); 
+		printWindow.print();
+	}
+	
     </script>
   </head>
 	<body>
