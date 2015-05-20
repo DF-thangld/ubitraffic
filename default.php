@@ -93,6 +93,8 @@ indenpendent URLs, I will implement this changes soon.
 	var travel_mode_map = google.maps.TravelMode.WALKING;
 	var travel_mode_link = 'walking';
 	var screen_address = 'Yliopistokatu 12';
+	var screen_lat=65.057858;
+	var screen_lon=25.468006;
 	var origin_place = screen_address;
 	var destination_place = ''; 
 	var markers_list = [];
@@ -101,6 +103,7 @@ indenpendent URLs, I will implement this changes soon.
 	var parking_markers = [];
 	var dest_markers = [];
 	
+	var geocoder;
 	var directionsDisplay;
 	var directionsService = new google.maps.DirectionsService();
 	var map;
@@ -151,7 +154,8 @@ indenpendent URLs, I will implement this changes soon.
 		var infowindow = new google.maps.InfoWindow({
 			content: contentString
 		});
-		var myLatlng = new google.maps.LatLng(65.057858, 25.468006);
+		var myLatlng = new google.maps.LatLng(screen_lat, screen_lon);
+		
 		geocoder = new google.maps.Geocoder();
 		
 		directionsDisplay = new google.maps.DirectionsRenderer();
@@ -163,7 +167,7 @@ indenpendent URLs, I will implement this changes soon.
 		map = new google.maps.Map(document.getElementById('map_panel'), mapOptions);
 		point_of_interest_service = new google.maps.places.PlacesService(map);
 		directionsDisplay.setMap(map);
-		
+		geocoder = new google.maps.Geocoder();
 		
 			
 			

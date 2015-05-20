@@ -149,7 +149,7 @@ indenpendent URLs, I will implement this changes soon.
 		var infowindow = new google.maps.InfoWindow({
 			content: contentString
 		});
-		var myLatlng = new google.maps.LatLng(65.057858, 25.468006);
+		var myLatlng = new google.maps.LatLng('Yliopistokatu 48, oulu, finland');
 		
 		directionsDisplay = new google.maps.DirectionsRenderer();
 		var mapOptions = {

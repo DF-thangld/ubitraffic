@@ -2,7 +2,30 @@ var point_of_interest_types = [	"restaurant", "cafe", "movie_theater", "art_gall
 								"gym", "hair_care", "travel_agency", "pharmacy", 
 								"hospital", "grocery_or_supermarket", "shoe_store", "home_goods_store"];
 
+								
+/*Cafes and Restaurants - 3
+Beauty ja Health 4
+Real Estate Management - 2
+Other - -1
+Culture ja Leisure - 6
+Marketing ja Media - 8
+Shopping - 33
+Authorities - 50
+Specialist Services - 54
+Finance ja Insurance - 61
+*/
 var points_of_interest = [];
+points_of_interest["-1"] = [];
+points_of_interest["2"] = [];
+points_of_interest["3"] = [];
+points_of_interest["4"] = [];
+points_of_interest["6"] = [];
+points_of_interest["8"] = [];
+points_of_interest["33"] = [];
+points_of_interest["50"] = [];
+points_of_interest["54"] = [];
+points_of_interest["61"] = [];
+
 points_of_interest["restaurant"] = [];
 points_of_interest["cafe"] = [];
 points_of_interest["movie_theater"] = [];
@@ -38,224 +61,159 @@ function findMarkerByName(markers_array, marker_name)
 	return null;
 }
 
-//create marker for google places
-function createPointOfInterestMarker(place, point_of_interest_type)
-{
-	
-	var placeContentString = "";
-	var request = { reference: place.reference };
-	
-	//get details for place
-
-	point_of_interest_service.getDetails(request, function(details, status) 
-	{
-		
-		if(status == google.maps.places.PlacesServiceStatus.OK) // got information for the place
-		{
-			//window.alert(2);
-
-			var openingHours = "";
-			if(typeof details.opening_hours !== 'undefined')
-			{
-				//create a list containing opening and closing hours for the week
-				if (typeof details.opening_hours.open_now!=='undefined')
-				{
-					if (details.opening_hours.open_now === true) 
-						openingHours = "<p>Status: Opening</p>";
-					else if (details.opening_hours.open_now === false) 
-						openingHours = "<p>Status: Closing</p>";
-				}
-				if (typeof details.opening_hours.weekday_text !== 'undefined')
-					openingHours = '<p>Opening hours:<br/><ul id="openingHours">' +
-						'<li class="listitem">' + details.opening_hours.weekday_text[0] + '</li>' +
-						'<li class="listitem">' + details.opening_hours.weekday_text[1] + '</li>' +
-						'<li class="listitem">' + details.opening_hours.weekday_text[2] + '</li>' +
-						'<li class="listitem">' + details.opening_hours.weekday_text[3] + '</li>' +
-						'<li class="listitem">' + details.opening_hours.weekday_text[4] + '</li>' +
-						'<li class="listitem">' + details.opening_hours.weekday_text[5] + '</li>' +
-						'<li class="listitem">' + details.opening_hours.weekday_text[6] + '</li>' +
-						'</ul></p>';
-			}
-			
-			var ratingText = "";
-			if (typeof details.rating !== 'undefined')
-			{
-				ratingText = "<p>Average rating: " + details.rating;
-				if (typeof details.user_ratings_total !== 'undefined') 
-					ratingText += " (" + details.rating + " voted)";
-				ratingText += "</p>";
-			}
-			
-			var website = "";
-			if (typeof details.website !== 'undefined')
-				ratingText = "<p>Website: " + details.website+"</p>";
-			
-			placeContentString = '<div id="content">'+
-			  '<h2 id="markerHeading" class="markerHeading">'+details.name+'</h2>'+
-			  '<div id="bodyContent">'+		  
-			  '<p>Address: '+details.formatted_address+'</p>'+
-			  '<p>Phone: '+details.formatted_phone_number+'</p>'+
-			  website +
-			  openingHours +
-			  ratingText +
-			  '</div></div>';
-			
-			//create marker image
-			var image = {
-				url: "images/point_of_interest/" + point_of_interest_type + "_icon.png",
-				scaledSize: new google.maps.Size(25, 25)
-			};
-			  
-			//create actual marker
-			var marker = new google.maps.Marker({
-				map: map,
-				position: place.geometry.location,
-				icon: image,
-				title: place.name
-			});
-			markerList.push(marker);
-			
-			var infowindow = new google.maps.InfoWindow({
-				content: placeContentString
-			});
-			inforWindowList.push(infowindow);
-			
-			google.maps.event.addListener(marker, 'click', function()
-			{
-				for (var i = 0; i < inforWindowList.length; i++) {
-					inforWindowList[i].close();
-				}
-				infowindow.open(map,marker);
-				email_text = infowindow.getContent();
-				RabbitMQ_send("html",email_text);
-				$.ajax({
-					type: "GET",
-					url: "oulunliikenne_statistic.php",
-						data: { instance_id: "xyz", // change instance_id to the right variable
-													action: "CLICK_PLACE",
-													data_1: point_of_interest_type,
-													data_2: place.name},
-						cache: false
-
-				});
-			});
-			points_of_interest[point_of_interest_type].push(marker);
-			
-			
-		}
-		else // cannot get information for the place
-		{
-			var openingHours = "";
-			if(typeof place.opening_hours !== 'undefined')
-			{
-				//create a list containing opening and closing hours for the week
-				if (typeof place.opening_hours.open_now!=='undefined')
-				{
-					if (place.opening_hours.open_now === true) 
-						openingHours = "<p>Status: Opening</p>";
-					else if (place.opening_hours.open_now === false) 
-						openingHours = "<p>Status: Closing</p>";
-				}
-			}
-			
-			placeContentString = '<div id="content">'+
-			  '<h2 id="markerHeading" class="markerHeading">'+place.name+'</h2>'+
-			  '<div id="bodyContent">'+		  
-			  '<p>Address: '+place.vicinity+'</p>'+
-			  openingHours +
-			  '</div></div>';
-			//console.log("Place: " + place.name + " - " + place.vicinity);
-			//create marker image
-			var image = {
-				url: "images/point_of_interest/" + point_of_interest_type + "_icon.png",
-				scaledSize: new google.maps.Size(25, 25)
-			};
-			  
-			//create actual marker
-			var marker = new google.maps.Marker({
-				map: map,
-				position: place.geometry.location,
-				icon: image,
-				title: place.name
-			});
-			markerList.push(marker);
-			
-			var infowindow = new google.maps.InfoWindow({
-				content: placeContentString
-			});
-			inforWindowList.push(infowindow);
-			
-			google.maps.event.addListener(marker, 'click', function() {
-				for (var i = 0; i < inforWindowList.length; i++) {
-					inforWindowList[i].close();
-				}
-				infowindow.open(map,marker);
-				email_text = infowindow.getContent();
-				RabbitMQ_send("html",email_text);
-				$.ajax({
-					type: "GET",
-					url: "oulunliikenne_statistic.php",
-						data: { instance_id: "xyz", // change instance_id to the right variable
-													action: "CLICK_PLACE",
-													data_1: point_of_interest_type,
-													data_2: place.name},
-						cache: false
-				});
-			});
-			points_of_interest[point_of_interest_type].push(marker);
-		}
-	});
-	
-}
 
 function changePointOfInterestType(point_of_interest_type, map)
 {
-
+	var nearest_point = 0;
+	for (j=0; j<markerList.length; j++)
+		markerList[j].setMap(null);
+	var nearest_lat = 0;
+	var nearest_lon = 0;
+	var nearest_distance = 99999999999999;
 	if (points_of_interest[point_of_interest_type].length === 0)
 	{
 
 		//missing screen_point since the js file first created, I add it but don't know whether it is correct
-		var screen_point = new google.maps.LatLng(65.057333, 25.472555);
-
-
-
-		var request = {
-			//the location from which the search is done (this could be changed to ubihotspot's location later)
-			location: screen_point,
+		//var screen_point = new google.maps.LatLng(65.057333, 25.472555);
+		
+		
+		
+		$.ajax({
+			type: "GET",
+			url: "oulunliikenne_places.php?category_id=" + point_of_interest_type.toString(),
+			async:false,
+			cache: false,
+			dataType: "xml",
+			success: function(xml) {
 				
-			//radius for the places to show up
-			radius: 10000,
+				$(xml).find('place').each(function(){
 				
-			//set the type of places to search
-			types: [point_of_interest_type]
-		};
-
-		var point_of_interest_service = new google.maps.places.PlacesService(map);
-
-		point_of_interest_service.nearbySearch(request, function(results, status)
-		{
-
-			if (status == google.maps.places.PlacesServiceStatus.OK)
-			{
-			
-				for (var i = 0; i < results.length; i++) 
-				{
-					createPointOfInterestMarker(results[i], point_of_interest_type);
 					
-				}
+					var company_id = $(this).find("company_id").text();
+					var company_name = $(this).find("company_name").text();
+					var business_id = $(this).find("business_id").text();
+					var description_1 = $(this).find("description_1").text();
+					var description_2 = $(this).find("description_2").text();
+					var url = $(this).find("url").text();
+					var address = $(this).find("address").text();
+					var phone = $(this).find("phone").text();
+					var email = $(this).find("email").text();
+					var office_hours_1 = $(this).find("office_hours_1").text();
+					var office_hours_2 = $(this).find("office_hours_2").text();
+					var image = $(this).find("image").text();
+					
+					var lat = $(this).find("lat").text();
+					var lon = $(this).find("lon").text();
+				
+					var distance = Math.sqrt(Math.pow(parseFloat(lat) - screen_lat, 2) + Math.pow(parseFloat(lon) - screen_lon, 2));
+					if (distance < nearest_distance)
+					{
+						nearest_distance = distance;
+						nearest_lat = lat;
+						nearest_lon = lon;
+					}
+					
+					if (description_1 !== '')
+						description_1 = '<p>' +  description_1 + '</p>';
+					if (phone !== '')
+						phone = '<p>Phone: ' +  phone + '</p>';
+					if (url !== '')
+						url = '<p>Website: ' +  url + '</p>';
+					if (email !== '')
+						email = '<p>Email: ' +  email + '</p>';
+					if (office_hours_1 !== '')
+						office_hours_1 = '<p>Opening hours: ' +  office_hours_1 + '</p>';
+					if (image !== '')
+						image = '<p><img src="' + image + '" /></p>';
+							
+					var place_content_string = '<div id="content">'+
+					  '<h2 id="markerHeading" class="markerHeading">'+company_name+'</h2>'+
+					  '<div id="bodyContent">'+		  
+					  description_1 + 
+					  '<p>Address: '+address+'</p>'+
+					  phone + 
+					  email +
+					  url +
+					  office_hours_1 +
+					  image + 
+					  '</div></div>';
+					//console.log(placeContentString);
+							
+					//create marker image
+					var image = {
+						url: "images/point_of_interest/" + point_of_interest_type + "_icon.png",
+						scaledSize: new google.maps.Size(25, 25)
+					};
+							  
+					//create actual marker
+					var place_marker = new google.maps.Marker({
+						map: map,
+						position: new google.maps.LatLng(lat, lon),
+						icon: image,
+						title: company_name
+					});
+					
+					place_marker.setMap(map);
+					
+					markerList.push(place_marker);
+					points_of_interest[point_of_interest_type].push(place_marker);
+					
+					var infowindow = new google.maps.InfoWindow({
+						content: place_content_string
+					});
+					google.maps.event.addListener(place_marker, 'click', function() {
+						
+						for (var i = 0; i < inforWindowList.length; i++) {
+							inforWindowList[i].close();
+						}
+						
+						infowindow.open(map,place_marker);
+						email_text = infowindow.getContent();
+						RabbitMQ_send("html",email_text);
+								
+								
+						$.ajax({
+							type: "GET",
+							url: "oulunliikenne_statistic.php",
+							data: { instance_id: "xyz", // change instance_id to the right variable
+									action: "CLICK_PLACE", 
+									data_1: point_of_interest_type.toString(),
+									data_2: company_id}, 
+							cache: false
+						});
+					});
+					inforWindowList.push(infowindow);
+					
+				});
 			}
 		});
+		
+		var center = new google.maps.LatLng(nearest_lat, nearest_lon);
+		map.panTo(center);
+
 	}
 	else
 	{
+
+		
+		for (j=0; j<points_of_interest[point_of_interest_type].length; j++)
+		{
+			points_of_interest[point_of_interest_type][j].setMap(map);
 			
+			
+			var distance = Math.sqrt(Math.pow(points_of_interest[point_of_interest_type][j].internalPosition.A - screen_lat, 2) + Math.pow(points_of_interest[point_of_interest_type][j].internalPosition.F - screen_lon, 2));
+			if (distance < nearest_distance)
+			{
+				nearest_distance = distance;
+				nearest_lat = points_of_interest[point_of_interest_type][j].internalPosition.A;
+				nearest_lon = points_of_interest[point_of_interest_type][j].internalPosition.F;
+			}
+			
+			
+		}
+		var center = new google.maps.LatLng(nearest_lat, nearest_lon);
+		map.panTo(center);
 	}
-
-	for (j=0; j<markerList.length; j++)
-		markerList[j].setMap(null);
-
-	for (j=0; j<points_of_interest[point_of_interest_type].length; j++)
-		points_of_interest[point_of_interest_type][j].setMap(map);
 
 	for (i = 0, len = point_of_interest_types.length; i < len; i++)
 	{
@@ -263,6 +221,7 @@ function changePointOfInterestType(point_of_interest_type, map)
 	}
 
 	$("#bus_stop_information_button").attr("class", "button");
+	$('#point_of_interest').fadeOut(0);
 
 
 	//This cause the problem with the position change after click
@@ -280,6 +239,12 @@ function changePointOfInterestType(point_of_interest_type, map)
 
 function get_all_bus_stops(map)
 {
+	for (j=0; j<markerList.length; j++)
+		markerList[j].setMap(null);
+	var nearest_distance = 9999999999999;
+	var nearest_lat = 0;
+	var nearest_lon = 0;
+	$('#point_of_interest').fadeOut(0);
 	if (busStopMarkerList.length == 0)
 	{
 		$.ajax({
@@ -294,12 +259,20 @@ function get_all_bus_stops(map)
 					var name = $(this).find("stop_name").text();
 					var latitude = $(this).find("stop_lat").text();
 					var longitude = $(this).find("stop_lon").text();
+					var distance = Math.sqrt(Math.pow(parseFloat(latitude) - screen_lat, 2) + Math.pow(parseFloat(longitude) - screen_lon, 2));
+					if (distance < nearest_distance)
+					{
+						nearest_distance = distance;
+						nearest_lat = latitude;
+						nearest_lon = longitude;
+					}
 					var busStopMarker = new google.maps.Marker({
 						position: new google.maps.LatLng(latitude,longitude),
 						map: map,
 						title: name,
 						icon: 'images/bus_stop_icon.png'
 					});
+					busStopMarker.setMap(map);
 					markerList.push(busStopMarker);
 					busStopMarkerList.push(busStopMarker);
 					
@@ -341,6 +314,7 @@ function get_all_bus_stops(map)
 						});
 						
 						
+						
 						infowindow.open(map,busStopMarker);
 						email_text = infowindow.getContent();
 						RabbitMQ_send("html",email_text);
@@ -360,14 +334,27 @@ function get_all_bus_stops(map)
 					
 					
 				});
+				var center = new google.maps.LatLng(nearest_lat, nearest_lon);
+				map.panTo(center);
 			}
 		});
 	}
-	for (j=0; j<markerList.length; j++)
-		markerList[j].setMap(null);
-	
-	for (j=0; j<busStopMarkerList.length; j++)
-		busStopMarkerList[j].setMap(map);
+	else
+	{
+		for (j=0; j<busStopMarkerList.length; j++)
+		{
+			busStopMarkerList[j].setMap(map);
+			var distance = Math.sqrt(Math.pow(busStopMarkerList[j].internalPosition.A - screen_lat, 2) + Math.pow(busStopMarkerList[j].internalPosition.F - screen_lon, 2));
+			if (distance < nearest_distance)
+			{
+				nearest_distance = distance;
+				nearest_lat = busStopMarkerList[j].internalPosition.A;
+				nearest_lon = busStopMarkerList[j].internalPosition.F;
+			}
+		}
+		var center = new google.maps.LatLng(nearest_lat, nearest_lon);
+		map.panTo(center);
+	}
 	
 	for (i = 0, len = point_of_interest_types.length; i < len; i++)
 	{
@@ -621,21 +608,19 @@ function menu(map)
 	});
 	$main_menu.append($traffic_congestion_button);
 	
-
-	
 	// point of interest menu
 	var $point_of_interest_menu = $(document.createElement("DIV"));
 	$point_of_interest_menu.attr("id", "point_of_interest");
-	$point_of_interest_menu.attr("style", "display:none;position:absolute;margin-left:-50px;bottom:110px;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:420px;height:260px;");
+	$point_of_interest_menu.attr("style", "display:none;position:absolute;margin-left:-50px;bottom:110px;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:470px;height:280px;");
 	// point of interest menu - restaurant button
 	var $restaurant_information_button = $(document.createElement("DIV"));
 	$restaurant_information_button.attr("id", "restaurant_information_button");
 	$restaurant_information_button.attr("class", "button");
 	$restaurant_information_button.attr("style", "margin-left:10px;width:90px;margin-top:7px;");
-	$restaurant_information_button.html("<center><img src='images/point_of_interest/restaurant_button.png' style='height:40px;' width='40px' /><div style='font-size:15px'>Restaurant</div></center>");
+	$restaurant_information_button.html("<center><img src='images/point_of_interest/3_button.png' style='height:40px;' width='40px' /><div style='font-size:15px'>Cafes and Restaurants</div></center>");
 	google.maps.event.addDomListener($restaurant_information_button.get(0), 'click', function()
 	{
-		changePointOfInterestType("restaurant", map);
+		changePointOfInterestType("3", map);
 	});
 	$point_of_interest_menu.append($restaurant_information_button);
 	// point of interest menu - cafe button
@@ -643,10 +628,10 @@ function menu(map)
 	$cafe_information_button.attr("id", "cafe_information_button");
 	$cafe_information_button.attr("class", "button");
 	$cafe_information_button.attr("style", "margin-left:10px;width:90px;margin-top:7px;");
-	$cafe_information_button.html("<center><img src='images/point_of_interest/cafe_button.png' style='height:40px;' width='40px' /><div style='font-size:15px'>Cafe</div></center>");
+	$cafe_information_button.html("<center><img src='images/point_of_interest/4_button.png' style='height:40px;' width='40px' /><div style='font-size:15px'>Beauty ja Health</div></center>");
 	google.maps.event.addDomListener($cafe_information_button.get(0), 'click', function()
 	{
-		changePointOfInterestType("cafe", map);
+		changePointOfInterestType("4", map);
 	});
 	$point_of_interest_menu.append($cafe_information_button);
 	// point of interest menu - movie_theater button
@@ -654,10 +639,10 @@ function menu(map)
 	$movie_theater_information_button.attr("id", "movie_theater_information_button");
 	$movie_theater_information_button.attr("class", "button");
 	$movie_theater_information_button.attr("style", "margin-left:10px;width:90px;margin-top:7px;");
-	$movie_theater_information_button.html("<center><img src='images/point_of_interest/movie_theater_button.png' style='height:40px;' width='40px' /><div style='font-size:15px'>Theater</div></center>");
+	$movie_theater_information_button.html("<center><img src='images/point_of_interest/2_button.png' style='height:40px;' width='40px' /><div style='font-size:15px'>Real Estate Management</div></center>");
 	google.maps.event.addDomListener($movie_theater_information_button.get(0), 'click', function()
 	{
-		changePointOfInterestType("movie_theater", map);
+		changePointOfInterestType("2", map);
 	});
 	$point_of_interest_menu.append($movie_theater_information_button);
 	// point of interest menu - art_gallery button
@@ -665,32 +650,21 @@ function menu(map)
 	$art_gallery_information_button.attr("id", "art_gallery_information_button");
 	$art_gallery_information_button.attr("class", "button");
 	$art_gallery_information_button.attr("style", "margin-left:10px;width:90px;margin-top:7px;");
-	$art_gallery_information_button.html("<center><img src='images/point_of_interest/art_gallery_button.png' style='height:40px;' width='40px' /><div style='font-size:15px'>Art Gallery</div></center>");
+	$art_gallery_information_button.html("<center><img src='images/point_of_interest/6_button.png' style='height:40px;' width='40px' /><div style='font-size:15px'>Culture ja Leisure</div></center>");
 	google.maps.event.addDomListener($art_gallery_information_button.get(0), 'click', function()
 	{
-		changePointOfInterestType("art_gallery", map);
+		changePointOfInterestType("6", map);
 	});
 	$point_of_interest_menu.append($art_gallery_information_button);
-	// point of interest menu - gym button
-	var $gym_information_button = $(document.createElement("DIV"));
-	$gym_information_button.attr("id", "gym_information_button");
-	$gym_information_button.attr("class", "button");
-	$gym_information_button.attr("style", "margin-left:10px;width:90px;margin-top:7px;");
-	$gym_information_button.html("<center><img src='images/point_of_interest/gym_button.png' style='height:40px;' width='40px' /><div style='font-size:15px'>Gym</div></center>");
-	google.maps.event.addDomListener($gym_information_button.get(0), 'click', function()
-	{
-		changePointOfInterestType("gym", map);
-	});
-	$point_of_interest_menu.append($gym_information_button);
 	// point of interest menu - hair_care button
 	var $hair_care_information_button = $(document.createElement("DIV"));
 	$hair_care_information_button.attr("id", "hair_care_information_button");
 	$hair_care_information_button.attr("class", "button");
 	$hair_care_information_button.attr("style", "margin-left:10px;width:90px;margin-top:10px;");
-	$hair_care_information_button.html("<center><img src='images/point_of_interest/hair_care_button.png' style='height:40px;' width='40px' /><div style='font-size:15px'>Hair Care</div></center>");
+	$hair_care_information_button.html("<center><img src='images/point_of_interest/8_button.png' style='height:40px;' width='40px' /><div style='font-size:15px'>Marketing ja Media</div></center>");
 	google.maps.event.addDomListener($hair_care_information_button.get(0), 'click', function()
 	{
-		changePointOfInterestType("hair_care", map);
+		changePointOfInterestType("8", map);
 	});
 	$point_of_interest_menu.append($hair_care_information_button);
 	// point of interest menu - pharmacy button
@@ -698,10 +672,10 @@ function menu(map)
 	$pharmacy_information_button.attr("id", "pharmacy_information_button");
 	$pharmacy_information_button.attr("class", "button");
 	$pharmacy_information_button.attr("style", "margin-left:10px;width:90px;margin-top:10px;");
-	$pharmacy_information_button.html("<center><img src='images/point_of_interest/pharmacy_button.png' style='height:40px;' width='40px' /><div style='font-size:15px'>Pharmacy</div></center>");
+	$pharmacy_information_button.html("<center><img src='images/point_of_interest/33_button.png' style='height:40px;' width='40px' /><div style='font-size:15px'>Shopping</div></center>");
 	google.maps.event.addDomListener($pharmacy_information_button.get(0), 'click', function()
 	{
-		changePointOfInterestType("pharmacy", map);
+		changePointOfInterestType("33", map);
 	});
 	$point_of_interest_menu.append($pharmacy_information_button);
 	// point of interest menu - travel_agency button
@@ -709,10 +683,10 @@ function menu(map)
 	$travel_agency_information_button.attr("id", "travel_agency_information_button");
 	$travel_agency_information_button.attr("class", "button");
 	$travel_agency_information_button.attr("style", "margin-left:10px;width:90px;margin-top:10px;");
-	$travel_agency_information_button.html("<center><img src='images/point_of_interest/travel_agency_button.png' style='height:40px;' width='40px' /><div style='font-size:15px'>Travel Agency</div></center>");
+	$travel_agency_information_button.html("<center><img src='images/point_of_interest/50_button.png' style='height:40px;' width='40px' /><div style='font-size:15px'>Authorities</div></center>");
 	google.maps.event.addDomListener($travel_agency_information_button.get(0), 'click', function()
 	{
-		changePointOfInterestType("travel_agency", map);
+		changePointOfInterestType("50", map);
 	});
 	$point_of_interest_menu.append($travel_agency_information_button);
 	// point of interest menu - home_goods_store button
@@ -720,10 +694,10 @@ function menu(map)
 	$home_goods_store_information_button.attr("id", "home_goods_store_information_button");
 	$home_goods_store_information_button.attr("class", "button");
 	$home_goods_store_information_button.attr("style", "margin-left:10px;width:90px;margin-top:10px;");
-	$home_goods_store_information_button.html("<center><img src='images/point_of_interest/home_goods_store_button.png' style='height:40px;' width='40px' /><div style='font-size:15px'>Store</div></center>");
+	$home_goods_store_information_button.html("<center><img src='images/point_of_interest/54_button.png' style='height:40px;' width='40px' /><div style='font-size:15px'>Specialist Services</div></center>");
 	google.maps.event.addDomListener($home_goods_store_information_button.get(0), 'click', function()
 	{
-		changePointOfInterestType("home_goods_store", map);
+		changePointOfInterestType("54", map);
 	});
 	$point_of_interest_menu.append($home_goods_store_information_button);
 	// point of interest menu - home_goods button
@@ -731,25 +705,13 @@ function menu(map)
 	$grocery_or_supermarket_information_button.attr("id", "grocery_or_supermarket_information_button");
 	$grocery_or_supermarket_information_button.attr("class", "button");
 	$grocery_or_supermarket_information_button.attr("style", "margin-left:10px;width:90px;margin-top:7px;");
-	$grocery_or_supermarket_information_button.html("<center><img src='images/point_of_interest/grocery_or_supermarket_button.png' style='height:40px;' width='40px' /><div style='font-size:15px'>Supermarket</div></center>");
+	$grocery_or_supermarket_information_button.html("<center><img src='images/point_of_interest/61_button.png' style='height:40px;' width='40px' /><div style='font-size:15px'>Finance ja Insurance</div></center>");
 	google.maps.event.addDomListener($grocery_or_supermarket_information_button.get(0), 'click', function()
 	{
-		changePointOfInterestType("grocery_or_supermarket", map);
+		changePointOfInterestType("61", map);
 	});
 	$point_of_interest_menu.append($grocery_or_supermarket_information_button);
 	
-	// point of interest menu - hospital button
-	var $hospital_information_button = $(document.createElement("DIV"));
-	$hospital_information_button.attr("id", "hospital_information_button");
-	$hospital_information_button.attr("class", "button");
-	$hospital_information_button.attr("style", "margin-left:10px;width:90px;margin-top:7px;height:70px;");
-	$hospital_information_button.html("<center><img src='images/point_of_interest/hospital_button.png' style='height:40px;' width='40px' /><div style='font-size:15px'>Hospital</div></center>");
-	google.maps.event.addDomListener($hospital_information_button.get(0), 'click', function()
-	{
-		changePointOfInterestType("hospital", map);
-	});
-	$point_of_interest_menu.append($hospital_information_button);
-
 	// point of interest menu - bus stop button
 	var $bus_stop_information_button = $(document.createElement("DIV"));
 	$bus_stop_information_button.attr("id", "bus_stop_information_button");
@@ -762,6 +724,19 @@ function menu(map)
 		get_all_bus_stops(map);
 	});
 	$point_of_interest_menu.append($bus_stop_information_button);
+	
+	// point of interest menu - hospital button
+	var $hospital_information_button = $(document.createElement("DIV"));
+	$hospital_information_button.attr("id", "hospital_information_button");
+	$hospital_information_button.attr("class", "button");
+	$hospital_information_button.attr("style", "margin-left:10px;width:90px;margin-top:7px;height:70px;");
+	$hospital_information_button.html("<center><img src='images/point_of_interest/hospital_button.png' style='height:40px;' width='40px' /><div style='font-size:15px'>Others</div></center>");
+	google.maps.event.addDomListener($hospital_information_button.get(0), 'click', function()
+	{
+		changePointOfInterestType("-1", map);
+	});
+	$point_of_interest_menu.append($hospital_information_button);
+	
 	
 	$innerContainer.append($point_of_interest_menu);
 	
@@ -787,6 +762,11 @@ function menu(map)
 		for (j=0; j<markerList.length; j++)
 			markerList[j].setMap(null);
 		
+		var nearest_distance = 99999999999999999999;
+		var nearest_lat = 0;
+		var nearest_lon = 0;
+		
+		$('#traffic_congestion').fadeOut(0);
 		
 		// get weather info if uninitiazation
 		if (weather_markers.length === 0)
@@ -817,6 +797,16 @@ function menu(map)
 								icon: 'images/weather_map_icon.png'
 							});
 							markerList.push(weather_marker);
+							weather_marker.setMap(map);
+							var distance = Math.sqrt(Math.pow(parseFloat(weather_place.latitude) - screen_lat, 2) + Math.pow(parseFloat(weather_place.longitude) - screen_lon, 2));
+							
+							if (distance < nearest_distance)
+							{
+								nearest_distance = distance;
+								nearest_lat = weather_place.latitude;
+								nearest_lon = weather_place.longitude;
+								
+							}
 							
 							var contentString = '<div style="width:170px;height:100px;">'+
 							  '<b>' + name + '</b>'+
@@ -856,12 +846,28 @@ function menu(map)
 						}
 						
 					});
+
+					var center = new google.maps.LatLng(nearest_lat, nearest_lon);
+					map.panTo(center);
 				}
 			});
+			
 		}
-		// add weather info markers
-		for (var i = 0; i < weather_markers.length; i++) {
-			weather_markers[i].setMap(map);
+		else
+		{
+			// add weather info markers
+			for (var i = 0; i < weather_markers.length; i++) {
+				weather_markers[i].setMap(map);
+				var distance = Math.sqrt(Math.pow(weather_markers[i].internalPosition.A - screen_lat, 2) + Math.pow(weather_markers[i].internalPosition.F - screen_lon, 2));
+				if (distance < nearest_distance)
+				{
+					nearest_distance = distance;
+					nearest_lat = weather_markers[i].internalPosition.A;
+					nearest_lon = weather_markers[i].internalPosition.F;
+				}
+			}
+			var center = new google.maps.LatLng(nearest_lat, nearest_lon);
+			map.panTo(center);
 		}
 		$.ajax({
 
@@ -877,7 +883,7 @@ function menu(map)
 
                 cache: false
 
-	});
+		});
 		
 	});
 	$traffic_congestion_menu.append($weather_information_button);
@@ -898,6 +904,10 @@ function menu(map)
 		for (j=0; j<markerList.length; j++)
 			markerList[j].setMap(null);
 		
+		var nearest_distance = 9999999999;
+		var nearest_lat = 0;
+		var nearest_lon = 0;
+		$('#traffic_congestion').fadeOut(0);
 		// get camera info if uninitiazation
 		if (camera_markers.length === 0)
 		{
@@ -928,7 +938,14 @@ function menu(map)
 								icon: 'images/camera_map_icon.png'
 							});
 							markerList.push(camera_marker);
-							
+							camera_marker.setMap(map);
+							var distance = Math.sqrt(Math.pow(parseFloat(camera_place.latitude) - screen_lat, 2) + Math.pow(parseFloat(camera_place.longitude) - screen_lon, 2));
+							if (distance < nearest_distance)
+							{
+								nearest_distance = distance;
+								nearest_lat = camera_place.latitude;
+								nearest_lon = camera_place.longitude;
+							}
 							
 							var contentString = '<div style="width:170px;height:100px;">'+
 							  '<b>' + name + '</b>'+
@@ -961,13 +978,28 @@ function menu(map)
 						}
 						
 					});
+					var center = new google.maps.LatLng(nearest_lat, nearest_lon);
+					map.panTo(center);
 				}
 			});
 		}
-		// add camera info markers
-		for (var i = 0; i < camera_markers.length; i++) {
-			camera_markers[i].setMap(map);
+		else
+		{
+			// add camera info markers
+			for (var i = 0; i < camera_markers.length; i++) {
+				camera_markers[i].setMap(map);
+				var distance = Math.sqrt(Math.pow(camera_markers[i].internalPosition.A - screen_lat, 2) + Math.pow(camera_markers[i].internalPosition.F - screen_lon, 2));
+				if (distance < nearest_distance)
+				{
+					nearest_distance = distance;
+					nearest_lat = camera_markers[i].internalPosition.A;
+					nearest_lon = camera_markers[i].internalPosition.F;
+				}
+			}
+			var center = new google.maps.LatLng(nearest_lat, nearest_lon);
+			map.panTo(center);
 		}
+		
 		$.ajax({
 			type: "GET",
 			url: "oulunliikenne_statistic.php",
@@ -1000,6 +1032,10 @@ function menu(map)
 		for (j=0; j<markerList.length; j++)
 			markerList[j].setMap(null);
 		
+		var nearest_distance = 9999999999;
+		var nearest_lat = 0;
+		var nearest_lon = 0;
+		$('#traffic_congestion').fadeOut(0);
 		// get parking info if uninitiazation
 		if (parking_markers.length === 0)
 		{
@@ -1027,6 +1063,16 @@ function menu(map)
 							icon: 'images/parking_map_icon.png'
 						});
 						markerList.push(parking_marker);
+						
+						parking_marker.setMap(map);
+						var distance = Math.sqrt(Math.pow(parseFloat(geo_point[1]) - screen_lat, 2) + Math.pow(parseFloat(geo_point[0]) - screen_lon, 2));
+						if (distance < nearest_distance)
+						{
+							nearest_distance = distance;
+							nearest_lat = geo_point[1];
+							nearest_lon = geo_point[0];
+						}
+							
 						var contentString = '<div style="width:170px;height:120px;">'+
 						  '<b>' + name + '</b>'+
 						  '<p>' + description + '</p>'+
@@ -1058,13 +1104,28 @@ function menu(map)
 						parking_markers.push(parking_marker);
 						
 					});
+					var center = new google.maps.LatLng(nearest_lat, nearest_lon);
+					map.panTo(center);
 				}
 			});
 		}
-		// add parking info markers
-		for (var i = 0; i < parking_markers.length; i++) {
-			parking_markers[i].setMap(map);
+		else
+		{
+			// add parking info markers
+			for (var i = 0; i < parking_markers.length; i++) {
+				parking_markers[i].setMap(map);
+				var distance = Math.sqrt(Math.pow(parking_markers[i].internalPosition.A - screen_lat, 2) + Math.pow(parking_markers[i].internalPosition.F - screen_lon, 2));
+				if (distance < nearest_distance)
+				{
+					nearest_distance = distance;
+					nearest_lat = parking_markers[i].internalPosition.A;
+					nearest_lon = parking_markers[i].internalPosition.F;
+				}
+			}
+			var center = new google.maps.LatLng(nearest_lat, nearest_lon);
+			map.panTo(center);
 		}
+		
 		$.ajax({
 			type: "GET",
 			url: "oulunliikenne_statistic.php",
