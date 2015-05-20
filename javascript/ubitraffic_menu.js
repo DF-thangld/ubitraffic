@@ -1220,7 +1220,7 @@ function menu(map)
 	// bus_timetable menu
 	var $bus_timetable_menu = $(document.createElement("DIV"));
 	$bus_timetable_menu.attr("id", "bus_timetable_menu");
-	$bus_timetable_menu.attr("style", "display:none;position:absolute;margin-left:-50px;bottom:110px;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:420px;height:200px;");
+	$bus_timetable_menu.attr("style", "display:none;position:absolute;margin-left:-50px;bottom:110px;border:2px solid;border-color: #2a3333;border-radius: 6px;background-color: white;width:420px;height:230px;");
 	// bus_timetable menu - bus number form
 	var $bus_number_form = $(document.createElement("DIV"));
 	$bus_number_form.attr("id", "bus_number_form");
@@ -1247,7 +1247,7 @@ function menu(map)
 						var route_long_name = $(this).find("route_long_name").text();
 						var direction_id = $(this).find("direction_id").text();
 						var trip_headsign = $(this).find("trip_headsign").text();
-						content += "<tr><td>Direction to <b>" + trip_headsign + "</b></td><td><input type='radio' name='show_bus_shape' onclick='show_shape(\"" + route_id + "\", "+direction_id+");'></td></tr>";
+						content += "<tr height='30px;'><td>Direction to <b>" + trip_headsign + "</b></td><td><button style='margin-left:5px;' onclick='show_shape(\"" + route_id + "\", "+direction_id+");'>Show this direction</button></td></tr>";
 					});
 					if (content === "")
 					{
