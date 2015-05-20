@@ -244,10 +244,58 @@ indenpendent URLs, I will implement this changes soon.
 		google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
 			reset();
 			//window.alert(1);
-			$("#start_place").keyboard();
-			$("#destination").keyboard();
-			$("#bus_number").keyboard();
-			$("#email_input").keyboard();
+			var keyboard_options = {
+
+				display: {
+					'bksp'   : '\u2190',
+					'enter'  : 'return',
+					'default': 'ABC',
+					'meta1'  : '.?123',
+					'meta2'  : '#+=',
+					'accept' : '\u21d3'
+				},
+
+				layout: 'custom',
+				customLayout: {
+					'default': [
+						'1 2 3 4 5 6 7 8 9 0 {bksp}',
+						'q w e r t y u i o p',
+						'a s d f g h j k l',
+						'{s} z x c v b n m @ . {s}',
+						'{meta1} {space} _ - {accept}'
+					],
+					'shift': [
+						'Q W E R T Y U I O P {bksp}',
+						'A S D F G H J K L',
+						'{s} Z X C V B N M @ . {s}',
+						'{meta1} {space} _ - {accept}'
+					],
+					'meta1': [
+						'1 2 3 4 5 6 7 8 9 0 {bksp}',
+						'` | { } % ^ * / \'}',
+						'{meta2} $ & ~ # = + . {meta2}',
+						'{default} {space} ! ? {accept}'
+					],
+					'meta2': [
+						'[ ] { } \u2039 \u203a ^ * " , {bksp}',
+						'\\ | / < > $ \u00a3 \u00a5 \u2022',
+						'{meta1} \u20ac & ~ # = + . {meta1}',
+						'{default} {space} ! ? {accept}'
+					]
+				}
+
+			};
+			$("#start_place").keyboard(keyboard_options);
+			$("#destination").keyboard(keyboard_options);
+			$("#bus_number").keyboard(keyboard_options);
+			//$("#email_input").keyboard();
+			
+			$('#email_input').keyboard(keyboard_options);
+			
+			
+			
+			
+			
 			$.ajax({
                 type: "GET",
                 url: "oulunliikenne_statistic.php",
