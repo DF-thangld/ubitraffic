@@ -116,6 +116,9 @@ indenpendent URLs, I will implement this changes soon.
 	var file_name = '';
 	var geocoder;
 	var destDisplay;
+	var is_key_down = false;
+	var mouse_lat = 0;
+	var mouse_lon = 0;
 	
 	function reset(){
 		//reset menu
@@ -140,6 +143,74 @@ indenpendent URLs, I will implement this changes soon.
 		$("#destination").val(destination_place);
 		
 	}
+	
+	function custom_click()
+	{
+		if (!is_key_down)
+			return;
+			
+			
+		//find route
+		var latitude = mouse_lat;
+		var longitude = mouse_lon;
+			
+		dest = new google.maps.LatLng(latitude,longitude);
+		origin_place = $("#start_place").val();
+			
+		//clear the array of destination markers
+		if(dest_markers.length > 0)
+		{
+			dest_markers[0].setMap(null);
+			dest_markers = [];
+		}	
+						
+		//geocoder to determine address
+		geocoder.geocode({'latLng': dest}, function(results, status) {
+			if (status == google.maps.GeocoderStatus.OK) {			  
+				var titletext = "To: "+results[0].formatted_address;					
+					
+				//create marker at destination
+				var marker_destination = new google.maps.Marker({
+					position: dest,
+					map: map
+				});
+				var info_window_content = "<div>"+titletext+"<br />Choose Travel Mode:<br /><br /></div>";
+				info_window_content += "<img src='images/pedestrial.png' onclick='find_route(\"" + $("#start_place").val() + "\",new google.maps.LatLng(" + latitude + "," + longitude + "),google.maps.TravelMode.WALKING);' style='height:40px;' width='40px'/>";
+				info_window_content += "<img src='images/bike.png' onclick='find_route(\"" + $("#start_place").val() + "\",new google.maps.LatLng(" + latitude + "," + longitude + "),google.maps.TravelMode.BICYCLING);' style='height:40px;' width='40px'/>";
+				info_window_content += "<img src='images/bus.png' onclick='find_route(\"" + $("#start_place").val() + "\",new google.maps.LatLng(" + latitude + "," + longitude + "),google.maps.TravelMode.TRANSIT);' style='height:40px;' width='40px'/>";
+				
+				//create info window to show content
+				destDisplay = new google.maps.InfoWindow({
+					content: info_window_content
+				});
+					
+				//open marker immediately						
+				destDisplay.open(map,marker_destination);
+				dest_markers[0] = marker_destination;									  
+			} 	else {
+					console.log('Geocoder failed due to: ' + status);
+			}
+		});
+			
+			
+		//close the useless panel
+			
+		if(0)//is navigation mode
+		{}
+		else
+		{
+			$('#navigation_menu').css('display', 'none');
+			$('#bus_timetable_menu').css('display', 'none');
+			$('#download_div').css('display', 'none');
+			$('#point_of_interest').css('display', 'none');
+			$('#traffic_congestion').css('display', 'none');
+		}
+		is_key_down = false;
+		mouse_lat = 0;
+		mouse_lon = 0;		
+		
+	}
+	
     $(function(){
         //initMap();
 		
@@ -169,9 +240,6 @@ indenpendent URLs, I will implement this changes soon.
 		directionsDisplay.setMap(map);
 		geocoder = new google.maps.Geocoder();
 		
-			
-			
-		
 		var marker = new google.maps.Marker({
 			position: myLatlng,
 			map: map,
@@ -181,64 +249,19 @@ indenpendent URLs, I will implement this changes soon.
 			infowindow.open(map,marker);
 		});
 		
-		google.maps.event.addListener(map, 'click', function(event) {
+		//$('#map_panel').bind('taphold', function(event){
+		google.maps.event.addListener(map, 'mousedown', function(event) {
+			is_key_down = true;
+			mouse_lat = event.latLng.lat();
+			mouse_lon = event.latLng.lng();
 			
-			//find route
-			var latitude = event.latLng.lat();
-			var longitude = event.latLng.lng();
+			setTimeout(function(){ custom_click(); }, 500);
 			
-			dest = new google.maps.LatLng(latitude,longitude);
-			origin_place = $("#start_place").val();
-			
-			//clear the array of destination markers
-			if(dest_markers.length > 0)
-			{
-				dest_markers[0].setMap(null);
-				dest_markers = [];
-			}	
-						
-			//geocoder to determine address
-			geocoder.geocode({'latLng': dest}, function(results, status) {
-				if (status == google.maps.GeocoderStatus.OK) {			  
-					var titletext = "To: "+results[0].formatted_address;					
-					
-					//create marker at destination
-					var marker_destination = new google.maps.Marker({
-						position: dest,
-						map: map
-					});
-					var info_window_content = "<div>"+titletext+"<br />Choose Travel Mode:<br /><br /></div>";
-					info_window_content += "<img src='images/pedestrial.png' onclick='find_route(\"" + $("#start_place").val() + "\",new google.maps.LatLng(" + latitude + "," + longitude + "),google.maps.TravelMode.WALKING);' style='height:40px;' width='40px'/>";
-					info_window_content += "<img src='images/bike.png' onclick='find_route(\"" + $("#start_place").val() + "\",new google.maps.LatLng(" + latitude + "," + longitude + "),google.maps.TravelMode.BICYCLING);' style='height:40px;' width='40px'/>";
-					info_window_content += "<img src='images/bus.png' onclick='find_route(\"" + $("#start_place").val() + "\",new google.maps.LatLng(" + latitude + "," + longitude + "),google.maps.TravelMode.TRANSIT);' style='height:40px;' width='40px'/>";
-					
-					//create info window to show content
-					destDisplay = new google.maps.InfoWindow({
-						content: info_window_content
-					});
-					
-					//open marker immediately						
-					destDisplay.open(map,marker_destination);
-					dest_markers[0] = marker_destination;									  
-				} 	else {
-					console.log('Geocoder failed due to: ' + status);
-				}
-			});
-			
-			
-			//close the useless panel
-			
-			if(0)//is navigation mode
-			{}
-			else
-			{
-				$('#navigation_menu').css('display', 'none');
-				$('#bus_timetable_menu').css('display', 'none');
-				$('#download_div').css('display', 'none');
-				$('#point_of_interest').css('display', 'none');
-				$('#traffic_congestion').css('display', 'none');
-			}					
   		});
+		
+		google.maps.event.addListener(map, 'click', function(event) {
+			is_key_down = false;
+		});
 		
 		menu(map);
 		google.maps.event.addListenerOnce(map, 'tilesloaded', function(){

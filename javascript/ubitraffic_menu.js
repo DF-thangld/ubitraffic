@@ -67,6 +67,8 @@ function changePointOfInterestType(point_of_interest_type, map)
 	var nearest_point = 0;
 	for (j=0; j<markerList.length; j++)
 		markerList[j].setMap(null);
+	for (j=0; j<bus_shapes.length; j++)
+		bus_shapes[j].setMap(null);
 	var nearest_lat = 0;
 	var nearest_lon = 0;
 	var nearest_distance = 99999999999999;
@@ -241,6 +243,8 @@ function get_all_bus_stops(map)
 {
 	for (j=0; j<markerList.length; j++)
 		markerList[j].setMap(null);
+	for (j=0; j<bus_shapes.length; j++)
+		bus_shapes[j].setMap(null);
 	var nearest_distance = 9999999999999;
 	var nearest_lat = 0;
 	var nearest_lon = 0;
@@ -761,6 +765,8 @@ function menu(map)
 		// remove other markers
 		for (j=0; j<markerList.length; j++)
 			markerList[j].setMap(null);
+		for (j=0; j<bus_shapes.length; j++)
+			bus_shapes[j].setMap(null);
 		
 		var nearest_distance = 99999999999999999999;
 		var nearest_lat = 0;
@@ -903,6 +909,8 @@ function menu(map)
 		// remove other markers
 		for (j=0; j<markerList.length; j++)
 			markerList[j].setMap(null);
+		for (j=0; j<bus_shapes.length; j++)
+			bus_shapes[j].setMap(null);
 		
 		var nearest_distance = 9999999999;
 		var nearest_lat = 0;
@@ -1031,6 +1039,8 @@ function menu(map)
 		// remove other markers
 		for (j=0; j<markerList.length; j++)
 			markerList[j].setMap(null);
+		for (j=0; j<bus_shapes.length; j++)
+			bus_shapes[j].setMap(null);
 		
 		var nearest_distance = 9999999999;
 		var nearest_lat = 0;
@@ -1208,6 +1218,10 @@ function menu(map)
 	$navigate_button.html("<img src='images/startNavigation.png' style='width:100px;height:100px;margin-top:17px;margin-left:5px;' >");
 	
 	google.maps.event.addDomListener($navigate_button.get(0), 'click', function() {
+		for (j=0; j<markerList.length; j++)
+			markerList[j].setMap(null);
+		for (j=0; j<bus_shapes.length; j++)
+			bus_shapes[j].setMap(null);
 		navigate_route();
 		$('#navigation_menu').css('display', 'none');
 		
@@ -1235,6 +1249,7 @@ function menu(map)
 	google.maps.event.addDomListener($bus_dropdown.get(0), 'click', function() {
 		var content = "";
 		$('#bus_number').val($("#bus_line").val());
+		
 		$.ajax({
 				type: "GET",
 				url: "oulunliikenne_siri_service.php?service=bus_directions&route_id=" + $("#bus_line").val(),
@@ -1248,7 +1263,7 @@ function menu(map)
 						var route_long_name = $(this).find("route_long_name").text();
 						var direction_id = $(this).find("direction_id").text();
 						var trip_headsign = $(this).find("trip_headsign").text();
-						content += "<tr height='30px;'><td>Direction to <b>" + trip_headsign + "</b></td><td><button style='margin-left:5px;' onclick='show_shape(\"" + route_id + "\", "+direction_id+");'>Show this direction</button></td></tr>";
+						content += "<tr height='30px;'><td>Direction to <b>" + trip_headsign + "</b></td><td><button style='margin-left:5px;' onclick='$(\"#bus_timetable_menu\").fadeOut(0);show_shape(\"" + route_id + "\", "+direction_id+");'>Show this direction</button></td></tr>";
 					});
 					if (content === "")
 					{
@@ -1270,6 +1285,7 @@ function menu(map)
 	google.maps.event.addDomListener($bus_info_button.get(0), 'click', function() {
 		var content = "";
 		$("#bus_line").val($("#bus_number").val());
+		
 		$.ajax({
 				type: "GET",
 				url: "oulunliikenne_siri_service.php?service=bus_directions&route_id=" + $("#bus_number").val(),
@@ -1283,7 +1299,7 @@ function menu(map)
 						var route_long_name = $(this).find("route_long_name").text();
 						var direction_id = $(this).find("direction_id").text();
 						var trip_headsign = $(this).find("trip_headsign").text();
-						content += "<tr><td>Direction to <b>" + trip_headsign + "</b></td><td><input type='radio' name='show_bus_shape' onclick='show_shape(\"" + route_id + "\", "+direction_id+");'></td></tr>";
+						content += "<tr height='30px;><td>Direction to <b>" + trip_headsign + "</b></td><td><button style='margin-left:5px;' onclick='$(\"#bus_timetable_menu\").fadeOut(0);show_shape(\"" + route_id + "\", "+direction_id+");'>Show this direction</button></td></tr>";
 					});
 					if (content === "")
 					{
