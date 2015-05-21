@@ -33,7 +33,7 @@ function get_bus_stop_info($conn, $stop_id)
 	// bus stop info
 	$sql = "select * 
 			from stops a
-			where a.stop_id = ".$stop_id;
+			where a.stop_id = '".$stop_id."'";
 	$result = $conn->query($sql);
 	if ($result->num_rows > 0) {
 		$row = $result->fetch_assoc();
@@ -48,12 +48,15 @@ function get_bus_stop_info($conn, $stop_id)
 	
 	
 	// get incoming bus
+	$current_time_str = date('H:i:s');
+	$current_time = intval(substr($current_time_str, 0, 2))*3600 + intval(substr($current_time_str, 3, 2))*60 + intval(substr($current_time_str, 5, 2));
 	$sql = "select c.route_id, c.route_short_name, b.trip_headsign, a.stop_id, min(a.arrival_time) arrival_time
 			from stop_times a
 			inner join trips b on a.trip_id = b.trip_id
 			inner join routes c on b.route_id = c.route_id
-			inner join calendar_dates d on b.service_id = d.service_id and d.date = ".date('Ymd')."
-			where a.stop_id = ".$stop_id." and a.arrival_time > '".date('H:i:s')."'
+			inner join calendar_dates d on b.service_id = d.service_id and d.date = '".date('Ymd')."'
+			where a.stop_id = '".$stop_id."' 
+			and (SUBSTRING(a.arrival_time,1,2)*3600 + SUBSTRING(a.arrival_time,4,2)*60 + SUBSTRING(a.arrival_time,7,2)) > ".$current_time."
 			group by c.route_id, c.route_short_name, b.trip_headsign, a.stop_id";
 
 	$result = $conn->query($sql);
@@ -126,7 +129,7 @@ function get_bus_route_info($conn, $bus_route_id)
 	$sql = "select a.trip_id, b.route_id, b.direction_id, min(a.arrival_time), max(a.arrival_time)
 			from stop_times a
 			inner join trips b on a.trip_id = b.trip_id
-			inner join calendar_dates c on b.service_id = c.service_id and c.date = ".date('Ymd')."
+			inner join calendar_dates c on b.service_id = c.service_id and c.date = '".date('Ymd')."'
 			where b.route_id = ".$bus_route_id."
 			group by a.trip_id, b.route_id, b.direction_id
 			having min(a.arrival_time) <= '".date('H:i:s')."' and max(a.arrival_time) >= '".date('H:i:s')."'";
@@ -240,7 +243,7 @@ function get_bus_route_detail($conn, $route_id, $direction_id)
 				from (	SELECT a.trip_id, min(a.arrival_time) arrival_time
 						FROM `stop_times` a
 						inner join trips b on a.trip_id = b.trip_id
-						inner join calendar_dates c on b.service_id = c.service_id and c.date = ".date('Ymd')."
+						inner join calendar_dates c on b.service_id = c.service_id and c.date = '".date('Ymd')."'
 						where a.arrival_time > '".date('H:i:s')."'
 						and a.trip_id in (".$running_buses.")
 						group by a.trip_id) x
@@ -264,10 +267,37 @@ function get_bus_route_detail($conn, $route_id, $direction_id)
 	}
 	$response_xml .= "\t</current_bus_position>\n";
 	
+	//get shape_id and trip_id of next bus
+	$sql = "SELECT a.trip_id, a.arrival_time, b.shape_id 
+			FROM `stop_times` a
+			inner join trips b on a.trip_id = b.trip_id
+			inner join routes c on b.route_id = c.route_id
+			inner join calendar_dates d on b.service_id = d.service_id and d.date = '".date('Ymd')."'
+			where c.route_short_name = '".$route_id."' and b.direction_id=".$direction_id."
+			and a.stop_sequence = '1'
+			order by a.arrival_time";
+	
+	$current_time = date('H:i:s');
+	$distance = 9999999999999999;
+	$current_value = intval(substr($current_time, 0, 2))*3600 + intval(substr($current_time, 3, 2))*60 + intval(substr($current_time, 5, 2));
+	$trip_id = '';
+	$shape_id = '';
+	$result = $conn->query($sql);
+	while($row = $result->fetch_assoc())
+	{
+		$array_value = intval(substr($row["arrival_time"], 0, 2))*3600 + intval(substr($row["arrival_time"], 3, 2))*60 + intval(substr($row["arrival_time"], 5, 2));
+		if (abs($array_value - $current_value) < $distance)
+		{
+			$distance = abs($array_value - $current_value);
+			$trip_id = $row["trip_id"];
+			$shape_id = $row["shape_id"];
+		}
+	}
+	
 	//get route shape
 	$sql = "select * 
-			from route_shape 
-			where route_short_name = '".$route_id."' and direction_id = ".$direction_id." 
+			from shapes 
+			where shape_id = '".$shape_id."'
 			order by shape_pt_sequence asc";
 	$response_xml .= "\t<route_shape>\n";
 	$result = $conn->query($sql);
@@ -282,10 +312,11 @@ function get_bus_route_detail($conn, $route_id, $direction_id)
 	$response_xml .= "\t</route_shape>\n";
 	
 	//get route bus stop
-	$sql = "select * 
-			from route_stops 
-			where route_short_name = '".$route_id."' and direction_id = ".$direction_id." 
-			order by stop_sequence asc";
+	$sql = "SELECT a.stop_id, a.stop_sequence, b.stop_lat, b.stop_lon
+			FROM `stop_times` a
+			inner join stops b on a.stop_id = b.stop_id
+			where a.trip_id='".$trip_id."'
+			order by a.stop_sequence asc";
 	$response_xml .= "\t<route_stops>\n";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_assoc())
