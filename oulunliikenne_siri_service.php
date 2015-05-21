@@ -1,5 +1,17 @@
 <?php 
 require_once("config.php");
+
+function convertToUTF8($str) {
+    $enc = mb_detect_encoding($str);
+
+    if ($enc && $enc != 'UTF-8') {
+        return iconv($enc, 'UTF-8', $str);
+    } else {
+        return $str;
+    }
+}
+
+
 function get_all_bus_stops($conn)
 {
 	
@@ -22,7 +34,7 @@ function get_all_bus_stops($conn)
 		}
 	}
 	$response_xml .= '</bus_stops>';
-	header("Content-type: text/xml; charset=utf-8");
+	header("Content-type: text/xml; charset=ISO-8859-1");
 	echo $response_xml;
 }
 
@@ -77,13 +89,13 @@ function get_bus_stop_info($conn, $stop_id)
 		$response_xml .= "</incoming_buses>\n";
 	}
 	$response_xml .= "</bus_stop_info>";
-	header("Content-type: text/xml; charset=utf-8");
+	header("Content-type: text/xml; charset=ISO-8859-1");
 	echo $response_xml;
 }
 
 function get_bus_route_info($conn, $bus_route_id)
 {
-	header("Content-type: text/xml; charset=utf-8");
+	header("Content-type: text/xml; charset=ISO-8859-1");
 	$response_xml = '<?xml version="1.0" encoding="UTF-8"?>';
 	$response_xml .= "\n<bus_route_info>\n";
 	
@@ -192,7 +204,7 @@ function get_all_bus_route($conn)
 		}
 	}
 	$response_xml .= '</bus_routes>';
-	header("Content-type: text/xml; charset=utf-8");
+	header("Content-type: text/xml; charset=ISO-8859-1");
 	echo $response_xml;
 }
 
@@ -341,7 +353,7 @@ function get_bus_route_detail($conn, $route_id, $direction_id)
 	
 	
 	$response_xml .= '</route_detail>';
-	header("Content-type: text/xml; charset=utf-8");
+	header("Content-type: text/xml; charset=ISO-8859-1");
 	echo $response_xml;
 }
 
@@ -364,7 +376,7 @@ function get_bus_shape($conn, $shape_id)
 		}
 	}
 	$response_xml .= '</bus_shapes>';
-	header("Content-type: text/xml; charset=utf-8");
+	header("Content-type: text/xml; charset=ISO-8859-1");
 	echo $response_xml;
 }
 
@@ -391,7 +403,7 @@ function get_bus_directions($conn, $route_id)
 		}
 	}
 	$response_xml .= "</bus_directions>\n";
-	header("Content-type: text/xml; charset=utf-8");
+	header("Content-type: text/xml; charset=ISO-8859-1");
 	echo $response_xml;
 }
 
@@ -406,14 +418,15 @@ function get_bus_lines($conn)
 		while($row = $result->fetch_assoc())
 		{
 			$response_xml .= "\t<line>\n";
-			$response_xml .= "\t\t<route_short_name>".$row['route_short_name']."</route_short_name>\n";	
-			$response_xml .= "\t\t<route_long_name>".$row['route_long_name']."</route_long_name>\n";			
+			$response_xml .= "\t\t<route_short_name>".convertToUTF8($row['route_short_name'])."</route_short_name>\n";	
+			$response_xml .= "\t\t<route_long_name>".convertToUTF8($row['route_long_name'])."</route_long_name>\n";			
 			$response_xml .= "\t</line>\n";
 		}
 	}
 	$response_xml .= "</bus_lines>\n";
-	header("Content-type: text/xml; charset=utf-8");
+	header("Content-type: text/xml; charset=ISO-8859-1");
 	echo $response_xml;	
+	flush();
 }
 
 $service = $_GET['service'];
