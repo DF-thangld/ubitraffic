@@ -517,17 +517,31 @@ function menu(map)
 	
 	//new code
 	var $menu = $(document.getElementById("wrap_menu"));
-	google.maps.event.addDomListener($menu.get(0), 'mouseover', function() {
-		$('#point_of_interest_menu').css('display', 'inline');
-		$('#traffic_congestion_menu').css('display', 'inline');
-		$('#navigation_button').css('display', 'inline');
-		$('#bus_timetable_button').css('display', 'inline');
-		$('#main_menu').css('display', 'inline');
-		main_menu_opening=true;
-	});
-	google.maps.event.addDomListener($menu.get(0), 'mouseout', function() {
-		//$('#innerContainer').css('display', 'none');
-		main_menu_opening=false;
+	google.maps.event.addDomListener($menu.get(0), 'click', function(event) {
+		event.stopPropagation();
+		console.log(event.target.nodeName);
+		
+		if(!main_menu_opening || (main_menu_opening && event.target.nodeName == "H3") || (main_menu_opening && event.target.nodeName == "IMG"))
+		{			
+			$('.a-btn').css('padding-right','450px');			
+			$('.a-btn-slide-text').css('width','370px');			
+			$('#point_of_interest_menu').css('display', 'inline');
+			$('#traffic_congestion_menu').css('display', 'inline');
+			$('#navigation_button').css('display', 'inline');
+			$('#bus_timetable_button').css('display', 'inline');
+			$('#main_menu').css('display', 'inline');
+			main_menu_opening=true;
+		}
+		else
+		{
+			$('.a-btn').css('padding-right','80px');
+			$('#point_of_interest_menu').css('display', 'none');
+			$('#traffic_congestion_menu').css('display', 'none');
+			$('#navigation_button').css('display', 'none');
+			$('#bus_timetable_button').css('display', 'none');
+			$('#main_menu').css('display', 'none');
+			main_menu_opening=false;		
+		}
 	});
 	var $main_menu = $(document.getElementById("main_menu"));
 	$mainContainer.append($menu);
