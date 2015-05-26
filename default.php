@@ -93,6 +93,8 @@ indenpendent URLs, I will implement this changes soon.
 	var travel_mode_map = google.maps.TravelMode.WALKING;
 	var travel_mode_link = 'walking';
 	var screen_address = 'Yliopistokatu 12';
+	var screen_lat=65.057858;
+	var screen_lon=25.468006;
 	var origin_place = screen_address;
 	var destination_place = ''; 
 	var markers_list = [];
@@ -101,6 +103,7 @@ indenpendent URLs, I will implement this changes soon.
 	var parking_markers = [];
 	var dest_markers = [];
 	
+	var geocoder;
 	var directionsDisplay;
 	var directionsService = new google.maps.DirectionsService();
 	var map;
@@ -112,8 +115,15 @@ indenpendent URLs, I will implement this changes soon.
 	var email_text = '';
 	var file_name = '';
 	var geocoder;
+
 		
 	
+
+	var destDisplay;
+	var is_key_down = false;
+	var mouse_lat = 0;
+	var mouse_lon = 0;
+
 	
 	function reset(){
 		//reset menu
@@ -138,6 +148,74 @@ indenpendent URLs, I will implement this changes soon.
 		$("#destination").val(destination_place);
 		
 	}
+	
+	function custom_click()
+	{
+		if (!is_key_down)
+			return;
+			
+			
+		//find route
+		var latitude = mouse_lat;
+		var longitude = mouse_lon;
+			
+		dest = new google.maps.LatLng(latitude,longitude);
+		origin_place = $("#start_place").val();
+			
+		//clear the array of destination markers
+		if(dest_markers.length > 0)
+		{
+			dest_markers[0].setMap(null);
+			dest_markers = [];
+		}	
+						
+		//geocoder to determine address
+		geocoder.geocode({'latLng': dest}, function(results, status) {
+			if (status == google.maps.GeocoderStatus.OK) {			  
+				var titletext = "To: "+results[0].formatted_address;					
+					
+				//create marker at destination
+				var marker_destination = new google.maps.Marker({
+					position: dest,
+					map: map
+				});
+				var info_window_content = "<div>"+titletext+"<br />Choose Travel Mode:<br /><br /></div>";
+				info_window_content += "<img src='images/pedestrial.png' onclick='find_route(\"" + $("#start_place").val() + "\",new google.maps.LatLng(" + latitude + "," + longitude + "),google.maps.TravelMode.WALKING);' style='height:40px;' width='40px'/>";
+				info_window_content += "<img src='images/bike.png' onclick='find_route(\"" + $("#start_place").val() + "\",new google.maps.LatLng(" + latitude + "," + longitude + "),google.maps.TravelMode.BICYCLING);' style='height:40px;' width='40px'/>";
+				info_window_content += "<img src='images/bus.png' onclick='find_route(\"" + $("#start_place").val() + "\",new google.maps.LatLng(" + latitude + "," + longitude + "),google.maps.TravelMode.TRANSIT);' style='height:40px;' width='40px'/>";
+				
+				//create info window to show content
+				destDisplay = new google.maps.InfoWindow({
+					content: info_window_content
+				});
+					
+				//open marker immediately						
+				destDisplay.open(map,marker_destination);
+				dest_markers[0] = marker_destination;									  
+			} 	else {
+					console.log('Geocoder failed due to: ' + status);
+			}
+		});
+			
+			
+		//close the useless panel
+			
+		if(0)//is navigation mode
+		{}
+		else
+		{
+			$('#navigation_menu').css('display', 'none');
+			$('#bus_timetable_menu').css('display', 'none');
+			$('#download_div').css('display', 'none');
+			$('#point_of_interest').css('display', 'none');
+			$('#traffic_congestion').css('display', 'none');
+		}
+		is_key_down = false;
+		mouse_lat = 0;
+		mouse_lon = 0;		
+		
+	}
+	
     $(function(){
         //initMap();
 		
@@ -152,7 +230,8 @@ indenpendent URLs, I will implement this changes soon.
 		var infowindow = new google.maps.InfoWindow({
 			content: contentString
 		});
-		var myLatlng = new google.maps.LatLng(65.057858, 25.468006);
+		var myLatlng = new google.maps.LatLng(screen_lat, screen_lon);
+		
 		geocoder = new google.maps.Geocoder();
 		
 		directionsDisplay = new google.maps.DirectionsRenderer();
@@ -164,10 +243,7 @@ indenpendent URLs, I will implement this changes soon.
 		map = new google.maps.Map(document.getElementById('map_panel'), mapOptions);
 		point_of_interest_service = new google.maps.places.PlacesService(map);
 		directionsDisplay.setMap(map);
-		
-		
-			
-			
+		geocoder = new google.maps.Geocoder();
 		
 		var marker = new google.maps.Marker({
 			position: myLatlng,
@@ -178,73 +254,67 @@ indenpendent URLs, I will implement this changes soon.
 			infowindow.open(map,marker);
 		});
 		
-		google.maps.event.addListener(map, 'click', function(event) {
+		//$('#map_panel').bind('taphold', function(event){
+		google.maps.event.addListener(map, 'mousedown', function(event) {
+			is_key_down = true;
+			mouse_lat = event.latLng.lat();
+			mouse_lon = event.latLng.lng();
 			
-			//find route
-			var latitude = event.latLng.lat();
-			var longitude = event.latLng.lng();
+			setTimeout(function(){ custom_click(); }, 500);
 			
-			dest = new google.maps.LatLng(latitude,longitude);
-			origin_place = $("#start_place").val();
-			
-			//clear the array of destination markers
-			if(dest_markers.length > 0)
-			{
-				dest_markers[0].setMap(null);
-				dest_markers = [];
-			}	
-						
-			//geocoder to determine address
-			geocoder.geocode({'latLng': dest}, function(results, status) {
-				if (status == google.maps.GeocoderStatus.OK) {			  
-					var titletext = "To: "+results[0].formatted_address;					
-					
-					//create marker at destination
-					var marker_destination = new google.maps.Marker({
-						position: dest,
-						map: map
-					});
-					var info_window_content = "<div>"+titletext+"<br />Choose Travel Mode:<br /><br /></div>";
-					info_window_content += "<img src='images/pedestrial.png' onclick='find_route(\"" + $("#start_place").val() + "\",new google.maps.LatLng(" + latitude + "," + longitude + "),google.maps.TravelMode.WALKING);' style='height:40px;' width='40px'/>";
-					info_window_content += "<img src='images/bike.png' onclick='find_route(\"" + $("#start_place").val() + "\",new google.maps.LatLng(" + latitude + "," + longitude + "),google.maps.TravelMode.BICYCLING);' style='height:40px;' width='40px'/>";
-					info_window_content += "<img src='images/bus.png' onclick='find_route(\"" + $("#start_place").val() + "\",new google.maps.LatLng(" + latitude + "," + longitude + "),google.maps.TravelMode.TRANSIT);' style='height:40px;' width='40px'/>";
-					
-					//create info window to show content
-					var destDisplay = new google.maps.InfoWindow({
-						content: info_window_content
-					});
-					
-					//open marker immediately						
-					destDisplay.open(map,marker_destination);
-					dest_markers[0] = marker_destination;									  
-				} 	else {
-					console.log('Geocoder failed due to: ' + status);
-				}
-			});
-			
-			
-			//close the useless panel
-			
-			if(0)//is navigation mode
-			{}
-			else
-			{
-				$('#navigation_menu').css('display', 'none');
-				$('#bus_timetable_menu').css('display', 'none');
-				$('#download_div').css('display', 'none');
-				$('#point_of_interest').css('display', 'none');
-				$('#traffic_congestion').css('display', 'none');
-			}					
   		});
+		
+		google.maps.event.addListener(map, 'click', function(event) {
+			is_key_down = false;
+		});
+		google.maps.event.addListener(map, 'mousemove', function(event) {
+			is_key_down = false;
+		});
+		google.maps.event.addListener(map, 'mouseout', function(event) {
+			is_key_down = false;
+		});
+		google.maps.event.addListener(map, 'mouseover', function(event) {
+			is_key_down = false;
+		});
 		
 		menu(map);
 		google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
 			reset();
 			//window.alert(1);
-			$("#start_place").keyboard();
-			$("#destination").keyboard();
-			$("#bus_number").keyboard();
-			$("#email_input").keyboard();
+			var keyboard_options = {
+
+				display: {
+					'bksp'   : '\u2190',
+					'enter'  : 'return',
+					'default': 'ABC',
+					'meta1'  : '.?123',
+					'meta2'  : '#+=',
+					'accept' : 'Enter'
+				},
+
+				layout: 'custom',
+				customLayout: {
+					'default': [
+						'1 2 3 4 5 6 7 8 9 0 {bksp}',
+						'q w e r t y u i o p',
+						'a s d f g h j k l',
+						'z x c v b n m @ , .',
+						'{accept} {space} _ - {accept}'
+					]
+				}
+
+			};
+			$("#start_place").keyboard(keyboard_options);
+			$("#destination").keyboard(keyboard_options);
+			$("#bus_number").keyboard(keyboard_options);
+			//$("#email_input").keyboard();
+			
+			$('#email_input').keyboard(keyboard_options);
+			
+			
+			
+			
+			
 			$.ajax({
                 type: "GET",
                 url: "oulunliikenne_statistic.php",
@@ -303,6 +373,16 @@ indenpendent URLs, I will implement this changes soon.
 			destination: end_point,
 			travelMode: travel_mode
 		};
+		//clear marker and info window when route is found
+		if(destDisplay)
+		{
+			destDisplay.close();
+		}
+		if(dest_markers.length > 0)
+		{
+			dest_markers[0].setMap(null);
+			dest_markers = [];
+		}
 		directionsService.route(request, function(response, status) {
 			if (status == google.maps.DirectionsStatus.OK) 
 			{
@@ -547,8 +627,8 @@ indenpendent URLs, I will implement this changes soon.
 		//create close button for qr code image
 		var closeB = document.createElement("a");
 		closeB.id = "close_qr";
-		closeB.innerHTML = "x";
-		closeB.style = "position:absolute;height:17px; width:9px;float:right; right:-10px; top:-10px;cursor:pointer;border:1px solid;border-color: #2a3333;border-radius:15px;display:inline-block; padding: 2px 5px; background: #ccc;";
+		closeB.innerHTML = "close";
+		closeB.style = "position:absolute;height:35px; width:35px;float:right; right:-20px; top:-20px;cursor:pointer;border:1px solid;border-color: #2a3333;border-radius:15px;display:inline-block; padding: 2px 5px; background: #ccc; text-align:center; padding-top:10px;";
 		$('#QRcode').append(closeB);
 			
 		//show it to user
@@ -557,7 +637,7 @@ indenpendent URLs, I will implement this changes soon.
 		//console.log(""+image.src);	
 
 		google.maps.event.addDomListener($('#close_qr').get(0), 'click', function() {
-		$('#QRcode').css('display', 'none');
+			$('#QRcode').css('display', 'none');
 		});
 	}
 	
@@ -577,6 +657,20 @@ indenpendent URLs, I will implement this changes soon.
                 success : function(data)
                 {
                     console.log(data);
+					
+					$('#mailDone').html(data);
+					
+					//close button for download div
+					$closeMail = $(document.createElement('a'));
+					$closeMail.attr("id", "close_mail");
+					$closeMail.attr("style", "position:absolute;height:35px; width:35px;float:right; right:-20px; top:-20px;cursor:pointer;border:1px solid;border-color: #2a3333;border-radius:15px;display:inline-block; padding: 2px 5px; background: #ccc; text-align:center; padding-top:10px;");
+					$closeMail.html("close");
+					$('#mailDone').append($closeMail);
+					$('#mailDone').css('display', 'inline');
+					$('#download_div').append($('#mailDone'));
+					google.maps.event.addDomListener($closeMail.get(0), 'click', function() {
+						$('#mailDone').css('display', 'none');
+					});
                 }
             }).done(function() {
                 //$('body').html(data);
@@ -587,48 +681,117 @@ indenpendent URLs, I will implement this changes soon.
 	
 	//wrap text to fit to canvas
 	function wrapText(context, text, x, y, maxWidth, lineHeight) {
-		var words = text.split(/([)])/);
-        var line = '';
-		//console.log(text);
-        for(var n = 0; n < words.length; n++) {
-			//if first line: break it into smaller parts
-			if(n == 0) {
-				var firstline = words[0].split(/(Suomi)/);
-				for(var i=0; i < firstline.length; i++) {
-					//break it into more smaller parts
-					if(i==0) {
-						var firstfirstline = firstline[0].split(/(Route)/); 
-						for(var j=0; j< firstfirstline.length; j++) {
-							if(j%2 == 0) {
-								context.fillText(line, x, y);
-								line = firstfirstline[j] + '';
-								y += lineHeight;
-							}
-							else {
-								line += "Route"; 
+		if(text.search("Route") != -1)
+		{
+			var words = text.split(/([)])/);
+			var line = '';
+			//console.log(text);
+			for(var n = 0; n < words.length; n++) {
+				//if first line: break it into smaller parts
+				if(n == 0) {
+					var firstline = words[0].split(/(Suomi|Finland)/);
+					for(var i=0; i < firstline.length; i++) {
+						//break it into more smaller parts
+						if(i==0) {
+							var firstfirstline = firstline[0].split(/(Route)/); 
+							for(var j=0; j< firstfirstline.length; j++) {
+								if(j%2 == 0) {
+									context.fillText(line, x, y);
+									line = firstfirstline[j] + '';
+									y += lineHeight;
+								}
+								else {
+									line += "Route"; 
+								}
 							}
 						}
+						
+						if(i%2 == 0 && i!=0 && i!=firstline.length-1) {
+							context.fillText(line, x, y);
+							line = firstline[i] + '';
+							y += lineHeight;
+						}
+						else if(i!=0 && i!=firstline.length-1){
+							if(navigator.language=='fi-FI' || navigator.language=='fi')
+							{
+								line += "Suomi"; 						
+							}
+							else
+							{
+								line += "Finland";
+							}
+						}
+					}   
+					var secondline = words[0].split(/(Steps:)/);
+					for(var t=0; t < secondline.length; t++) {
+						if(t==2)
+						{
+							context.fillText(line, x, y);
+							line = secondline[t] + '';
+							y += lineHeight;
+						}
+						else if(t!=0)
+						{
+							context.fillText(line, x, y);
+							line = 'Steps:';
+							y += lineHeight;
+						}
 					}
-					
-					if(i%2 == 0 && i!=0) {
-						context.fillText(line, x, y);
-						line = firstline[i] + '';
-						y += lineHeight;
+				}
+				if (n % 2 == 0 && n != 0 && n!=words.length-3 && n!=words.length-1) {
+					context.fillText(line, x, y);
+					line = words[n] + '';
+					y += lineHeight;
+				}
+				else if(n != 0 && n!=words.length-3){
+					line += ")";				
+				}
+				if(n==words.length-3)
+				{
+					var lastline = words[words.length-3].split(/(Kohde)/);
+					for(var p=0; p < lastline.length; p++) {
+						if(p%2==0)
+						{
+							context.fillText(line, x, y);
+							line = lastline[p]+"";
+							y += lineHeight;
+						}
+						else if(p==1 && (navigator.language=='fi-FI'|| navigator.language=='fi'))
+						{
+							context.fillText(line, x, y);
+							line = "Kohde"+lastline[p+1]+")";
+							y += lineHeight;
+						}
+						else if(p==1 && (navigator.language!='fi-FI'|| navigator.language!='fi'))
+						{
+							context.fillText(line, x, y);
+							line = "Destination"+lastline[p+1]+")";
+							y += lineHeight;
+						}					
 					}
-					else {
-						line += "Suomi"; 
-					}
-				}             
-			}
-			if (n % 2 == 0 && n != 0) {
+				}
+			}  
+		}
+		else
+		{
+			var words = text.split(' ');
+			var line = '';
+
+			for(var n = 0; n < words.length; n++) {
+			  var testLine = line + words[n] + ' ';
+			  var metrics = context.measureText(testLine);
+			  var testWidth = metrics.width;
+			  if (testWidth > maxWidth && n > 0) {
 				context.fillText(line, x, y);
-				line = words[n] + '';
+				line = words[n] + ' ';
 				y += lineHeight;
+			  }
+			  else {
+				line = testLine;
+			  }
 			}
-			else if(n != 0){
-				line += ")";				
-			}
-        }        
+			context.fillText(line, x, y);
+		}	
     }
 	$(window).on("beforeunload", function() {
 		$.ajax({
@@ -640,7 +803,18 @@ indenpendent URLs, I will implement this changes soon.
 					async :false
 		});          
 		//return true;
-})
+	});
+	
+	function copy_screen()
+	{
+		var content = window.document.getElementById("map_panel"); // get you map details
+		var logoBox = "<div class='logoBox' id='logoBox' style='width:300px;    height:65px; border-radius:4px; background-color:rgba(255,255,255,0.75);    box-shadow:5px 5px 2px rgba(50,50,50,0.5);  float:left; z-index:10; position:absolute;  top:10px;   left:10px; padding:5px;'><img src='myLogo_300x65.png' id='myLogo'></div>";
+		var printWindow = window.open("","printWindow", "Width=640, Height=620,location=no,menu bar=no,resizable=no,scrollbars=no,status=no,titlebar=no,toolbar=no"); // open a new window
+		printWindow.document.write(content.innerHTML); // write the map into the new window
+		printWindow.document.write(logoBox); 
+		printWindow.print();
+	}
+	
     </script>
   </head>
 	<body>
