@@ -3,17 +3,61 @@ var point_of_interest_types = [	"restaurant", "cafe", "movie_theater", "art_gall
 								"hospital", "grocery_or_supermarket", "shoe_store", "home_goods_store"];
 
 								
-/*Cafes and Restaurants - 3
-Beauty ja Health 4
-Real Estate Management - 2
-Other - -1
-Culture ja Leisure - 6
-Marketing ja Media - 8
-Shopping - 33
-Authorities - 50
-Specialist Services - 54
-Finance ja Insurance - 61
-*/
+function xmlToJson(xml) 
+{
+    
+    // Create the return object
+    var obj = {};
+ 
+    if (xml.nodeType == 1) { // element
+        // do attributes
+        if (xml.attributes.length > 0) {
+        obj["@attributes"] = {};
+            for (var j = 0; j < xml.attributes.length; j++) {
+                var attribute = xml.attributes.item(j);
+                obj["@attributes"][attribute.nodeName] = attribute.nodeValue;
+            }
+        }
+    } else if (xml.nodeType == 3) { // text
+        obj = xml.nodeValue;
+    }
+ 
+    // do children
+    if (xml.hasChildNodes()) {
+        for(var i = 0; i < xml.childNodes.length; i++) {
+            var item = xml.childNodes.item(i);
+            var nodeName = item.nodeName;
+            if (typeof(obj[nodeName]) == "undefined") {
+                obj[nodeName] = xmlToJson(item);
+            } else {
+                if (typeof(obj[nodeName].push) == "undefined") {
+                    var old = obj[nodeName];
+                    obj[nodeName] = [];
+                    obj[nodeName].push(old);
+                }
+                obj[nodeName].push(xmlToJson(item));
+            }
+        }
+    }
+    return obj;
+};
+
+function parseCoord(str)
+{
+    var coordArray = str.split(" ");
+    var coord = {};
+    var lon = parseFloat(coordArray[0]);
+    var lat = parseFloat(coordArray[1]);
+ 
+    if (!isNaN(lon))
+        coord.lon = lon;
+ 
+    if (!isNaN(lat))
+        coord.lat = lat;
+ 
+    return coord;
+};
+
 var points_of_interest = [];
 points_of_interest["-1"] = [];
 points_of_interest["2"] = [];
@@ -810,33 +854,35 @@ function menu(map)
 				dataType: "xml",
 				success: function(xml) {
 					
+					
 					$(xml).find('item').each(function(){
+						var weather_obj = xmlToJson($(this)[0]);
+						
 						var name = $(this).find("title").text();
 						//$("#info_panel").html($("#info_panel").html() + "<br>" + name);
 						var id = "weather_" + name;
 						var description = $(this).find("description").text();
-						
 						var weather_place = null;
-						weather_place = findMarkerByName(weather_places, name);
+						weather_place = parseCoord(weather_obj['georss:point']['#text']);
 						
 						if (weather_place!==null)
 						{
 							var weather_marker = new google.maps.Marker({
 								id: id,
-								position: new google.maps.LatLng(weather_place.latitude,weather_place.longitude),
+								position: new google.maps.LatLng(weather_place.lat,weather_place.lon),
 								map: map,
 								title: name,
 								icon: 'images/weather_map_icon.png'
 							});
 							markerList.push(weather_marker);
 							weather_marker.setMap(map);
-							var distance = Math.sqrt(Math.pow(parseFloat(weather_place.latitude) - screen_lat, 2) + Math.pow(parseFloat(weather_place.longitude) - screen_lon, 2));
+							var distance = Math.sqrt(Math.pow(parseFloat(weather_place.lat) - screen_lat, 2) + Math.pow(parseFloat(weather_place.lon) - screen_lon, 2));
 							
 							if (distance < nearest_distance)
 							{
 								nearest_distance = distance;
-								nearest_lat = weather_place.latitude;
-								nearest_lon = weather_place.longitude;
+								nearest_lat = weather_place.lat;
+								nearest_lon = weather_place.lon;
 								
 							}
 							
@@ -943,6 +989,7 @@ function menu(map)
 				success: function(xml) {
 					
 					$(xml).find('item').each(function(){
+						var camera_obj = xmlToJson($(this)[0]);
 						var name = $(this).find("title").text();
 
 						var id = "camera_" + name;
@@ -950,25 +997,25 @@ function menu(map)
 						var img_src= $(this).find("link").text();
 						
 						var camera_place = null;
-						camera_place = findMarkerByName(camera_places, name);
+						camera_place = parseCoord(camera_obj['georss:point']['#text']);
 						
 						if (camera_place!==null)
 						{
 							var camera_marker = new google.maps.Marker({
 								id: id,
-								position: new google.maps.LatLng(camera_place.latitude,camera_place.longitude),
+								position: new google.maps.LatLng(camera_place.lat,camera_place.lon),
 								map: map,
 								title: name,
 								icon: 'images/camera_map_icon.png'
 							});
 							markerList.push(camera_marker);
 							camera_marker.setMap(map);
-							var distance = Math.sqrt(Math.pow(parseFloat(camera_place.latitude) - screen_lat, 2) + Math.pow(parseFloat(camera_place.longitude) - screen_lon, 2));
+							var distance = Math.sqrt(Math.pow(parseFloat(camera_place.lat) - screen_lat, 2) + Math.pow(parseFloat(camera_place.lon) - screen_lon, 2));
 							if (distance < nearest_distance)
 							{
 								nearest_distance = distance;
-								nearest_lat = camera_place.latitude;
-								nearest_lon = camera_place.longitude;
+								nearest_lat = camera_place.lat;
+								nearest_lon = camera_place.lon;
 							}
 							
 							var contentString = '<div style="width:530px;height:360px;">'+
@@ -1074,16 +1121,17 @@ function menu(map)
 				{
 					
 					$(xml).find('item').each(function(){
+						var parking_obj = xmlToJson($(this)[0]);
 						var name = $(this).find("title").text();
 						var id = "parking_" + name;
 						var description = $(this).find("description").text();
 						
-						var geo_point = $(this).find('georss:point').context.children[6].innerHTML.split(" ");
+						var geo_point = parseCoord(parking_obj['georss:point']['#text']);
 						
 						
 						var parking_marker = new google.maps.Marker({
 							id: id,
-							position: new google.maps.LatLng(geo_point[1],geo_point[0]),
+							position: new google.maps.LatLng(geo_point.lat,geo_point.lon),
 							map: map,
 							title: name,
 							icon: 'images/parking_map_icon.png'
@@ -1091,12 +1139,12 @@ function menu(map)
 						markerList.push(parking_marker);
 						
 						parking_marker.setMap(map);
-						var distance = Math.sqrt(Math.pow(parseFloat(geo_point[1]) - screen_lat, 2) + Math.pow(parseFloat(geo_point[0]) - screen_lon, 2));
+						var distance = Math.sqrt(Math.pow(parseFloat(geo_point.lat) - screen_lat, 2) + Math.pow(parseFloat(geo_point.lon) - screen_lon, 2));
 						if (distance < nearest_distance)
 						{
 							nearest_distance = distance;
-							nearest_lat = geo_point[1];
-							nearest_lon = geo_point[0];
+							nearest_lat = geo_point.lat;
+							nearest_lon = geo_point.lon;
 						}
 							
 						var contentString = '<div style="width:170px;height:120px;">'+
