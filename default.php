@@ -359,6 +359,7 @@ indenpendent URLs, I will implement this changes soon.
 				RabbitMQ_send("html",txtInfo);
 			}
 		});
+		
 		$.ajax({
                 type: "GET",
                 url: "oulunliikenne_statistic.php",
@@ -373,7 +374,6 @@ indenpendent URLs, I will implement this changes soon.
 	
 	
 	function navigate_route(){
-		
 		origin_place = $("#start_place").val();
 		destination_place = $("#destination").val();
 		
@@ -432,6 +432,16 @@ indenpendent URLs, I will implement this changes soon.
 				email_text = txtInfo;
 				RabbitMQ_send("html",txtInfo);
 			}
+		});
+		$.ajax({
+                type: "GET",
+                url: "oulunliikenne_statistic.php",
+                data: { instance_id: "xyz", 
+					action: "FIND_ROUTE",
+					data_1: travel_mode_map.toString(),
+					data_2: origin_place.toString(),
+					data_3: destination_place.toString()},
+				cache: false
 		});
 	}
 	

@@ -345,18 +345,17 @@ function get_all_bus_stops(map)
 						email_text = infowindow.getContent();
 						RabbitMQ_send("html",email_text);
 						
+						
 						$.ajax({
 							type: "GET",
 							url: "oulunliikenne_statistic.php",
 							data: { instance_id: "xyz", // change instance_id to the right variable
-															action: "CLICK_BUS_STOP_FROM_TIMETABLE",
-															data_1: route_id,
-															data_2: direction_id,
-															data_3: stop_id},
+															action: "CLICK_PLACE", 
+															data_1: 'bus_stop',
+															data_2: stop_id}, 
 							cache: false
-						});//end of ajax
-					});//Inforwindow onclick event
-					
+						});
+					});	
 				});
 			}
 		});
@@ -375,6 +374,18 @@ function get_all_bus_stops(map)
 		$("#"+point_of_interest_types[i]+"_information_button").attr("class", "button");
 	}
 	$("#bus_stop_information_button").attr("class", "button chosen_mode");
+	$.ajax({
+
+		type: "GET",
+
+		url: "oulunliikenne_statistic.php",
+
+		data: { instance_id: "xyz", // change instance_id to the right variable
+				action: "PLACE",
+				data_1: 'bus_stops'},
+		cache: false
+
+	});
 }
 
 function show_shape(route_id, direction_id)
@@ -466,6 +477,18 @@ function show_shape(route_id, direction_id)
 						infowindow.open(map,busStopMarker);
 						email_text = infowindow.getContent();
 						RabbitMQ_send("html",email_text);
+						
+						
+						$.ajax({
+							type: "GET",
+							url: "oulunliikenne_statistic.php",
+							data: { instance_id: "xyz", // change instance_id to the right variable
+															action: "CLICK_BUS_STOP_FROM_TIMETABLE", 
+															data_1: route_id,
+															data_2: direction_id,
+															data_3: stop_id}, 
+							cache: false
+						});
 					});
 					
 					
@@ -473,20 +496,15 @@ function show_shape(route_id, direction_id)
 				
 			}
 		});
+	
 	$.ajax({
 
                 type: "GET",
-
                 url: "oulunliikenne_statistic.php",
-
                 data: { instance_id: "xyz", // change instance_id to the right variable
-
                                                 action: "BUS_TIMETABLE",
-
                                                 data_1: route_id,
-
                                                 data_2: direction_id},
-
                 cache: false
 
 	});
