@@ -1713,7 +1713,8 @@ function menu(map)
 	$bus_info_button.html("Display Bus Information");
 	google.maps.event.addDomListener($bus_info_button.get(0), 'click', function() {
 		var content = "";
-		$("#bus_line").val($("#bus_number").val());
+		$("#bus_line").val($('#bus_number').val());
+		
 		
 		$.ajax({
 				type: "GET",
@@ -1728,7 +1729,7 @@ function menu(map)
 						var route_long_name = $(this).find("route_long_name").text();
 						var direction_id = $(this).find("direction_id").text();
 						var trip_headsign = $(this).find("trip_headsign").text();
-						content += "<tr height='30px;><td>Direction to <b>" + trip_headsign + "</b></td><td><button style='margin-left:5px;' onclick='$(\"#bus_timetable_menu\").fadeOut(0);show_shape(\"" + route_id + "\", "+direction_id+");'>Show this direction</button></td></tr>";
+						content += "<tr height='30px;'><td>Direction to <b>" + trip_headsign + "</b></td><td><button style='margin-left:5px;' onclick='$(\"#bus_timetable_menu\").fadeOut(0);show_shape(\"" + route_id + "\", "+direction_id+");'>Show this direction</button></td></tr>";
 					});
 					if (content === "")
 					{
